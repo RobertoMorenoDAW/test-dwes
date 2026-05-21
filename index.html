@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Estudio DWES para Roberto</title>
+
+    <style>
+        :root {
+            --color-fondo: #2c2a4a;
+            --color-principal: #4f4c7a;
+            --color-secundario: #7f7aa4;
+            --color-texto: #f0f0f0;
+            --color-contraste: #a2e8ae;
+            --color-correcto: #5cb85c;
+            --color-incorrecto: #d9534f;
+            --color-pospuesto: #f0ad4e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            margin: 0;
+            line-height: 1.6;
+
+            /* Aseguramos que el body no tenga scroll propio, lo gestionará el grid */
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: grid;
+
+            /* --- MODIFICADO --- */
+            /* Col 1: El resto (80%) | Col 2: El 20% que pediste */
+            grid-template-columns: 1fr 20%;
+
+            /* --- NUEVO --- */
+            /* Fila 1: 10% (10vh) | Fila 2: El resto (90%) */
+            grid-template-rows: 20vh 1fr;
+
+            /* --- MODIFICADO --- */
+            /* Usamos height 100vh para que el 10vh/1fr funcione correctamente */
+            height: 100vh;
+        }
+
+        header {
+            /* Columna 1 */
+            grid-column: 1 / 2;
+            /* --- NUEVO: Fila 1 --- */
+            grid-row: 1 / 2;
+
+            /* Estilos de padding y fondo (sin cambios) */
+            padding: 10px 40px;
+            background-color: var(--color-principal);
+            border-bottom: 3px solid var(--color-secundario);
+
+            /* --- ELIMINADO --- */
+            /* La altura ya no es fija (100px), la define el grid (10vh) */
+            /* height: 100px; */
+
+            /* --- MODIFICADO --- */
+            /* Si el contenido (texto) es más grande que el 10vh, permite scroll */
+            overflow-y: auto;
+        }
+
+        #welcome-message {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        #quote {
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--color-contraste);
+            margin: 5px 0 0;
+        }
+
+        main {
+            /* Columna 1 */
+            grid-column: 1 / 2;
+            /* --- NUEVO: Fila 2 --- */
+            grid-row: 2 / 3;
+
+            /* --- MODIFICADO --- */
+            /* 40px de padding superior (tu margen prudencial) y 40px a los lados */
+            padding: 40px 40px;
+
+            /* --- NUEVO --- */
+            /* CRÍTICO: Permite scroll si el contenido del main es más largo que la pantalla */
+            overflow-y: auto;
+        }
+
+        .quiz-area {
+            background-color: var(--color-principal);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+
+            /* Esto ahora SÍ funciona para centrar horizontalmente */
+            margin: 0 auto;
+        }
+
+        .quiz-home {
+            text-align: center;
+        }
+
+        .quiz-home h2 {
+            color: var(--color-contraste);
+        }
+
+        #topic-filters button {
+            background-color: var(--color-secundario);
+            color: var(--color-texto);
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #topic-filters button:hover {
+            background-color: var(--color-contraste);
+            color: var(--color-fondo);
+        }
+
+        #stats-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-secundario);
+        }
+
+        #correct-counter {
+            color: var(--color-correcto);
+        }
+
+        #incorrect-counter {
+            color: var(--color-incorrecto);
+        }
+
+        #question-container {
+            margin-bottom: 30px;
+        }
+
+        #question-text {
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-label {
+            display: block;
+            background-color: var(--color-secundario);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .option-label:hover {
+            border-color: var(--color-contraste);
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]:checked+.option-label {
+            background-color: var(--color-contraste);
+            color: var(--color-fondo);
+            font-weight: bold;
+            border-color: var(--color-contraste);
+        }
+
+        .option-label.correct {
+            background-color: var(--color-correcto) !important;
+            color: white !important;
+            border-color: var(--color-correcto) !important;
+        }
+
+        .option-label.incorrect {
+            background-color: var(--color-incorrecto) !important;
+            color: white !important;
+            border-color: var(--color-incorrecto) !important;
+        }
+
+        #nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        #nav-buttons button {
+            padding: 12px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-grow: 1;
+        }
+
+        #btn-answer {
+            background-color: var(--color-correcto);
+            color: white;
+        }
+
+        #btn-answer:hover {
+            background-color: #4cae4c;
+        }
+
+        #btn-postpone {
+            background-color: var(--color-pospuesto);
+            color: white;
+        }
+
+        #btn-postpone:hover {
+            background-color: #eea236;
+        }
+
+        #btn-no-answer {
+            background-color: var(--color-incorrecto);
+            color: white;
+        }
+
+        #btn-no-answer:hover {
+            background-color: #c9302c;
+        }
+
+        /* Barra lateral derecha */
+        .sidebar-nav {
+            /* Columna 2 */
+            grid-column: 2 / 3;
+
+            /* --- MODIFICADO --- */
+            /* Ocupa ambas filas (1 y 2) */
+            grid-row: 1 / 3;
+
+            background-color: var(--color-principal);
+            padding: 20px;
+            overflow-y: auto;
+            border-left: 3px solid var(--color-secundario);
+        }
+
+        .sidebar-nav h3 {
+            color: var(--color-contraste);
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 10px;
+        }
+
+        #sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .sidebar-item {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: var(--color-secundario);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sidebar-item.current {
+            background-color: var(--color-contraste);
+            color: var(--color-fondo);
+            transform: scale(1.1);
+        }
+
+        .sidebar-item.status-correct {
+            background-color: var(--color-correcto);
+        }
+
+        .sidebar-item.status-incorrect {
+            background-color: var(--color-incorrecto);
+        }
+
+        .sidebar-item.status-postponed {
+            background-color: var(--color-pospuesto);
+        }
+
+        .sidebar-item.status-noanswer {
+            background-color: var(--color-secundario);
+            opacity: 0.5;
+        }
+
+        .sidebar-item:not(.current):hover {
+            opacity: 0.8;
+        }
+
+        /* Modal de resultados */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-content {
+            background-color: var(--color-principal);
+            margin: 15% auto;
+            padding: 30px;
+            border: 1px solid var(--color-secundario);
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        #results-grade {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        #btn-reset {
+            background-color: var(--color-contraste);
+            color: var(--color-fondo);
+            font-weight: bold;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+
+        #btn-reset:hover {
+            opacity: 0.8;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <header>
+            <h1 id="welcome-message"></h1>
+            <p id="quote"></p>
+        </header>
+
+        <main>
+            <div id="quiz-home" class="quiz-home">
+                <h2>Elige un tema para comenzar</h2>
+                <div id="topic-filters">
+                </div>
+            </div>
+
+            <div id="quiz-view" class="quiz-area hidden">
+
+                <div id="topic-header" style="text-align: center; font-weight: bold; margin-bottom: 10px; color: #3498db;">
+                    Tema: <span id="current-topic-name"></span>
+                </div>
+
+
+                <div id="stats-bar">
+                    <span id="question-counter"></span>
+                    <div>
+                        <span id="correct-counter">Aciertos: 0</span> |
+                        <span id="incorrect-counter">Fallos: 0</span>
+                    </div>
+                </div>
+
+                <div id="question-container">
+                    <p id="question-text"></p>
+                    <div id="options-container">
+                    </div>
+                </div>
+
+                <div id="nav-buttons">
+                    <button type="button" id="btn-answer">Contestar</button>
+                    <button type="button" id="btn-postpone">Posponer</button>
+                    <button type="button" id="btn-no-answer">No contestar</button>
+                    <button type="button" id="btn-end">Terminar</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar-nav">
+            <h3>Revisión</h3>
+            <ul id="sidebar-list">
+            </ul>
+        </aside>
+
+    </div>
+
+    <div id="results-modal" class="modal">
+        <div class="modal-content">
+            <h2>Resultados Finales</h2>
+            <p id="results-summary"></p>
+            <p id="results-score"></p>
+            <h3 id="results-grade"></h3>
+            <button type="button" id="btn-reset">Volver al inicio</button>
+        </div>
+    </div>
+
+    <!-- Cargar primero la base de datos de preguntas -->
+    <script src="preguntas.js"></script>
+
+    <!-- Luego script principal (sin las preguntas dentro) -->
+    <script>
+        /* ---------------- Utilidades ---------------- */
+        // Fisher–Yates shuffle (devuelve copia mezclada)
+        function mezclarArray(array) {
+            const copia = array.slice();
+            for (let i = copia.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copia[i], copia[j]] = [copia[j], copia[i]];
+            }
+            return copia;
+        }
+
+        /* ---------------- Datos / Estado ---------------- */
+        const FRASES_MOTIVADORAS = [
+            "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+            "Cree en ti y todo será posible.",
+            "La disciplina es el puente entre las metas y los logros.",
+            "No te rindas, el principio es siempre lo más difícil.",
+            "Estudiar no es llenar un cubo, sino encender un fuego.",
+            "El futuro pertenece a quienes creen en la belleza de sus sueños.",
+            "Tu estudio de hoy es una inversión para el mañana.",
+            "La motivación te pone en marcha, el hábito te mantiene.",
+            "No busques el momento perfecto, solo busca el momento y hazlo perfecto.",
+            "Cada logro comienza con la decisión de intentarlo.",
+            "El aprendizaje es un tesoro que seguirá a su dueño a todas partes.",
+            "No tengas miedo de avanzar lentamente, ten miedo de quedarte quieto.",
+            "La clave del éxito es empezar antes de estar listo.",
+            "Convierte los muros que aparecen en tu vida en peldaños hacia tus objetivos.",
+            "El experto en algo fue una vez un principiante.",
+            "Pregúntate si lo que estás haciendo hoy te acerca al lugar en el que quieres estar mañana."
+        ];
+
+        // Estado
+        let activeQuestions = []; // preguntas ya filtradas y con opciones mezcladas
+        let currentQuestionIndex = 0;
+        let userStats = { correct: 0, incorrect: 0 };
+        let questionStatus = []; // 'unanswered','correct','incorrect','postponed'
+        let feedbackLock = false;
+
+        // Selectores DOM
+        const welcomeMsgEl = document.getElementById('welcome-message');
+        const quoteEl = document.getElementById('quote');
+        const quizHomeEl = document.getElementById('quiz-home');
+        const quizViewEl = document.getElementById('quiz-view');
+        const topicFiltersEl = document.getElementById('topic-filters');
+        const questionCounterEl = document.getElementById('question-counter');
+        const correctCounterEl = document.getElementById('correct-counter');
+        const incorrectCounterEl = document.getElementById('incorrect-counter');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const sidebarListEl = document.getElementById('sidebar-list');
+        const btnAnswer = document.getElementById('btn-answer');
+        const btnPostpone = document.getElementById('btn-postpone');
+        const btnNoAnswer = document.getElementById('btn-no-answer');
+        const btnEnd = document.getElementById('btn-end');
+        const resultsModalEl = document.getElementById('results-modal');
+        const resultsSummaryEl = document.getElementById('results-summary');
+        const resultsScoreEl = document.getElementById('results-score');
+        const resultsGradeEl = document.getElementById('results-grade');
+        const btnReset = document.getElementById('btn-reset');
+
+        /* ---------------- Inicialización ---------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            setGreeting();
+            setQuote();
+
+            // comprobar que BBDD_PREGUNTAS está disponible
+            if (typeof BBDD_PREGUNTAS === 'undefined' || !Array.isArray(BBDD_PREGUNTAS)) {
+                console.error("Error: BBDD_PREGUNTAS no encontrada. Asegúrate de cargar preguntas.js antes de este script.");
+                quizHomeEl.innerHTML = "<h2>Error: no se cargaron las preguntas.</h2><p>Comprueba que <b>preguntas.js</b> está en la misma carpeta y se carga antes.</p>";
+                return;
+            }
+
+            setupTopicFilters();
+
+            btnAnswer.addEventListener('click', handleAnswer);
+            btnPostpone.addEventListener('click', handlePostpone);
+            btnNoAnswer.addEventListener('click', handleNoAnswer);
+            btnEnd.addEventListener('click', handleEndTest);
+            btnReset.addEventListener('click', resetQuiz);
+        });
+
+        /* ---------------- Helpers UI ---------------- */
+        function setGreeting() {
+            const hours = new Date().getHours();
+            let greeting = "Buenas noches";
+            if (hours < 12) greeting = "Buenos días";
+            else if (hours < 20) greeting = "Buenas tardes";
+            welcomeMsgEl.textContent = `${greeting}, Roberto.`;
+        }
+
+        function setQuote() {
+            const randomIndex = Math.floor(Math.random() * FRASES_MOTIVADORAS.length);
+            quoteEl.textContent = FRASES_MOTIVADORAS[randomIndex];
+        }
+
+        /* ---------------- Preparar preguntas (con shuffle) ---------------- */
+        /*
+          Aquí creamos activeQuestions que contiene objetos copiados de BBDD_PREGUNTAS
+          y para cada uno añadimos:
+            - opcionesShuffled: array de cadenas ya mezcladas
+            - correctaShuffled: índice (en opcionesShuffled) que corresponde a la correcta original
+        */
+        function prepararPreguntasParaUso(listaPreguntas) {
+            // devolvemos copia con opciones mezcladas por pregunta
+            return listaPreguntas.map(q => {
+                // crear copia superficial del objeto pregunta
+                const copia = Object.assign({}, q);
+                // índices originales [0..n-1]
+                const indices = q.opciones.map((_, i) => i);
+                const indicesMezclados = mezclarArray(indices);
+                copia.opcionesShuffled = indicesMezclados.map(i => q.opciones[i]);
+                // encontrar en qué posición quedó la opción correcta
+                copia.correctaShuffled = indicesMezclados.indexOf(q.correcta);
+                return copia;
+            });
+        }
+
+        /* ---------------- Filtros / Inicio del Quiz ---------------- */
+        function setupTopicFilters() {
+            const temas = [...new Set(BBDD_PREGUNTAS.map(q => q.tema))];
+            topicFiltersEl.innerHTML = '';
+
+            const btnTodos = document.createElement('button');
+            btnTodos.textContent = `Todos (${BBDD_PREGUNTAS.length} preg.)`;
+            btnTodos.addEventListener('click', () => promptForQuizSize('Todos'));
+            topicFiltersEl.appendChild(btnTodos);
+
+            temas.forEach(tema => {
+                const count = BBDD_PREGUNTAS.filter(q => q.tema === tema).length;
+                const btnTema = document.createElement('button');
+                btnTema.textContent = `${tema} (${count} preg.)`;
+                btnTema.addEventListener('click', () => promptForQuizSize(tema, count));
+                topicFiltersEl.appendChild(btnTema);
+            });
+        }
+
+        /**
+         * Pide a Roberto cuántas preguntas quiere para el test.
+         * @param {string} tema - El tema seleccionado ('Todos' o el nombre del tema).
+         * @param {number} totalAvailable - El número total de preguntas disponibles para ese tema.
+         */
+        function promptForQuizSize(tema, totalAvailable = BBDD_PREGUNTAS.length) {
+            const max = totalAvailable;
+
+            let num = prompt(`Tema: ${tema}\n\nHay ${max} preguntas disponibles.\n¿Cuántas preguntas quieres en el test? (Máx. ${max})`, max.toString());
+
+            // Si el usuario cancela o deja vacío
+            if (num === null || num.trim() === "") return;
+
+            // Convertir a número y validar
+            let numQuestions = parseInt(num, 10);
+
+            if (isNaN(numQuestions) || numQuestions <= 0) {
+                alert("Por favor, introduce un número de preguntas válido y positivo.");
+                return;
+            }
+
+            // Llamar a la nueva función de inicio que implementa la lógica
+            handleStartQuiz(tema, numQuestions, max);
+        }
+
+        /**
+         * Implementa la lógica de filtrar, limitar y empezar el test.
+         * @param {string} tema - El tema seleccionado.
+         * @param {number} requestedCount - El número de preguntas que Roberto quiere.
+         * @param {number} maxAvailable - El número total de preguntas disponibles.
+         */
+        function handleStartQuiz(tema, requestedCount, maxAvailable) {
+            // 1. Filtrar preguntas
+            let seleccion;
+            if (tema === 'Todos') seleccion = BBDD_PREGUNTAS.slice();
+            else seleccion = BBDD_PREGUNTAS.filter(q => q.tema === tema);
+
+            // 2. Advertencia si la cantidad solicitada es mayor que la disponible
+            if (requestedCount > maxAvailable) {
+                alert(`Advertencia: Solo hay ${maxAvailable} preguntas disponibles para el tema "${tema}". Se generará un test con todas ellas.`);
+                requestedCount = maxAvailable;
+            }
+
+            // 3. Mezclar todas las preguntas disponibles del tema
+            const mezcladas = mezclarArray(seleccion);
+
+            // 4. Limitar al número solicitado (o al máximo disponible si se redujo)
+            const seleccionFinal = mezcladas.slice(0, requestedCount);
+
+            // 5. Preparar para el quiz
+            activeQuestions = prepararPreguntasParaUso(seleccionFinal);
+
+            // 6. Configurar estado e interfaz
+            currentQuestionIndex = 0;
+            userStats = { correct: 0, incorrect: 0 };
+            questionStatus = new Array(activeQuestions.length).fill('unanswered');
+            feedbackLock = false;
+
+            document.getElementById('current-topic-name').textContent = tema;
+
+            quizHomeEl.classList.add('hidden');
+            quizViewEl.classList.remove('hidden');
+
+            updateSidebar();
+            displayQuestion(currentQuestionIndex);
+            updateStats();
+        }
+
+        /* ---------------- Mostrar pregunta (usa opciones mezcladas) ---------------- */
+        function displayQuestion(index) {
+            if (!activeQuestions || activeQuestions.length === 0) {
+                console.warn('No hay preguntas activas.');
+                return;
+            }
+
+            if (index >= activeQuestions.length) {
+                showResults();
+                return;
+            }
+
+            const question = activeQuestions[index];
+
+            // limpiar posibles marcas previas
+            optionsContainerEl.innerHTML = '';
+            optionsContainerEl.querySelectorAll && optionsContainerEl.querySelectorAll('.option-label').forEach(l => l.classList.remove('correct', 'incorrect'));
+
+            // texto
+            questionTextEl.textContent = question.pregunta;
+
+            // crear inputs/labels en el orden de opcionesShuffled
+            question.opcionesShuffled.forEach((opTexto, i) => {
+                const optionId = `q${index}_op${i}`;
+
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.id = optionId;
+                input.name = 'answer';
+                input.value = i; // índice respecto a opcionesShuffled
+
+                const label = document.createElement('label');
+                label.htmlFor = optionId;
+                label.textContent = opTexto;
+                label.classList.add('option-label');
+
+                // añadir al DOM en el orden requerido por CSS (input seguido de label)
+                optionsContainerEl.appendChild(input);
+                optionsContainerEl.appendChild(label);
+            });
+
+            // Actualizar UI
+            questionCounterEl.textContent = `Pregunta ${index + 1} / ${activeQuestions.length}`;
+            highlightSidebarItem(index);
+            toggleButtons(true);
+        }
+
+        /* ---------------- Handlers ---------------- */
+        function handleAnswer() {
+            if (feedbackLock) return;
+
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+            if (!selectedOption) {
+                alert("Por favor, selecciona una respuesta.");
+                return;
+            }
+
+            feedbackLock = true;
+            toggleButtons(false);
+
+            const selectedIndex = parseInt(selectedOption.value, 10); // respecto a opcionesShuffled
+            const question = activeQuestions[currentQuestionIndex];
+            const correctIndex = question.correctaShuffled;
+
+            const labels = optionsContainerEl.querySelectorAll('.option-label');
+
+            if (selectedIndex === correctIndex) {
+                userStats.correct++;
+                questionStatus[currentQuestionIndex] = 'correct';
+                if (labels[selectedIndex]) labels[selectedIndex].classList.add('correct');
+            } else {
+                userStats.incorrect++;
+                questionStatus[currentQuestionIndex] = 'incorrect';
+                if (labels[selectedIndex]) labels[selectedIndex].classList.add('incorrect');
+                if (labels[correctIndex]) labels[correctIndex].classList.add('correct');
+            }
+
+            updateStats();
+            updateSidebar();
+
+            setTimeout(nextQuestion, 1200);
+        }
+
+        function handlePostpone() {
+            if (feedbackLock) return;
+            questionStatus[currentQuestionIndex] = 'postponed';
+            updateSidebar();
+            nextQuestion();
+        }
+
+        function handleNoAnswer() {
+            if (feedbackLock) return;
+            feedbackLock = true;
+            toggleButtons(false);
+
+            // No suma ni resta puntos, solo se marca como omitida
+            questionStatus[currentQuestionIndex] = 'noanswer';
+
+            const question = activeQuestions[currentQuestionIndex];
+            const correctIndex = question.correctaShuffled;
+            const labels = optionsContainerEl.querySelectorAll('.option-label');
+            if (labels[correctIndex]) labels[correctIndex].classList.add('correct');
+
+            updateSidebar();
+
+            setTimeout(nextQuestion, 2500); // más tiempo para ver la correcta
+        }
+
+
+
+        function nextQuestion() {
+            // buscar siguiente 'unanswered' después del actual
+            let nextIndex = questionStatus.indexOf('unanswered', currentQuestionIndex + 1);
+
+            if (nextIndex === -1) nextIndex = questionStatus.indexOf('unanswered'); // desde inicio
+            if (nextIndex === -1) nextIndex = questionStatus.indexOf('postponed'); // si no hay unanswered
+            if (nextIndex === -1) {
+                showResults();
+            } else {
+                currentQuestionIndex = nextIndex;
+                displayQuestion(currentQuestionIndex);
+                feedbackLock = false;
+            }
+        }
+
+        function goToQuestion(index) {
+            if (feedbackLock) return;
+            const status = questionStatus[index];
+            currentQuestionIndex = index;
+            displayQuestion(currentQuestionIndex);
+            if (status !== 'unanswered' && status !== 'postponed') {
+                // mostrar la respuesta correcta si ya fue contestada
+                toggleButtons(false);
+                const correctIndex = activeQuestions[index].correctaShuffled;
+                const labels = optionsContainerEl.querySelectorAll('.option-label');
+                if (labels[correctIndex]) labels[correctIndex].classList.add('correct');
+            }
+        }
+
+        /* ---------------- UI auxiliares ---------------- */
+        function toggleButtons(enabled) {
+            btnAnswer.disabled = !enabled;
+            btnPostpone.disabled = !enabled;
+            btnNoAnswer.disabled = !enabled;
+        }
+
+        function updateStats() {
+            correctCounterEl.textContent = `Aciertos: ${userStats.correct}`;
+            incorrectCounterEl.textContent = `Fallos: ${userStats.incorrect}`;
+        }
+
+        function updateSidebar() {
+            sidebarListEl.innerHTML = '';
+            questionStatus.forEach((status, index) => {
+                const item = document.createElement('li');
+                item.textContent = index + 1;
+                item.classList.add('sidebar-item');
+                item.classList.add(`status-${status}`);
+                item.dataset.index = index;
+                item.addEventListener('click', () => goToQuestion(index));
+                sidebarListEl.appendChild(item);
+            });
+            highlightSidebarItem(currentQuestionIndex);
+        }
+
+        function highlightSidebarItem(index) {
+            const items = sidebarListEl.querySelectorAll('.sidebar-item');
+            items.forEach(item => item.classList.remove('current'));
+            const cur = sidebarListEl.querySelector(`.sidebar-item[data-index="${index}"]`);
+            if (cur) cur.classList.add('current');
+        }
+
+
+
+        function handleEndTest() {
+            // Contamos solo las preguntas ya contestadas o marcadas (no las no iniciadas)
+            const respondedIndices = questionStatus.filter(s => s !== 'unanswered');
+            if (respondedIndices.length === 0) {
+                alert("No has respondido ninguna pregunta todavía.");
+                return;
+            }
+
+            // Terminar inmediatamente el test parcial
+            showResults(true);
+        }
+
+
+
+
+
+
+
+        /* ---------------- Resultados y reset ---------------- */
+        function showResults(parcial = false) {
+            const PUNTOS_ACIERTO = 0.33;
+            const PUNTOS_FALLO = 0.11;
+
+            let totalQuestions;
+            let finalCorrect = userStats.correct;
+            let finalIncorrect = userStats.incorrect;
+
+            if (parcial) {
+                // Solo cuenta las preguntas que ya tienen estado distinto a 'unanswered'
+                totalQuestions = questionStatus.filter(s => s !== 'unanswered').length;
+            } else {
+                // Test completo: incluye pospuestas o no respondidas como incorrectas
+                const postponedCount = questionStatus.filter(
+                    s => s === 'postponed' || s === 'unanswered'
+                ).length;
+                totalQuestions = activeQuestions.length;
+                finalIncorrect += postponedCount;
+            }
+
+            // Calcular puntuación
+            const score = (finalCorrect * PUNTOS_ACIERTO) - (finalIncorrect * PUNTOS_FALLO);
+            const maxScore = totalQuestions * PUNTOS_ACIERTO;
+
+            let notaFinal = 0;
+            if (maxScore > 0) notaFinal = (Math.max(0, score) / maxScore) * 10;
+
+            // Texto del resultado
+            let grade = "Necesita mejorar";
+            if (notaFinal >= 9) grade = "Sobresaliente";
+            else if (notaFinal >= 7) grade = "Notable";
+            else if (notaFinal >= 6) grade = "Bien";
+            else if (notaFinal >= 5) grade = "Suficiente";
+
+            // Mostrar resumen
+            const tipoResultado = parcial ? "Resultados parciales" : "Resultados finales";
+
+            resultsSummaryEl.textContent = `${tipoResultado} — Aciertos: ${finalCorrect} | Fallos: ${finalIncorrect} | Total consideradas: ${totalQuestions}`;
+            resultsScoreEl.textContent = `Puntuación: ${score.toFixed(2)} / ${maxScore.toFixed(2)} | Nota: ${notaFinal.toFixed(2)} / 10`;
+            resultsGradeEl.textContent = grade;
+
+            resultsModalEl.style.display = 'block';
+        }
+
+        function resetQuiz() {
+            resultsModalEl.style.display = 'none';
+            quizViewEl.classList.add('hidden');
+            quizHomeEl.classList.remove('hidden');
+            sidebarListEl.innerHTML = '';
+            correctCounterEl.textContent = 'Aciertos: 0';
+            incorrectCounterEl.textContent = 'Fallos: 0';
+            activeQuestions = [];
+            questionStatus = [];
+            currentQuestionIndex = 0;
+        }
+    
+    </script>
+
+</body>
+
+</html>

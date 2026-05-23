@@ -704,6 +704,182 @@ const BBDD_PREGUNTAS = [
             "@layout('publico')"
         ],
         "correcta": 2
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "Analizando el siguiente fragmento del controlador, y según el patrón MVC, ¿cuál es la responsabilidad principal que está cumpliendo esta función?\n\npublic function zonaPublica() {\n    $peliculas = PeliculaRMM::all();\n    return view('zonapublicaRMM', compact('peliculas'));\n}",
+        "opciones": [
+            "Crear la tabla de películas en la base de datos si esta no existe.",
+            "Renderizar el código HTML final directamente sin necesidad de usar archivos Blade.",
+            "Actuar como intermediario: pedir los datos al Modelo (PeliculaRMM) y enviárselos a la Vista (zonapublicaRMM) para que los presente.",
+            "Validar que el usuario sea administrador antes de mostrar los datos."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "En el siguiente fragmento del Modelo de críticas, ¿por qué ha sido necesario pasarle explícitamente el segundo parámetro 'pelicula' al método belongsTo()?\n\npublic function peliculaAsociada(): BelongsTo{\n    return $this->belongsTo(PeliculaRMM::class, 'pelicula');\n}",
+        "opciones": [
+            "Porque en las relaciones de Laravel siempre es obligatorio escribir dos parámetros.",
+            "Para indicar expresamente el nombre de la clave foránea en la base de datos, ya que por convención Laravel habría buscado una clave llamada 'pelicula_r_m_m_id'.",
+            "Para indicar que el campo película no puede ser nulo en la base de datos.",
+            "Para que la vista sepa imprimir el título de la película en pantalla."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "En el siguiente fragmento de una vista Blade imprimimos el comentario de un usuario. ¿Qué beneficio de seguridad obtenemos automáticamente de la arquitectura de las Vistas en Laravel al usar la sintaxis de llaves {{ }}?\n\n<td>{{ $critica->comentario }}</td>",
+        "opciones": [
+            "Escapa el contenido convirtiéndolo a texto plano mediante htmlspecialchars, evitando ataques de inyección de scripts (XSS).",
+            "Encripta el comentario en la base de datos para que los administradores no puedan leerlo.",
+            "Traducción automática del comentario al idioma del navegador del usuario.",
+            "Evita ataques CSRF al imprimir un token oculto junto al comentario."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "En el archivo de migración para las críticas, vemos la siguiente instrucción referida a la clave foránea. ¿Qué función cumple el método ->constrained('peliculas')?\n\n$table->foreignId('pelicula')->constrained('peliculas');",
+        "opciones": [
+            "Indica que el título de la película está restringido a 255 caracteres.",
+            "Crea una restricción de clave foránea a nivel de base de datos, garantizando que el ID introducido exista previamente en la tabla 'peliculas'.",
+            "Oculta las películas que tienen restricción de edad.",
+            "Indica que si se borra la película, no se pueden borrar las críticas asociadas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "En el siguiente fragmento de código (inserción de una crítica), usamos el Facade Auth::id(). Según el ecosistema de Laravel, ¿qué devuelve esta función?\n\n$critica->pelicula = $pelicula_id;\n$critica->usuario = Auth::id();\n$critica->save();",
+        "opciones": [
+            "El nombre de usuario (username) en formato de texto plano.",
+            "Un identificador aleatorio de sesión anónima.",
+            "El ID de la película que el usuario ha seleccionado.",
+            "El identificador único (ID) numérico del usuario que tiene la sesión activa (logueado) en ese momento."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "En el siguiente fragmento vemos la definición de una ruta. ¿Cuál es la ventaja principal de asignarle un nombre mediante el encadenamiento ->name('borrarcriticaRMM')?\n\nRoute::post('/critica/{id}/borrar', [CriticaControllerRMM::class, 'borrarCriticaRMM'])->name('borrarcriticaRMM');",
+        "opciones": [
+            "Es obligatorio para que el formulario Blade pueda usar el método POST.",
+            "Si en el futuro cambiamos la URI física (ej. a '/eliminar/{id}'), no tendremos que modificar los enlaces en nuestras Vistas, ya que estas invocan a la ruta por su nombre y no por su URL.",
+            "Aumenta la velocidad de carga porque Laravel guarda la ruta en memoria caché.",
+            "Sirve para restringir la ruta a los usuarios administradores."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "En el siguiente fragmento del controlador validamos la petición. Si un usuario envía el formulario con una valoración de \"6\", ¿cómo actuará la arquitectura de Laravel por defecto ante el método validate()?\n\n$data = $request->validate([\n    'valoracion' => 'required|integer|min:1|max:5',\n    'comentario' => 'required|string|max:250',\n]);",
+        "opciones": [
+            "Guardará el número 6 pero lanzará un \"warning\" silencioso en los logs del servidor.",
+            "Cambiará el valor a 5 automáticamente para cumplir la regla.",
+            "Interrumpirá la ejecución de la función y redirigirá al usuario a la vista (formulario) anterior, enviando los mensajes de error a la sesión.",
+            "Ignorará el fallo porque los datos vienen por método POST de forma segura."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Simulacro de Examen: Patrón MVC y Laravel (Unidad 5)",
+        "pregunta": "Siguiendo estrictamente los conceptos del patrón de diseño MVC en Laravel, ¿qué representa la clase PeliculaRMM mostrada en este fragmento dentro de la arquitectura de nuestra aplicación de videoclub?\n\nclass PeliculaRMM extends Model {\n    protected $table = 'peliculas';\n    protected $fillable = ['titulo', 'director', 'anio', 'genero'];\n}",
+        "opciones": [
+            "El Controlador: encauza las peticiones de los usuarios.",
+            "La Vista: contiene la información para generar el HTML.",
+            "La Base de Datos: actúa como el motor relacional puro MySQL.",
+            "El Modelo: encapsula la capa de datos y la lógica de interacción con la tabla películas en la base de datos."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "En el ecosistema de Laravel usamos mucho la terminal. ¿Cuál es el comando exacto de Artisan básico que usaríamos para generar el controlador de las críticas de nuestro videoclub?",
+        "opciones": [
+            "php artisan create:controller CriticaControllerRMM",
+            "php artisan make:controller CriticaControllerRMM",
+            "composer require CriticaControllerRMM",
+            "php artisan build:controller CriticaControllerRMM"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "Teoría fundamental: Cuando iniciamos un proyecto nuevo en Laravel y necesitamos conectar nuestra aplicación a la base de datos (por ejemplo, definir que el usuario es 'root' y la BBDD es 'videoclub'), ¿en qué archivo principal debemos configurar estos datos?",
+        "opciones": [
+            "En el archivo oculto .env de la raíz del proyecto.",
+            "En el archivo routes/web.php.",
+            "En el controlador principal Controller.php.",
+            "En el archivo config/database.php obligatoriamente."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "En el siguiente fragmento, queremos recuperar absolutamente todas las películas de la base de datos para mandarlas a la vista. ¿Qué método básico de Eloquent nos falta escribir en el hueco?\n\npublic function listarPeliculas() {\n    $peliculas = PeliculaRMM::_______();\n    return view('listado', compact('peliculas'));\n}",
+        "opciones": [
+            "get()",
+            "findAll()",
+            "all()",
+            "select(*)"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "En el siguiente fragmento, queremos mostrar un mensaje en Blade SOLO si la película es posterior al año 2000. ¿Cuál es la sintaxis correcta en este motor de plantillas?\n\n_______($pelicula->anio > 2000)\n    <span class=\"badge\">Película moderna</span>\n_______",
+        "opciones": [
+            "<?php if($pelicula->anio > 2000) { ?> ... <?php } ?>",
+            "@if($pelicula->anio > 2000) ... @endif",
+            "{{ if($pelicula->anio > 2000) }} ... {{ endif }}",
+            "@condition($pelicula->anio > 2000) ... @endcondition"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "En el siguiente fragmento del controlador, el usuario ha enviado un formulario por POST y la función recibe el objeto $request. ¿Cómo extraemos de forma segura el valor del campo HTML llamado 'comentario'?\n\npublic function guardarCritica(Request $request) {\n    $texto = _______;\n    // ... \n}",
+        "opciones": [
+            "$request->input('comentario')",
+            "$_POST['comentario']",
+            "$request->get_post('comentario')",
+            "$request->form('comentario')"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "Teoría fundamental: Laravel tiene varios archivos de rutas, pero nosotros siempre estamos programando dentro de routes/web.php. ¿Cuál es la característica principal de las rutas definidas en este archivo?",
+        "opciones": [
+            "Están diseñadas para conectarse únicamente con bases de datos no relacionales.",
+            "No permiten el uso del motor de plantillas Blade.",
+            "Tienen asignado el grupo de middleware 'web', lo que proporciona características como el estado de la sesión y la protección CSRF.",
+            "Solo responden a peticiones que vienen de aplicaciones móviles, no de navegadores web."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "En el siguiente fragmento de nuestro Layout (plantilla maestra), usamos la directiva @yield('contenido'). ¿Cuál es su propósito exacto?\n\n<body>\n    <header>Videoclub RMM</header>\n    <main>\n        @yield('contenido')\n    </main>\n</body>",
+        "opciones": [
+            "Define un marcador de posición (un hueco) donde las vistas hijas que extiendan de este layout inyectarán su propio código HTML.",
+            "Detiene la ejecución de la página si ocurre un error.",
+            "Incluye un archivo estático llamado 'contenido.blade.php'.",
+            "Imprime el contenido de la base de datos de forma automática."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Simulacro de Examen: Nivel Básico / Fundamental (Tema 5)",
+        "pregunta": "En el siguiente fragmento para crear un registro, instanciamos el modelo, le asignamos valores y finalmente ejecutamos el método save(). ¿Qué hace internamente Eloquent cuando llamamos a este método?\n\n$critica = new CriticaRMM();\n$critica->valoracion = 5;\n$critica->comentario = '¡Me encantó!';\n$critica->save();",
+        "opciones": [
+            "Guarda los datos en la memoria caché del navegador del usuario.",
+            "Genera un archivo de copia de seguridad (backup) del modelo.",
+            "Comprueba si los datos son válidos pero no interactúa con la base de datos.",
+            "Traduce la acción a una sentencia SQL (INSERT) y guarda la nueva fila físicamente en la tabla de la base de datos."
+        ],
+        "correcta": 3
     }
 
 

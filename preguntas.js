@@ -880,7 +880,986 @@ const BBDD_PREGUNTAS = [
             "Traduce la acción a una sentencia SQL (INSERT) y guarda la nueva fila físicamente en la tabla de la base de datos."
         ],
         "correcta": 3
-    }
+    },
+    {
+"tema": "Examen 2025 tema 6",
+"pregunta": "Dado el siguiente fragmento de rutas de un API REST (FRAGMENTO F7):\n\nRoute::get('/mascotas', [APIController::class,'listarMascotas']);\nRoute::post('/nuevamascota', [APIController::class,'crearMascota']);\nRoute::put( '/mascota/{mascota}', [APIController::class,'cambiarDescripcionMascota'])->whereNumber('mascota');\nRoute::delete('/mascota/{mascota}', [APIController::class,'borrarMascota'])->whereNumber('mascota');\n\nImagina que se puede registrar la fecha en la que una mascota fallece. ¿Qué método HTTP sería más conveniente en un API REST para que un usuario pudiese actualizar o registrar la fecha de fallecimiento de una mascota existente?",
+"opciones": [
+"Route::get",
+"Route::put",
+"Route::post",
+"Route::delete"
+],
+"correcta": 1
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Dado el fragmento de código anterior (FRAGMENTO F7):\n\nRoute::get('/mascotas', [APIController::class,'listarMascotas']);\nRoute::post('/nuevamascota', [APIController::class,'crearMascota']);\n...\n\n¿En qué archivo de la arquitectura de Laravel encontraríamos habitualmente estas líneas de código para exponer nuestro servicio web?",
+"opciones": [
+"routes/web.php",
+"app/http/controllers/api/APIController.php",
+"routes/api.php",
+"app/http/controllers/api/routes.php"
+],
+"correcta": 2
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Analizando el FRAGMENTO F7:\n\nRoute::get('/mascotas', [APIController::class,'listarMascotas']);\nRoute::post('/nuevamascota', [APIController::class,'crearMascota']);\nRoute::put('/mascota/{mascota}', ...)->whereNumber('mascota');\n\n¿Por qué NO se usa whereNumber en la segunda ruta (Route::post('/nuevamascota', ...))?",
+"opciones": [
+"Porque no es necesario, ya que el parámetro de ruta que tiene es un formulario y no un número.",
+"Porque se entiende que en este caso es el método controlador quien verifica a través de Request si el parámetro de ruta es numérico o del tipo que sea.",
+"Porque no se puede usar whereNumber en una ruta de tipo POST.",
+"Porque la ruta no tiene un parámetro de ruta explícito (como podría ser {mascota})."
+],
+"correcta": 3
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Dado el FRAGMENTO F8 del controlador:\n\nfunction cambiarDescripcionMascota(Request $request, Mascota $mascota): JsonResponse\n{\n...\n}\n\nY su ruta asociada en el FRAGMENTO F7:\nRoute::put( '/mascota/{mascota}', [APIController::class,'cambiarDescripcionMascota']);\n\n¿Qué ocurriría si se cambia el segundo parámetro del método cambiarDescripcionMascota por int $dato?",
+"opciones": [
+"Habría que eliminar whereNumber de la ruta correspondiente, dado que ya no es necesario, y hacer las verificaciones oportunas dentro del método.",
+"No tendría sentido dicho cambio, ya que el número se podría recoger a través de Request $request. Si se deja como está tienes la ventaja de que obtienes la instancia de Mascota directamente.",
+"Dentro del método habría que buscar la mascota correspondiente a dicho número (perdiendo el autobinding de Laravel), y, si existe, hacer la operación oportuna.",
+"No se podría hacer el cambio, ya que el segundo parámetro no puede ser un número en ningún caso."
+],
+"correcta": 2
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Dado el final del FRAGMENTO F8:\n\n$mascota->save();\nreturn response()->json('Mascota modificada correctamente.', 200);\n\nQueremos cambiar el retorno para devolver dos valores ($v1 y $v2) en la respuesta en formato JSON. ¿Cuál sería la forma más lógica (y recomendada en Laravel) de hacerlo?",
+"opciones": [
+"return response()->json(json_encode({$v1,$v2}),200);",
+"return response()->json({$v1, $v2},200);",
+"return response()->json(json_encode([$v1,$v2]),200);",
+"return response()->json([$v1,$v2],200);"
+],
+"correcta": 3
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Dado el controlador (F8) que devuelve códigos 403, 400 o 200, y el cliente Guzzle (F9):\n\nswitch($response->getStatusCode()) {\n case 400: ... break;\n case 200: ... break;\n default: ... break;\n}\n\nSolo en una de las siguientes situaciones NO SE EJECUTA la rama 'default' del switch del FRAGMENTO F9, ¿sabrías decir cuál?",
+"opciones": [
+"Cuando la descripción se envía al servicio web como datos de un formulario normal y corriente (isJson() falla y devuelve 403).",
+"Cuando la descripción tiene 300 caracteres (falla la validación del controlador y devuelve un 400).",
+"Cuando el id de la mascota no corresponde a una mascota real (Autobinding devuelve 404).",
+"Cuando se produce un error interno en nuestra aplicación y se retorna el código 500."
+],
+"correcta": 1
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Atendiendo al uso de Guzzle en el FRAGMENTO F9:\n\n$url='mascota/' . urlencode($id_mascota);\n$response = $gclient->put($url, ['json' => $datos]);\n\nSabiendo por el FRAGMENTO F8 que el servidor espera un campo llamado 'descripcion', ¿cómo podría ser el contenido correcto de la variable PHP $datos para que Guzzle la envíe correctamente?",
+"opciones": [
+"$datos = ['descripcion'=>'Nueva descripción','mascota'=>2];",
+"$datos = json_encode(['descripcion'=>'Nueva descripción']);",
+"$datos = ['descripcion'=>'Nueva descripción'];",
+"$datos = json_encode(['descripcion'=>'Nueva descripción','mascota'=>2]);"
+],
+"correcta": 2
+},
+{
+"tema": "Examen 2025 tema 6",
+"pregunta": "Atendiendo al FRAGMENTO F7, la ruta es: Route::put('/mascota/{mascota}', ...).\n\nSi en el código del FRAGMENTO F9 tuviéramos que enviar los datos (alojados en un array $datos) como un formulario normal y corriente en lugar de JSON, ¿qué instrucción tendríamos que poner al usar el cliente HTTP Guzzle?",
+"opciones": [
+"$gclient->put($url, ['form_params' => json_decode($datos)])",
+"$gclient->put($url, ['form_params' => $datos])",
+"$gclient->post($url, ['form_params' => $datos])",
+"$gclient->post($url, ['form_params' => json_decode($datos)])"
+],
+"correcta": 1
+},
+{
+"tema": "tarea tema 6",
+"pregunta": "En Laravel, para el desarrollo de un API REST, usamos el siguiente fragmento para registrar rutas: `Route::apiResource('canciones', CancionController::class);`. ¿En qué archivo debe ubicarse este código y qué peculiaridad tienen estas rutas respecto al método clásico `Route::resource`?",
+"opciones": [
+    "En el archivo routes/web.php e incluyen todas las rutas para crear vistas HTML interactivas.",
+    "En el archivo routes/api.php. El método apiResource declara automáticamente las rutas CRUD excluyendo aquellas que presentan plantillas HTML como 'create' y 'edit'.",
+    "En el archivo routes/api.php, pero es obligatorio definir cada verbo (GET, POST, PUT) individualmente debajo de esta línea.",
+    "En el archivo app/Http/routes.php y funcionan exclusivamente para el consumo de servicios SOAP."
+    ],
+    "correcta": 1
+},
+{
+    "tema": "tarea tema 6",
+    "pregunta": "Al consumir una API REST con el cliente Guzzle en PHP, utilizamos el siguiente fragmento para configurarlo: `$client = new GuzzleHttp\\Client(['base_uri' => '...', 'http_errors' => false]);`[cite: 1679]. ¿Cuál es el propósito exacto de configurar `'http_errors' => false`?",
+    "opciones": [
+        "Deshabilita la validación de certificados SSL para poder conectar a servidores locales que no usen HTTPS.",
+        "Convierte automáticamente los errores HTTP en excepciones de PHP para detener la ejecución del script inmediatamente.",
+        "Evita que Guzzle lance excepciones automáticamente (como RequestException) cuando el servidor responde con códigos de error como 400 o 404, permitiéndonos procesar manualmente el código de estado en nuestra aplicación.",
+        "Obliga al servidor Laravel a devolver siempre un código HTTP 200 OK independientemente de si la operación interna falla."
+    ],
+    "correcta": 2
+},
+{
+    "tema": "tarea tema 6",
+    "pregunta": "Observa el siguiente fragmento donde consumimos un servicio web REST mediante Guzzle para añadir una nueva canción: `$response = $client->request('POST', '', [ '???' => [ 'titulo' => 'Smells Like Teen Spirit' ] ]);`[cite: 507]. Si queremos que Guzzle envíe los datos estrictamente en formato JSON puro, ¿qué clave debe ir en lugar de '???'?",
+    "opciones": [
+        "form_params",
+        "body",
+        "query",
+        "json"
+    ],
+    "correcta": 3
+},
+{
+    "tema": "tarea tema 6",
+    "pregunta": "En nuestro controlador API de Laravel, tenemos el siguiente fragmento para el método actualizar: `public function update(Request $request, string $id) { $cancion = Cancion::findOrFail($id); $cancion->update($request->all()); return ???; }`[cite: 549, 550]. ¿Cuál es la sintaxis correcta en Laravel para devolver el recurso actualizado en formato JSON junto con un código HTTP de éxito?",
+    "opciones": [
+        "return response()->json($cancion, 200); ",
+        "return json_encode($cancion);",
+        "echo json_encode($cancion); return 200;",
+        "return response()->xml($cancion, 200);"
+    ],
+    "correcta": 0
+},
+{
+    "tema": "tarea tema 6",
+    "pregunta": "Durante la verificación del funcionamiento del servicio web, empleamos la herramienta de terminal HTTPie[cite: 324, 330]. Observa el siguiente fragmento: `http POST http://localhost:8000/api/canciones titulo='Shape of You' artista='Ed Sheeran' genero='Pop'`[cite: 565]. ¿Qué realiza exactamente este comando?",
+    "opciones": [
+        "Envía una petición POST al servidor simulando un archivo XML adjunto con los datos de la canción.",
+        "Envía una petición con el método HTTP POST al endpoint de canciones, mandando los datos en formato JSON de forma nativa para que el API REST cree un nuevo recurso en la base de datos.",
+        "Borra la canción 'Shape of You' utilizando el método POST en lugar de DELETE.",
+        "Inicia un servidor local en el puerto 8000 para escuchar peticiones de la canción 'Shape of You'."
+    ],
+    "correcta": 1
+},
+{
+    "tema": "tarea tema 6",
+    "pregunta": "Imagina que estamos implementando un servicio web REST en PHP nativo sin Laravel. Cuando el cliente nos envía datos JSON en el cuerpo del mensaje de una petición POST, en el servidor utilizamos el fragmento: `$datos = file_get_contents('php://input');`[cite: 1754]. ¿Por qué usamos `php://input` en lugar del clásico array global `$_POST`?",
+    "opciones": [
+        "Porque el array `$_POST` se utiliza exclusivamente para almacenar las variables pasadas por la URL (Query String).",
+        "Porque `$_POST` solo se autocompleta cuando los datos se envían con el formato de un formulario estándar, pero no procesa automáticamente los datos enviados en crudo (raw) como un documento JSON.",
+        "Porque `php://input` es un flujo de datos que encripta la información y la protege contra ataques de inyección SQL.",
+        "Porque el array `$_POST` es una característica exclusiva de SOAP y no existe en la arquitectura REST."
+    ],
+    "correcta": 1
+},
+{
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En Laravel, al definir las rutas para una API RESTful, ¿qué método debes usar en el archivo routes/api.php para declarar automáticamente las rutas de todas las operaciones CRUD excluyendo aquellas que presentan plantillas HTML (como create y edit)?",
+    "opciones": [
+      "Route::resource('canciones', CancionController::class);",
+      "Route::apiResource('canciones', CancionController::class);",
+      "Route::rest('canciones', CancionController::class);",
+      "Route::apiRoutes('canciones', CancionController::class);"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al implementar el modelo en Laravel (por ejemplo, Cancion.php) para tu servicio web, ¿qué función cumple la propiedad 'protected $fillable = ['titulo', 'artista', 'genero'];'?",
+    "opciones": [
+      "Define los únicos campos que la API devolverá en las respuestas JSON al cliente HTTP.",
+      "Indica a la base de datos qué columnas deben tener un índice de búsqueda para las consultas REST.",
+      "Establece los campos que son obligatorios y lanza un error si el cliente no los envía en la petición.",
+      "Especifica los campos que Laravel puede llenar automáticamente cuando creas o actualizas recursos (asignación masiva)."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Si deseas generar rápidamente un controlador en Laravel con los métodos necesarios para manejar las operaciones CRUD de tu API RESTful (index, store, show, update, destroy), ¿qué comando de Artisan utilizarías?",
+    "opciones": [
+      "php artisan make:controller CancionController --api",
+      "php artisan make:api CancionController",
+      "php artisan make:controller CancionController --resource",
+      "php artisan generate:controller CancionController --rest"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al consumir una API REST desde una aplicación cliente en PHP puro utilizando Guzzle, ¿cómo se debe realizar una petición GET para obtener un recurso pasando parámetros por la URL (query string), como por ejemplo un identificador?",
+    "opciones": [
+      "$client->request('GET', '', ['json' => ['id' => 1]]);",
+      "$client->request('GET', '', ['form_params' => ['id' => 1]]);",
+      "$client->request('GET', '', ['query' => ['id' => 1]]);",
+      "$client->get('/api', ['body' => ['id' => 1]]);"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al programar el método 'store' en un controlador de Laravel para crear un nuevo recurso a través de la API REST, ¿qué código de estado HTTP se devuelve típicamente junto con el objeto JSON para indicar el éxito en la creación del recurso?",
+    "opciones": [
+      "200",
+      "201",
+      "204",
+      "404"
+    ],
+    "correcta": 1
+  },
+  {
+        "tema": "tarea tema 6",
+        "pregunta": "¿Qué significa el principio de \"comunicación sin estado\" (stateless) en una arquitectura de servicios web RESTful según la teoría estudiada?",
+        "opciones": [
+            "El servidor guarda una copia de seguridad del estado del cliente en la base de datos tras cada petición para garantizar la persistencia.",
+            "Cada petición del cliente al servidor debe contener toda la información necesaria para que el servidor pueda procesarla, sin depender de sesiones previas almacenadas en el servidor.",
+            "El cliente no puede almacenar información en caché temporalmente bajo ninguna circunstancia.",
+            "El servidor procesa la petición pero no envía ningún código de estado HTTP en su respuesta final."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Al comparar los protocolos y estilos arquitectónicos de servicios web, ¿cuál de las siguientes afirmaciones sobre SOAP y REST es correcta?",
+        "opciones": [
+            "REST es un protocolo de comunicación estricto basado exclusivamente en XML, mientras que SOAP es un estilo arquitectónico muy flexible.",
+            "Ambos enfoques requieren obligatoriamente el uso de un archivo descriptor WSDL para que el cliente pueda invocar los métodos remotos.",
+            "REST no puede funcionar sobre el protocolo de red HTTP, requiriendo usar obligatoriamente WebSockets para transmitir datos.",
+            "SOAP es un protocolo que utiliza mensajes estructurados en formato XML (con Envelope, Header y Body), mientras que REST es un estilo arquitectónico que suele representar sus recursos frecuentemente con JSON."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Durante la implementación de nuestra API REST con Laravel, en el modelo (por ejemplo, `Cancion.php`) definimos la propiedad: `protected $fillable = ['titulo', 'artista', 'genero'];`. ¿Qué utilidad tiene exactamente esta declaración al recibir una petición POST o PUT?",
+        "opciones": [
+            "Indicar a Laravel qué campos de la tabla deben ocultarse automáticamente por seguridad cuando el objeto se serialice y se devuelva al cliente en formato JSON.",
+            "Crear una lista blanca de atributos que pueden ser asignados masivamente de forma segura, permitiendo usar métodos como `create()` o `update()` con los datos recibidos del Request.",
+            "Evitar que la base de datos acepte campos que superen la longitud máxima de 255 caracteres.",
+            "Activar la autenticación de usuarios mediante tokens, exigiendo que dichos campos sean validados criptográficamente en el servidor."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el código de nuestra aplicación cliente hecha con Guzzle en PHP, tras invocar el servicio web ejecutamos: `$codigo = $response->getStatusCode();`. Si queremos verificar con un condicional que el recurso al que intentamos acceder o modificar no existe en el servidor, ¿qué valor exacto esperaríamos en `$codigo`?",
+        "opciones": [
+            "200",
+            "404",
+            "500",
+            "422"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Para la verificación del funcionamiento de un servicio web, utilizamos la interfaz de línea de comandos HTTPie. Si nuestro API REST de Laravel expone un recurso de canciones y deseamos borrar físicamente la canción con el identificador 8, ¿qué comando de consola debemos ejecutar?",
+        "opciones": [
+            "http REMOVE http://localhost:8000/api/canciones/8",
+            "http GET http://localhost:8000/api/canciones/8 action=delete",
+            "http DELETE http://localhost:8000/api/canciones/8",
+            "http POST http://localhost:8000/api/canciones/8 --delete"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el controlador de una API RESTful desarrollada con Laravel, tras almacenar con éxito un recurso nuevo a través del método `store()`, el programador añade este retorno final: `return response()->json($cancion, 201);`. ¿Qué nos indica exactamente el número 201 de esa función?",
+        "opciones": [
+            "Es el tamaño máximo en kilobytes que puede tener el documento JSON generado en la respuesta para no saturar la red.",
+            "Es el código de estado HTTP estandarizado ('Created') que informa al cliente que la petición ha sido procesada con éxito y un nuevo recurso ha sido efectivamente creado.",
+            "Es el ID autoincremental que la base de datos de MySQL acaba de asignarle a la nueva fila recién insertada.",
+            "Es el número de milisegundos que el servidor ha tardado en procesar toda la validación y ejecución de la solicitud entrante."
+        ],
+        "correcta": 1
+    },
+    {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Observa el siguiente código donde usamos Guzzle para añadir una nueva canción a nuestra API REST:\n\n$client = new GuzzleHttp\\Client(['base_uri' => 'http://localhost/api/']);\n$datos = [\n    'titulo' => 'Smells Like Teen Spirit',\n    'artista' => 'Nirvana',\n    'genero' => 'Grunge'\n];\n\n¿Qué instrucción PHP es la correcta para enviar esta petición POST adjuntando los datos en formato JSON?",
+    "opciones": [
+      "$response = $client->post('canciones', ['body' => $datos]);",
+      "$response = $client->post('canciones', ['json' => $datos]);",
+      "$response = $client->post('canciones', ['form_data' => $datos]);",
+      "$response = $client->post('canciones', json_encode($datos));"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En el desarrollo de tu API REST con Laravel, estás implementando el método store() en el controlador CancionController para guardar un nuevo registro. Revisa el siguiente fragmento:\n\npublic function store(Request $request)\n{\n    $cancion = Cancion::create($request->all());\n    // LÍNEA FALTANTE\n}\n\n¿Qué código exacto debes insertar en la 'LÍNEA FALTANTE' para devolver el recurso recién creado en formato JSON junto con el código de estado HTTP adecuado para una creación exitosa?",
+    "opciones": [
+      "return response()->json($cancion, 201);",
+      "return response()->json($cancion, 200);",
+      "return $cancion->toJson(201);",
+      "return response($cancion, 204);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Tienes el siguiente código correspondiente al método destroy de un controlador API en Laravel:\n\npublic function destroy(string $id)\n{\n    // LÍNEA FALTANTE\n    return response('Deleted Successfully', 200);\n}\n\n¿Cuál es la instrucción correcta basada en Eloquent para buscar el recurso por su ID y eliminarlo, asegurando que falle automáticamente (lanzando una excepción) si el ID no existe?",
+    "opciones": [
+      "Cancion::find($id)->remove();",
+      "Cancion::where('id', $id)->destroy();",
+      "Cancion::findOrFail($id)->delete();",
+      "Cancion::get($id)->delete();"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Atendiendo a la sintaxis del cliente Guzzle y basándonos en la documentación, si quieres actualizar la canción con ID 2 usando el método genérico request() en lugar del método abreviado put(), ¿cuál de los siguientes fragmentos de código es el correcto?",
+    "opciones": [
+      "$client->request('PUT', 'canciones/2', ['json' => ['titulo' => 'Smile']]);",
+      "$client->request('UPDATE', 'canciones/2', ['data' => ['titulo' => 'Smile']]);",
+      "$client->request('PATCH', 'canciones/2', json_encode(['titulo' => 'Smile']));",
+      "$client->put('canciones/2', ['body' => 'titulo=Smile']);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al revisar el modelo Cancion.php en Laravel, te encuentras con este código:\n\nclass Cancion extends Model\n{\n    protected $table = 'canciones';\n    protected $fillable = ['titulo', 'artista', 'genero'];\n}\n\n¿Qué ocurre si el cliente Guzzle envía una petición POST (que llega al método store y usa $request->all()) adjuntando en su JSON un campo no contemplado, como por ejemplo 'año' => 1991?",
+    "opciones": [
+      "Laravel lanzará un error HTTP 500 porque el campo 'año' no existe en el array $fillable.",
+      "Laravel ignorará automáticamente el campo 'año' y solo insertará 'titulo', 'artista' y 'genero', gracias a la protección de asignación masiva de $fillable.",
+      "El campo 'año' se insertará en la tabla siempre y cuando exista la columna correspondiente en la base de datos física.",
+      "Laravel devolverá un error HTTP 405 Method Not Allowed indicando que la estructura JSON es inválida."
+    ],
+    "correcta": 1
+  },
+  {
+        "tema": "tarea tema 6",
+        "pregunta": "En el desarrollo de una API REST con Laravel, observa el siguiente fragmento donde se define una ruta PUT y su método correspondiente en el controlador:\n\n// routes/api.php\nRoute::put('/libros/{libro}', [LibroController::class, 'update']);\n\n// LibroController.php\npublic function update(Request $request, Libro $libro) {\n    $libro->update($request->all());\n    return response()->json($libro, 200);\n}\n\n¿Qué característica de Laravel permite que el objeto `$libro` se recupere automáticamente de la base de datos sin tener que escribir explícitamente `Libro::find($id)` dentro del método?",
+        "opciones": [
+            "La inyección de dependencias genérica de PHP (Dependency Injection).",
+            "El Route Model Binding implícito de Laravel.",
+            "La configuración de Mass Assignment a través de la propiedad $fillable.",
+            "El middleware 'api' que ejecuta el ORM Eloquent antes de cargar la ruta."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Al crear una aplicación cliente con Guzzle para consumir un servicio web, utilizamos el siguiente fragmento de código:\n\n$cliente = new \\GuzzleHttp\\Client([\n    'base_uri' => 'http://localhost:8000/api/',\n    'http_errors' => true\n]);\n$respuesta = $cliente->get('recurso_inexistente');\n\nSi el servidor devuelve un código HTTP 404 (Not Found), ¿qué ocurrirá durante la ejecución de este script PHP?",
+        "opciones": [
+            "El script continuará su ejecución de forma normal y la variable `$respuesta` contendrá un objeto de respuesta con el código 404, listo para ser analizado con un switch.",
+            "Guzzle ignorará el error del servidor y devolverá un código HTTP 200 OK con un cuerpo de respuesta completamente vacío.",
+            "Al estar 'http_errors' configurado a true, Guzzle lanzará automáticamente una excepción (ClientException) que detendrá la ejecución del script a menos que se controle con un bloque try-catch.",
+            "Se mostrará por pantalla la página de error HTML genérica generada por Laravel, pero el script PHP continuará ejecutando las líneas posteriores."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Dado el siguiente fragmento de un controlador API en Laravel, donde se validan los datos de entrada para crear un recurso:\n\npublic function store(Request $request) {\n    $v = Validator::make($request->all(), [\n        'titulo' => 'required|string|max:100'\n    ]);\n    if ($v->fails()) {\n        return __________(['errores' => $v->errors()->all()], 422);\n    }\n    // ... creación del recurso ...\n}\n\n¿Qué código debe sustituir a la línea con subrayados (__________) para retornar correctamente los errores en formato JSON al cliente, tal y como se espera en una API REST?",
+        "opciones": [
+            "response()->json",
+            "json_encode",
+            "Response::make_json",
+            "return_json_string"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En nuestra aplicación cliente PHP, utilizamos Guzzle para enviar datos a la API mediante una petición POST. Observa el siguiente código:\n\n$datos = ['titulo' => '1984', 'autor' => 'George Orwell'];\n$respuesta = $cliente->post('libros', [\n    '_____' => $datos\n]);\n\nSi la API de Laravel está configurada para recibir el cuerpo de la petición estrictamente en formato JSON nativo (application/json), ¿qué clave debe sustituir a la línea subrayada (_____) en las opciones de Guzzle?",
+        "opciones": [
+            "body_params",
+            "form_params",
+            "json",
+            "query"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Analizando la creación de un modelo para nuestra API REST en Laravel, encontramos el siguiente fragmento:\n\nclass Pelicula extends Model {\n    protected $table = 'peliculas';\n    protected $fillable = ['titulo', 'director', 'anio'];\n}\n\n// En el PeliculaController:\nPelicula::create($request->all());\n\n¿Qué sucedería si el cliente malintencionadamente envía en su petición POST un campo extra llamado `'id' => 999` además del título, director y año?",
+        "opciones": [
+            "Laravel forzará la inserción del registro con el ID 999, sobreescribiendo el comportamiento autoincremental de la base de datos.",
+            "Laravel ignorará el campo 'id' de forma segura y solo insertará 'titulo', 'director' y 'anio', protegiendo la base de datos porque 'id' no está definido en el array $fillable.",
+            "Se producirá un error 500 fatal de base de datos porque el framework intentará insertar una columna que viola las restricciones de integridad.",
+            "El framework lanzará una excepción indicando que los datos no coinciden exactamente con las propiedades de la tabla."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En la aplicación cliente con Guzzle, recibimos una respuesta exitosa del servidor y queremos extraer sus datos:\n\n$respuesta = $cliente->get('peliculas/5');\n$cuerpo = $respuesta->getBody()->getContents();\n$datos_array = _______________________;\n\nSabiendo que la variable `$cuerpo` almacena la respuesta en crudo como una cadena de texto (string) en formato JSON, ¿qué instrucción nativa de PHP debe sustituir al espacio subrayado para convertir esa cadena en un array asociativo manipulable?",
+        "opciones": [
+            "json_decode($cuerpo, true)",
+            "json_encode($cuerpo)",
+            "json_decode($cuerpo, false)",
+            "(array) $cuerpo"
+        ],
+        "correcta": 0
+    },
+    {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Atendiendo a la instanciación de un cliente Guzzle para consumir un servicio web, ¿qué código es el correcto para configurar la URL base de la API y evitar tener que escribirla completa en cada petición posterior?",
+    "opciones": [
+      "$client = new GuzzleHttp\\Client(['base_uri' => 'http://localhost/api_canciones.php']);",
+      "$client = new GuzzleHttp\\Client('http://localhost/api_canciones.php');",
+      "$client = GuzzleHttp\\Client::create(['url' => 'http://localhost/api_canciones.php']);",
+      "$client = new GuzzleHttp\\Client(['host' => 'http://localhost/api_canciones.php']);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al recibir la respuesta de una API RESTful utilizando Guzzle, ¿cuál es el fragmento de código correcto para extraer el cuerpo de la respuesta y convertir el formato JSON devuelto por el servidor en un array asociativo de PHP?",
+    "opciones": [
+      "$datos = $response->getJson();",
+      "$datos = json_decode($response->getBody(), true);",
+      "$datos = json_decode($response, true);",
+      "$datos = $response->getBody()->toJson();"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Basándote en el ejemplo de consumo del servicio web REST en PHP puro mediante Guzzle, ¿cómo se debe realizar la petición HTTP DELETE si el servidor espera recibir el ID del recurso a borrar (por ejemplo, el ID 3) dentro del cuerpo de la petición en formato JSON?",
+    "opciones": [
+      "$client->request('DELETE', '', ['json' => ['id' => 3]]);",
+      "$client->delete('', ['query' => ['id' => 3]]);",
+      "$client->request('REMOVE', '', json_encode(['id' => 3]));",
+      "$client->delete(['id' => 3]);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En el archivo 'CancionController.php' de Laravel, estás definiendo el método 'update' para modificar un recurso existente. Observa el siguiente código:\n\npublic function update(Request $request, string $id)\n{\n    // LÍNEA 1\n    // LÍNEA 2\n    return response()->json($cancion, 200);\n}\n\n¿Qué código deben contener la LÍNEA 1 y la LÍNEA 2 para que Laravel busque el registro, lance error si no existe, y lo actualice con los datos recibidos?",
+    "opciones": [
+      "$cancion = Cancion::find($id);\n$cancion->save($request->all());",
+      "Cancion::update($id, $request->all());\n$cancion = Cancion::get($id);",
+      "$cancion = Cancion::where('id', $id);\n$cancion->put($request->all());",
+      "$cancion = Cancion::findOrFail($id);\n$cancion->update($request->all());"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En Laravel, al preparar la base de datos para la API REST, necesitas generar la estructura de la tabla 'canciones' mediante una migración. ¿Qué código es el correcto dentro del método 'up()' para definir los campos de texto 'titulo', 'artista' y 'genero'?",
+    "opciones": [
+      "$table->varchar('titulo');\n$table->varchar('artista');\n$table->varchar('genero');",
+      "$table->string('titulo');\n$table->string('artista');\n$table->string('genero');",
+      "$table->text('titulo')->required();\n$table->text('artista')->required();\n$table->text('genero')->required();",
+      "$table->column('titulo', 'string');\n$table->column('artista', 'string');\n$table->column('genero', 'string');"
+    ],
+    "correcta": 1
+  },
+  {
+        "tema": "tarea tema 6",
+        "pregunta": "En el desarrollo de un cliente para consumir nuestra API con Guzzle, usamos el siguiente fragmento de código:\n\n$cliente = new \\GuzzleHttp\\Client(['base_uri' => 'http://localhost:8000/api/']);\n$respuesta = $cliente->post('eventos', [\n    'form_params' => [\n        'titulo' => 'Concierto Rock',\n        'precio' => 25.50\n    ]\n]);\n\n¿Cómo interpreta y envía Guzzle los datos indicados bajo la clave 'form_params' hacia el servidor Laravel?",
+        "opciones": [
+            "Los envía codificados internamente como un documento JSON puro (application/json).",
+            "Los envía codificados simulando un formulario web tradicional (application/x-www-form-urlencoded).",
+            "Los envía como parámetros directamente en la propia URL (Query String) como si fuera una petición GET.",
+            "Los ignora por completo, ya que en una API REST estricta solo se permite el envío de datos mediante la clave 'json'."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Observa el siguiente fragmento de un controlador API en Laravel destinado a borrar un evento:\n\npublic function destroy(string $id) {\n    $evento = Evento::find($id);\n    if (!$evento) {\n        return response()->json(['mensaje' => 'Evento no encontrado'], ___);\n    }\n    $evento->delete();\n    return response()->json(['mensaje' => 'Borrado exitoso'], 200);\n}\n\nSi el evento solicitado no existe en la base de datos, ¿qué código de estado HTTP estándar (que falta en el espacio subrayado ___) deberíamos devolver en el JSON para cumplir con las convenciones REST?",
+        "opciones": [
+            "404",
+            "200",
+            "500",
+            "201"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Al definir las rutas de nuestra API en Laravel, observamos el siguiente código dentro del archivo routes/api.php:\n\nRoute::prefix('v1')->group(function () {\n    Route::get('/tareas', [TareaController::class, 'index']);\n    Route::post('/tareas', [TareaController::class, 'store']);\n});\n\nSi nuestro servidor local está corriendo en http://localhost:8000, ¿cuál será la URL final completa que la aplicación cliente deberá utilizar para acceder al método 'store' y crear una nueva tarea?",
+        "opciones": [
+            "http://localhost:8000/tareas",
+            "http://localhost:8000/v1/tareas",
+            "http://localhost:8000/api/v1/tareas",
+            "http://localhost:8000/api/tareas/store"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el código de la aplicación cliente con Guzzle, tenemos la siguiente implementación para el control de errores:\n\n$cliente = new Client(['http_errors' => false]);\n$respuesta = $cliente->delete('http://localhost:8000/api/usuarios/999');\n$codigo = $respuesta->getStatusCode();\n\nif ($codigo == 404) {\n    echo \"Error: El usuario especificado no existe.\";\n}\n\n¿Qué papel fundamental juega el parámetro 'http_errors' => false al instanciar el cliente frente a una respuesta 404 del servidor?",
+        "opciones": [
+            "Fuerza al servidor de Laravel a devolver siempre un código 200 OK en la cabecera, camuflando el error real.",
+            "Evita que Guzzle lance una excepción fatal de PHP (ClientException), permitiendo que el script recoja pacíficamente el código 404 y lo evalúe en el condicional if.",
+            "Detiene la petición HTTP antes de enviarla al servidor si intuye que la ruta solicitada está mal escrita.",
+            "Desactiva las comprobaciones de seguridad SSL para poder realizar pruebas en un entorno local sin certificado de seguridad."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Para la creación de un recurso en nuestra API, tenemos el modelo y el controlador configurados de la siguiente manera:\n\n// Evento.php (Modelo)\nclass Evento extends Model {\n    protected $fillable = ['titulo', 'fecha', 'aforo'];\n}\n\n// EventoController.php (Controlador API)\npublic function store(Request $request) {\n    $evento = Evento::create($request->all());\n    return response()->json($evento, 201);\n}\n\nUsando Eloquent para crear el registro masivamente ($request->all()), ¿qué pasará si el cliente maliciosamente incluye en su petición un campo extra llamado 'precio' => 50?",
+        "opciones": [
+            "El controlador devolverá automáticamente un error HTTP 422 Unprocessable Entity interrumpiendo el flujo.",
+            "El campo 'precio' se insertará en la tabla de la base de datos porque se ha utilizado el método global $request->all().",
+            "El campo 'precio' será filtrado y descartado silenciosamente por Eloquent porque no está declarado dentro del array $fillable del modelo.",
+            "Laravel lanzará un error 500 fatal ya que la consulta SQL generada no cuadrará con las columnas de la tabla."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el archivo cliente.php, recibimos datos tras consultar a la API de Laravel de esta forma:\n\n$respuesta = $cliente->get('http://localhost:8000/api/productos');\n$cuerpo = $respuesta->getBody()->getContents();\n\n// Iteramos sobre los datos\nforeach($productos as $item) {\n    //...\n}\n\nSabiendo que '$cuerpo' almacena el JSON devuelto por la API pero en formato String (cadena de texto en crudo), ¿qué instrucción de PHP falta para poder iterar sobre los productos con el foreach?",
+        "opciones": [
+            "$productos = explode(\",\", $cuerpo);",
+            "$productos = json_decode($cuerpo, true);",
+            "$productos = json_encode($cuerpo);",
+            "$productos = (array) $cuerpo;"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En la configuración de nuestro cliente Guzzle (`index.php`), utilizamos el siguiente fragmento de código:\n\n$cliente = new GClientRMM([\n    'base_uri' => 'http://127.0.0.1:8000/api/',\n    'http_errors' => false,\n    'headers' => ['Accept' => 'application/json']\n]);\n\n¿Qué comportamiento específico logramos al establecer `'http_errors' => false` en nuestra tarea?",
+        "opciones": [
+            "Evita que Guzzle lance una excepción fatal de PHP interrumpiendo el script cuando el servidor Laravel devuelve códigos de error HTTP como 404 (No encontrado) o 422 (Entidad no procesable).",
+            "Desactiva todas las respuestas del servidor, obligando a Guzzle a devolver únicamente el código de estado sin el cuerpo del mensaje.",
+            "Obliga al servidor de Laravel a devolver siempre un código HTTP 200 OK, ignorando cualquier fallo interno de la base de datos.",
+            "Impide que el servidor devuelva errores de validación, forzando la inserción de datos nulos en la tabla de películas."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el controlador de Laravel de nuestra tarea, implementamos el siguiente código para unificar los datos antes de validarlos:\n\n$datos = $request->all();\nif (!isset($datos['genero']) && isset($datos['genero_id'])) {\n    $datos['genero'] = $datos['genero_id'];\n}\n$v = Validator::make($datos, [\n    'titulo' => 'required|string|min:2',\n    'genero' => 'required|integer|exists:generos,id',\n    //...\n]);\n\n¿Por qué era estrictamente necesario extraer los datos a la variable `$datos` y pasar `$datos` al validador en lugar de usar directamente `$request->all()`?",
+        "opciones": [
+            "Porque `$request->all()` devuelve un objeto JSON bloqueado que el `Validator::make` no puede interpretar nativamente.",
+            "Para permitir que nuestra API acepte indistintamente 'genero' o 'genero_id', modificando el array `$datos` y validando ese array unificado en lugar del `$request` original que es inmutable en ese contexto.",
+            "Porque la regla `exists:generos,id` exige obligatoriamente que la variable que se le pasa al validador se llame `$datos`.",
+            "Porque extraer los datos a un array nativo previene automáticamente los ataques de inyección SQL en Eloquent."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Observa este fragmento de nuestro controlador API usando Autobinding y asignación masiva:\n\npublic function modificarArgumentoPeliculaRMM(PeliculaRMM $pelicula, Request $request): JsonResponse\n{\n    // ... validación ...\n    $pelicula->update(['argumento' => $request->argumento]);\n    return response()->json(['resultado' => 'OK'], 200);\n}\n\nPara que la instrucción `$pelicula->update(...)` funcione correctamente y guarde el cambio en la base de datos sin fallar silenciosamente, ¿qué requisito indispensable debe cumplir el modelo `PeliculaRMM`?",
+        "opciones": [
+            "El modelo debe tener un método `public function update()` sobrescrito manualmente para evitar conflictos con Guzzle.",
+            "El campo 'argumento' debe estar incluido explícitamente dentro del array `protected $fillable` del modelo para permitir la asignación masiva (Mass Assignment).",
+            "El modelo debe incluir la propiedad `protected $guarded = ['argumento']` para protegerlo de modificaciones externas.",
+            "El modelo debe tener la propiedad `public $timestamps = false` activada."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En nuestra clase cliente `RMM_Operaciones`, procesamos las respuestas de la API REST de la siguiente manera:\n\n$codigo = $operacion->getStatusCode();\n$cuerpo = json_decode($operacion->getBody()->getContents(), true);\n\nif ($codigo == 200) {\n    return \"Película creada con éxito.\";\n} elseif ($codigo == 422) {\n    $errores = $cuerpo['errores'] ?? ['Error de validación.'];\n    return \"Errores: <ul><li>\" . implode(\"</li><li>\", $errores) . \"</li></ul>\";\n}\n\n¿Cuál es el propósito exacto de capturar específicamente el código HTTP 422 en este flujo?",
+        "opciones": [
+            "Detectar cuándo el servidor de Laravel está apagado o inaccesible por falta de red.",
+            "Capturar la respuesta 'Unprocessable Entity' devuelta por el validador de Laravel para desglosar y mostrar amigablemente los errores (como campos cortos o duplicados) al usuario final.",
+            "Confirmar que la película que se intentó borrar o modificar no existe en la base de datos (Not Found).",
+            "Verificar que la petición Guzzle superó las credenciales de autenticación del servidor web."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En nuestro cliente Guzzle, añadimos un control de excepciones envolviendo las peticiones GET:\n\npublic static function RMM_OperacionListarPeliculas(GClientRMM $cliente) \n{\n    try {\n        $operacion = $cliente->get('listarPeliculasRMM');\n        if ($operacion->getStatusCode() != 200) {\n            return self::ERROR_SERVICIO_WEB;\n        }\n        return json_decode($operacion->getBody()->getContents(), true);\n    } catch (\\Exception $e) {\n        return self::ERROR_SERVICIO_WEB;\n    }\n}\n\nSabiendo que Guzzle se configuró con `'http_errors' => false`, ¿en qué escenario específico se ejecutará realmente el bloque `catch (\\Exception $e)` de este fragmento?",
+        "opciones": [
+            "Cuando la ruta en Laravel esté mal escrita y el servidor devuelva un error HTTP 404.",
+            "Cuando el servidor de Laravel devuelva un error interno HTTP 500 debido a una consulta SQL errónea.",
+            "Cuando exista un fallo crítico de red, como que el servidor de Laravel esté completamente apagado, lo que impide que Guzzle pueda siquiera establecer la conexión para obtener un código HTTP.",
+            "Cuando el JSON devuelto por Laravel contenga una lista vacía de películas."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el archivo `index.php` del cliente, donde procesamos masivamente el texto de operaciones (CSV), implementamos la siguiente comprobación defensiva:\n\n$linea = str_getcsv($linea_str);\n\nif (!isset($linea[0]) || trim($linea[0]) === '') {\n    continue;\n}\n\nswitch ($linea[0]) {\n    case 'CREAR':\n//...\n\n¿Qué problema exacto previene esta instrucción de validación tan estricta antes de llegar al bloque `switch`?",
+        "opciones": [
+            "Previene que el bloque `switch` genere un 'Warning' en PHP si una línea está mal formada (ej. sólo contiene espacios invisibles o comas vacías), saltándola limpiamente para que la aplicación no falle.",
+            "Impide que el método `str_getcsv` se ejecute si la línea contiene saltos de carro estilo Windows (\\r\\n).",
+            "Verifica automáticamente que la película no exista previamente en la base de datos de Laravel, ahorrando una petición HTTP.",
+            "Convierte automáticamente las operaciones desconocidas al caso 'default' del `switch` sin alterar la interfaz web."
+        ],
+        "correcta": 0
+    },
+    {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Estás desarrollando el controlador de tu API en Laravel (CancionController.php) y necesitas programar el método 'index()' para devolver el listado completo de canciones. ¿Qué fragmento de código es el correcto usando el modelo de Laravel (Eloquent)?",
+    "opciones": [
+      "return Cancion::getAll();",
+      "return Cancion::all();",
+      "return $cancion->fetchAll();",
+      "return Cancion::get();"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En tu aplicación cliente hecha con Guzzle, necesitas realizar una petición GET para solicitar a la API de Laravel la canción con el identificador 1 pasándolo por la cadena de consulta (query string). Sabiendo que la URI base ya está configurada, ¿cuál de las siguientes instrucciones es la correcta?",
+    "opciones": [
+      "$response = $client->request('GET', '', ['params' => ['id' => 1]]);",
+      "$response = $client->request('GET', '', ['json' => ['id' => 1]]);",
+      "$response = $client->request('GET', '', ['query' => ['id' => 1]]);",
+      "$response = $client->request('GET', '', ['data' => ['id' => 1]]);"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Observa el siguiente código correspondiente al método 'show' de un controlador de API en Laravel:\n\npublic function show(string $id)\n{\n    // LÍNEA FALTANTE\n}\n\n¿Qué instrucción exacta debes colocar para que Laravel busque y devuelva la canción solicitada por su ID utilizando su modelo?",
+    "opciones": [
+      "return Cancion::find($id);",
+      "return Cancion::getOne($id);",
+      "return Cancion::whereId($id);",
+      "return Cancion::search($id);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Después de realizar una petición HTTP utilizando Guzzle, la variable $response almacena la respuesta del servidor. Si lo único que quieres es imprimir directamente en pantalla el cuerpo de la respuesta en crudo (el JSON tal cual llega), ¿qué código debes utilizar?",
+    "opciones": [
+      "echo $response->getContent();",
+      "echo $response->getJson();",
+      "echo $response->getBody();",
+      "echo $response->text();"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Para comenzar a crear el modelo de datos en tu API RESTful con Laravel, debes utilizar la herramienta de línea de comandos Artisan. ¿Cuál es el comando correcto para generar automáticamente el esqueleto de la clase del modelo 'Cancion'?",
+    "opciones": [
+      "php artisan create:model Cancion",
+      "php artisan make:model Cancion",
+      "php artisan generate:model Cancion",
+      "php artisan new:model Cancion"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Tienes el siguiente código en tu archivo 'routes/api.php' de Laravel para registrar las rutas de tu API REST:\n\nuse App\\Http\\Controllers\\CancionController;\n// LÍNEA FALTANTE\n\n¿Qué instrucción exacta debes colocar en la 'LÍNEA FALTANTE' para registrar automáticamente todas las rutas CRUD sin estado (index, store, show, update, destroy) omitiendo las rutas de vistas HTML (create y edit)?",
+    "opciones": [
+      "Route::resource('canciones', CancionController::class);",
+      "Route::apiResource('canciones', CancionController::class);",
+      "Route::api('canciones', CancionController::class);",
+      "Route::get('/canciones', [CancionController::class, 'api']);"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Observa el siguiente fragmento de código donde se consume tu API REST usando Guzzle y se elimina un recurso:\n\n$response = $client->delete(\"/canciones/3\");\n\nSi quieres comprobar mediante una condición IF que la eliminación se ha realizado con éxito, obteniendo el código numérico de estado HTTP devuelto por el servidor (por ejemplo, 200 OK), ¿qué instrucción debes utilizar?",
+    "opciones": [
+      "if ($response->status() === 200)",
+      "if ($response->getCode() == '200 OK')",
+      "if ($response->getStatusCode() === 200)",
+      "if ($response->headers['status'] === 200)"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En el archivo 'CancionController.php', estás programando el método 'index()' para que la API devuelva todo el listado de canciones. Sabiendo que Laravel se encarga de convertir automáticamente la respuesta a JSON en los controladores API, ¿qué código es el correcto y más directo usando el modelo Eloquent?",
+    "opciones": [
+      "public function index() {\n    return response()->json(Cancion::get(), 200);\n}",
+      "public function index() {\n    return Cancion::all();\n}",
+      "public function index() {\n    return Cancion::getAll();\n}",
+      "public function index() {\n    return json_encode(Cancion::select('*'));\n}"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Tienes una aplicación cliente PHP y quieres añadir una nueva canción a tu API de Laravel. ¿Cuál es la estructura correcta del código en Guzzle para enviar los datos por el método POST, sabiendo que el cliente HTTP ya está instanciado en la variable $client?",
+    "opciones": [
+      "$response = $client->request('POST', 'canciones', ['body' => ['titulo' => 'Canción 1']]);",
+      "$response = $client->request('POST', 'canciones', ['json' => ['titulo' => 'Canción 1']]);",
+      "$response = $client->request('POST', 'canciones', json_encode(['titulo' => 'Canción 1']));",
+      "$response = $client->post('canciones', ['data' => ['titulo' => 'Canción 1']]);"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al crear la base de datos para la API en Laravel, utilizas un archivo de migración. Observa el siguiente código:\n\nSchema::create('canciones', function (Blueprint $table) {\n    $table->id();\n    $table->string('titulo');\n    // LÍNEA FALTANTE\n});\n\n¿Qué método debes invocar en la 'LÍNEA FALTANTE' para que Laravel cree automáticamente las columnas requeridas (created_at y updated_at) que guardan la fecha de creación y de última actualización del recurso?",
+    "opciones": [
+      "$table->timestamps();",
+      "$table->dates();",
+      "$table->auditFields();",
+      "$table->dateTime('created_at');\n$table->dateTime('updated_at');"
+    ],
+    "correcta": 0
+  },
+  {
+        "tema": "tarea tema 6",
+        "pregunta": "En el archivo `index.php` de nuestra aplicación cliente con Guzzle, empleamos el siguiente código de configuración:\n\n$cliente = new GClientRMM([\n    'base_uri' => 'http://127.0.0.1:8000/api/',\n    'http_errors' => false,\n    'headers' => ['Accept' => 'application/json']\n]);\n\n¿Cuál es la finalidad principal de haber establecido el parámetro `'http_errors' => false` en nuestra tarea?",
+        "opciones": [
+            "Evitar que Guzzle intercepte las peticiones y las envíe como formulario normal en lugar de JSON.",
+            "Impedir que Guzzle lance una excepción fatal en PHP (ClientException) que detenga el script cuando el servidor Laravel devuelve códigos HTTP de error como 404 o 422, permitiendo así procesar esos códigos manualmente.",
+            "Forzar al servidor de Laravel a devolver un código 200 OK en todas las respuestas para asegurar que el HTML del cliente siempre se renderice.",
+            "Desactivar los mensajes de error en la consola del servidor de Laravel para mejorar el rendimiento de las operaciones masivas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Durante la implementación del método POST en nuestro `PeliculasControllerAPI`, realizamos el siguiente paso previo a la validación:\n\n$datos = $request->all();\nif (!isset($datos['genero']) && isset($datos['genero_id'])) {\n    $datos['genero'] = $datos['genero_id'];\n}\n$v = Validator::make($datos, [...]);\n\n¿Por qué es necesario pasar la variable `$datos` a la función `Validator::make` en lugar de pasar directamente `$request->all()`?",
+        "opciones": [
+            "Porque la clase Request no es compatible con el validador de Laravel en entornos de API REST.",
+            "Porque al extraer los datos a un array (`$datos`), evitamos ataques de inyección SQL automáticamente.",
+            "Porque `$request` es inmutable. Si modificamos el array `$datos` para unificar 'genero' y 'genero_id', debemos pasar ese array modificado al validador para que evalúe las claves correctas.",
+            "Porque el método `all()` de la clase Request solo recupera los datos que viajan por la URL (Query String) y omite el cuerpo del mensaje."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En la tarea, al procesar la respuesta de la API REST dentro del método `RMM_OperacionCrearPelicula`, escribimos la siguiente lógica:\n\nif ($codigo == 200) {\n    return \"Película creada con éxito.\";\n} elseif ($codigo == 422) {\n    $errores = $cuerpo['errores'] ?? ['Error de validación.'];\n    return \"Errores: <ul><li>\" . implode(\"</li><li>\", $errores) . \"</li></ul>\";\n}\n\n¿Qué nos indica la recepción específica del código de estado HTTP 422 en este flujo?",
+        "opciones": [
+            "El servidor web está caído o la red está inaccesible (Internal Server Error).",
+            "La película que se intenta actualizar o borrar no existe en la base de datos (Not Found).",
+            "El usuario no tiene permisos de autenticación válidos para consumir el servicio web (Unauthorized).",
+            "La solicitud fue entendida, pero contiene errores semánticos o de validación (Unprocessable Entity), como un título demasiado corto o un registro duplicado."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el controlador de Laravel, al implementar la función de modificar el argumento, utilizamos el *Autobinding* (Route Model Binding) en la firma del método:\n\npublic function modificarArgumentoPeliculaRMM(PeliculaRMM $pelicula, Request $request): JsonResponse\n{\n    $pelicula->update(['argumento' => $request->argumento]);\n    return response()->json(['resultado' => 'OK'], 200);\n}\n\n¿Qué ventaja principal nos aporta haber inyectado el modelo `PeliculaRMM $pelicula` directamente en los parámetros de la función?",
+        "opciones": [
+            "Permite asignar masivamente todos los campos sin necesidad de declararlos en el array `$fillable`.",
+            "Laravel busca automáticamente en la base de datos el registro cuyo ID coincida con el parámetro de la ruta. Si no lo encuentra, lanza un error 404 automáticamente sin que escribamos código extra.",
+            "Convierte automáticamente la respuesta en un documento JSON compatible con Guzzle.",
+            "Filtra la petición HTTP para garantizar que los datos viajan exclusivamente bajo el protocolo HTTPS."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "Para la actualización rápida del argumento mostrada en la pregunta anterior (`$pelicula->update(['argumento' => $request->argumento]);`), ¿qué condición debe cumplirse obligatoriamente en el archivo del modelo `PeliculaRMM.php` para que el cambio se guarde en la base de datos y no sea ignorado silenciosamente?",
+        "opciones": [
+            "El campo 'argumento' debe figurar dentro del array `protected $fillable` del modelo para permitir su asignación masiva (Mass Assignment).",
+            "El campo 'argumento' debe figurar dentro del array `protected $guarded` para proteger su integridad.",
+            "Debe existir una función pública llamada `setArgumento()` en el modelo.",
+            "El modelo debe extender de `Illuminate\\Http\\Request` en lugar de `Model`."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "tarea tema 6",
+        "pregunta": "En el archivo del cliente `index.php`, al procesar línea a línea el archivo de texto CSV que simula nuestras operaciones masivas, añadimos la siguiente instrucción defensiva:\n\n$linea = str_getcsv($linea_str);\nif (!isset($linea[0]) || trim($linea[0]) === '') {\n    continue;\n}\nswitch ($linea[0]) {\n   //...\n}\n\n¿Cuál es la finalidad de usar `trim($linea[0]) === ''` justo antes del `switch`?",
+        "opciones": [
+            "Traducir las operaciones (como 'crear' o 'borrar') a formato JSON antes de enviarlas al servidor de Laravel.",
+            "Forzar la detención de la ejecución de PHP si encuentra una línea vacía en el archivo.",
+            "Prevenir fallos de PHP (Warnings) evitando que el bloque `switch` intente evaluar líneas que estén mal formadas o contengan únicamente espacios en blanco tras la decodificación CSV.",
+            "Comprobar con una llamada rápida al servidor si la operación indicada existe en el controlador de la API antes de consumirla."
+        ],
+        "correcta": 2
+    },
+    {
+    "tema": "tarea tema 6",
+    "pregunta": "En el desarrollo de nuestra API, utilizamos este fragmento para el método `store` en el `CancionController`:\n\npublic function store(Request $request)\n{\n    $cancion = Cancion::create($request->all());\n    return response()->json($cancion, 201);\n}\n\n¿Qué representa el número 201 en la función `response()->json($cancion, 201)` y por qué es el estándar en este caso?",
+    "opciones": [
+      "Es el código de estado HTTP 201 (Created), que indica que la solicitud ha tenido éxito y como resultado se ha creado un nuevo recurso.",
+      "Es el número de milisegundos que el servidor tarda en procesar la inserción en la base de datos.",
+      "Es el ID autoincremental que se le ha asignado a la nueva canción recién creada.",
+      "Es el límite máximo de caracteres permitidos para el objeto JSON devuelto."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "Observa el siguiente fragmento utilizado en nuestro `CancionController` para la actualización de datos:\n\npublic function update(Request $request, string $id)\n{\n    $cancion = Cancion::findOrFail($id);\n    $cancion->update($request->all());\n    return response()->json($cancion, 200);\n}\n\n¿Qué sucede si el cliente envía un ID que no existe en la base de datos cuando se ejecuta `Cancion::findOrFail($id)`?",
+    "opciones": [
+      "Laravel devuelve un array vacío `[]` y el código continúa ejecutándose hasta el `update()`.",
+      "El método `findOrFail` lanza automáticamente una excepción `ModelNotFoundException`, lo que resulta en una respuesta de error 404 (Not Found) si no se captura.",
+      "El código ignora el error y crea una nueva canción con el ID solicitado.",
+      "El script PHP se detiene abruptamente sin devolver ninguna respuesta al cliente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "En nuestro cliente Guzzle para realizar operaciones masivas, procesamos las líneas del archivo CSV con este fragmento:\n\n$linea = str_getcsv($linea_str);\nif (!isset($linea[0]) || trim($linea[0]) === '') {\n    continue;\n}\nswitch ($linea[0]) {\n    case 'CREAR':\n        //...\n}\n\n¿Por qué es fundamental realizar la comprobación `if (!isset($linea[0]) || trim($linea[0]) === '')`?",
+    "opciones": [
+      "Porque sirve para autenticar que el usuario tiene permisos de administrador en la API.",
+      "Para evitar errores de ejecución (PHP Warnings) al intentar acceder al índice `[0]` del array en líneas vacías o mal formadas del archivo CSV.",
+      "Porque esta validación comunica al servidor Laravel que debe ignorar la petición y no registrarla en la base de datos.",
+      "Porque el comando `str_getcsv` elimina automáticamente los comentarios, por lo que es redundante hacer esta comprobación."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "Analiza la definición del modelo `Cancion` en nuestro proyecto:\n\nclass Cancion extends Model {\n    protected $table = 'canciones';\n    protected $fillable = ['titulo', 'artista', 'genero'];\n}\n\nSi un cliente envía una petición PUT con el JSON `{\"id\": 99, \"titulo\": \"Nuevo Título\"}`, ¿cómo maneja Eloquent el campo `id` durante la operación `update`?",
+    "opciones": [
+      "Actualiza el ID de la fila en la base de datos al valor 99.",
+      "Lanza un error de seguridad impidiendo la actualización por intentar modificar la clave primaria.",
+      "El campo `id` es ignorado automáticamente en la actualización porque no está incluido en el array `$fillable`.",
+      "Genera una nueva fila en la tabla de canciones con el ID 99."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "En nuestra clase cliente `RMM_Operaciones`, utilizamos este fragmento para capturar errores de la API:\n\n$codigo = $operacion->getStatusCode();\n$cuerpo = json_decode($operacion->getBody()->getContents(), true);\n\nif ($codigo == 422) {\n    $errores = $cuerpo['errores'] ?? ['Error de validación.'];\n    return \"Errores: <ul><li>\" . implode(\"</li><li>\", $errores) . \"</li></ul>\";\n}\n\n¿Qué tipo de respuesta del servidor Laravel estamos procesando correctamente al capturar el código 422?",
+    "opciones": [
+      "Un error interno del servidor (500) donde la base de datos no pudo ejecutar la consulta.",
+      "Un error de validación de datos (Unprocessable Entity), donde los datos enviados no cumplen con las reglas definidas en el controlador.",
+      "Una respuesta exitosa donde el servidor confirma que el recurso ha sido borrado.",
+      "Una redirección HTTP 302 hacia la página principal de la aplicación."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Analiza el siguiente fragmento de código de un controlador API en Laravel:\n\npublic function show(string $id)\n{\n    return Cancion::find($id);\n}\n\nSi el cliente Guzzle invoca esta ruta correctamente mediante un GET, ¿cómo procesa Laravel esta instrucción de retorno según el temario?",
+    "opciones": [
+      "Lanza un error HTTP 500 porque es obligatorio envolver el resultado con el método explícito 'response()->json()'.",
+      "Devuelve una vista HTML con los datos de la canción encontrada porque se está utilizando el método 'find()'.",
+      "Al estar registrada en 'routes/api.php', Laravel detecta automáticamente el modelo obtenido por Eloquent y lo convierte a formato JSON en la respuesta.",
+      "Devuelve un objeto nativo de PHP que provocará un error de formato en el cliente Guzzle porque no se aplicó 'json_encode()'."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "En una aplicación cliente usando Guzzle, ejecutas la siguiente petición para leer las canciones:\n\n$response = $client->request('GET', '/api/canciones');\n// LÍNEA FALTANTE\n\n¿Qué código exacto debes insertar en la 'LÍNEA FALTANTE' para extraer el contenido JSON recibido y convertirlo en un array asociativo de PHP listo para usarse?",
+    "opciones": [
+      "$datos = (array) $response->getBody();",
+      "$datos = json_decode($response->getBody(), true);",
+      "$datos = $response->getJsonAsArray();",
+      "$datos = json_decode($response, true);"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Revisa el siguiente modelo básico en Laravel:\n\nclass Cancion extends Model\n{\n    protected $table = 'canciones';\n}\n\nSi en tu controlador intentas crear un nuevo registro a partir del JSON que llega de Guzzle ejecutando '$cancion = Cancion::create($request->all());', ¿qué ocurrirá?",
+    "opciones": [
+      "El registro se insertará de forma segura tomando exactamente los mismos campos que el cliente envíe en el JSON.",
+      "Fallará por protección contra asignación masiva (Mass Assignment), ya que falta definir obligatoriamente la propiedad '$fillable' con los campos permitidos.",
+      "Laravel creará automáticamente las columnas faltantes en la base de datos basándose en las claves del JSON entrante.",
+      "Lanzará un error de sintaxis porque el método 'create()' de Eloquent solo acepta objetos de tipo JSON, no el array devuelto por '$request->all()'."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Necesitas consumir tu API con Guzzle realizando una petición GET, pero en lugar de pasar el ID en la propia estructura de la URL, el servidor requiere que se lo pases como un parámetro 'query string' (por ejemplo: ?userId=2). ¿Cuál de los siguientes fragmentos de código es el correcto?",
+    "opciones": [
+      "$client->get('/posts', ['query' => ['userId' => 2]]);",
+      "$client->get('/posts', ['json' => ['userId' => 2]]);",
+      "$client->get('/posts?userId=2', ['params' => ['userId' => 2]]);",
+      "$client->get('/posts', ['body' => 'userId=2']);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Observa la inicialización de Guzzle en el script del cliente:\n\n$client = new GuzzleHttp\\Client(['base_uri' => 'http://localhost/api_canciones.php']);\n\nY la posterior petición para borrar la canción 3:\n\n// LÍNEA FALTANTE\n\nSegún los ejemplos del temario, ¿cuál de los siguientes códigos en la LÍNEA FALTANTE realizará correctamente la petición DELETE pasando el ID encapsulado dentro del cuerpo de la petición en formato JSON?",
+    "opciones": [
+      "$response = $client->delete('', ['body' => ['id' => 3]]);",
+      "$response = $client->request('DELETE', '3');",
+      "$response = $client->delete(['id' => 3]);",
+      "$response = $client->request('DELETE', '', ['json' => ['id' => 3]]);"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Al registrar la ruta 'Route::apiResource('canciones', CancionController::class);' dentro del archivo 'routes/api.php', ¿qué características aplica Laravel automáticamente a estos endpoints según los apuntes?",
+    "opciones": [
+      "Se configuran con estado (stateful), usan cookies de sesión y devuelven vistas HTML.",
+      "Son sin estado (stateless), utilizan el middleware api, devuelven respuestas en formato JSON y aplican limitación de tasa.",
+      "Requieren obligatoriamente autenticación OAuth 2.0 y deshabilitan el formato JSON.",
+      "Solo permiten los métodos GET y POST, bloqueando PUT y DELETE por seguridad."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Estás creando el archivo 'cliente.php' para consumir tu API con Guzzle y escribes directamente el siguiente código:\n\n$client = new GuzzleHttp\\Client(['base_uri' => 'http://localhost/api/']);\n\nAl ejecutarlo, PHP lanza un error fatal indicando que no encuentra la clase Client. ¿Qué instrucción obligatoria te falta incluir al principio del archivo según el temario?",
+    "opciones": [
+      "include_once 'GuzzleHttp.php';",
+      "require 'guzzle.php';",
+      "require 'vendor/autoload.php';",
+      "import GuzzleHttp\\Client;"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Para preparar la base de datos de tu API, debes ejecutar las migraciones. Observa los siguientes comandos de Artisan:\n\nA) php artisan migrate\nB) php artisan migrate:fresh\n\n¿Cuál es la diferencia exacta entre ambos comandos según se indica en el temario de Laravel?",
+    "opciones": [
+      "El comando A ejecuta migraciones pendientes, mientras que el B restablece la base de datos eliminando todas las tablas antes de aplicar nuevamente las migraciones.",
+      "El comando A crea la base de datos desde cero, mientras que el B solo actualiza los registros modificados recientemente.",
+      "Ambos comandos hacen exactamente lo mismo, pero el B fuerza la ejecución saltándose las advertencias de seguridad.",
+      "El comando A se usa para bases de datos MySQL, mientras que el B es exclusivo para bases de datos SQLite."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Observa el siguiente código donde se actualiza un recurso consumiendo una API RESTful con Guzzle. En lugar de usar el método genérico request(), usamos el método HTTP abreviado:\n\n$updatedPost = ['title' => 'Título actualizado'];\n$postId = 5;\n// LÍNEA FALTANTE\n\n¿Qué instrucción debe ir en la LÍNEA FALTANTE para enviar la petición PUT correctamente adjuntando los datos?",
+    "opciones": [
+      "$response = $client->put(\"/posts/{$postId}\", json_encode($updatedPost));",
+      "$response = $client->put(\"/posts/{$postId}\", ['body' => $updatedPost]);",
+      "$response = $client->put(\"/posts/{$postId}\", ['json' => $updatedPost]);",
+      "$response = $client->update(\"/posts/{$postId}\", ['data' => $updatedPost]);"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "creacion basica API REST tema 6",
+    "pregunta": "Analiza el siguiente método 'destroy' dentro del controlador de Laravel (CancionController.php):\n\npublic function destroy(string $id)\n{\n    Cancion::findOrFail($id)->delete();\n    // LÍNEA FALTANTE\n}\n\nSegún el código exacto del temario, ¿qué instrucción debe ir en la LÍNEA FALTANTE para devolver al cliente HTTP la respuesta indicando la eliminación exitosa y el código de estado 200?",
+    "opciones": [
+      "return response()->json('Deleted Successfully', 204);",
+      "return response('Deleted Successfully', 200);",
+      "return Cancion::response(200);",
+      "return true;"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "En nuestra tarea, configuramos el cliente Guzzle con `'http_errors' => false`:\n\n$cliente = new GClientRMM([\n    'base_uri' => 'http://127.0.0.1:8000/api/',\n    'http_errors' => false,\n    'headers' => ['Accept' => 'application/json']\n]);\n\n¿Por qué es necesario esta configuración al consumir nuestra API REST en lugar de dejar el valor por defecto?",
+    "opciones": [
+      "Para aumentar la velocidad de la petición eliminando la verificación SSL.",
+      "Porque, al estar en `false`, evitamos que Guzzle lance excepciones automáticas ante errores HTTP (404, 422), permitiéndonos procesar manualmente el código de estado y el JSON de error devuelto por Laravel.",
+      "Para obligar a Laravel a devolver siempre un código 200, independientemente de si la operación falla.",
+      "Para que Guzzle convierta automáticamente los errores 500 en respuestas 200."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "En el controlador de nuestra API, utilizamos este fragmento para unificar la entrada de datos del género:\n\n$datos = $request->all();\nif (!isset($datos['genero']) && isset($datos['genero_id'])) {\n    $datos['genero'] = $datos['genero_id'];\n}\n$v = Validator::make($datos, ['genero' => 'required|integer|exists:generos,id']);\n\n¿Qué lógica sigue este código al interactuar con el validador de Laravel?",
+    "opciones": [
+      "Fuerza a que Laravel lance un error 500 si no se envía la clave 'genero'.",
+      "Ignora cualquier dato que no sea 'genero_id' para evitar inyecciones SQL.",
+      "Permite flexibilidad en la API aceptando el ID tanto con el nombre 'genero' como con 'genero_id', unificando el dato antes de aplicar las reglas de validación sobre el array `$datos`.",
+      "Sobreescribe la base de datos cada vez que se detecta una diferencia entre 'genero' y 'genero_id'."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "En nuestro `CancionController`, empleamos este método para actualizar una canción:\n\npublic function update(Request $request, string $id) {\n    $cancion = Cancion::findOrFail($id);\n    $cancion->update($request->all());\n    return response()->json($cancion, 200);\n}\n\nSi el cliente envía un JSON que contiene un campo 'id' que no existe en la base de datos, ¿qué ocurre exactamente al llamar a `Cancion::findOrFail($id)`?",
+    "opciones": [
+      "Devuelve un objeto vacío y el código continúa hasta ejecutar `update()`.",
+      "Lanza automáticamente una excepción `ModelNotFoundException`, lo que resulta en una respuesta 404 Not Found si no se captura.",
+      "El servidor ignora el error y crea una nueva canción con el ID enviado.",
+      "El servidor responde con un error 500 fatal e inmediatamente detiene el servicio."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "Para la validación de errores en nuestro cliente Guzzle, usamos este fragmento:\n\n$codigo = $operacion->getStatusCode();\n$cuerpo = json_decode($operacion->getBody()->getContents(), true);\nif ($codigo == 422) {\n    $errores = $cuerpo['errores'] ?? ['Error de validación.'];\n    return \"Errores: <ul><li>\" . implode(\"</li><li>\", $errores) . \"</li></ul>\";\n}\n\n¿Qué tipo de respuesta de Laravel estamos procesando correctamente al capturar el código 422?",
+    "opciones": [
+      "Una respuesta de éxito donde el recurso se ha modificado correctamente.",
+      "Un error interno del servidor (500) donde la base de datos ha fallado.",
+      "Una respuesta de 'Unprocessable Entity' donde los datos enviados no cumplen las reglas de validación (por ejemplo, longitud mínima no alcanzada o datos duplicados).",
+      "Una redirección HTTP que indica que el endpoint ha cambiado de dirección."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "tarea tema 6",
+    "pregunta": "Al implementar la ruta para nuestra API en `routes/api.php`, utilizamos el siguiente comando:\n\nRoute::apiResource('canciones', CancionController::class);\n\n¿Por qué es recomendable utilizar `apiResource` en lugar de `resource` al crear un servicio web RESTful en Laravel?",
+    "opciones": [
+      "Porque `apiResource` incluye automáticamente las vistas Blade de creación y edición (create y edit).",
+      "Porque `apiResource` excluye automáticamente las rutas destinadas a mostrar formularios HTML (como create y edit), ya que en una API REST solo nos interesan las operaciones CRUD sobre los datos.",
+      "Porque `apiResource` es necesario para poder usar los middlewares de autenticación de Sanctum.",
+      "Porque el método `resource` solo funciona con peticiones GET y POST, prohibiendo el uso de PUT o DELETE."
+    ],
+    "correcta": 1
+  }
 
 
 

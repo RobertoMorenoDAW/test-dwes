@@ -1859,7 +1859,689 @@ const BBDD_PREGUNTAS = [
       "Porque el método `resource` solo funciona con peticiones GET y POST, prohibiendo el uso de PUT o DELETE."
     ],
     "correcta": 1
-  }
+  },
+  {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "Dado el siguiente código en PHP y HTML de una aplicación JAXON, ¿qué habría que añadir en el HTML para que se muestre el mensaje en caso de que se elimine el libro?\n\nfunction borrarLibro($isbn) {\n  $response = new Response();\n  $mensaje=\"Libro eliminado (ISBN=$isbn)\";\n  $response->assign('mensaje','innerHTML',$mensaje);\n  return $response;\n}\n\n<form id=\"eliminarLibro\" onSubmit=\"return false;\">\n  ISBN:<input id=\"isbn\" type=\"text\" name=\"isbn\">\n  <!-- ¿Qué falta aquí para visualizar el mensaje? -->\n</form>",
+        "opciones": [
+            "<P data-id=\"mensaje\"></H1>",
+            "<P name=\"mensaje\"></H1>",
+            "<H1 id=\"mensaje\"></H1>",
+            "<P>{$mensaje}</H1>"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "Dado el siguiente botón en un formulario HTML, ¿cuál de los siguientes códigos JavaScript sería el equivalente exacto al método rq()->call() usado en su atributo onclick?\n\n<form id=\"eliminarLibro\" onSubmit=\"return false;\">\n  <input id=\"isbn\" type=\"text\" name=\"isbn\">\n  <input type=\"button\" value=\"Borrar\" onclick=\"<?=rq()->call('borrarLibro',pm()->input('isbn'))?>\";>\n</form>",
+        "opciones": [
+            "onclick=\"<?=jaxon_call('borrarLibro',jaxon.$('isbn').value);?>\"",
+            "onclick=\"<?=jaxon_borrarLibro(pm()->input('isbn'));?>\"",
+            "onclick=\"jaxon_borrarLibro(document.getElementById('isbn').value);\"",
+            "onclick=\"let v=document.getElementById('mascota').value; jaxon.borrarLibro(v);\""
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "En JAXON-PHP, dada la siguiente función, ¿qué hace exactamente la línea que comienza por $response->assign?\n\nfunction borrarLibro($isbn) {\n  $response = new Response();\n  $mensaje=\"Libros eliminados (ISBN=$isbn)\";\n  $response->assign('mensaje','innerHTML',$mensaje);\n  return $response;\n}",
+        "opciones": [
+            "Establece el valor de la variable $mensaje como contenido del elemento HTML con name=\"mensaje\".",
+            "Establece el valor de la variable $mensaje como contenido del elemento HTML con data-id=\"mensaje\".",
+            "Ninguna de las otras opciones es correcta.",
+            "Establece el valor de la variable $mensaje como contenido del elemento HTML con id=\"mensaje\"."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "Dado el siguiente registro de una función usando JAXON, ¿tiene sentido declarar la función `registrarLibro` con el modificador de visibilidad `private` (ej: `private function registrarLibro (...)`)?\n\n$jaxon->register(Jaxon::CALLABLE_FUNCTION, 'registrarLibro');",
+        "opciones": [
+            "No tiene sentido, ya que la función no se va a definir dentro de una clase.",
+            "No tiene sentido. Si se pone la función es privada y no es accesible vía AJAX.",
+            "No, ya que están en el mismo archivo donde se registran. Aunque se ponga private, se puede registrar igualmente.",
+            "Solo tiene sentido si la función se va usar después de que el usuario se haya autenticado."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "Dado el siguiente fragmento en el archivo backend de JAXON, ¿cuál es el propósito del método `register`?\n\n$jaxon->register(Jaxon::CALLABLE_FUNCTION, 'borrarLibro');",
+        "opciones": [
+            "Registrar una función JavaScript para que pueda ser llamada vía AJAX usando JAXON desde el servidor.",
+            "Registrar una función PHP para que pueda ser llamada desde el backend usando JAXON-PHP.",
+            "Registrar una función PHP para que pueda ser llamada vía AJAX desde el cliente web.",
+            "Registrar una función JavaScript para que pueda ser llamada desde el servidor web para obtener información del cliente web."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "Teniendo en cuenta el uso de peticiones AJAX (como JAXON) para eliminar un registro desde un formulario sin recargar la página:\n\n<form onSubmit=\"jaxon_borrarLibro(jaxon.$('isbn').value); return false;\" >\n\n¿Qué ventajas tiene esta técnica sobre una aplicación web tradicional?",
+        "opciones": [
+            "Se sobrecarga menos el servidor, dado que la eliminación del libro se hace en el cliente web.",
+            "La actualización de la interfaz de usuario es más segura, dado que se envía la mínima información al servidor (solo el ISBN) y no la página completa.",
+            "Se sobrecarga menos el cliente, dado que todo el código se ejecuta en el servidor y no en el cliente.",
+            "La actualización de la interfaz de usuario es más rápida ya que solo se actualiza el contenido necesario. En cualquier caso, puede complementar la forma de funcionamiento más tradicional."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "¿Qué ocurría si los datos del siguiente formulario se enviaran al backend vía POST tradicional en vez de usar las funciones asíncronas de JAXON-JS?\n\n<form id=\"eliminarLibro\" action=\"script.php\" method=\"POST\">\n  ISBN del libro:<input id=\"isbn\" type=\"text\" name=\"isbn\">\n  <input type=\"submit\" value=\"Borrar\">\n</form>",
+        "opciones": [
+            "En ese caso los datos se reciben por JAXON-PHP como un array asociativo, y habría que usar filter_input o equivalente dentro de la función borrarLibro para acceder a los datos.",
+            "En ese caso los datos se reciben por JAXON-PHP como un array asociativo y el mismo se encarga de transformarlos a lo que necesita la función registrada.",
+            "Tendríamos que preparar un script PHP aparte para recibir los datos del formulario, procesarlos y devolver una respuesta al cliente que contuviera el HTML completo que deseamos que se muestre al cliente.",
+            "Usar envío de formularios tradicional no es compatible con JAXON-PHP ni JAXON-JS, por lo que generaría error PHP."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 examen 2025",
+        "pregunta": "En una aplicación de JAXON, imagina que la función PHP registrada en el backend responde con un texto directo (`return \"ERROR: revisa ISBN\";`) en vez de retornar una instancia de la clase Response (`$response = new Response(); ... return $response;`). ¿Qué ocurriría en el cliente web?",
+        "opciones": [
+            "La cadena retornada es en sí misma una cadena en formato JSON, por lo que JAXON-JS lo interpretará como un texto que hay que mostrar en el navegador en la salida por defecto. La salida por defecto es la consola de log del navegador.",
+            "Lo más probable es que provoque un fallo en el cliente web, modifique la estructura DOM del documento HTML de forma inadecuada y deje de funcionar.",
+            "JAXON-PHP va a transformar de forma automática el texto en cuestión en un mensaje JSON que acepta JAXON-JS, con lo que JAXON-JS lo interpretará adecuadamente.",
+            "La página que está visualizando el usuario simplemente no se modifica, al no recibir una respuesta JSON apropiadamente formateada JAXON-JS no puede interpretar el contenido y no se altera el DOM del documento."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "¿Cuál de las siguientes llamadas a métodos de la clase Response se utiliza en JAXON-PHP para limpiar completamente el contenido de un div?\n\n<div id=\"lista\">123</div>",
+        "opciones": [
+            "$response->empty('lista');",
+            "$response->clear('lista');",
+            "$response->assign('lista', 'innerHTML', '');",
+            "$response->remove('lista');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "En el siguiente fragmento JavaScript usando fetch(), ¿qué línea indica correctamente que estamos enviando una petición tipo POST con los datos de un formulario?\n\nfunction nuevoNumero() {\n  const formData = new FormData(document.getElementById('nuevonumero'));\n  fetch('backend/nuevonumero.php', {\n    // LÍNEA A COMPLETAR\n  })\n  .then(response => response.json());\n}",
+        "opciones": [
+            "method: 'POST', body: formData",
+            "type: 'POST', data: formData",
+            "form_params: 'POST', cookies: formData",
+            "method: 'POST', body: JSON.stringify(formData)"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Dado el siguiente código usando el cliente HTTP Guzzle en PHP, ¿cómo se obtienen los datos del cuerpo de la respuesta para poder manipularlos como texto?\n\n$clienteHTTP = new GuzzleHttp\\Client();\n$respuesta = $clienteHTTP->request('GET', \"http://miservicio.com/api\");",
+        "opciones": [
+            "$respuesta->getText();",
+            "$respuesta->readBody();",
+            "$respuesta->getHeaders('Content-Type');",
+            "$respuesta->getBody()->getContents();"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Dado el siguiente fragmento de código PHP que inicializa JAXON, ¿qué variables debes imprimir obligatoriamente (usando `echo`) dentro del HTML para que se incluyan las definiciones de las funciones registradas y la librería Javascript que gestiona las peticiones?\n\n<?php\nrequire_once __DIR__.'/setup.php';\nuse function Jaxon\\jaxon;\njaxon()->setOption('core.request.uri', 'backend.php');\n$jaxonCss = jaxon()->getCss();\n$jaxonJs = jaxon()->getJs();\n$jaxonScript = jaxon()->getScript();\n?>\n<!DOCTYPE html>\n<html>\n<head>...</head>\n<body>\n... \n<!-- INYECCIÓN DE CÓDIGO -->\n</body>\n</html>",
+        "opciones": [
+            "Solo `$jaxonCss` en el `<head>` es suficiente.",
+            "Solamente `$jaxonScript` al principio del archivo.",
+            "`$jaxonJs` (código de la librería Jaxon-JS) y `$jaxonScript` (código generado con las funciones PHP registradas).",
+            "`jaxon()->getFormValues()` en cada etiqueta `<form>` del HTML."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "En un script denominado `backend.php` (el encargado de recibir y despachar las peticiones AJAX generadas por JAXON-JS en el cliente web), ¿qué código debe usarse estrictamente para interceptar, procesar la petición y enviarla a la función o clase PHP registrada correspondiente?\n\n<?php\n// backend.php\nrequire_once __DIR__.'/setup.php';\nuse function Jaxon\\jaxon;\n// ¿Qué código falta aquí?\n?>",
+        "opciones": [
+            "if(jaxon()->canProcessRequest()) { jaxon()->processRequest(); }",
+            "jaxon()->register(Jaxon::CALLABLE_FUNCTION, 'backend');",
+            "$response = jaxon()->newResponse(); return $response;",
+            "jaxon()->setOption('core.request.uri', 'backend.php');"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Sabiendo que tienes la librería JQuery cargada en el cliente web, ¿cuál de las siguientes instrucciones usarías en JAXON-PHP para cambiar el color de fondo a verde de un `div` con la clase `caja` usando sintaxis propia de selectores JQuery directamente desde el backend?\n\nfunction modificarCaja() {\n  $response = jaxon()->newResponse();\n  // LÍNEA A COMPLETAR\n  return $response;\n}",
+        "opciones": [
+            "$response->assign('div.caja', 'style', 'background-color: green;');",
+            "$response->jq('div.caja')->css('background-color','green');",
+            "$response->css('div.caja', 'background-color', 'green');",
+            "$response->style('caja', 'green');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Dado el siguiente formulario HTML, ¿qué código Javascript proporciona JAXON-JS de forma nativa para recoger automáticamente un objeto o array asociativo con todos los datos introducidos en el formulario y pasárselos a la función `jaxon_guardarUsuario`?\n\n<form id=\"datosUsuario\" onSubmit=\"jaxon_guardarUsuario( /* ¿Qué poner aquí? */ ); return false;\">\n  Nombre: <input id=\"nombre\" type=\"text\" name=\"nombre\"><br>\n  Edad: <input id=\"edad\" type=\"text\" name=\"edad\"><br>\n  <input type=\"submit\" value=\"Guardar\">\n</form>",
+        "opciones": [
+            "jaxon.$('datosUsuario').values()",
+            "document.getElementById('datosUsuario').getAll()",
+            "jaxon.getFormValues('datosUsuario')",
+            "<?=pm()->input('datosUsuario')?>"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Usando las fábricas de peticiones de JAXON-PHP (Request Factory y Parameter Factory) intercaladas en el HTML, ¿cuál de las siguientes opciones genera el código JavaScript adecuado para llamar a la función registrada `borrarnumero` recogiendo el valor del input `id_borrar` y pedir una confirmación previa al usuario?\n\n<?php\nuse function Jaxon\\pm;\nuse function Jaxon\\rq;\n?>\n<input type=\"button\" value=\"¡Borrar!\" onclick=\"/* LÍNEA A COMPLETAR */\">",
+        "opciones": [
+            "<?=rq()->call('borrarnumero',pm()->input('id_borrar'))->confirm('¿Estas seguro?');?>",
+            "<?=jaxon_borrarnumero(pm()->val('id_borrar'))->alert('¿Estas seguro?');?>",
+            "<?=pm()->confirm('¿Estas seguro?')->call('borrarnumero', 'id_borrar');?>",
+            "if(confirm('¿Estas seguro?')) { rq()->call('borrarnumero', 'id_borrar'); }"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Dado el siguiente fragmento JAXON-PHP, y suponiendo que en el documento HTML original existe el bloque `<div id=\"notificaciones\"><p>Aviso antiguo</p></div>`, ¿cuál será el resultado exacto en el DOM del navegador web tras ejecutarse la respuesta AJAX?\n\nfunction actualizarMensajes() {\n  $response = jaxon()->newResponse();\n  $response->prepend('notificaciones', 'innerHTML', '<p>Nuevo aviso</p>');\n  return $response;\n}",
+        "opciones": [
+            "Se sobrescribirá por completo: `<div id=\"notificaciones\"><p>Nuevo aviso</p></div>`",
+            "Se añadirá al final: `<div id=\"notificaciones\"><p>Aviso antiguo</p><p>Nuevo aviso</p></div>`",
+            "Se añadirá al principio: `<div id=\"notificaciones\"><p>Nuevo aviso</p><p>Aviso antiguo</p></div>`",
+            "Lanzará un error en la consola, ya que prepend solo sirve para la propiedad className y no para innerHTML."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "¿Qué método de la clase `Response` de JAXON-PHP debes usar si quieres instruir al navegador del cliente para que ejecute directamente una función Javascript específica (por ejemplo, `mostrarModal`) que el programador front-end ya ha definido previamente en el HTML?\n\nfunction notificarUsuario() {\n  $response = jaxon()->newResponse();\n  // LÍNEA A COMPLETAR\n  return $response;\n}",
+        "opciones": [
+            "$response->script('mostrarModal');",
+            "$response->call('mostrarModal');",
+            "$response->trigger('mostrarModal');",
+            "$response->execute('mostrarModal()');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9",
+        "pregunta": "En JAXON-PHP, ¿qué componente permite generar código JavaScript dinámicamente desde PHP para recoger el valor de un campo de formulario, usando por ejemplo la instrucción `pm()->input('numero')`?",
+        "opciones": [
+            "Request Factory",
+            "Parameter Factory",
+            "Response Factory",
+            "Jaxon-JS Core"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9",
+        "pregunta": "Si utilizas el método `$response->jq('div.alerta')->css('background-color', 'red');` en una función del backend para modificar el DOM, ¿qué requisito indispensable debe cumplir el documento HTML (frontend)?",
+        "opciones": [
+            "No requiere nada extra, JAXON incluye las librerías necesarias por defecto.",
+            "Debe incluir una etiqueta `<script>` apuntando al CDN oficial de JAXON-CSS.",
+            "Debe tener cargada previamente la librería JavaScript de JQuery.",
+            "Debe ejecutar `jaxon()->getJQuery()` en el setup inicial del script."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9",
+        "pregunta": "Al configurar el archivo que procesa las peticiones (por ejemplo `backend.php`), ¿cuál es el propósito de llamar al método `jaxon()->getScript()` y plasmar su resultado en el HTML?",
+        "opciones": [
+            "Obtener el código JavaScript generado por Jaxon con las funciones registradas para que puedan ser invocadas remotamente.",
+            "Generar el código CSS necesario para dar estilo a las respuestas de JAXON.",
+            "Establecer la ruta del archivo JavaScript principal de Jaxon-JS.",
+            "Ejecutar código de validación en el servidor antes de generar el DOM."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9",
+        "pregunta": "Dentro del código de una función PHP registrada en JAXON para procesar una petición AJAX, ¿qué tipo de objeto se debe retornar de forma obligatoria para evitar estropear la respuesta JSON generada?",
+        "opciones": [
+            "Un array asociativo nativo de PHP.",
+            "Un string con formato XML o JSON.",
+            "Una instancia de la clase genérica stdClass.",
+            "Una instancia de la clase Response."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9",
+        "pregunta": "¿Qué componente de JAXON-PHP se utiliza para generar código JavaScript directamente desde PHP que permita realizar invocaciones remotas al backend (desencadenar peticiones AJAX), como por ejemplo al usar `rq()->call('borrarNumero')`?",
+        "opciones": [
+            "Parameter Factory",
+            "Request Factory",
+            "Response Builder",
+            "Jaxon Plugin Manager"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9",
+        "pregunta": "¿Para qué sirve exactamente el método `jaxon.getFormValues('id_formulario')` cuando estamos configurando una petición AJAX en el lado del cliente con JAXON-JS?",
+        "opciones": [
+            "Para recopilar automáticamente todos los datos del formulario especificado por su ID y enviarlos en la petición AJAX.",
+            "Para validar en el cliente que todos los campos del formulario tienen el formato correcto antes de enviarlos.",
+            "Para limpiar (resetear) todos los valores de los inputs dentro de un formulario tras una respuesta exitosa.",
+            "Para transformar los datos de un formulario tradicional en un array asociativo dentro del backend PHP."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Dado el siguiente código usando la librería Leaflet para mostrar un mapa híbrido en el cliente, ¿cuál es la instrucción correcta para centrar el mapa en unas coordenadas concretas con un nivel de zoom determinado?\n\nlet mapa = L.map('mapa_div');\nlet latitud = 36.8401;\nlet longitud = -2.4699;\nlet zoom = 14;\n// ¿Qué línea falta aquí?",
+        "opciones": [
+            "mapa.setCenter([latitud, longitud], zoom);",
+            "mapa.setView([latitud, longitud], zoom);",
+            "L.centerMap(mapa, latitud, longitud, zoom);",
+            "mapa.addLayer(latitud, longitud).zoom(14);"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Observa el siguiente código para añadir un marcador a un mapa de Leaflet. ¿Qué método debes encadenar para que al hacer clic sobre el marcador se abra un pequeño cuadro de información (popup)?\n\nlet latitud = 36.5293;\nlet longitud = -6.2940;\nlet marcador = L.marker([latitud, longitud]).addTo(map);\n// ¿Qué instrucción asocia un texto informativo al marcador?",
+        "opciones": [
+            "marcador.setInfo('Catedral de Cádiz');",
+            "marcador.addTooltip('Catedral de Cádiz');",
+            "marcador.bindPopup('Catedral de Cádiz');",
+            "marcador.showText('Catedral de Cádiz');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Al desarrollar un cliente PHP con Guzzle para consumir un servicio web REST que exige autenticación HTTP Basic, ¿cómo se deben configurar las cabeceras en la petición HTTP?\n\n$clienteHTTP = new GuzzleHttp\\Client();\n$usuario = 'admin';\n$password = '1234';\n// LÍNEA A COMPLETAR\n$response = $clienteHTTP->request('GET', $url, ['headers' => $headers]);",
+        "opciones": [
+            "$headers = ['Authorization' => 'Basic ' . base64_encode($usuario . ':' . $password)];",
+            "$headers = ['WWW-Authenticate' => 'Basic ' . $usuario . ':' . $password];",
+            "$headers = ['Auth-Basic' => base64_encode($usuario . ':' . $password)];",
+            "$headers = ['Authorization' => 'Bearer ' . $usuario . ':' . $password];"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "¿Qué protocolo estándar se utiliza habitualmente en aplicaciones web híbridas para permitir que un usuario otorgue su consentimiento expreso y autorice a nuestra aplicación a acceder a su información privada en otro servicio (como Google Drive), sin necesidad de que nos ceda su contraseña?\n\n// El protocolo implica redirigir al usuario al proveedor de servicio para que inicie sesión allí y nos devuelva un código de autorización.",
+        "opciones": [
+            "SOAP",
+            "SAML",
+            "OAuth2",
+            "HTTP Digest"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Dado el siguiente script de un servicio web REST en PHP que atiende peticiones PUT o DELETE, ¿qué código debe usarse en la línea comentada para leer correctamente los datos en crudo (JSON) que se envían en el cuerpo de la petición HTTP?\n\n<?php\nsession_start();\nif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {\n  // LÍNEA A COMPLETAR\n  if ($datos !== false && isset($datos->id)) {\n     // Proceder a borrar\n  }\n}",
+        "opciones": [
+            "$datos = json_decode($_POST['data']);",
+            "$datos = json_decode(file_get_contents('php://input'));",
+            "$datos = json_decode($GLOBALS['HTTP_RAW_POST_DATA']);",
+            "$datos = json_decode(filter_input(INPUT_POST, 'json'));"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "Usando la librería Guzzle en PHP, quieres añadir un nuevo recurso (un monumento) realizando una petición POST a una API REST que espera recibir la carga útil en formato JSON puro. ¿Cuál es la forma correcta de enviar los datos en la petición?\n\n$clienteHTTP = new GuzzleHttp\\Client();\n$datosNuevoMonumento = [\n  'provincia' => 'Almería',\n  'nombre' => 'El cable inglés'\n];\n// ¿Cómo se envía la petición correctamente?",
+        "opciones": [
+            "$response = $clienteHTTP->post($url, ['form_params' => $datosNuevoMonumento]);",
+            "$response = $clienteHTTP->post($url, ['body' => $datosNuevoMonumento]);",
+            "$response = $clienteHTTP->post($url, ['json' => $datosNuevoMonumento]);",
+            "$response = $clienteHTTP->post($url, ['headers' => ['Content-Type' => 'application/json', 'data' => $datosNuevoMonumento]]);"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "En una aplicación web híbrida en PHP, se utiliza la librería SimpleXML para consumir un feed RSS público (XML) sobre noticias. ¿Qué función nativa de PHP debes usar para cargar directamente el documento XML desde una URL y convertirlo en un objeto manipulable?\n\n$url = \"http://www.juntadeandalucia.es/.../rss/...\";\n// LÍNEA A COMPLETAR\nforeach ($xml->item as $noticia) {\n  echo $noticia->title;\n}",
+        "opciones": [
+            "$xml = simplexml_load_string(file_get_contents($url));",
+            "$xml = simplexml_load_file($url);",
+            "$xml = new SimpleXMLElement($url);",
+            "Tanto la opción 0 como la opción 1 son métodos válidos para lograrlo."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 - RA 8 y 9",
+        "pregunta": "En una petición HTTP con Guzzle, si la autenticación falla (por ejemplo, credenciales incorrectas en HTTP Basic) el servidor web remoto retorna un código 401. ¿Cómo se debe gestionar este error de forma adecuada en el código PHP?\n\ntry {\n  $response = $clienteHTTP->request('GET', $url, ['headers' => $headers]);\n} catch (/* EXCEPCIÓN A CAPTURAR */ $e) {\n  if ($e->getResponse()->getStatusCode() == 401) {\n     echo \"Usuario y/o contraseña incorrectos\";\n  }\n}",
+        "opciones": [
+            "GuzzleHttp\\Exception\\RequestException",
+            "GuzzleHttp\\Exception\\AuthException",
+            "GuzzleHttp\\Exception\\HttpError",
+            "Exception"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - Tarea (JAXON y DOM)",
+        "pregunta": "En tu función auxiliar `logMessage`, utilizas el siguiente método de JAXON:\n\n$r->prepend('log', 'innerHTML', '<div><strong>'.date('Y-m-d H:i:s.u').'</strong>:'. print_r($dato, true) . '</div>');\n\n¿Qué efecto tiene exactamente el método `prepend` sobre el elemento HTML con id='log'?",
+        "opciones": [
+            "Sobrescribe por completo todo el contenido del elemento.",
+            "Añade el mensaje de log al final del contenido que ya tuviera el elemento.",
+            "Añade el mensaje de log al principio del contenido que ya tuviera el elemento.",
+            "Elimina el elemento con id='log' y lo vuelve a crear con el nuevo contenido."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - Tarea (JAXON y Validación)",
+        "pregunta": "En la función `registrarPeliculaRMM`, antes de validar los datos del formulario, ejecutas este bucle:\n\n$campos = ['titulo', 'genero', 'direccion', 'duracion', 'argumento', 'anio'];\nforeach($campos as $campo) {\n  $response->assign($campo.'_errores', 'innerHTML', '');\n}\n\n¿Cuál es el objetivo principal de estas líneas?",
+        "opciones": [
+            "Borrar el valor que el usuario escribió en los inputs del formulario para que empiece de cero.",
+            "Limpiar visualmente cualquier mensaje de error anterior de la interfaz, dejándola en blanco antes de validar de nuevo.",
+            "Eliminar las variables PHP de la memoria del servidor para evitar duplicados en la base de datos.",
+            "Asignar un array vacío a los errores devueltos por el modelo Pelicula."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - Tarea (Guzzle y APIs)",
+        "pregunta": "En tu función `buscarPeliculasOMDBRMM`, configuras el cliente HTTP de Guzzle de la siguiente manera:\n\n$client = new \\GuzzleHttp\\Client(['http_errors' => false]);\n$res = $client->request('GET', $url);\n\n¿Por qué es de gran utilidad la opción `['http_errors' => false]` en este contexto?",
+        "opciones": [
+            "Para que Guzzle lance una excepción (Exception) automáticamente y detenga el script si la API devuelve un código 404 o 500.",
+            "Para ignorar los errores de sintaxis en tu propio código PHP e intentar compilarlo igualmente.",
+            "Para forzar a la API remota de OMDB a devolver siempre un código HTTP 200 OK pase lo que pase.",
+            "Para evitar que Guzzle lance excepciones ante errores HTTP (como 404) y permitirte procesar la respuesta manualmente evaluando `$res->getStatusCode()`."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 - Tarea (JAXON Frontend/Backend)",
+        "pregunta": "Tras insertar correctamente una película en la base de datos, tu función `registrarPeliculaRMM` ejecuta la siguiente instrucción:\n\n$response->script('jaxon_listarPeliculasRMM();');\n\n¿Qué consigue exactamente esta línea en la aplicación?",
+        "opciones": [
+            "Registra internamente la función en el servidor para que Jaxon sepa que existe.",
+            "Ordena al navegador del cliente que ejecute esa función Javascript, lo que desencadenará otra petición AJAX para recargar la tabla de películas automáticamente.",
+            "Imprime una etiqueta `<script>` en el archivo logs.txt del servidor.",
+            "Muestra un mensaje emergente de alerta (alert) en el navegador del usuario avisando de que se va a listar."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - Tarea (JSON en PHP)",
+        "pregunta": "Al recibir la respuesta de la API externa de OMDB, procesas el cuerpo del mensaje (JSON) utilizando una función nativa de PHP:\n\n$datos = json_decode($body, true);\n\n¿Qué tipo de dato devuelve esta función gracias a que has incluido el segundo parámetro a `true`?",
+        "opciones": [
+            "Un objeto de la clase estándar de PHP (stdClass).",
+            "Una cadena de texto (string) con el JSON saneado.",
+            "Un array asociativo nativo de PHP.",
+            "Un objeto instanciado de la clase Jaxon\\Response."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - Tarea (Frontend JAXON)",
+        "pregunta": "En tu archivo index, para enviar todos los datos del formulario de nueva película a la función `registrarPeliculaRMM` usando el generador de código de JAXON, utilizas:\n\n<?=rq()->call('registrarPeliculaRMM', pm()->form('nuevaPelicula'))?>\n\n¿Qué estructura de datos recibe exactamente el parámetro `$formulario` en la función PHP del backend correspondiente al usar `pm()->form(...)`?",
+        "opciones": [
+            "Un objeto JSON en crudo (`application/json`).",
+            "Un array asociativo de PHP donde las claves son los atributos `name` de los inputs.",
+            "Un objeto de la clase `FormData` nativo de PHP.",
+            "Una cadena de texto con los parámetros codificados en la URL (query string)."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - Tarea (Validación OMDB)",
+        "pregunta": "En tu función `buscarPeliculasOMDBRMM`, tras realizar la petición a la API externa con Guzzle y decodificar el cuerpo con `json_decode`, realizas la siguiente comprobación:\n\n$datos = json_decode($body, true);\nif (json_last_error() !== JSON_ERROR_NONE) {\n   logMessage($response, \"Error: El formato JSON recibido de OMDB no es válido.\");\n   return $response;\n}\n\n¿Cuál es el propósito exacto de usar la función `json_last_error()` aquí?",
+        "opciones": [
+            "Comprobar si Guzzle ha devuelto un error 404 o 500 al realizar la petición HTTP remota.",
+            "Verificar que la API externa de OMDB no haya devuelto una lista vacía de películas.",
+            "Confirmar que la respuesta recibida se ha podido transformar en un array asociativo en PHP sin errores de sintaxis en el JSON.",
+            "Forzar a PHP a que lance una excepción de red si el JSON devuelto supera la memoria disponible en el servidor."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - Tarea (JAXON DOM y Estilos)",
+        "pregunta": "Al procesar de forma exitosa los resultados de la API de OMDB en `buscarPeliculasOMDBRMM`, utilizas la siguiente instrucción del objeto Response de JAXON para hacer visible el contenedor de la tabla en el navegador:\n\n$response->assign('peliculasOMDB_encontradas', 'style.display', 'block');\n\n¿Qué está modificando exactamente el método `assign` al utilizar estos parámetros?",
+        "opciones": [
+            "El contenido interno (innerHTML) de la etiqueta, reemplazándolo por la palabra 'block'.",
+            "El atributo de clase (className) añadiéndole una nueva clase CSS llamada 'block'.",
+            "La propiedad `display` del objeto de estilos (`style`) asociado a ese elemento dentro del DOM.",
+            "El atributo `visible` nativo de las etiquetas semánticas de HTML5."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - Tarea (Lógica de Modelos de Base de Datos)",
+        "pregunta": "Observa el modelo de tu base de datos para borrar una película (`Pelicula::borrar($id)`). Tras ejecutar la consulta SQL utilizando un parámetro `?`, retornas una comprobación sobre las filas afectadas:\n\n$filasAfectadas = DB::doSQL($conexion, $sql, [$id]);\nreturn ($filasAfectadas > 0);\n\n¿Qué ocurrirá con exactitud si a esta función se le pasa un ID de película que no existe en la base de datos?",
+        "opciones": [
+            "Lanzará una excepción o error crítico (Exception) deteniendo de inmediato la ejecución del script PHP.",
+            "La función retornará `false` porque la base de datos indicará que el número de filas borradas fue 0.",
+            "La función retornará `true` porque la conexión con la base de datos y la sintaxis SQL fueron exitosas (aunque no borrara nada).",
+            "Retornará un array vacío `[]` indicando que no se encontraron resultados coincidentes."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - Tarea (Ciclo de vida JAXON)",
+        "pregunta": "En la parte final de la vista de tu aplicación (`index.php`), justo antes de cerrar el `<body>`, incluyes un bloque con el siguiente código JavaScript:\n\n<script>\n// Carga automática del listado de películas al entrar en la página\njaxon_listarPeliculasRMM();\n</script>\n\nSabiendo que esta función está previamente registrada en el *backend*, ¿qué ocurre en el entorno del cliente cuando el navegador web lee y ejecuta esa línea por primera vez?",
+        "opciones": [
+            "Se ejecuta directamente la consulta a la base de datos (SELECT) en el propio navegador web interpretando PHP como texto plano.",
+            "La librería Jaxon-JS intercepta la llamada y envía una petición AJAX asíncrona al servidor web para que este ejecute el método PHP y devuelva los comandos de actualización del DOM.",
+            "El navegador detiene la carga visual y envía automáticamente todos los formularios de la página por el método POST para sincronizarse.",
+            "Se genera un error por consola, ya que las llamadas a funciones autogeneradas por Jaxon-JS solo pueden estar asociadas al evento `onclick` de un componente visible."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
+        "pregunta": "Analizando la función `listarPeliculasRMM` de la tarea, se genera un botón para borrar películas con el siguiente código[cite: 5]:\n\n$htmlPeliculas .= \"<button onclick='if(confirm(\\\"¿Estás seguro de que deseas borrar esta película?\\\")) { jaxon_borrarPeliculaRMM({$pelicula['id']}); }'>Borrar</button>\";\n\n¿Qué ocurre exactamente al pulsar este botón en el cliente web si el usuario acepta la confirmación?",
+        "opciones": [
+            "Se recarga la página HTML por completo y se envía el ID mediante una petición POST tradicional para borrar la película.",
+            "Se ejecuta una función JavaScript autogenerada por JAXON que lanza una petición AJAX asíncrona al servidor para invocar la función PHP registrada `borrarPeliculaRMM`.",
+            "Se borra la película directamente del DOM del navegador mediante JavaScript sin necesidad de comunicarse con el servidor backend.",
+            "Se genera un error, porque la función `jaxon_borrarPeliculaRMM` debe escribirse en PHP nativo y no puede ser llamada desde un evento `onclick` de HTML."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
+        "pregunta": "En la función PHP `registrarPeliculaRMM($formulario)` de la tarea, cuando falla la validación de un campo, se ejecuta la siguiente instrucción usando la instancia `$response` de Jaxon[cite: 23]:\n\n$response->assign($campo.'_errores', 'innerHTML', $mensaje);\n\n¿Qué efecto tiene esta llamada sobre el documento HTML que el usuario visualiza tras procesarse la respuesta AJAX?",
+        "opciones": [
+            "Asigna el mensaje de error directamente a la propiedad 'value' de los inputs del formulario para que el usuario tenga que sobreescribirlos.",
+            "Muestra una ventana emergente tipo modal bloqueante en el navegador con el contenido de la variable `$mensaje`.",
+            "Sustituye el contenido HTML interno (innerHTML) del elemento del DOM cuyo atributo ID coincide con `$campo.'_errores'` por el texto del mensaje de error.",
+            "Crea automáticamente un nuevo div oculto en el DOM llamado 'errores' y le inyecta el texto del mensaje mediante la función prepend."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
+        "pregunta": "Observando el código de la tarea, una vez insertada o borrada correctamente una película en la base de datos desde el backend, se ejecuta la siguiente línea en JAXON-PHP antes de retornar la respuesta[cite: 29, 33]:\n\n$response->script('jaxon_listarPeliculasRMM();');\n\nSegún la teoría de JAXON, ¿cuál es el objetivo de utilizar el método `script()` en este contexto particular?",
+        "opciones": [
+            "Obligar al navegador cliente a ejecutar la función JavaScript `jaxon_listarPeliculasRMM();`, la cual desencadenará instantáneamente otra petición AJAX para refrescar la tabla de la interfaz.",
+            "Registrar la función `listarPeliculasRMM` en el servidor PHP para que pueda ser visible por el router en la siguiente recarga de la aplicación web.",
+            "Inyectar todo el código PHP encargado de listar películas directamente como texto plano dentro del objeto JSON de la respuesta AJAX.",
+            "Ejecutar un script SQL de forma remota en la base de datos del servidor web utilizando JAXON-JS como puente."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
+        "pregunta": "En la función `buscarPeliculasOMDBRMM` que consume una API REST externa (OMDB) utilizando Guzzle, se incluye el siguiente bloque para procesar el cuerpo de la respuesta HTTP[cite: 39, 40, 41]:\n\n$body = $res->getBody();\n$datos = json_decode($body, true);\nif (json_last_error() !== JSON_ERROR_NONE) {\n  logMessage($response, \"Error: El formato JSON recibido de OMDB no es válido.\");\n  return $response;\n}\n\nSegún los conceptos de integración y consumo de APIs de la Unidad 7, ¿para qué sirve exactamente pasar el parámetro `true` en la función `json_decode($body, true)`?",
+        "opciones": [
+            "Para indicar explícitamente a PHP que los datos devueltos por la API son seguros y han pasado la validación SSL.",
+            "Para forzar a que la cadena JSON recibida se convierta y decodifique como un array asociativo de PHP en lugar de un objeto tipo stdClass.",
+            "Para realizar un chequeo estricto que devuelva un booleano `true` si el JSON está bien formado, o `false` si tiene errores de sintaxis.",
+            "Para asegurar que JAXON entienda automáticamente la respuesta y la asigne directamente al frontend sin necesidad de la clase Response."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
+        "pregunta": "Analizando la parte final del archivo de configuración principal (`setup.docx`) de la tarea, encontramos el registro de las funciones [cite: 50]:\n\n$jaxon->register(Jaxon::CALLABLE_FUNCTION, 'registrarPeliculaRMM');\n\nSabiendo que esta función PHP espera recibir un parámetro `$formulario` que contenga todos los datos introducidos por el usuario, ¿cómo se debería recoger toda esa información desde el frontend web usando JAXON-JS para enviarla correctamente al backend? [cite: 542]",
+        "opciones": [
+            "Usando la llamada `jaxon_registrarPeliculaRMM(jaxon.getFormValues('id_del_formulario'));`, la cual recopila automáticamente los inputs de dicho formulario.",
+            "Mediante la instrucción `jaxon_registrarPeliculaRMM(document.getElementById('id_del_formulario').innerHTML);`",
+            "Pasando directamente la variable superglobal `$_POST` como argumento: `jaxon_registrarPeliculaRMM($_POST);`",
+            "Usando el Request Factory desde el propio cliente web: `jaxon_registrarPeliculaRMM(rq()->call('id_del_formulario'));`"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "Al desarrollar una aplicación con la librería Jaxon, la comunicación asíncrona se gestiona mediante dos componentes fundamentales. ¿Cuáles son?",
+        "opciones": [
+            "Jaxon-HTML y Jaxon-CSS, encargados de la maquetación y el diseño web.",
+            "Jaxon-PHP (que recibe y procesa la petición en el servidor) y Jaxon-JS (que interpreta la respuesta en el navegador).",
+            "Jaxon-React y Jaxon-Angular, frameworks para el desarrollo de interfaces de usuario.",
+            "Jaxon-XML y Jaxon-JSON, formatos de datos para la transferencia de información."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "Cuando creamos una función PHP en el backend para ser invocada mediante Jaxon, ¿qué tipo de objeto debe retornar obligatoriamente la función para que la respuesta AJAX no se corrompa?",
+        "opciones": [
+            "Un array asociativo convertido mediante json_encode().",
+            "Una cadena de texto plana (string) con las etiquetas HTML a mostrar.",
+            "Un objeto instanciado de la clase Jaxon\\Response (ej: $response = jaxon()->newResponse();).",
+            "Un objeto estándar nativo de PHP (stdClass) con los atributos a modificar."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "¿Cuál es la instrucción correcta en el código PHP para registrar una función y permitir que Jaxon la pueda invocar de forma remota vía AJAX desde el cliente?",
+        "opciones": [
+            "jaxon()->register(Jaxon::CALLABLE_FUNCTION, 'nombreDeLaFuncion');",
+            "jaxon()->export(Jaxon::AJAX, 'nombreDeLaFuncion');",
+            "jaxon()->add('nombreDeLaFuncion');",
+            "jaxon()->bind('nombreDeLaFuncion', Jaxon::JAVASCRIPT);"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "En el archivo 'backend.php' (o el script encargado de recibir las peticiones de Jaxon), ¿qué método se debe llamar para que la librería capture, procese la petición AJAX entrante y devuelva la respuesta al navegador?",
+        "opciones": [
+            "jaxon()->receiveData();",
+            "jaxon()->processRequest();",
+            "jaxon()->executeAjax();",
+            "jaxon()->startSession();"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "Si dentro de la respuesta de Jaxon-PHP necesitas cambiar el contenido (innerHTML) de un elemento HTML concreto localizado mediante su 'id', ¿qué método de la clase Response debes utilizar?",
+        "opciones": [
+            "$response->setHTML('id_del_elemento', 'nuevo contenido');",
+            "$response->write('id_del_elemento', 'nuevo contenido');",
+            "$response->assign('id_del_elemento', 'innerHTML', 'nuevo contenido');",
+            "$response->updateDOM('id_del_elemento', 'nuevo contenido');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "Jaxon-PHP proporciona fábricas (factories) como pm() [Parameter Factory] y rq() [Request Factory]. ¿Cuál es su utilidad principal a un nivel básico?",
+        "opciones": [
+            "Se utilizan para generar dinámicamente desde PHP el código JavaScript necesario para realizar llamadas remotas y recoger datos de los formularios sin tener que escribir JavaScript puro.",
+            "Sirven para conectar la aplicación directamente con la base de datos MySQL eludiendo el uso de modelos PDO.",
+            "Comprueban y validan de forma automática si un usuario tiene iniciada la sesión (Autenticación) en el servidor web.",
+            "Permiten generar archivos CSS dinámicos desde el servidor para cambiar los colores de la aplicación."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "Una vez que registras la función PHP `guardarDatos()` mediante Jaxon, la librería generará automáticamente una función JavaScript equivalente que el desarrollador podrá invocar desde el navegador. Por defecto, ¿cómo se llamará esa función en JavaScript?",
+        "opciones": [
+            "ajax_guardarDatos()",
+            "jaxon_guardarDatos()",
+            "call_guardarDatos()",
+            "js_guardarDatos()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - JAXON Básico",
+        "pregunta": "¿Qué ocurre si en una función PHP registrada con Jaxon utilizas la instrucción `echo 'Hola Mundo';` en lugar de utilizar los métodos de la clase Response?",
+        "opciones": [
+            "Se mostrará una ventana emergente (alert) nativa del navegador con el mensaje 'Hola Mundo'.",
+            "El texto 'Hola Mundo' se escribirá correctamente en la parte superior del documento HTML visualizado.",
+            "La estructura del mensaje JSON de Jaxon se corromperá, el cliente Jaxon-JS no podrá interpretar la respuesta adecuadamente y fallará la actualización en el navegador.",
+            "Se creará automáticamente una capa transparente sobre el mapa (Leaflet) para mostrar el mensaje flotante."
+        ],
+        "correcta": 2
+    },
+     {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "En el archivo principal donde configuras la vista de tu aplicación web (frontend), ¿cómo le indicas a JAXON cuál es la ruta del archivo PHP (el backend) que se encargará de recibir y procesar las peticiones AJAX?",
+        "opciones": [
+            "jaxon()->setOption('core.request.uri', 'backend.php');",
+            "jaxon()->setUrl('backend.php');",
+            "A través del atributo 'action' de la etiqueta <form action='backend.php'>.",
+            "jaxon()->register(Jaxon::BACKEND_URL, 'backend.php');"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "A la hora de incluir JAXON en nuestra página web, necesitamos imprimir varias variables en el HTML. ¿Qué método nos devuelve el código JavaScript generado automáticamente con las funciones PHP que hemos registrado para poder invocarlas desde el cliente?",
+        "opciones": [
+            "jaxon()->getJs()",
+            "jaxon()->getFunctions()",
+            "jaxon()->getScript()",
+            "jaxon()->exportJavascript()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "Dado el siguiente código de un archivo 'backend.php' encargado de despachar peticiones AJAX, ¿qué método es el adecuado para comprobar si realmente hay una petición JAXON entrante lista para ser procesada?\n\nif ( /* LÍNEA A COMPLETAR */ ) {\n  jaxon()->processRequest();\n}",
+        "opciones": [
+            "jaxon()->isAjaxRequest()",
+            "jaxon()->canProcessRequest()",
+            "jaxon()->hasData()",
+            "jaxon()->checkRequest()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "Dentro de una función PHP registrada con JAXON, ¿qué instrucción exacta debemos usar sobre el objeto de respuesta para que el navegador del usuario muestre una ventana emergente nativa con el texto 'Operación completada'?",
+        "opciones": [
+            "$response->window('Operación completada');",
+            "$response->popup('Operación completada');",
+            "echo \"<script>alert('Operación completada');</script>\";",
+            "$response->alert('Operación completada');"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "Imagina que registras una función en JAXON-PHP para ser invocada vía AJAX. En lugar de instanciar y retornar un objeto de la clase Response, decides mostrar un mensaje directamente usando la instrucción `echo 'Hola Mundo';`. ¿Qué ocurrirá en la aplicación?",
+        "opciones": [
+            "El mensaje 'Hola Mundo' se mostrará sin problemas en la parte superior del documento HTML.",
+            "El código JSON de la respuesta de Jaxon se corromperá o estropeará, haciendo que el cliente web no pueda actualizar la interfaz.",
+            "JAXON detectará automáticamente el 'echo' y lo convertirá en un objeto Response de forma interna.",
+            "Aparecerá un mensaje de alerta nativo de Javascript en el navegador con el texto 'Hola Mundo'."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "Dada la siguiente función registrada en el backend, ¿qué modificará exactamente en el documento HTML del cliente cuando se reciba la respuesta asíncrona?\n\nfunction actualizarCaja() {\n  $response = jaxon()->newResponse();\n  $response->assign('caja', 'innerHTML', 'Actualizado');\n  return $response;\n}",
+        "opciones": [
+            "Creará un nuevo elemento <div> con el atributo id='caja' al final del documento.",
+            "Cambiará el contenido interno (innerHTML) del elemento que tenga el atributo id='caja', sustituyéndolo por 'Actualizado'.",
+            "Buscará todos los elementos que tengan la clase css 'caja' y los actualizará.",
+            "Modificará el valor (value) de un formulario cuyo nombre (name) sea 'caja'."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Unidad 7 - JAXON Sintaxis Básica",
+        "pregunta": "Haciendo uso de las fábricas (Request Factory y Parameter Factory) de JAXON-PHP dentro de la vista HTML, ¿cuál de las siguientes opciones es la sintaxis correcta para invocar a la función registrada 'borrarnumero' enviándole el valor introducido por el usuario en el campo `<input id='numeroABorrar'>`?",
+        "opciones": [
+            "<?=rq()->call('borrarnumero', pm()->input('numeroABorrar'))?>",
+            "<?=jaxon->call('borrarnumero', getElementById('numeroABorrar'))?>",
+            "<?=jaxon_borrarnumero(pm()->val('numeroABorrar'))?>",
+            "<?=rq()->invoke('borrarnumero', jaxon.$('numeroABorrar').value)?>"
+        ],
+        "correcta": 0
+    }
 
 
 

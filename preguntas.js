@@ -2213,7 +2213,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 0
     },
     {
-        "tema": "Unidad 7 - Tarea (JAXON y DOM)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "En tu función auxiliar `logMessage`, utilizas el siguiente método de JAXON:\n\n$r->prepend('log', 'innerHTML', '<div><strong>'.date('Y-m-d H:i:s.u').'</strong>:'. print_r($dato, true) . '</div>');\n\n¿Qué efecto tiene exactamente el método `prepend` sobre el elemento HTML con id='log'?",
         "opciones": [
             "Sobrescribe por completo todo el contenido del elemento.",
@@ -2224,7 +2224,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 2
     },
     {
-        "tema": "Unidad 7 - Tarea (JAXON y Validación)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "En la función `registrarPeliculaRMM`, antes de validar los datos del formulario, ejecutas este bucle:\n\n$campos = ['titulo', 'genero', 'direccion', 'duracion', 'argumento', 'anio'];\nforeach($campos as $campo) {\n  $response->assign($campo.'_errores', 'innerHTML', '');\n}\n\n¿Cuál es el objetivo principal de estas líneas?",
         "opciones": [
             "Borrar el valor que el usuario escribió en los inputs del formulario para que empiece de cero.",
@@ -2235,7 +2235,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 1
     },
     {
-        "tema": "Unidad 7 - Tarea (Guzzle y APIs)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "En tu función `buscarPeliculasOMDBRMM`, configuras el cliente HTTP de Guzzle de la siguiente manera:\n\n$client = new \\GuzzleHttp\\Client(['http_errors' => false]);\n$res = $client->request('GET', $url);\n\n¿Por qué es de gran utilidad la opción `['http_errors' => false]` en este contexto?",
         "opciones": [
             "Para que Guzzle lance una excepción (Exception) automáticamente y detenga el script si la API devuelve un código 404 o 500.",
@@ -2246,7 +2246,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 3
     },
     {
-        "tema": "Unidad 7 - Tarea (JAXON Frontend/Backend)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "Tras insertar correctamente una película en la base de datos, tu función `registrarPeliculaRMM` ejecuta la siguiente instrucción:\n\n$response->script('jaxon_listarPeliculasRMM();');\n\n¿Qué consigue exactamente esta línea en la aplicación?",
         "opciones": [
             "Registra internamente la función en el servidor para que Jaxon sepa que existe.",
@@ -2257,7 +2257,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 1
     },
     {
-        "tema": "Unidad 7 - Tarea (JSON en PHP)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "Al recibir la respuesta de la API externa de OMDB, procesas el cuerpo del mensaje (JSON) utilizando una función nativa de PHP:\n\n$datos = json_decode($body, true);\n\n¿Qué tipo de dato devuelve esta función gracias a que has incluido el segundo parámetro a `true`?",
         "opciones": [
             "Un objeto de la clase estándar de PHP (stdClass).",
@@ -2268,7 +2268,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 2
     },
     {
-        "tema": "Unidad 7 - Tarea (Frontend JAXON)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "En tu archivo index, para enviar todos los datos del formulario de nueva película a la función `registrarPeliculaRMM` usando el generador de código de JAXON, utilizas:\n\n<?=rq()->call('registrarPeliculaRMM', pm()->form('nuevaPelicula'))?>\n\n¿Qué estructura de datos recibe exactamente el parámetro `$formulario` en la función PHP del backend correspondiente al usar `pm()->form(...)`?",
         "opciones": [
             "Un objeto JSON en crudo (`application/json`).",
@@ -2279,7 +2279,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 1
     },
     {
-        "tema": "Unidad 7 - Tarea (Validación OMDB)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "En tu función `buscarPeliculasOMDBRMM`, tras realizar la petición a la API externa con Guzzle y decodificar el cuerpo con `json_decode`, realizas la siguiente comprobación:\n\n$datos = json_decode($body, true);\nif (json_last_error() !== JSON_ERROR_NONE) {\n   logMessage($response, \"Error: El formato JSON recibido de OMDB no es válido.\");\n   return $response;\n}\n\n¿Cuál es el propósito exacto de usar la función `json_last_error()` aquí?",
         "opciones": [
             "Comprobar si Guzzle ha devuelto un error 404 o 500 al realizar la petición HTTP remota.",
@@ -2290,7 +2290,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 2
     },
     {
-        "tema": "Unidad 7 - Tarea (JAXON DOM y Estilos)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "Al procesar de forma exitosa los resultados de la API de OMDB en `buscarPeliculasOMDBRMM`, utilizas la siguiente instrucción del objeto Response de JAXON para hacer visible el contenedor de la tabla en el navegador:\n\n$response->assign('peliculasOMDB_encontradas', 'style.display', 'block');\n\n¿Qué está modificando exactamente el método `assign` al utilizar estos parámetros?",
         "opciones": [
             "El contenido interno (innerHTML) de la etiqueta, reemplazándolo por la palabra 'block'.",
@@ -2301,7 +2301,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 2
     },
     {
-        "tema": "Unidad 7 - Tarea (Lógica de Modelos de Base de Datos)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "Observa el modelo de tu base de datos para borrar una película (`Pelicula::borrar($id)`). Tras ejecutar la consulta SQL utilizando un parámetro `?`, retornas una comprobación sobre las filas afectadas:\n\n$filasAfectadas = DB::doSQL($conexion, $sql, [$id]);\nreturn ($filasAfectadas > 0);\n\n¿Qué ocurrirá con exactitud si a esta función se le pasa un ID de película que no existe en la base de datos?",
         "opciones": [
             "Lanzará una excepción o error crítico (Exception) deteniendo de inmediato la ejecución del script PHP.",
@@ -2312,7 +2312,7 @@ const BBDD_PREGUNTAS = [
         "correcta": 1
     },
     {
-        "tema": "Unidad 7 - Tarea (Ciclo de vida JAXON)",
+        "tema": "Unidad 7 - RAs 8 y 9 (Práctica)",
         "pregunta": "En la parte final de la vista de tu aplicación (`index.php`), justo antes de cerrar el `<body>`, incluyes un bloque con el siguiente código JavaScript:\n\n<script>\n// Carga automática del listado de películas al entrar en la página\njaxon_listarPeliculasRMM();\n</script>\n\nSabiendo que esta función está previamente registrada en el *backend*, ¿qué ocurre en el entorno del cliente cuando el navegador web lee y ejecuta esa línea por primera vez?",
         "opciones": [
             "Se ejecuta directamente la consulta a la base de datos (SELECT) en el propio navegador web interpretando PHP como texto plano.",

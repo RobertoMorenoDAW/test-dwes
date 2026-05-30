@@ -2541,6 +2541,4382 @@ const BBDD_PREGUNTAS = [
             "<?=rq()->invoke('borrarnumero', jaxon.$('numeroABorrar').value)?>"
         ],
         "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Según el archivo de configuración de tu tarea, ¿qué fichero se utiliza en Laravel para definir las credenciales de acceso a la base de datos (DB_DATABASE, DB_USERNAME, etc.)?",
+        "opciones": [
+            "config.php",
+            "database.php",
+            ".env",
+            "db_config.json"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En el archivo .env de tu tarea aparece la línea 'DB_CONNECTION=mysql'. ¿Qué indica este parámetro?",
+        "opciones": [
+            "El nombre de la base de datos a la que conectarse.",
+            "El sistema gestor de bases de datos que utilizará Laravel.",
+            "La contraseña del usuario de MySQL.",
+            "El nombre de la tabla principal de la aplicación."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Teniendo en cuenta lo dicho por el profesor sobre las migraciones, ¿cuál es el propósito principal del método up() en el archivo de migración de 'peliculas'?",
+        "opciones": [
+            "Rellenar la tabla 'peliculas' con datos de prueba.",
+            "Eliminar la tabla 'peliculas' si ya existe.",
+            "Definir la estructura, campos y relaciones de la tabla 'peliculas' en la base de datos.",
+            "Validar los datos del formulario de películas."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En la migración de 'criticas' de la tarea se usa '$table->timestamps();'. ¿Qué efecto tiene esta instrucción en la base de datos?",
+        "opciones": [
+            "Crea automáticamente los campos 'created_at' y 'updated_at'.",
+            "Crea un campo para guardar la duración de la película en minutos.",
+            "Guarda la fecha exacta en la que se ejecuta la migración.",
+            "Crea un campo id autoincremental."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En el archivo de migración de criticas vemos la línea: '$table->foreignId('pelicula')->constrained('peliculas')'. ¿Qué hace esta línea?",
+        "opciones": [
+            "Crea una nueva tabla llamada 'pelicula'.",
+            "Establece una clave primaria compuesta en la tabla críticas.",
+            "Genera un campo 'pelicula' que actúa como clave foránea vinculada a la tabla 'peliculas'.",
+            "Elimina la restricción de clave foránea de la tabla películas."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "¿Qué comando de Artisan (mencionado en el temario) se utiliza para aplicar en la base de datos los cambios definidos en los archivos de migración?",
+        "opciones": [
+            "php artisan make:migration",
+            "php artisan db:seed",
+            "php artisan migrate",
+            "php artisan serve"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Según la videoconferencia, a diferencia de las migraciones, ¿cuál es la finalidad del archivo 'RMMSeeder.php' en tu tarea?",
+        "opciones": [
+            "Definir las rutas de acceso públicas y privadas.",
+            "Poblar o rellenar las tablas de la base de datos con datos iniciales (usuarios, géneros y películas).",
+            "Crear las tablas vacías en la base de datos MySQL.",
+            "Validar las críticas que insertan los usuarios."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En 'RMMSeeder.php' usas la instrucción 'Hash::make('RMM1')'. ¿Para qué sirve este código?",
+        "opciones": [
+            "Para generar un token CSRF para el formulario.",
+            "Para encriptar la contraseña del usuario antes de guardarla en la base de datos.",
+            "Para validar que el email sea único.",
+            "Para crear un nuevo id aleatorio."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "El profesor destacó el uso de Eloquent. ¿Qué es Eloquent en Laravel?",
+        "opciones": [
+            "El sistema de enrutamiento web.",
+            "El motor de plantillas para generar el HTML.",
+            "El ORM que permite interactuar con la base de datos usando clases y objetos PHP.",
+            "Una herramienta para encriptar contraseñas."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En el modelo 'GeneroRMM.php', tienes la instrucción 'protected $table = 'generos';'. ¿Por qué se utiliza esto?",
+        "opciones": [
+            "Para indicar los campos que se pueden asignar masivamente.",
+            "Para especificar el nombre exacto de la tabla en la base de datos si no sigue la convención automática de Laravel.",
+            "Para evitar que la tabla pueda ser borrada por error.",
+            "Para ocultar la tabla en las consultas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Si observamos el modelo 'PeliculaRMM.php', vemos 'protected $fillable = [...]'. ¿Cuál de las siguientes afirmaciones es la que explicó el profesor sobre esta variable?",
+        "opciones": [
+            "Contiene los campos de la tabla que NO pueden rellenarse de forma masiva.",
+            "Es un array con los campos obligatorios del formulario.",
+            "Contiene los campos que Laravel rellenará automáticamente (como timestamps).",
+            "Es un array con los campos de la tabla que SÍ se pueden rellenar de forma masiva."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En el modelo 'PeliculaRMM.php', defines la función 'criticas(): HasMany'. Esto establece que una película...",
+        "opciones": [
+            "Pertenece a una única crítica.",
+            "Tiene muchas críticas (relación 1:N).",
+            "Pertenece a muchos géneros (relación N:M).",
+            "No puede tener críticas asociadas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En el modelo 'CriticaRMM.php', usas el método 'belongsTo(PeliculaRMM::class, 'pelicula')'. Según la teoría de Eloquent, esto significa que:",
+        "opciones": [
+            "Una crítica pertenece a una única película (relación N:1 o inversa de 1:N).",
+            "Una crítica tiene muchas películas.",
+            "La tabla críticas se va a unir masivamente con la tabla películas.",
+            "La crítica será borrada automáticamente si la película no existe."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Si en el controlador 'CriticaControllerRMM.php' utilizamos 'PeliculaRMM::find($pelicula_id)', ¿qué hace exactamente este código?",
+        "opciones": [
+            "Borra la película con ese ID.",
+            "Busca todas las películas que contengan ese texto en el título.",
+            "Busca y devuelve una única instancia del modelo PeliculaRMM cuyo ID coincida con el proporcionado.",
+            "Genera una nueva película con ese ID."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En la creación de la crítica (CriticaControllerRMM), se hace '$critica = new CriticaRMM();' y luego '$critica->save();'. ¿Para qué sirve el método 'save()'?",
+        "opciones": [
+            "Para borrar la crítica anterior.",
+            "Para guardar la nueva instancia (objeto) como un registro en la tabla de la base de datos.",
+            "Para validar los datos del objeto.",
+            "Para descargar un archivo JSON con la crítica."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Para eliminar una crítica en el método 'borrarCriticaRMM', ¿qué método de Eloquent se invoca sobre el objeto '$critica' recuperado?",
+        "opciones": [
+            "$critica->remove();",
+            "$critica->drop();",
+            "$critica->delete();",
+            "$critica->destroy();"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "El profesor recalcó el flujo de un controlador. Cuando se reciben datos por POST en 'crearNuevaCriticaRMM', ¿mediante qué objeto se capturan los datos enviados en el formulario?",
+        "opciones": [
+            "El objeto Session",
+            "El objeto Model",
+            "El objeto Request ($request)",
+            "El objeto Response"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En 'CriticaControllerRMM.php', encontramos el bloque '$request->validate([...])'. ¿Cuál es su objetivo principal?",
+        "opciones": [
+            "Verificar si el usuario tiene sesión iniciada.",
+            "Comprobar que los datos del formulario cumplen con unas reglas específicas antes de procesarlos.",
+            "Modificar los datos del formulario para evitar inyección SQL.",
+            "Guardar directamente los datos en la base de datos."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Dentro de la validación del controlador tienes la regla 'required|integer|between:1,5' para la valoración. ¿Qué significa 'required'?",
+        "opciones": [
+            "Que el campo debe ser un número entero.",
+            "Que el campo puede dejarse en blanco.",
+            "Que el campo es obligatorio y debe enviarse en la petición.",
+            "Que el valor debe estar entre 1 y 5."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Si los datos enviados en el formulario no pasan la validación '$request->validate()', ¿qué comportamiento automático realiza Laravel?",
+        "opciones": [
+            "Muestra una pantalla en blanco con un error 500.",
+            "Guarda los datos igualmente pero con valores nulos.",
+            "Redirige al usuario de vuelta a la página anterior (el formulario) llevando los mensajes de error.",
+            "Cierra la sesión del usuario por seguridad."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "¿Cómo recuperas en el controlador el valor que el usuario introdujo en el campo 'comentario' del formulario?",
+        "opciones": [
+            "$_POST['comentario']",
+            "$request->input('comentario')",
+            "$comentario->get()",
+            "Auth::comentario()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En los controladores usas 'Auth::id()'. ¿Para qué sirve esta instrucción en la lógica de tu aplicación?",
+        "opciones": [
+            "Genera un nuevo ID para un usuario aleatorio.",
+            "Obtiene el ID del usuario que tiene la sesión iniciada actualmente.",
+            "Comprueba si el ID introducido en el formulario es válido.",
+            "Autentica a un usuario usando un ID en lugar del correo."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Para devolver una vista al usuario desde el controlador, ¿qué sintaxis utilizas en tu código?",
+        "opciones": [
+            "return HTML('nombrevista');",
+            "echo view('nombrevista');",
+            "return view('nombrevista');",
+            "redirect('nombrevista');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "El profesor incidió en saber pasar variables a la vista. En 'CriticaControllerRMM', usas: return view('mensaje', ['mensaje' => \"Texto...\"]); ¿Qué hace el segundo parámetro?",
+        "opciones": [
+            "Define el nombre del archivo de la vista.",
+            "Es un array que pasa datos desde el controlador para que puedan ser usados dentro de la plantilla Blade.",
+            "Valida que el mensaje sea correcto.",
+            "Fuerza a la vista a mostrar un error."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Respecto a las rutas de Laravel, si quisieras definir una ruta para responder al envío de un formulario de creación de críticas, ¿qué verbo HTTP debes usar en web.php?",
+        "opciones": [
+            "Route::get",
+            "Route::post",
+            "Route::put",
+            "Route::delete"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Dada la ruta: Route::get('/mis-criticas', [CriticaControllerRMM::class, 'misCriticas'])->name('zonaprivada'); ¿Para qué sirve el método ->name('zonaprivada')?",
+        "opciones": [
+            "Para asignar un nombre al controlador.",
+            "Para validar que solo los usuarios privados entren.",
+            "Para darle un alias o nombre a la ruta, permitiendo referenciarla fácilmente en las vistas y redirecciones.",
+            "Para cambiar el título de la página en el navegador."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En las vistas usas la directiva '@extends('layouts.publico')'. Según el repaso del profesor sobre Blade, ¿qué función tiene esta directiva?",
+        "opciones": [
+            "Importa un archivo CSS.",
+            "Indica que la vista actual hereda la estructura de la plantilla maestra 'publico' dentro de la carpeta 'layouts'.",
+            "Crea una nueva plantilla maestra.",
+            "Incluye un fragmento de código repetitivo."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Al heredar de una plantilla, utilizas '@section('contenido')'. ¿Cuál de las siguientes afirmaciones es cierta?",
+        "opciones": [
+            "Debe cerrarse obligatoriamente con @endsection.",
+            "Sustituye la etiqueta <body> del HTML.",
+            "Se usa para definir variables PHP en la vista.",
+            "Termina la ejecución de la vista."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En tu plantilla base 'layouts.publico' (archivo layouts/publico.blade.php), usas la directiva '@yield('contenido')'. ¿Cuál es su finalidad?",
+        "opciones": [
+            "Detener la carga de la página si no hay contenido.",
+            "Mostrar el contenido literal de la palabra 'contenido'.",
+            "Definir un hueco o marcador en la plantilla base donde se inyectará el contenido de las vistas hijas (las que usan @section).",
+            "Crear un bucle para recorrer contenidos."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Para imprimir el título de una película en tu vista Blade, usas el código {{ $pelicula->titulo }}. ¿A qué equivale esto en PHP puro?",
+        "opciones": [
+            "<?php print_r($pelicula->titulo); ?>",
+            "<?php echo htmlspecialchars($pelicula->titulo); ?>",
+            "<?php return $pelicula->titulo; ?>",
+            "<?php var_dump($pelicula->titulo); ?>"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En la vista 'principal.blade.php' usas un bucle para recorrer la lista de películas. ¿Cuál es la sintaxis correcta en Blade?",
+        "opciones": [
+            "@for ($peliculasRMM as $pelicula)",
+            "<?php foreach($peliculasRMM as $pelicula): ?>",
+            "@foreach ($peliculasRMM as $pelicula)",
+            "@loop ($peliculasRMM)"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Para verificar condiciones en Blade usas directivas de control. ¿Cómo inicias una condición que verifique si la película tiene críticas?",
+        "opciones": [
+            "@check($pelicula->criticas_count > 0)",
+            "@if($pelicula->criticas_count > 0)",
+            "{{ if($pelicula->criticas_count > 0) }}",
+            "<?php if($pelicula->criticas_count > 0) ?>"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Para generar un enlace HTML hacia una ruta con nombre desde una vista Blade, como el botón 'Volver al inicio', ¿qué sintaxis has usado?",
+        "opciones": [
+            "<a href=\"@url('zonapublica')\">",
+            "<a href=\"{{ link('zonapublica') }}\">",
+            "<a href=\"{{ route('zonapublica') }}\">",
+            "<a href=\"{{ path('zonapublica') }}\">"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Dentro del formulario de 'formnuevacriticaRMM.blade.php' incluyes la directiva '@csrf'. ¿Por qué es fundamental que esté ahí?",
+        "opciones": [
+            "Porque cifra la contraseña del usuario.",
+            "Porque genera un token de seguridad oculto que Laravel exige para procesar peticiones POST y proteger contra falsificación de peticiones.",
+            "Porque sin ella el navegador no sabe que es un formulario.",
+            "Porque da estilo CSS al formulario automáticamente."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En la vista Blade, para mostrar si un usuario está autenticado y decidir si mostrar el botón 'Cerrar sesión' o 'Iniciar sesión', ¿qué directivas usas?",
+        "opciones": [
+            "@user y @enduser",
+            "@auth y @endauth (o @else)",
+            "@login y @endlogin",
+            "@session y @endsession"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Si en un formulario de Blade quieres mantener el valor que el usuario escribió en un campo de texto tras un error de validación, ¿qué función de ayuda utilizas (como se ve en tu textarea)?",
+        "opciones": [
+            "{{ previous('comentario') }}",
+            "{{ keep('comentario') }}",
+            "{{ old('comentario') }}",
+            "{{ last('comentario') }}"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En tu controlador 'LoginController', tras autenticar, usas '$request->session()->regenerate();'. ¿Cuál es la razón de seguridad para hacer esto?",
+        "opciones": [
+            "Para vaciar la cesta de la compra.",
+            "Para renovar el identificador de la sesión y evitar ataques de fijación de sesión (session fixation).",
+            "Para guardar la contraseña en texto plano en la sesión.",
+            "Para cerrar la sesión anterior automáticamente."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "El controlador 'LoginController' usa el método 'Auth::attempt($credentials)'. ¿Qué comprueba exactamente este método?",
+        "opciones": [
+            "Comprueba si el usuario tiene permiso de administrador.",
+            "Busca al usuario por su email y verifica si el password desencriptado coincide con la base de datos.",
+            "Inicia sesión forzosamente sin pedir contraseña.",
+            "Recupera la contraseña si se ha olvidado."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En la vista 'formnuevacriticaRMM.blade.php' muestras los errores de validación. La directiva que evalúa si existe algún error es:",
+        "opciones": [
+            "@if ($errors->any())",
+            "@if ($errors->exist())",
+            "@if (hasErrors())",
+            "@if ($validation->fails())"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Cuando quieres pasar un parámetro obligatorio en la URL de una ruta para editar o borrar un elemento concreto (por ejemplo la crítica), ¿cómo se define en web.php (según la teoría)?",
+        "opciones": [
+            "Route::get('/critica/?id', ...)",
+            "Route::get('/critica/{id}', ...)",
+            "Route::get('/critica/$id', ...)",
+            "Route::get('/critica/id', ...)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En el modelo 'User', la función 'criticas()' retorna '$this->hasMany(CriticaRMM::class, 'usuario')'. Al llamarla desde la vista (ej. {{ Auth::user()->criticas }}), ¿qué tipo de dato devuelve Laravel?",
+        "opciones": [
+            "Un único objeto CriticaRMM.",
+            "Un array de strings con los comentarios.",
+            "Una Colección (Collection) de objetos CriticaRMM.",
+            "Un error de sintaxis."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Imagina que tienes una colección de películas. Para obtener la propiedad 'titulo' del objeto relacionado 'genero', ¿cuál es la sintaxis que empleas en tu vista Blade?",
+        "opciones": [
+            "{{ $pelicula->genero->nombre }} (asumiendo que genero es la función de relación)",
+            "{{ $pelicula['genero']['nombre'] }}",
+            "{{ $pelicula::genero::nombre }}",
+            "{{ $pelicula->get('genero')->nombre }}"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Al hacer 'Auth::logout();' en el controlador de Login, ¿qué proceso interno ocurre en Laravel?",
+        "opciones": [
+            "Se borra la cuenta del usuario de la base de datos.",
+            "Se cierra la sesión actual en el gestor de autenticación (guard).",
+            "Se cambia la contraseña a nula.",
+            "Se redirige forzosamente a la página de Google."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En las rutas se puede aplicar un filtro o 'middleware' para restringir el acceso a usuarios no identificados. Según la teoría, ¿cómo se llamaría este middleware de autenticación por defecto?",
+        "opciones": [
+            "->middleware('guest')",
+            "->middleware('auth')",
+            "->middleware('login')",
+            "->middleware('secure')"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "En Eloquent, si tienes el modelo 'PeliculaRMM' y ejecutas 'PeliculaRMM::all()', ¿qué estás haciendo?",
+        "opciones": [
+            "Borrando todas las películas de la tabla.",
+            "Recuperando todos los registros de la tabla películas como una colección de objetos.",
+            "Actualizando masivamente todas las películas.",
+            "Generando un archivo JSON con todas las películas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Al validar el formulario en el controlador, tienes reglas concatenadas como 'required|string|max:255'. ¿Qué carácter se usa para separar múltiples reglas de validación en una sola cadena?",
+        "opciones": [
+            "Coma (,)",
+            "Punto y coma (;)",
+            "Barra vertical o pipe (|)",
+            "Espacio en blanco"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Si un checkbox en HTML no está marcado, no se envía en la petición. En tu método de borrado validas si el usuario marcó la confirmación mediante:",
+        "opciones": [
+            "if (!$request->has('confirmacion'))",
+            "if ($request->empty('confirmacion'))",
+            "if (!isset($_POST['confirmacion']))",
+            "if ($request->input('confirmacion') == false)"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Teniendo en cuenta que el profesor recomienda identificar las acciones de la tarea, ¿dónde colocarías habitualmente el código PHP que responde a una ruta y se comunica con Eloquent?",
+        "opciones": [
+            "En el archivo .env",
+            "En la plantilla base de Blade (layouts)",
+            "En una clase Controlador (app/Http/Controllers/)",
+            "En el archivo de migración"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "Si quieres devolver una redirección después de guardar una película, en lugar de devolver la vista directamente, el código en el controlador será parecido a:",
+        "opciones": [
+            "return view()->route('mis-peliculas');",
+            "return redirect()->route('mis-peliculas');",
+            "redirect view('mis-peliculas');",
+            "header('Location: mis-peliculas');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5",
+        "pregunta": "¿Qué directiva de Blade usarías si quisieras incluir el contenido de una sub-vista pequeña (ej. un menú) dentro de una plantilla más grande sin heredar de ella?",
+        "opciones": [
+            "@include('nombre_subvista')",
+            "@require('nombre_subvista')",
+            "@insert('nombre_subvista')",
+            "@yield('nombre_subvista')"
+        ],
+        "correcta": 0
+    },
+    {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿En qué archivo de un proyecto Laravel se configuran los parámetros de conexión a la base de datos (DB_DATABASE, DB_USERNAME, etc.)?",
+    "opciones": [
+      "En el archivo config.php",
+      "En el archivo database.php",
+      "En el archivo .env",
+      "En el archivo composer.json"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cuál es el propósito principal de una 'migración' en Laravel según lo explicado por el profesor?",
+    "opciones": [
+      "Insertar datos de prueba masivos en la base de datos.",
+      "Crear, modificar o eliminar la estructura de las tablas de la base de datos.",
+      "Mapear los objetos de PHP a código JavaScript.",
+      "Gestionar las rutas web del proyecto."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Según la videoconferencia, ¿cuál es el propósito de un 'Seeder' (como RMMSeeder)?",
+    "opciones": [
+      "Poblar o rellenar las tablas de la base de datos con datos iniciales o de prueba.",
+      "Crear la estructura de la base de datos.",
+      "Validar los formularios del usuario.",
+      "Enrutar las peticiones GET y POST."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué comando de Artisan utilizamos para ejecutar las migraciones pendientes y crear las tablas en la base de datos?",
+    "opciones": [
+      "php artisan make:migration",
+      "php artisan migrate",
+      "php artisan db:seed",
+      "php artisan serve"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si queremos borrar todas las tablas existentes y volver a ejecutar todas las migraciones desde cero, ¿qué comando usamos?",
+    "opciones": [
+      "php artisan migrate:fresh",
+      "php artisan migrate:rollback",
+      "php artisan make:model",
+      "php artisan db:clear"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En un archivo de migración, ¿qué métodos principales encontramos para aplicar y deshacer cambios en la base de datos?",
+    "opciones": [
+      "start() y stop()",
+      "create() y destroy()",
+      "up() y down()",
+      "run() y rollback()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En la migración de 'peliculas', ¿qué hace la instrucción $table->timestamps();?",
+    "opciones": [
+      "Guarda la duración de la película en formato de tiempo.",
+      "Genera automáticamente las columnas created_at y updated_at.",
+      "Establece un límite de tiempo para la sesión del usuario.",
+      "Crea un campo para el año de publicación."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué ORM utiliza Laravel por defecto para interactuar con la base de datos mediante objetos?",
+    "opciones": [
+      "Hibernate",
+      "Doctrine",
+      "Query Builder",
+      "Eloquent"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si tenemos el modelo PeliculaRMM, ¿para qué se utiliza la propiedad protegida $table dentro de la clase?",
+    "opciones": [
+      "Para indicar el nombre exacto de la tabla en la base de datos si no sigue la convención por defecto.",
+      "Para definir las columnas que se muestran en la vista Blade.",
+      "Para listar los campos que son obligatorios en los formularios.",
+      "Para establecer la clave foránea del modelo."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En Eloquent, ¿qué relación se define utilizando el método return $this->hasMany(...);?",
+    "opciones": [
+      "Una relación de Uno a Uno.",
+      "Una relación de Varios a Varios.",
+      "Una relación de Uno a Varios (este modelo tiene muchos del otro).",
+      "Una relación inversa de Varios a Uno."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En el modelo CriticaRMM, vemos la función public function usuarioAsociado(): BelongsTo. ¿Qué significa esto?",
+    "opciones": [
+      "Que una crítica tiene muchos usuarios.",
+      "Que una crítica pertenece a un único usuario.",
+      "Que una crítica puede ser borrada por cualquier usuario.",
+      "Que un usuario tiene muchas críticas."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Dado el código: Route::get('/mis-criticas', [CriticaControllerRMM::class, 'mostrarCriticasUsuario'])->name('zonaprivada'); ¿Qué hace el método name('zonaprivada')?",
+    "opciones": [
+      "Crea una variable llamada zonaprivada.",
+      "Aplica un middleware de autenticación a la ruta.",
+      "Le asigna un alias a la ruta para poder referenciarla fácilmente en vistas y controladores.",
+      "Llama a la vista zonaprivada.blade.php directamente."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cómo redirigimos en un controlador a una ruta que hemos nombrado con ->name('zonapublica')?",
+    "opciones": [
+      "return redirect()->name('zonapublica');",
+      "return redirect()->route('zonapublica');",
+      "return view('zonapublica');",
+      "return route('zonapublica');"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Dentro de un controlador, ¿qué método usamos para comprobar si los datos que llegan por un formulario POST cumplen con las reglas establecidas (ej. required, max:255)?",
+    "opciones": [
+      "$request->validate()",
+      "Auth::check()",
+      "$request->verify()",
+      "Validator::make()"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué ocurre por defecto en Laravel si la validación $request->validate() falla?",
+    "opciones": [
+      "Se detiene la ejecución y muestra una pantalla de error 500.",
+      "Ignora los campos erróneos y guarda el resto en la base de datos.",
+      "Redirige automáticamente de vuelta a la página anterior (el formulario) llevando los mensajes de error.",
+      "Ejecuta el método down() de las migraciones."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En el controlador, utilizamos Auth::id(). ¿Para qué sirve esta instrucción?",
+    "opciones": [
+      "Para generar un nuevo identificador aleatorio de sesión.",
+      "Para obtener el ID de la película que se está criticando.",
+      "Para obtener el identificador (ID) del usuario que ha iniciado sesión actualmente.",
+      "Para validar que un identificador es un número entero."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si queremos saber si un usuario está autenticado (logueado) o es un invitado, ¿qué instrucción usamos en el controlador?",
+    "opciones": [
+      "Auth::id()",
+      "Auth::user()",
+      "Auth::check()",
+      "Auth::logout()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cuál es el sistema de plantillas que utiliza Laravel para las vistas?",
+    "opciones": [
+      "Smarty",
+      "Twig",
+      "Blade",
+      "JSX"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En una vista Blade, ¿qué directiva se utiliza para heredar de una plantilla principal (layout)?",
+    "opciones": [
+      "@extends",
+      "@include",
+      "@section",
+      "@yield"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Para definir el contenido que se insertará dentro de un @yield('contenido') del layout principal, ¿qué usamos en la vista hija?",
+    "opciones": [
+      "@push('contenido') ... @endpush",
+      "@section('contenido') ... @endsection",
+      "@content('contenido') ... @endcontent",
+      "@insert('contenido') ... @endinsert"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En una plantilla Blade, si quiero mostrar el contenido de una variable llamada $pelicula->titulo escapando ataques XSS, ¿qué sintaxis utilizo?",
+    "opciones": [
+      "<?php echo $pelicula->titulo; ?>",
+      "{$pelicula->titulo}",
+      "{{ $pelicula->titulo }}",
+      "{!! $pelicula->titulo !!}"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si un formulario en Blade envía datos mediante POST, PUT o DELETE, ¿qué directiva es OBLIGATORIA incluir por motivos de seguridad (evitar ataques Cross-Site Request Forgery)?",
+    "opciones": [
+      "@auth",
+      "@csrf",
+      "@secure",
+      "@method('POST')"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué hace la directiva @auth en una plantilla Blade?",
+    "opciones": [
+      "Cierra la sesión del usuario actual.",
+      "Valida que el formulario enviado es seguro.",
+      "Verifica los permisos de administrador en la base de datos.",
+      "Muestra el bloque de código HTML contenido dentro solo si el usuario ha iniciado sesión."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué directiva Blade se utiliza como alternativa a @auth para mostrar contenido ÚNICAMENTE a los usuarios no logueados (invitados)?",
+    "opciones": [
+      "@guest",
+      "@else",
+      "@unauth",
+      "@if(!Auth::check())"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En el archivo web.php se ve: Route::post('/critica/borrar', [CriticaControllerRMM::class, 'borrarCriticaRMM']); ¿Qué indica esta línea?",
+    "opciones": [
+      "Define una ruta que responde al método GET ejecutando la función borrarCriticaRMM.",
+      "Define una ruta que responde al método POST ejecutando el método borrarCriticaRMM del controlador.",
+      "Crea una vista llamada borrarCriticaRMM.",
+      "Borra una crítica automáticamente cuando se visita esa URL."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué método del objeto $request se utiliza para recuperar un dato enviado por formulario (por ejemplo, el campo 'comentario')?",
+    "opciones": [
+      "$request->get('comentario')",
+      "$request->input('comentario')",
+      "$request->post('comentario')",
+      "Ambas A y B son válidas en la práctica de Laravel, aunque input() es más específico."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Para instanciar y guardar una nueva crítica en Eloquent, el orden correcto de las sentencias es:",
+    "opciones": [
+      "$critica = new CriticaRMM(); $critica->comentario = '...'; $critica->save();",
+      "$critica = CriticaRMM::save(); $critica->comentario = '...';",
+      "CriticaRMM::new()->save('comentario' => '...');",
+      "$critica = new CriticaRMM(); $critica->save(); $critica->comentario = '...';"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En el controlador, vemos: CriticaRMM::where('usuario', Auth::id())->count(); ¿Qué hace esta línea?",
+    "opciones": [
+      "Cuenta cuántos usuarios están conectados actualmente.",
+      "Devuelve el número de críticas que ha hecho el usuario logueado.",
+      "Borra las críticas del usuario logueado.",
+      "Cuenta los campos de la tabla críticas."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si quiero buscar una crítica por su Clave Primaria (id) usando Eloquent, ¿qué método debo utilizar?",
+    "opciones": [
+      "CriticaRMM::search($id);",
+      "CriticaRMM::get($id);",
+      "CriticaRMM::find($id);",
+      "CriticaRMM::where('id', $id)->all();"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Para qué sirve el método $critica->delete(); ejecutado sobre un modelo de Eloquent?",
+    "opciones": [
+      "Vacía todos los campos del objeto pero lo mantiene en la base de datos.",
+      "Borra la tabla entera de la base de datos.",
+      "Elimina el registro de esa crítica concreta de la base de datos.",
+      "Cierra la sesión del usuario que hizo la crítica."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En un controlador, la sentencia return view('errores', ['mensaje' => 'Error de seguridad']); tiene como objetivo:",
+    "opciones": [
+      "Redirigir a la ruta /errores.",
+      "Generar un log de error en la consola.",
+      "Llamar a la vista errores.blade.php pasándole la variable $mensaje con ese texto.",
+      "Mostrar un pop-up de JavaScript en el navegador."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En la migración de 'criticas', se observa $table->foreignId('usuario')->constrained('users')->onDelete('cascade'); ¿Qué significa onDelete('cascade')?",
+    "opciones": [
+      "Que si se borra la tabla críticas, se borra el usuario.",
+      "Que si se borra el usuario en la tabla users, se borrarán automáticamente todas sus críticas.",
+      "Que no se puede borrar el usuario si tiene críticas.",
+      "Que las críticas se borrarán solas al cerrar sesión."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cómo se escribe un bloque 'if-else' en una plantilla Blade?",
+    "opciones": [
+      "<?php if($condicion): ?> ... <?php else: ?> ... <?php endif; ?>",
+      "{if $condicion} ... {else} ... {/if}",
+      "@if($condicion) ... @else ... @endif",
+      "{{ if($condicion) }} ... {{ else }} ... {{ endif }}"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Dentro del array de reglas de validación vemos: 'valoracion' => 'required|integer|between:1,5'. ¿Qué comprueba 'between:1,5'?",
+    "opciones": [
+      "Que el string tenga entre 1 y 5 caracteres.",
+      "Que el número enviado esté comprendido entre 1 y 5 (ambos inclusive).",
+      "Que el usuario haya iniciado sesión entre 1 y 5 veces.",
+      "Que la película seleccionada tenga ID 1 o 5."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cómo se indica en Laravel que un método del controlador espere recibir la instancia de la Request?",
+    "opciones": [
+      "Pasando $this->request como parámetro.",
+      "Usando Inyección de Dependencias, es decir, definiendo public function metodo(Request $request).",
+      "Llamando a $_POST o $_GET globalmente.",
+      "Heredando de la clase Request."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cuál es la función del comando php artisan make:controller MiControlador?",
+    "opciones": [
+      "Crear un archivo de configuración en /config.",
+      "Crear una clase en el directorio app/Http/Controllers/ que manejará la lógica de la aplicación.",
+      "Crear una vista llamada MiControlador.blade.php.",
+      "Definir las rutas automáticamente en web.php."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Según los contenidos, el patrón que sigue Laravel para separar la lógica, los datos y las vistas es:",
+    "opciones": [
+      "Modelo-Vista-Controlador (MVC).",
+      "Front Controller.",
+      "Patrón Observer.",
+      "Modelo-Plantilla-Ruta."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Al intentar autenticar a un usuario, utilizamos Auth::attempt($credentials). ¿Qué devuelve este método?",
+    "opciones": [
+      "Un objeto con los datos del usuario si tiene éxito, y un error si falla.",
+      "Un valor booleano (true si las credenciales son correctas y se inicia la sesión, false en caso contrario).",
+      "La vista del área privada.",
+      "El token CSRF de la sesión."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Después de un inicio de sesión correcto, el controlador ejecuta: $request->session()->regenerate(); ¿Para qué sirve esto?",
+    "opciones": [
+      "Para vaciar el carrito de compras.",
+      "Para renovar el ID de la sesión y prevenir ataques de fijación de sesión (session hijacking/fixation).",
+      "Para borrar la caché de las vistas Blade.",
+      "Para regenerar la contraseña del usuario en la base de datos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué ocurre cuando llamamos a Auth::logout()?",
+    "opciones": [
+      "Se elimina el usuario de la base de datos.",
+      "Se bloquea la cuenta del usuario.",
+      "Se cierra la sesión del usuario autenticado actual.",
+      "Se borran todas las críticas hechas por ese usuario."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Qué kit de inicio oficial de Laravel se ha utilizado para dotar al proyecto rápidamente de registro e inicio de sesión?",
+    "opciones": [
+      "Laravel Forge",
+      "Laravel Envoyer",
+      "Laravel Breeze",
+      "Laravel Passport"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Para recorrer un array de elementos (como películas) en una vista Blade, la sintaxis correcta es:",
+    "opciones": [
+      "<?php foreach($peliculas as $pelicula) { ... } ?>",
+      "@for($peliculas as $pelicula) ... @endfor",
+      "@foreach($peliculas as $pelicula) ... @endforeach",
+      "{{ foreach($peliculas as $pelicula) }} ... {{ endforeach }}"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si en la base de datos tenemos una tabla 'generos', por convención en inglés (y asumiendo que Eloquent pluraliza), ¿cómo buscará el modelo 'Genero' la tabla por defecto si no le indicamos la propiedad $table?",
+    "opciones": [
+      "generos",
+      "generoes",
+      "generos_table",
+      "genero"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En Eloquent, el método all(), por ejemplo PeliculaRMM::all();, ¿qué resultado produce?",
+    "opciones": [
+      "Borra todas las películas.",
+      "Recupera una colección (Collection) con todos los registros de la tabla películas.",
+      "Busca la primera película que coincida con 'all'.",
+      "Devuelve un array asociativo vacío."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Para qué sirve el método ->first() al final de una consulta Eloquent, como en Genero::where('nombre', 'animación')->first();?",
+    "opciones": [
+      "Ordena los resultados alfabéticamente.",
+      "Devuelve la primera coincidencia que encuentre en la base de datos como un único objeto del modelo.",
+      "Borra el primer registro de la tabla.",
+      "Devuelve el ID de la primera fila."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "En el código de la Tarea 5, vimos cómo se define una clave primaria autoincremental en las migraciones usando Blueprint. ¿Cuál es el método habitual?",
+    "opciones": [
+      "$table->primaryKey('id');",
+      "$table->autoIncrement('id');",
+      "$table->id();",
+      "$table->increment();"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "¿Cómo se indica que un campo no puede dejarse en blanco al momento de validarlo en un formulario?",
+    "opciones": [
+      "Con la regla 'must_exist'",
+      "Con la regla 'not_null'",
+      "Con la regla 'required'",
+      "Con la regla 'mandatory'"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si un formulario nos devuelve a la página porque la validación falló, ¿cómo podemos rellenar automáticamente un campo input de texto con el valor que el usuario había escrito previamente (usando Blade)?",
+    "opciones": [
+      "value=\"{{ old('nombre_del_campo') }}\"",
+      "value=\"{{ $request->nombre_del_campo }}\"",
+      "value=\"{{ session('nombre_del_campo') }}\"",
+      "value=\"{{ previous('nombre_del_campo') }}\""
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Cuando usamos return back()->withErrors(...), ¿dónde están disponibles esos errores en la vista Blade?",
+    "opciones": [
+      "En la variable de sesión $_SESSION['errors']",
+      "En la variable global $errores",
+      "En la variable $errors (instancia de MessageBag)",
+      "Los errores se muestran en un pop-up automáticamente."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5",
+    "pregunta": "Si en la Tarea 5 hubieras querido definir que una Película y un Usuario tienen una relación Varios a Varios (para hacer listas de favoritos, por ejemplo), ¿qué método de relación se utilizaría en Eloquent?",
+    "opciones": [
+      "hasMany()",
+      "belongsTo()",
+      "belongsToMany()",
+      "hasOneOrMany()"
+    ],
+    "correcta": 2
+  },
+  {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el archivo '.env' de la tarea, ¿cuál es el valor asignado a la variable de entorno DB_DATABASE? [5]",
+        "opciones": [
+            "laravel_db",
+            "2526_dwes05",
+            "videoclub_db",
+            "mysql"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Según el archivo '.env' de la tarea, ¿qué driver o sistema se utiliza para gestionar la sesión (SESSION_DRIVER)? [5]",
+        "opciones": [
+            "database",
+            "redis",
+            "file",
+            "cookie"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En la migración de la tabla 'generos', ¿qué longitud máxima en caracteres se define para el campo 'nombre' mediante `$table->string('nombre', 45);`? [6]",
+        "opciones": [
+            "45 caracteres",
+            "255 caracteres",
+            "Ilimitada",
+            "60 caracteres"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Revisando la migración de 'criticas', ¿qué tipo de dato en la base de datos se asigna al campo 'comentario'? [7]",
+        "opciones": [
+            "string",
+            "text",
+            "tinyText",
+            "varchar"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En la migración de 'criticas', ¿qué comportamiento define la instrucción `onDelete('cascade')` para la clave foránea 'pelicula'? [8]",
+        "opciones": [
+            "Impide que la película sea borrada si tiene críticas.",
+            "Borra automáticamente la crítica si la película asociada es eliminada.",
+            "Oculta la crítica temporalmente.",
+            "Pone el valor de 'pelicula' a nulo."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el archivo de migración de 'peliculas', ¿qué tipo de dato se usa para el campo 'duracion'? [9]",
+        "opciones": [
+            "time",
+            "string",
+            "integer",
+            "decimal"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En la creación de la tabla 'peliculas', ¿qué modificador se usa para asegurar que la clave foránea 'genero' sea un entero numérico compatible con las claves primarias (id)? [10]",
+        "opciones": [
+            "unsignedBigInteger",
+            "foreignInteger",
+            "tinyInteger",
+            "bigId"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En todas las migraciones de la tarea, ¿cuál es el propósito del método `down()` que contiene instrucciones como `Schema::dropIfExists('generos');`? [11]",
+        "opciones": [
+            "Vaciar los datos de la tabla.",
+            "Crear una copia de seguridad de la tabla.",
+            "Deshacer los cambios de la migración, eliminando la tabla si existe.",
+            "Actualizar la estructura de la tabla."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En 'RMMSeeder.php', ¿qué función o método nativo de Laravel se utiliza para obtener y guardar la fecha y hora actual en el campo 'email_verified_at'? [12]",
+        "opciones": [
+            "time()",
+            "date('Y-m-d H:i:s')",
+            "now()",
+            "Carbon::today()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En 'RMMSeeder.php', ¿cómo verificas si el usuario 'RMM1@email.RMM' ya existe antes de insertarlo en la base de datos? [12]",
+        "opciones": [
+            "if (!User::find('RMM1@email.RMM'))",
+            "if (User::where('email', 'RMM1@email.RMM')->count() == 0)",
+            "if (User::exists('RMM1@email.RMM') == false)",
+            "if (empty(User::get('RMM1@email.RMM')))"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el seeder de la tarea, ¿qué clase o fachada se usa para encriptar la contraseña del usuario antes de guardarla (ej. `Hash::make('RMM1')`)? [12, 13]",
+        "opciones": [
+            "Crypt",
+            "Bcrypt",
+            "Hash",
+            "Password"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En 'RMMSeeder.php', al ir a insertar las películas, ¿cómo obtienes previamente el objeto del género 'animación' para poder asignar su ID? [14]",
+        "opciones": [
+            "GeneroRMM::where('nombre', 'animación')->first();",
+            "GeneroRMM::find('animación');",
+            "GeneroRMM::get('nombre', 'animación');",
+            "GeneroRMM::search('animación');"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Al insertar 'Toy Story' en el seeder, le asignas el género de animación. ¿Qué propiedad del objeto `$genAnimacion` se le pasa al campo `$p1->genero`? [15]",
+        "opciones": [
+            "$genAnimacion->nombre",
+            "$genAnimacion->id",
+            "$genAnimacion->key",
+            "$genAnimacion->value"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el modelo 'User.php', ¿qué atributo protegido se usa para ocultar el campo 'password' y 'remember_token' en las serializaciones (por ejemplo, al devolver JSON)? [16]",
+        "opciones": [
+            "protected $invisible",
+            "protected $secret",
+            "protected $hidden",
+            "protected $guarded"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el modelo 'User.php', ¿qué hace el array protegido `$casts` con el campo 'password'? [16]",
+        "opciones": [
+            "Lo convierte a texto plano.",
+            "Indica a Eloquent que debe transformarlo internamente como 'hashed' (encriptado).",
+            "Permite recuperar la contraseña olvidada.",
+            "Valida que tenga al menos 8 caracteres."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "El modelo 'CriticaRMM' incluye `$fillable = ['valoracion', 'comentario', 'pelicula', 'usuario'];`. ¿Qué impide esta instrucción de Eloquent? [17]",
+        "opciones": [
+            "Impide que esos campos sean mostrados en las vistas.",
+            "Impide que cualquier otro campo de la tabla sufra vulnerabilidades de asignación masiva (Mass Assignment).",
+            "Impide que se borre la crítica accidentalmente.",
+            "Impide que la crítica esté vacía al insertarse."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En 'CriticaRMM.php', ¿cuál es el nombre del método que has definido para crear la relación donde una crítica pertenece a un usuario? [18]",
+        "opciones": [
+            "user()",
+            "usuario()",
+            "usuarioAsociado()",
+            "perteneceUsuario()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el modelo 'GeneroRMM', el método `peliculas()` retorna `$this->hasMany(PeliculaRMM::class, 'genero');`. ¿Qué representa el segundo parámetro 'genero'? [19]",
+        "opciones": [
+            "El nombre de la tabla de géneros.",
+            "La columna que sirve como clave foránea en la tabla 'peliculas' relacionada en la migración.",
+            "Un campo que se asigna automáticamente.",
+            "El nombre de la vista a cargar."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En 'PeliculaRMM.php', antes de definir las relaciones inversas o N:1, ¿qué clase específica de Eloquent importas al inicio del archivo con 'use'? [20]",
+        "opciones": [
+            "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+            "Illuminate\\Support\\Facades\\DB",
+            "Illuminate\\Http\\Request",
+            "App\\Models\\Pelicula"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Todos tus modelos, como 'CriticaRMM', incluyen dentro de la clase la instrucción `use HasFactory;`. ¿Qué es 'HasFactory' en Laravel? [17]",
+        "opciones": [
+            "Un controlador de autenticación.",
+            "Un rasgo (trait) que habilita la creación de datos de prueba estructurados mediante factorías.",
+            "Una clase para validar formularios.",
+            "Un comando de Artisan."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el método `mostrarFormularioCriticaRMM` del controlador, ¿qué compruebas con `if(!$pelicula)` tras hacer un find() por el ID? [21]",
+        "opciones": [
+            "Si la película tiene comentarios.",
+            "Si el usuario está autorizado a ver la película.",
+            "Si la película se ha encontrado en la base de datos o no existe.",
+            "Si la película es de pago."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el controlador de críticas, ejecutas `CriticaRMM::where('usuario', Auth::id())->where('pelicula', $pelicula_id)->count();`. ¿Cuál es el propósito exacto de esta consulta? [22]",
+        "opciones": [
+            "Contar cuántas películas ha visto el usuario.",
+            "Comprobar si el usuario autenticado ya ha valorado anteriormente esa misma película.",
+            "Calcular la nota media de la película.",
+            "Borrar las críticas duplicadas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En la validación de `crearNuevaCriticaRMM`, usas la regla `'valoracion' => 'required|integer|between:1,5'`. ¿Qué indica `between:1,5`? [23]",
+        "opciones": [
+            "Que el texto de valoración debe tener entre 1 y 5 caracteres.",
+            "Que la película debe pertenecer a las categorías 1 a 5.",
+            "Que el valor numérico enviado debe estar obligatoriamente en el rango del 1 al 5.",
+            "Que el usuario puede enviar entre 1 y 5 críticas al día."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Al validar en `CriticaControllerRMM`, le pasas un segundo parámetro al método `$request->validate()`. ¿Qué contiene ese segundo parámetro o array? [23, 24]",
+        "opciones": [
+            "Mensajes de error personalizados en español que reemplazarán a los textos por defecto en inglés si falla una regla.",
+            "Un array vacío por cuestiones de compatibilidad.",
+            "Las redirecciones hacia las que debe ir en caso de fallo.",
+            "Los datos antiguos para repoblar el formulario."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Al insertar la nueva crítica en el controlador, le asignas el usuario con la instrucción `$critica->usuario = Auth::id();`. ¿De dónde extrae Laravel este ID? [25]",
+        "opciones": [
+            "De un campo oculto del formulario.",
+            "De la URL que envió el usuario.",
+            "De la sesión del usuario que está actualmente autenticado.",
+            "De una variable global de PHP."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Tras insertar la crítica correctamente, devuelves `return view('mensaje', ['mensaje' => \"Crítica insertada...\"]);`. ¿Qué información estás enviando a la vista? [25]",
+        "opciones": [
+            "Todo el objeto de la crítica.",
+            "Un array asociativo con una variable 'mensaje' y su texto, para proyectarlo en el HTML.",
+            "El ID del nuevo registro insertado.",
+            "Un error de compilación."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el método `mostrarFormularioBorradoRMM`, ¿por qué usas la condición de seguridad `if ($critica->usuario !== Auth::id())`? [26]",
+        "opciones": [
+            "Para forzar al usuario a que cambie su contraseña.",
+            "Para verificar que la crítica que se intenta borrar pertenece realmente al usuario autenticado y evitar borrados no autorizados.",
+            "Para asignar la crítica al usuario administrador.",
+            "Para comprobar si la sesión ha caducado."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el controlador `CriticaControllerRMM`, para procesar el borrado definitivo en `borrarCriticaRMM`, se realiza una comprobación con `$request->has('confirmacion')`. ¿Qué significa esto? [27]",
+        "opciones": [
+            "Que la película está confirmada en cartelera.",
+            "Verifica si en el formulario (por POST) el usuario marcó la casilla o checkbox obligatoria de 'confirmacion' para proceder.",
+            "Genera un token de confirmación en la base de datos.",
+            "Que el usuario tiene un email confirmado."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `borrarCriticaRMM`, cuando pasas todas las verificaciones, ejecutas `$critica->delete();`. ¿A qué elemento de la arquitectura pertenece este método `delete()`? [28]",
+        "opciones": [
+            "A una vista de Blade.",
+            "Al archivo de configuración .env.",
+            "A la clase Request HTTP.",
+            "Al ORM Eloquent, que elimina esa instancia específica de la base de datos."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `LoginController`, cuando falla la autenticación, devuelves `return back()->withErrors([...]);`. ¿Qué efecto tiene `withErrors`? [29]",
+        "opciones": [
+            "Detiene el servidor Apache.",
+            "Muestra una ventana emergente de JavaScript.",
+            "Inyecta los mensajes de error en la sesión temporal (flash) para que puedan ser mostrados en la vista Blade.",
+            "Borra la base de datos por seguridad."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "También en `LoginController`, encadenas la instrucción `->onlyInput('email')` al fallo del login. ¿Para qué se utiliza? [29]",
+        "opciones": [
+            "Para que devuelva a la vista únicamente el email introducido por el usuario y así poder autocompletar la caja de texto (old value).",
+            "Para borrar todos los campos excepto el email.",
+            "Para validar que el email tiene el formato correcto.",
+            "Para actualizar el email en la base de datos."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `LoginController`, cuando un usuario cierra sesión utilizas `Auth::logout();`. ¿Qué sucede internamente? [30]",
+        "opciones": [
+            "Se elimina su cuenta permanentemente.",
+            "Se cierra la sesión activa en el gestor de autenticación y se desvincula al usuario.",
+            "Se redirige automáticamente a Google.",
+            "Se pausa su suscripción temporalmente."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Por seguridad, al hacer logout en la tarea invocas `$request->session()->invalidate();`. ¿Qué propósito tiene esta línea? [30]",
+        "opciones": [
+            "Invalidar todos los comentarios del usuario.",
+            "Destruir todos los datos guardados en la sesión actual, dejándola inutilizable para un atacante.",
+            "Hacer que el usuario tenga que cambiar su contraseña.",
+            "Eliminar la memoria caché de las vistas Blade."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el cierre de sesión también ejecutas `$request->session()->regenerateToken();`. ¿A qué aspecto de seguridad pertenece este token? [30]",
+        "opciones": [
+            "A la validación del correo electrónico.",
+            "A la generación de claves de la API.",
+            "A la protección contra la falsificación de peticiones en sitios cruzados (CSRF).",
+            "Al cifrado de contraseñas Bcrypt."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Cuando el login es exitoso, rediriges con `return redirect()->intended(route('zonaprivada'));`. ¿Qué característica tiene el método `intended()`? [29]",
+        "opciones": [
+            "Envía un correo con la intención del usuario.",
+            "Comprueba la intensidad de la conexión a la base de datos.",
+            "Redirige al usuario a la URL a la que intentaba acceder antes de ser interceptado por la autenticación, y si no hay ninguna guardada, usa la de 'zonaprivada'.",
+            "Muestra una alerta intencionada de éxito."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En la vista Blade `confirmarborradoRMM.blade.php`, inicias con `@extends('layouts.privado')`. ¿Qué consigues con esta directiva? [31]",
+        "opciones": [
+            "Heredar y aplicar todo el diseño (HTML base, menús y estilos) definido en la plantilla 'privado.blade.php' de la carpeta 'layouts'.",
+            "Extender la fecha de expiración de la sesión privada.",
+            "Cargar librerías de PHP privadas.",
+            "Ocultar el código fuente a los motores de búsqueda."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En tus 'layouts' de Blade, usas la instrucción `{{ Auth::user()->name }}`. ¿Qué información proyecta este código en la pantalla del usuario? [32]",
+        "opciones": [
+            "La URL de su perfil público.",
+            "La contraseña en texto plano.",
+            "El nombre del usuario actualmente autenticado (iniciado sesión) sacado del modelo User.",
+            "El nombre de la aplicación configurado en el archivo .env."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `layouts.publico`, para mostrar distintos enlaces en el menú superior, ¿qué estructura de control de Blade usas para distinguir entre visitantes anónimos y usuarios registrados? [32, 33]",
+        "opciones": [
+            "@user y @anon",
+            "@if(login) y @else",
+            "@session y @endsession",
+            "@auth y @else (cerrando con @endauth)"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En tu archivo de plantilla `privado.blade.php`, incluyes el archivo CSS externo mediante `href=\"{{ asset('css/estilos.css') }}\"`. ¿Qué hace la función `asset()`? [34]",
+        "opciones": [
+            "Convierte el CSS a código PHP.",
+            "Genera la URL absoluta completa (incluyendo dominio http://...) hacia el archivo alojado en la carpeta 'public'.",
+            "Comprime el archivo CSS para que ocupe menos.",
+            "Verifica si el usuario tiene permiso para ver el estilo."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `principal.blade.php`, muestras la cantidad de críticas de una película usando `{{ $pelicula->criticas_count }}`. ¿Cómo se llama esta convención generada por Eloquent al usar withCount? [35]",
+        "opciones": [
+            "Colección dinámica.",
+            "Atributo virtual (o propiedad mágica de conteo) generada por Laravel para las relaciones.",
+            "Variable de sesión estática.",
+            "Identificador autoincremental de Blade."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "También en `principal.blade.php`, imprimes la media con `{{ number_format($pelicula->criticas_avg_valoracion, 2) }}`. ¿Qué hace `number_format(..., 2)` que es nativo de PHP? [35]",
+        "opciones": [
+            "Multiplica la valoración por 2.",
+            "Devuelve siempre el número 2.",
+            "Da formato al número asegurando que se muestre exactamente con 2 decimales.",
+            "Transforma el número a una cadena de texto en sistema binario."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `principal.blade.php` tienes este bloque de código oculto: `{{-- Si hay críticas, mostramos la media... --}}`. ¿Qué representa esta sintaxis en Blade? [35]",
+        "opciones": [
+            "Una consulta SQL embebida en la vista.",
+            "Una etiqueta que se convertirá en un enlace HTML.",
+            "Un comentario de Blade que no se renderizará, por lo que nunca aparecerá en el código fuente HTML final enviado al navegador.",
+            "Una variable de configuración inyectada desde el archivo .env."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En la tabla de `principal.blade.php`, ¿qué directiva iterativa de Blade se encarga de crear cada fila (tr) HTML por cada película recibida en la colección? [36]",
+        "opciones": [
+            "@loop ($peliculasRMM -> $pelicula)",
+            "@foreach ($peliculasRMM as $pelicula)",
+            "<?php for($i=0; $i<count($peliculasRMM); $i++) ?>",
+            "@while ($peliculasRMM)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En el formulario de `formnuevacriticaRMM.blade.php`, mandas un dato que el usuario no ve mediante `<input type=\"hidden\" name=\"pelicula_id\" value=\"{{ $pelicula->id }}\">`. ¿Cuál es su utilidad? [37]",
+        "opciones": [
+            "Generar el token de seguridad CSRF.",
+            "Ocultar errores de validación de la película.",
+            "Permitir al controlador (cuando se envíe el POST) saber a qué película exacta se le está asignando esta crítica.",
+            "Redirigir automáticamente a la página de la película."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `formnuevacriticaRMM.blade.php`, imprimes en bloque todos los fallos detectados con la siguiente condición de Laravel: `@if ($errors->any())`. ¿Qué devuelve el método `any()`? [38]",
+        "opciones": [
+            "True si no hubo ningún error.",
+            "El mensaje literal del primer error.",
+            "True si la validación del controlador encontró al menos un error (la colección de errores no está vacía).",
+            "Un array con los campos validados correctamente."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "Para la caja de texto en `formnuevacriticaRMM.blade.php`, incluyes en el HTML: `<textarea ...>{{ old('comentario') }}</textarea>`. ¿Qué función cumple el helper `old()`? [39]",
+        "opciones": [
+            "Recuperar el valor introducido por el usuario en el intento de envío anterior si la validación falló, evitando que tenga que reescribirlo.",
+            "Muestra el comentario de la persona más anciana registrada.",
+            "Recupera un dato de la base de datos que ya ha sido eliminado.",
+            "Traduce el comentario a un idioma antiguo."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `errores.blade.php`, al imprimir el título de la página pones `{{ $titulo ?? 'Upps! Acción no permitida.' }}`. ¿Qué hace el operador de doble interrogación `??` (Null Coalescing)? [40]",
+        "opciones": [
+            "Calcula probabilidades booleanas.",
+            "Realiza una pregunta interactiva al usuario en la vista.",
+            "Aplica un estilo CSS aleatorio al texto.",
+            "Imprime el contenido de la variable `$titulo` si existe, y si es nula o no se pasó, imprime el texto literal que viene a la derecha."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `errores.blade.php` tienes un código opcional para listas de fallos: `@if(isset($errores))`. ¿A qué equivale `isset()` en PHP nativo usado dentro de Blade? [40]",
+        "opciones": [
+            "Inyecta una variable nueva.",
+            "Comprueba si la variable `$errores` ha sido declarada y su valor es distinto de nulo.",
+            "Establece (sets) un valor predeterminado para errores.",
+            "Borra el array de la memoria."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 segunda parte",
+        "pregunta": "En `privada_principal.blade.php`, tienes una directiva `@if($totalCriticas == 0)`. ¿Qué muestra la vista si se cumple esta condición? [41]",
+        "opciones": [
+            "Un error fatal 500.",
+            "Una advertencia para que el usuario borre su cuenta.",
+            "Un bloque HTML (div) con el texto: 'No tienes críticas todavía. ¡Anímate y critica alguna película!'.",
+            "La tabla de críticas vacía."
+        ],
+        "correcta": 2
+    },
+    {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el archivo RMMSeeder, ¿qué función se utiliza para encriptar la contraseña 'RMM1' antes de guardarla en la base de datos?",
+    "opciones": [
+      "encrypt('RMM1')",
+      "md5('RMM1')",
+      "Hash::make('RMM1')",
+      "bcrypt_password('RMM1')"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el modelo User de la Tarea 5, existe un array protegido llamado $hidden. ¿Cuál es su propósito principal?",
+    "opciones": [
+      "Ocultar el modelo a los usuarios no autenticados.",
+      "Evitar que ciertos atributos (como la contraseña) se expongan cuando el modelo se convierte a un array o a formato JSON.",
+      "Esconder campos en los formularios de Blade automáticamente.",
+      "Proteger la base de datos de inyecciones SQL."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Dentro del modelo User, vemos la propiedad: protected $casts = ['email_verified_at' => 'datetime', 'password' => 'hashed']. ¿Qué hace el 'casting' en Eloquent?",
+    "opciones": [
+      "Convierte el tipo de dato de la base de datos a un tipo de dato nativo de PHP al acceder a él.",
+      "Crea copias de seguridad de esos campos automáticamente.",
+      "Transmite los datos a otros controladores mediante eventos.",
+      "Cifra los correos electrónicos para que no sean legibles en la base de datos."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el RMMSeeder de la Tarea 5, se usa la instrucción if (User::where('email', 'RMM1@email.RMM')->count() == 0). ¿Por qué se hace esta comprobación antes de hacer el insert?",
+    "opciones": [
+      "Para comprobar si el usuario tiene permisos de administrador.",
+      "Para evitar insertar el mismo usuario duplicado si el seeder se ejecuta varias veces.",
+      "Para contar cuántas contraseñas tiene el usuario.",
+      "Para verificar que el correo electrónico tenga un formato válido."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el archivo de migración de la tabla películas, ¿qué tipo de columna genera la instrucción $table->tinyText('argumento');?",
+    "opciones": [
+      "Una columna para guardar textos muy largos, de tamaño ilimitado.",
+      "Una columna de texto corto, útil para almacenar resúmenes pequeños en la base de datos.",
+      "Una columna booleana (verdadero o falso).",
+      "Una columna numérica para el número de argumentos de la película."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Qué especifica el número 60 en la instrucción $table->string('titulo', 60); dentro de una migración?",
+    "opciones": [
+      "El número mínimo de caracteres que debe tener el título.",
+      "El valor por defecto del título de la película.",
+      "El número máximo de caracteres (longitud) permitidos para la columna 'titulo' (VARCHAR(60)).",
+      "El ID de la película por defecto."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En la migración de críticas, al definir la clave foránea, se añade ->onUpdate('cascade'). ¿Qué efecto tiene esto en la base de datos?",
+    "opciones": [
+      "Si se actualiza el ID del registro padre (ej. el usuario), se actualizará automáticamente el ID en las críticas hijas.",
+      "Si se modifica el comentario, se actualiza el timestamp.",
+      "Borra en cascada todos los registros hijos si se actualiza la tabla.",
+      "Actualiza la página web del usuario en tiempo real."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el método down() de las migraciones, se usa Schema::dropIfExists('criticas');. ¿Cuándo se ejecuta este método?",
+    "opciones": [
+      "Cuando un usuario elimina su cuenta.",
+      "Cuando la base de datos pierde la conexión.",
+      "Cuando se lanza el comando para deshacer migraciones (por ejemplo, php artisan migrate:rollback).",
+      "Automáticamente cada vez que guardamos un archivo."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el controlador de críticas, al borrar, se comprueba: if (!$request->has('confirmacion')). ¿Para qué sirve el método has() del objeto Request?",
+    "opciones": [
+      "Para verificar si el usuario tiene sesión iniciada.",
+      "Para comprobar si el campo 'confirmacion' está presente en los datos enviados por el formulario.",
+      "Para hashear la confirmación.",
+      "Para ver si la base de datos tiene espacio suficiente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el LoginController, después de un fallo de autenticación, vemos return back()->withErrors(...)->onlyInput('email');. ¿Qué hace ->onlyInput('email')?",
+    "opciones": [
+      "Borra el email de la base de datos.",
+      "Valida que el input sea solo texto.",
+      "Guarda temporalmente en sesión (flash data) únicamente el valor introducido en 'email' para repoblar el formulario en la vista.",
+      "Permite al usuario loguearse solo con su email sin contraseña."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Durante el logout (cerrar sesión), se ejecuta $request->session()->invalidate();. ¿Cuál es su función?",
+    "opciones": [
+      "Invalidar el usuario en la base de datos para que no vuelva a entrar.",
+      "Borrar todos los datos asociados a la sesión actual del usuario en el servidor.",
+      "Mostrar un mensaje de error de validación.",
+      "Bloquear la IP del usuario."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "También durante el logout, se usa $request->session()->regenerateToken();. ¿Por qué se realiza esta acción?",
+    "opciones": [
+      "Para enviar un nuevo email de confirmación.",
+      "Para generar un nuevo token JWT de API.",
+      "Para crear un nuevo token CSRF, evitando que la sesión antigua pueda ser explotada.",
+      "Para cambiar la contraseña del usuario."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el LoginController, si el login es exitoso, se ejecuta return redirect()->intended(route('zonaprivada'));. ¿Qué hace el método intended()?",
+    "opciones": [
+      "Intenta redirigir, pero si falla muestra un error 404.",
+      "Redirige a la URL que el usuario intentaba visitar antes de ser interceptado por el middleware de autenticación, o a 'zonaprivada' por defecto.",
+      "Abre una nueva pestaña en el navegador web.",
+      "Es una directiva de Blade para intenciones de usuario."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En la validación de nueva crítica, vemos que el método validate() recibe dos arrays. ¿Qué contiene el segundo array?",
+    "opciones": [
+      "Los datos de la base de datos.",
+      "Las reglas de validación adicionales.",
+      "Los mensajes de error personalizados (ej. 'valoracion.required' => 'Debes seleccionar...').",
+      "La configuración de la vista Blade a la que redirigir."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el archivo .env proporcionado en la tarea, figura APP_DEBUG=true. ¿Qué implica esto en el entorno de desarrollo?",
+    "opciones": [
+      "Que el modo mantenimiento está activado.",
+      "Que los errores detallados con la traza de ejecución se mostrarán en pantalla si ocurre un fallo.",
+      "Que las contraseñas se guardan en texto plano para poder depurarlas.",
+      "Que la aplicación funcionará más rápido."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Qué indica el valor DB_CONNECTION=mysql en el archivo .env de la Tarea 5?",
+    "opciones": [
+      "Que la base de datos se almacena en memoria RAM.",
+      "Que estamos usando SQLite.",
+      "El controlador (driver) del sistema gestor de base de datos que Laravel debe usar, en este caso MySQL o MariaDB.",
+      "El nombre de la base de datos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Cuál es la utilidad del parámetro APP_KEY en el archivo .env (ej. base64:bemjw...)?",
+    "opciones": [
+      "Es la clave para iniciar sesión como superadministrador.",
+      "Se usa para encriptar sesiones, cookies y datos firmados en Laravel, garantizando la seguridad.",
+      "Es la contraseña de la base de datos.",
+      "Es la licencia comercial de Laravel."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Cuál es la diferencia entre Auth::user() y Auth::id() en un controlador?",
+    "opciones": [
+      "Auth::id() devuelve el nombre de usuario, Auth::user() devuelve el correo.",
+      "Son exactamente lo mismo y devuelven un string.",
+      "Auth::user() devuelve el objeto completo del usuario logueado, mientras que Auth::id() devuelve únicamente su clave primaria (ID).",
+      "Auth::user() es para invitados y Auth::id() para registrados."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Cuando en el controlador se devuelve return view('formnuevacriticaRMM', ['pelicula' => $pelicula]);, ¿cómo se accede a esa variable en Blade?",
+    "opciones": [
+      "A través del array asociativo $_GET['pelicula']",
+      "Usando directamente la variable $pelicula, por ejemplo {{ $pelicula->titulo }}",
+      "Mediante la función blade('pelicula')",
+      "Con la sintaxis @pelicula"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "La directiva @csrf en el formulario de la Tarea 5, al renderizarse en el navegador, ¿en qué se convierte?",
+    "opciones": [
+      "En un texto visible que dice 'Seguro'.",
+      "En un campo de formulario oculto (input type=\"hidden\") con un token único generado por Laravel.",
+      "En una cookie encriptada de sesión.",
+      "En un script de JavaScript."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En las vistas de la Tarea 5, ¿cuál es la diferencia principal entre los helpers {{ route('nombre.ruta') }} y {{ url('/ruta/exacta') }}?",
+    "opciones": [
+      "route() genera una URL basada en el nombre asignado a la ruta, mientras que url() genera la URL basada en la ruta o path literal.",
+      "route() es solo para métodos GET y url() para métodos POST.",
+      "route() redirige automáticamente, url() solo pinta texto.",
+      "No hay diferencia, son alias idénticos."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿En qué carpeta del proyecto Laravel se almacenan por defecto los archivos con extensión .blade.php de la Tarea 5?",
+    "opciones": [
+      "app/Views",
+      "public/views",
+      "resources/views",
+      "storage/framework/views"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Según la arquitectura explicada, ¿dónde se ubica el archivo CriticaControllerRMM.php en la estructura de directorios?",
+    "opciones": [
+      "config/Controllers",
+      "resources/Controllers",
+      "routes/Controllers",
+      "app/Http/Controllers"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Dónde se almacenan los modelos de Eloquent (como PeliculaRMM o GeneroRMM) por defecto en las versiones modernas de Laravel (8+)?",
+    "opciones": [
+      "app/Models",
+      "app/Database",
+      "database/models",
+      "resources/models"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En PHP 8/Laravel, cuando un método de relación en un modelo finaliza con : BelongsTo, ¿qué significa ese tipado de retorno?",
+    "opciones": [
+      "Indica que la tabla de la base de datos está bloqueada.",
+      "Es una validación estricta de PHP que asegura que el método devolverá una instancia de la clase Illuminate\\Database\\Eloquent\\Relations\\BelongsTo.",
+      "Es un comentario para que lo lea el desarrollador, pero el intérprete PHP lo ignora.",
+      "Obliga al modelo a pertenecer a otro usuario."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "De igual manera, el tipado de retorno : HasMany en la relación criticas() del modelo PeliculaRMM indica que...",
+    "opciones": [
+      "Devuelve un array simple de PHP con críticas.",
+      "Es una relación de muchos a muchos.",
+      "El método retornará un objeto de relación de Eloquent de tipo HasMany.",
+      "Cuenta el número de críticas directamente."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "HTML estándar solo soporta formularios GET y POST. Si una ruta de Laravel requiere el método DELETE, ¿cómo lo indicamos dentro del formulario en la vista Blade?",
+    "opciones": [
+      "Cambiando el method del formulario: <form method=\"DELETE\">",
+      "Usando la directiva @method('DELETE') dentro del formulario.",
+      "Añadiendo el sufijo /delete a la URL de acción.",
+      "Con la directiva @delete('FORM')"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Qué comando de Artisan emplearías para generar el archivo RMMSeeder?",
+    "opciones": [
+      "php artisan create:seeder RMMSeeder",
+      "php artisan make:seeder RMMSeeder",
+      "php artisan new:seeder RMMSeeder",
+      "php artisan generate:seeder RMMSeeder"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Si un desarrollador quiere ver en la terminal la lista de todas las rutas definidas y sus nombres asignados (como 'zonaprivada'), ¿qué comando Artisan debe ejecutar?",
+    "opciones": [
+      "php artisan show:routes",
+      "php artisan route:list",
+      "php artisan list:web",
+      "php artisan print:routes"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el LoginController, ¿qué devuelve el método Auth::attempt($credentials) si las credenciales NO coinciden con ningún registro de la base de datos?",
+    "opciones": [
+      "Lanza una excepción fatal de PHP.",
+      "Devuelve un objeto vacío.",
+      "Redirige a la página 404.",
+      "Devuelve false."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el controlador de críticas se hace CriticaRMM::where(...)->count(); ¿Qué diferencia habría si usáramos ->get() en lugar de ->count()?",
+    "opciones": [
+      "get() devuelve el número de registros en formato string, y count() en entero.",
+      "get() obtiene todos los registros (una Colección de objetos), mientras que count() realiza una consulta optimizada COUNT() devolviendo solo un número.",
+      "No hay diferencia, ambos devuelven un número entero.",
+      "get() borra los registros obtenidos, count() solo los cuenta."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el modelo PeliculaRMM, se definió: return $this->belongsTo(GeneroRMM::class, 'genero');. ¿Qué indica el segundo parámetro 'genero'?",
+    "opciones": [
+      "El nombre de la base de datos foránea.",
+      "Es el nombre explícito de la columna de la clave foránea en la tabla peliculas, evitando que Laravel asuma que se llama 'genero_rmm_id'.",
+      "Es el tipo de ordenación de los resultados.",
+      "El controlador asociado al género."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Al diseñar migraciones en Laravel, ¿cuál es el nombre de la columna que asume Eloquent por defecto como clave primaria de una tabla?",
+    "opciones": [
+      "pk",
+      "uuid",
+      "id",
+      "key"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En caso de fallar la validación, Laravel redirige automáticamente con errores. En Blade, ¿cómo comprobamos si hay errores y los iteramos?",
+    "opciones": [
+      "Usando foreach($_SESSION['errors'] as $error)",
+      "Usando @foreach ($errors->all() as $error)",
+      "Con la directiva @getErrors",
+      "Los errores se imprimen solos sin necesidad de código adicional."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En los formularios de la Tarea 5, para recuperar un valor que el usuario tecleó pero no pasó la validación (evitando que se borre el formulario), ¿qué función helper de Blade usamos?",
+    "opciones": [
+      "{{ previous('comentario') }}",
+      "{{ last('comentario') }}",
+      "{{ old('comentario') }}",
+      "{{ session('comentario') }}"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En la regla de validación 'comentario' => 'required|string|max:255', ¿qué valida específicamente 'max:255'?",
+    "opciones": [
+      "Que el ID del comentario no sea mayor a 255.",
+      "Que el texto introducido no supere los 255 caracteres de longitud.",
+      "Que haya como máximo 255 palabras en el comentario.",
+      "Que no puedan haber más de 255 críticas en toda la base de datos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Cuando se recupera un modelo desde la base de datos (ej. $critica = CriticaRMM::find($id);) y luego se ejecuta $critica->delete();, ¿qué SQL ejecuta internamente Laravel?",
+    "opciones": [
+      "DROP TABLE criticas",
+      "TRUNCATE criticas",
+      "DELETE FROM criticas WHERE id = X",
+      "UPDATE criticas SET deleted = 1"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "La función Auth::logout() de Laravel, aparte de eliminar la información de sesión del servidor, ¿qué otra acción realiza por defecto en los sistemas de cookies?",
+    "opciones": [
+      "Elimina la cookie 'remember_me' del navegador del usuario si existiese.",
+      "Guarda un log de conexión en el equipo local.",
+      "Limpia el historial del navegador.",
+      "Deshabilita temporalmente el uso de cookies en el explorador."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el seeder de géneros, se itera un array clave-valor. Si usamos GeneroRMM::where('nombre', $nombre)->first(), ¿qué nos devuelve esta consulta?",
+    "opciones": [
+      "Un array con todos los géneros que coincidan.",
+      "Solo el primer registro de la tabla géneros como objeto Eloquent, o null si no lo encuentra.",
+      "El número total de géneros.",
+      "Verdadero o falso."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En RMMSeeder vemos: $p1->genero = $genAnimacion->id; ¿Por qué se asocia de esta forma en lugar de poner el número de ID a mano?",
+    "opciones": [
+      "Para evitar problemas de IDs estáticos; busca el género por nombre, coge el ID asignado por la base de datos y lo asocia dinámicamente a la película.",
+      "Porque Eloquent no permite escribir números enteros.",
+      "Porque Blade requiere objetos completos.",
+      "Para cifrar la relación."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "El comando php artisan migrate:rollback analizado en los contenidos, ¿qué acción realiza exactamente?",
+    "opciones": [
+      "Deshace absolutamente todas las migraciones ejecutadas históricamente.",
+      "Deshace únicamente el último 'lote' (batch) de migraciones que se ejecutaron juntas.",
+      "Elimina la base de datos completa y crea una nueva.",
+      "Hace una copia de seguridad en formato SQL de la tabla actual."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Según la Tarea 5, para enviar datos sensibles o formularios que modifiquen el servidor, en el archivo de rutas (web.php) se prefiere usar:",
+    "opciones": [
+      "Route::get",
+      "Route::view",
+      "Route::post (o sus equivalentes put/patch/delete)",
+      "Route::redirect"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Si un grupo de rutas en web.php está envuelto en Route::middleware(['auth'])->group(function () { ... });, ¿qué significa?",
+    "opciones": [
+      "Que solo pueden acceder usuarios administradores (auth_level 1).",
+      "Que solo los invitados (no logueados) pueden acceder a las rutas dentro de ese grupo.",
+      "Que todas las rutas contenidas exigirán que el usuario haya iniciado sesión correctamente para poder visitarlas.",
+      "Que se pedirá un token API en formato JSON en cada petición."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En Blade, cuando encerramos una variable entre llaves dobles {{ $variable }}, ¿qué hace Laravel internamente por seguridad?",
+    "opciones": [
+      "Usa la función htmlspecialchars() de PHP para evitar inyecciones XSS (escapado de código HTML/JS).",
+      "Convierte la variable a formato JSON.",
+      "Elimina todos los espacios en blanco.",
+      "Cifra la variable usando AES-256."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En las plantillas layout de la Tarea 5 (ej. layouts/privado.blade.php), usamos @yield('contenido'). ¿Para qué sirve esto?",
+    "opciones": [
+      "Para importar variables PHP desde el controlador.",
+      "Para definir un marcador de posición (hueco) donde las vistas hijas inyectarán su código HTML personalizado usando @section('contenido').",
+      "Para crear un bucle repetitivo de contenido.",
+      "Para detener la ejecución si no hay contenido."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "Al devolver una vista desde el controlador con return view('errores');, no se escribe '.blade.php'. ¿Por qué?",
+    "opciones": [
+      "Porque no es una vista, es un modelo.",
+      "Porque Laravel automáticamente asume y busca el sufijo '.blade.php' (o '.php') en la carpeta de recursos.",
+      "Porque las vistas se guardan en la base de datos, no en archivos.",
+      "Porque el servidor Apache elimina las extensiones por defecto."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En los controladores, se emplea Auth::check() para redirigir si no hay sesión. ¿Qué tipo de valor retorna Auth::check()?",
+    "opciones": [
+      "Un array con los roles del usuario.",
+      "Una redirección al login.",
+      "Un booleano (true si está autenticado, false si no lo está).",
+      "El objeto del usuario."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "¿Cómo se llama el motor de plantillas integrado que utiliza Laravel, responsable de directivas como @extends o @foreach?",
+    "opciones": [
+      "Twig",
+      "Smarty",
+      "Blade",
+      "EJS"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 tercera parte",
+    "pregunta": "En el archivo .env de tu Tarea 5, está configurado DB_DATABASE=2526_dwes05. ¿Qué le indica esta variable a Laravel?",
+    "opciones": [
+      "El usuario con el que debe conectar al motor MySQL.",
+      "El prefijo de las tablas (ej. 2526_dwes05_users).",
+      "El nombre exacto de la base de datos física donde debe crear las tablas y realizar las consultas.",
+      "La contraseña del puerto 3306."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Dado el siguiente fragmento del LoginController:\n\nif (Auth::attempt($credentials)) {\n    $request->session()->___();\n    return redirect()->intended(route('zonaprivada'));\n}\n\n¿Qué método falta en el hueco '___' para renovar el ID de la sesión tras un login exitoso?",
+    "opciones": [
+      "start",
+      "refresh",
+      "regenerate",
+      "restart"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el LoginController, en caso de fallo, se devuelve el siguiente código:\n\nreturn back()->___([\n    'email' => 'El email o la contraseña no son válidos.',\n])->onlyInput('email');\n\n¿Qué método completa el hueco para enviar el array de errores a la vista?",
+    "opciones": [
+      "withErrors",
+      "sendErrors",
+      "flashErrors",
+      "putErrors"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Observa el cierre de sesión en LoginController:\n\n$request->session()->invalidate();\n$request->session()->___();\n\n¿Qué método se ejecuta a continuación para evitar ataques CSRF renovando el token?",
+    "opciones": [
+      "clearToken",
+      "regenerateToken",
+      "destroyToken",
+      "refreshToken"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Identifica qué método falta en la validación del LoginController:\n\n$credentials = $request->___([\n    'email' => 'required|email',\n    'password' => 'required',\n]);",
+    "opciones": [
+      "verify",
+      "check",
+      "validate",
+      "sanitize"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En LoginController, tras un login correcto vemos:\n\nreturn redirect()->___(route('zonaprivada'));\n\n¿Qué método asegura que, si el usuario intentaba acceder a una URL protegida antes de loguearse, sea redirigido a esa URL en lugar de la ruta por defecto?",
+    "opciones": [
+      "target",
+      "intended",
+      "route",
+      "previous"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En CriticaControllerRMM, dentro del método crearNuevaCriticaRMM, vemos esta regla:\n\n$request->validate([\n    'valoracion' => 'required|___|between:1,5',\n    ...\n]);\n\n¿Qué regla de validación falta para asegurar que la valoración sea un número sin decimales?",
+    "opciones": [
+      "numeric",
+      "number",
+      "int",
+      "integer"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el CriticaControllerRMM, se busca la crítica a borrar de esta manera:\n\n$critica = CriticaRMM::___($critica_id);\n\n¿Qué método de Eloquent falta para buscar un registro directamente por su Clave Primaria (id)?",
+    "opciones": [
+      "find",
+      "get",
+      "whereId",
+      "search"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Dado el siguiente fragmento para comprobar si un usuario ya votó:\n\n$existeCritica = CriticaRMM::where('usuario', Auth::id())\n    ->where('pelicula', $pelicula_id)\n    ->___();\n\n¿Qué método falta al final para obtener el número total de coincidencias?",
+    "opciones": [
+      "sum()",
+      "total()",
+      "count()",
+      "get()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el borrado de críticas, hay un 'doble check' de seguridad:\n\nif ($critica->usuario !== ___) {\n    return view('errores', [...]);\n}\n\n¿Qué código falta para compararlo con el identificador del usuario conectado?",
+    "opciones": [
+      "Auth::user()",
+      "Session::id()",
+      "Auth::id()",
+      "User::current()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Para comprobar que se ha marcado el checkbox de confirmación al borrar:\n\nif (!$request->___('confirmacion')) {\n    return view('errores', [...]);\n}\n\n¿Qué método de la clase Request falta para verificar si el campo 'confirmacion' está presente en la petición?",
+    "opciones": [
+      "has",
+      "exists",
+      "contains",
+      "isset"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Una vez validadas todas las comprobaciones de borrado:\n\n$critica->___();\nreturn view('mensaje', [...]);\n\n¿Qué método de Eloquent ejecuta el comando DELETE en la base de datos para ese registro?",
+    "opciones": [
+      "destroy",
+      "remove",
+      "drop",
+      "delete"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En CriticaControllerRMM, para cargar el formulario de nueva crítica se devuelve:\n\nreturn ___('formnuevacriticaRMM', [\n    'pelicula' => $pelicula\n]);\n\n¿Qué función global falta para renderizar la plantilla Blade?",
+    "opciones": [
+      "render",
+      "template",
+      "view",
+      "display"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el archivo RMMSeeder, al crear el Usuario 1:\n\n$u1->password = ___::make('RMM1');\n\n¿Qué Facade se usa para encriptar la contraseña?",
+    "opciones": [
+      "Crypt",
+      "Bcrypt",
+      "Hash",
+      "Password"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el RMMSeeder, se evita duplicar usuarios con:\n\nif (User::___('email', 'RMM1@email.RMM')->count() == 0) {\n    ...\n}\n\n¿Qué método de Eloquent va en el hueco para filtrar por la columna 'email'?",
+    "opciones": [
+      "find",
+      "filter",
+      "where",
+      "select"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En RMMSeeder, para obtener el objeto del género 'animación' y asignar su ID después:\n\n$genAnimacion = GeneroRMM::where('nombre', 'animación')->___();\n\n¿Qué método usamos para obtener solo el primer registro que coincida?",
+    "opciones": [
+      "get()",
+      "all()",
+      "one()",
+      "first()"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Siguiendo con el RMMSeeder, ¿cómo se asigna la clave foránea a la película?\n\n$p1->genero = $genAnimacion->___;\n\n¿Qué propiedad del objeto `$genAnimacion` necesitamos?",
+    "opciones": [
+      "id",
+      "nombre",
+      "pk",
+      "value"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'peliculas', para crear la columna 'duracion' (en minutos):\n\n$table->___('duracion');\n\n¿Qué tipo de columna se utiliza en este caso?",
+    "opciones": [
+      "time",
+      "integer",
+      "float",
+      "number"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'criticas', se crea la clave foránea a 'peliculas' en una sola línea:\n\n$table->___('pelicula')->constrained('peliculas')->onDelete('cascade');\n\n¿Qué método de Blueprint permite crear la columna y prepararla como clave foránea de forma simplificada?",
+    "opciones": [
+      "foreign",
+      "foreignKey",
+      "foreignId",
+      "relation"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'peliculas', se usa la forma tradicional para la clave foránea:\n\n$table->foreign('genero')->___('id')->on('generos');\n\n¿Qué método de Blueprint falta para indicar a qué columna de la tabla externa apunta?",
+    "opciones": [
+      "pointsTo",
+      "references",
+      "target",
+      "connects"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Para limitar el título de la película a 60 caracteres en la migración:\n\n$table->___('titulo', 60);\n\n¿Qué método se emplea para crear un VARCHAR?",
+    "opciones": [
+      "varchar",
+      "text",
+      "string",
+      "char"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'peliculas', el campo 'argumento' no es muy largo. Según el código de la Tarea 5:\n\n$table->___('argumento');\n\n¿Qué método se usó para almacenar el resumen de la película?",
+    "opciones": [
+      "longText",
+      "tinyText",
+      "string",
+      "text"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Al final de cada método up() en las migraciones vemos:\n\n$table->___();\n\n¿Qué método genera automáticamente las columnas created_at y updated_at?",
+    "opciones": [
+      "dates()",
+      "time()",
+      "timestamps()",
+      "createdAt()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el método down() de las migraciones:\n\npublic function down(): void {\n    Schema::___('peliculas');\n}\n\n¿Qué método se llama para borrar la tabla si existe al revertir la migración?",
+    "opciones": [
+      "delete",
+      "dropIfExists",
+      "truncate",
+      "removeTable"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo CriticaRMM:\n\npublic function usuarioAsociado(): ___ \n{\n    return $this->belongsTo(User::class, 'usuario');\n}\n\nSegún PHP 8, ¿cuál es el tipado de retorno correcto (que falta en el hueco)?",
+    "opciones": [
+      "User",
+      "HasOne",
+      "BelongsTo",
+      "Object"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User:\n\npublic function criticas(): ___ \n{\n    return $this->hasMany(CriticaRMM::class, 'usuario');\n}\n\n¿Cuál es el tipado de retorno correcto para una relación 'Un usuario tiene MUCHAS críticas'?",
+    "opciones": [
+      "HasMany",
+      "BelongsToMany",
+      "Array",
+      "Collection"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User, ¿cómo se llama la propiedad que convierte 'email_verified_at' en un objeto datetime y la 'password' en un string hasheado?\n\nprotected $___ = [\n    'email_verified_at' => 'datetime',\n    'password' => 'hashed',\n];",
+    "opciones": [
+      "types",
+      "conversions",
+      "casts",
+      "mutators"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User, para evitar que la contraseña se envíe al serializar el modelo a JSON:\n\nprotected $___ = [\n    'password',\n    'remember_token',\n];",
+    "opciones": [
+      "private",
+      "hidden",
+      "guarded",
+      "protected"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo PeliculaRMM:\n\nreturn $this->belongsTo(GeneroRMM::class, '___');\n\n¿Qué valor contiene el segundo parámetro si queremos indicar el nombre exacto de la clave foránea en la tabla peliculas?",
+    "opciones": [
+      "id_genero",
+      "generos_id",
+      "genero",
+      "generoRMM_id"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En las vistas de la tarea (ej. formnuevacriticaRMM.blade.php), la primera línea es:\n\n___('layouts.publico')\n\n¿Qué directiva Blade indica que esta vista hereda de una plantilla base?",
+    "opciones": [
+      "@include",
+      "@layout",
+      "@extends",
+      "@master"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Inmediatamente después de extender el layout en Blade:\n\n___('titulo', 'Valorar película')\n\n¿Qué directiva asigna el texto 'Valorar película' a la sección 'titulo' del layout?",
+    "opciones": [
+      "@yield",
+      "@section",
+      "@set",
+      "@title"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Dentro del `<form method=\"POST\" ...>` en Blade, ¿qué directiva es imperativa incluir para que Laravel no rechace la petición con un error 419?\n\n___",
+    "opciones": [
+      "@csrf",
+      "@token",
+      "@secure",
+      "@auth"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En layouts/publico.blade.php, se evalúa si hay usuario conectado:\n\n___\n   Cerrar sesión\n@else\n   Hola, invitado\n@endauth\n\n¿Qué directiva inicia este bloque if especial para autenticación?",
+    "opciones": [
+      "@if(Auth::check())",
+      "@guest",
+      "@auth",
+      "@user"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el archivo `.env`, se configura la variable para ver errores detallados durante el desarrollo:\n\nAPP_DEBUG=___\n\n¿Qué valor tiene en tu archivo de la Tarea 5?",
+    "opciones": [
+      "false",
+      "1",
+      "true",
+      "on"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el archivo `.env`, el nombre de la base de datos a la que se conecta Laravel es:\n\nDB_DATABASE=___\n\nSegún la Tarea 5, el valor es:",
+    "opciones": [
+      "laravel",
+      "peliculas_db",
+      "2526_dwes05",
+      "tarea5"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Si en un controlador ejecuto:\n\nreturn view('mensaje', [\n    'mensaje' => \"Has valorado con un \" . $critica->___ . \"/5.\"\n]);\n\n¿A qué atributo del objeto `$critica` accedemos para mostrar la nota numérica?",
+    "opciones": [
+      "puntuacion",
+      "nota",
+      "valor",
+      "valoracion"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el array de mensajes personalizados de `validate()` del CriticaControllerRMM:\n\n[\n    'valoracion.required' => 'Debes seleccionar una valoración del desplegable.',\n    ...\n]\n\n¿En qué posición de los argumentos de la función `validate($arg1, $arg2)` se pasa este array?",
+    "opciones": [
+      "Como primer argumento.",
+      "Como segundo argumento.",
+      "Como tercer argumento.",
+      "No se pasa a validate(), se define en el modelo."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el controlador de críticas, si al crear se detecta que ya existe una:\n\nif($existeCritica > 0){\n    return view('___', ['mensaje' => \"Ya habías criticado esta película\"]);\n}\n\n¿A qué vista genérica de la Tarea 5 se está redirigiendo para mostrar el problema?",
+    "opciones": [
+      "fallo",
+      "errores",
+      "principal",
+      "publico"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En los layouts de la Tarea 5 (ej. privado.blade.php), para indicar dónde se debe volcar el código de la vista hija:\n\n@___('contenido')",
+    "opciones": [
+      "yield",
+      "section",
+      "include",
+      "content"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el controlador, para recuperar un dato enviado por POST, como en `mostrarFormularioBorradoRMM`:\n\n$critica_id = $request->___('critica_id');\n\n¿Qué método del objeto $request extrae el valor?",
+    "opciones": [
+      "value",
+      "get",
+      "input",
+      "fetch"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En una vista Blade, para crear un enlace hacia una ruta que en `web.php` definimos con `->name('zonaprivada')`:\n\n<a href=\"{{ ___('zonaprivada') }}\">\n\n¿Qué función helper se usa dentro de las llaves?",
+    "opciones": [
+      "url",
+      "link",
+      "path",
+      "route"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En las migraciones, vemos encadenamientos en las claves foráneas. ¿Qué hace falta para que también se actualice en cascada?\n\n->onDelete('cascade')->___('cascade');",
+    "opciones": [
+      "onModify",
+      "onChange",
+      "onUpdate",
+      "onEdit"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Al pasar datos a una vista desde el controlador:\n\nreturn view('formnuevacriticaRMM', [\n    '___' => $pelicula\n]);\n\nSi en la vista Blade imprimimos `{{ $pelicula->titulo }}`, ¿cuál es la clave del array asociativo en el controlador?",
+    "opciones": [
+      "data",
+      "pelicula",
+      "item",
+      "p"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En RMMSeeder, iteramos sobre un array asociativo:\n\n$generos = ['animación' => '...', 'drama' => '...'];\nforeach ($generos as $___ => $descripcion)\n\n¿Qué nombre recibe la variable de la clave del array en este bucle?",
+    "opciones": [
+      "key",
+      "id",
+      "nombre",
+      "tipo"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Observa el namespace importado en el modelo PeliculaRMM para el retorno de HasMany:\n\nuse Illuminate\\Database\\Eloquent\\Relations\\___;\n\n¿Qué clase se importa para que PHP 8 reconozca el tipado `: HasMany`?",
+    "opciones": [
+      "HasMany",
+      "Relation",
+      "Collection",
+      "EloquentHasMany"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User, los atributos que se pueden rellenar de forma masiva (mass assignment) se definen en un array llamado:\n\nprotected $___ = [\n    'name', 'email', 'password',\n];",
+    "opciones": [
+      "guarded",
+      "fillable",
+      "allowed",
+      "inputs"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el RMMSeeder, para obtener la fecha y hora actual y marcar un email como verificado:\n\n$u1->email_verified_at = ___();\n\n¿Qué función helper de Laravel devuelve una instancia de Carbon con la hora actual?",
+    "opciones": [
+      "time",
+      "date",
+      "current",
+      "now"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el método `crearNuevaCriticaRMM`, vemos que se encadenan varios métodos where:\n\nCriticaRMM::where('usuario', Auth::id())\n    ->___('pelicula', $pelicula_id)\n    ->count();\n\n¿Qué método se utiliza para añadir una segunda condición AND a la consulta SQL generada?",
+    "opciones": [
+      "andWhere",
+      "where",
+      "add",
+      "filter"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración `criticas`, además del ID de la película y el usuario, al final se incluye:\n\n$table->___();\n\nEsto es indispensable para que Eloquent pueda gestionar automáticamente cuándo se escribió la crítica.",
+    "opciones": [
+      "dates()",
+      "timestamps()",
+      "created_at()",
+      "datetime()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el controlador `LoginController`, el método de cierre de sesión se llama:\n\npublic function ___(Request $request)\n{\n    Auth::logout();\n    ...\n}\n\n¿Cómo nombraste el método según el archivo de tu tarea?",
+    "opciones": [
+      "logout",
+      "cerrarSesion",
+      "logoutRMM",
+      "exit"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el layout `publico.blade.php`, se evalúa la autenticación de esta forma:\n\n@auth\n   Cerrar sesión\n___\n   Hola, invitado\n@endauth\n\n¿Qué directiva Blade falta para la condición 'si no' (el equivalente a un bloque else)?",
+    "opciones": [
+      "@elseif",
+      "@guest",
+      "@else",
+      "@otherwise"
+    ],
+    "correcta": 2
+  },{
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Dado el siguiente fragmento del LoginController:\n\nif (Auth::attempt($credentials)) {\n    $request->session()->___();\n    return redirect()->intended(route('zonaprivada'));\n}\n\n¿Qué método falta en el hueco '___' para renovar el ID de la sesión tras un login exitoso?",
+    "opciones": [
+      "start",
+      "refresh",
+      "regenerate",
+      "restart"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el LoginController, en caso de fallo, se devuelve el siguiente código:\n\nreturn back()->___([\n    'email' => 'El email o la contraseña no son válidos.',\n])->onlyInput('email');\n\n¿Qué método completa el hueco para enviar el array de errores a la vista?",
+    "opciones": [
+      "withErrors",
+      "sendErrors",
+      "flashErrors",
+      "putErrors"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Observa el cierre de sesión en LoginController:\n\n$request->session()->invalidate();\n$request->session()->___();\n\n¿Qué método se ejecuta a continuación para evitar ataques CSRF renovando el token?",
+    "opciones": [
+      "clearToken",
+      "regenerateToken",
+      "destroyToken",
+      "refreshToken"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Identifica qué método falta en la validación del LoginController:\n\n$credentials = $request->___([\n    'email' => 'required|email',\n    'password' => 'required',\n]);",
+    "opciones": [
+      "verify",
+      "check",
+      "validate",
+      "sanitize"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En LoginController, tras un login correcto vemos:\n\nreturn redirect()->___(route('zonaprivada'));\n\n¿Qué método asegura que, si el usuario intentaba acceder a una URL protegida antes de loguearse, sea redirigido a esa URL en lugar de la ruta por defecto?",
+    "opciones": [
+      "target",
+      "intended",
+      "route",
+      "previous"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En CriticaControllerRMM, dentro del método crearNuevaCriticaRMM, vemos esta regla:\n\n$request->validate([\n    'valoracion' => 'required|___|between:1,5',\n    ...\n]);\n\n¿Qué regla de validación falta para asegurar que la valoración sea un número sin decimales?",
+    "opciones": [
+      "numeric",
+      "number",
+      "int",
+      "integer"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el CriticaControllerRMM, se busca la crítica a borrar de esta manera:\n\n$critica = CriticaRMM::___($critica_id);\n\n¿Qué método de Eloquent falta para buscar un registro directamente por su Clave Primaria (id)?",
+    "opciones": [
+      "find",
+      "get",
+      "whereId",
+      "search"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Dado el siguiente fragmento para comprobar si un usuario ya votó:\n\n$existeCritica = CriticaRMM::where('usuario', Auth::id())\n    ->where('pelicula', $pelicula_id)\n    ->___();\n\n¿Qué método falta al final para obtener el número total de coincidencias?",
+    "opciones": [
+      "sum()",
+      "total()",
+      "count()",
+      "get()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el borrado de críticas, hay un 'doble check' de seguridad:\n\nif ($critica->usuario !== ___) {\n    return view('errores', [...]);\n}\n\n¿Qué código falta para compararlo con el identificador del usuario conectado?",
+    "opciones": [
+      "Auth::user()",
+      "Session::id()",
+      "Auth::id()",
+      "User::current()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Para comprobar que se ha marcado el checkbox de confirmación al borrar:\n\nif (!$request->___('confirmacion')) {\n    return view('errores', [...]);\n}\n\n¿Qué método de la clase Request falta para verificar si el campo 'confirmacion' está presente en la petición?",
+    "opciones": [
+      "has",
+      "exists",
+      "contains",
+      "isset"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Una vez validadas todas las comprobaciones de borrado:\n\n$critica->___();\nreturn view('mensaje', [...]);\n\n¿Qué método de Eloquent ejecuta el comando DELETE en la base de datos para ese registro?",
+    "opciones": [
+      "destroy",
+      "remove",
+      "drop",
+      "delete"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En CriticaControllerRMM, para cargar el formulario de nueva crítica se devuelve:\n\nreturn ___('formnuevacriticaRMM', [\n    'pelicula' => $pelicula\n]);\n\n¿Qué función global falta para renderizar la plantilla Blade?",
+    "opciones": [
+      "render",
+      "template",
+      "view",
+      "display"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el archivo RMMSeeder, al crear el Usuario 1:\n\n$u1->password = ___::make('RMM1');\n\n¿Qué Facade se usa para encriptar la contraseña?",
+    "opciones": [
+      "Crypt",
+      "Bcrypt",
+      "Hash",
+      "Password"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el RMMSeeder, se evita duplicar usuarios con:\n\nif (User::___('email', 'RMM1@email.RMM')->count() == 0) {\n    ...\n}\n\n¿Qué método de Eloquent va en el hueco para filtrar por la columna 'email'?",
+    "opciones": [
+      "find",
+      "filter",
+      "where",
+      "select"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En RMMSeeder, para obtener el objeto del género 'animación' y asignar su ID después:\n\n$genAnimacion = GeneroRMM::where('nombre', 'animación')->___();\n\n¿Qué método usamos para obtener solo el primer registro que coincida?",
+    "opciones": [
+      "get()",
+      "all()",
+      "one()",
+      "first()"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Siguiendo con el RMMSeeder, ¿cómo se asigna la clave foránea a la película?\n\n$p1->genero = $genAnimacion->___;\n\n¿Qué propiedad del objeto `$genAnimacion` necesitamos?",
+    "opciones": [
+      "id",
+      "nombre",
+      "pk",
+      "value"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'peliculas', para crear la columna 'duracion' (en minutos):\n\n$table->___('duracion');\n\n¿Qué tipo de columna se utiliza en este caso?",
+    "opciones": [
+      "time",
+      "integer",
+      "float",
+      "number"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'criticas', se crea la clave foránea a 'peliculas' en una sola línea:\n\n$table->___('pelicula')->constrained('peliculas')->onDelete('cascade');\n\n¿Qué método de Blueprint permite crear la columna y prepararla como clave foránea de forma simplificada?",
+    "opciones": [
+      "foreign",
+      "foreignKey",
+      "foreignId",
+      "relation"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'peliculas', se usa la forma tradicional para la clave foránea:\n\n$table->foreign('genero')->___('id')->on('generos');\n\n¿Qué método de Blueprint falta para indicar a qué columna de la tabla externa apunta?",
+    "opciones": [
+      "pointsTo",
+      "references",
+      "target",
+      "connects"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Para limitar el título de la película a 60 caracteres en la migración:\n\n$table->___('titulo', 60);\n\n¿Qué método se emplea para crear un VARCHAR?",
+    "opciones": [
+      "varchar",
+      "text",
+      "string",
+      "char"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración de 'peliculas', el campo 'argumento' no es muy largo. Según el código de la Tarea 5:\n\n$table->___('argumento');\n\n¿Qué método se usó para almacenar el resumen de la película?",
+    "opciones": [
+      "longText",
+      "tinyText",
+      "string",
+      "text"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Al final de cada método up() en las migraciones vemos:\n\n$table->___();\n\n¿Qué método genera automáticamente las columnas created_at y updated_at?",
+    "opciones": [
+      "dates()",
+      "time()",
+      "timestamps()",
+      "createdAt()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el método down() de las migraciones:\n\npublic function down(): void {\n    Schema::___('peliculas');\n}\n\n¿Qué método se llama para borrar la tabla si existe al revertir la migración?",
+    "opciones": [
+      "delete",
+      "dropIfExists",
+      "truncate",
+      "removeTable"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo CriticaRMM:\n\npublic function usuarioAsociado(): ___ \n{\n    return $this->belongsTo(User::class, 'usuario');\n}\n\nSegún PHP 8, ¿cuál es el tipado de retorno correcto (que falta en el hueco)?",
+    "opciones": [
+      "User",
+      "HasOne",
+      "BelongsTo",
+      "Object"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User:\n\npublic function criticas(): ___ \n{\n    return $this->hasMany(CriticaRMM::class, 'usuario');\n}\n\n¿Cuál es el tipado de retorno correcto para una relación 'Un usuario tiene MUCHAS críticas'?",
+    "opciones": [
+      "HasMany",
+      "BelongsToMany",
+      "Array",
+      "Collection"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User, ¿cómo se llama la propiedad que convierte 'email_verified_at' en un objeto datetime y la 'password' en un string hasheado?\n\nprotected $___ = [\n    'email_verified_at' => 'datetime',\n    'password' => 'hashed',\n];",
+    "opciones": [
+      "types",
+      "conversions",
+      "casts",
+      "mutators"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User, para evitar que la contraseña se envíe al serializar el modelo a JSON:\n\nprotected $___ = [\n    'password',\n    'remember_token',\n];",
+    "opciones": [
+      "private",
+      "hidden",
+      "guarded",
+      "protected"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo PeliculaRMM:\n\nreturn $this->belongsTo(GeneroRMM::class, '___');\n\n¿Qué valor contiene el segundo parámetro si queremos indicar el nombre exacto de la clave foránea en la tabla peliculas?",
+    "opciones": [
+      "id_genero",
+      "generos_id",
+      "genero",
+      "generoRMM_id"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En las vistas de la tarea (ej. formnuevacriticaRMM.blade.php), la primera línea es:\n\n___('layouts.publico')\n\n¿Qué directiva Blade indica que esta vista hereda de una plantilla base?",
+    "opciones": [
+      "@include",
+      "@layout",
+      "@extends",
+      "@master"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Inmediatamente después de extender el layout en Blade:\n\n___('titulo', 'Valorar película')\n\n¿Qué directiva asigna el texto 'Valorar película' a la sección 'titulo' del layout?",
+    "opciones": [
+      "@yield",
+      "@section",
+      "@set",
+      "@title"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Dentro del `<form method=\"POST\" ...>` en Blade, ¿qué directiva es imperativa incluir para que Laravel no rechace la petición con un error 419?\n\n___",
+    "opciones": [
+      "@csrf",
+      "@token",
+      "@secure",
+      "@auth"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En layouts/publico.blade.php, se evalúa si hay usuario conectado:\n\n___\n   Cerrar sesión\n@else\n   Hola, invitado\n@endauth\n\n¿Qué directiva inicia este bloque if especial para autenticación?",
+    "opciones": [
+      "@if(Auth::check())",
+      "@guest",
+      "@auth",
+      "@user"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el archivo `.env`, se configura la variable para ver errores detallados durante el desarrollo:\n\nAPP_DEBUG=___\n\n¿Qué valor tiene en tu archivo de la Tarea 5?",
+    "opciones": [
+      "false",
+      "1",
+      "true",
+      "on"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el archivo `.env`, el nombre de la base de datos a la que se conecta Laravel es:\n\nDB_DATABASE=___\n\nSegún la Tarea 5, el valor es:",
+    "opciones": [
+      "laravel",
+      "peliculas_db",
+      "2526_dwes05",
+      "tarea5"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Si en un controlador ejecuto:\n\nreturn view('mensaje', [\n    'mensaje' => \"Has valorado con un \" . $critica->___ . \"/5.\"\n]);\n\n¿A qué atributo del objeto `$critica` accedemos para mostrar la nota numérica?",
+    "opciones": [
+      "puntuacion",
+      "nota",
+      "valor",
+      "valoracion"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el array de mensajes personalizados de `validate()` del CriticaControllerRMM:\n\n[\n    'valoracion.required' => 'Debes seleccionar una valoración del desplegable.',\n    ...\n]\n\n¿En qué posición de los argumentos de la función `validate($arg1, $arg2)` se pasa este array?",
+    "opciones": [
+      "Como primer argumento.",
+      "Como segundo argumento.",
+      "Como tercer argumento.",
+      "No se pasa a validate(), se define en el modelo."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el controlador de críticas, si al crear se detecta que ya existe una:\n\nif($existeCritica > 0){\n    return view('___', ['mensaje' => \"Ya habías criticado esta película\"]);\n}\n\n¿A qué vista genérica de la Tarea 5 se está redirigiendo para mostrar el problema?",
+    "opciones": [
+      "fallo",
+      "errores",
+      "principal",
+      "publico"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En los layouts de la Tarea 5 (ej. privado.blade.php), para indicar dónde se debe volcar el código de la vista hija:\n\n@___('contenido')",
+    "opciones": [
+      "yield",
+      "section",
+      "include",
+      "content"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el controlador, para recuperar un dato enviado por POST, como en `mostrarFormularioBorradoRMM`:\n\n$critica_id = $request->___('critica_id');\n\n¿Qué método del objeto $request extrae el valor?",
+    "opciones": [
+      "value",
+      "get",
+      "input",
+      "fetch"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En una vista Blade, para crear un enlace hacia una ruta que en `web.php` definimos con `->name('zonaprivada')`:\n\n<a href=\"{{ ___('zonaprivada') }}\">\n\n¿Qué función helper se usa dentro de las llaves?",
+    "opciones": [
+      "url",
+      "link",
+      "path",
+      "route"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En las migraciones, vemos encadenamientos en las claves foráneas. ¿Qué hace falta para que también se actualice en cascada?\n\n->onDelete('cascade')->___('cascade');",
+    "opciones": [
+      "onModify",
+      "onChange",
+      "onUpdate",
+      "onEdit"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Al pasar datos a una vista desde el controlador:\n\nreturn view('formnuevacriticaRMM', [\n    '___' => $pelicula\n]);\n\nSi en la vista Blade imprimimos `{{ $pelicula->titulo }}`, ¿cuál es la clave del array asociativo en el controlador?",
+    "opciones": [
+      "data",
+      "pelicula",
+      "item",
+      "p"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En RMMSeeder, iteramos sobre un array asociativo:\n\n$generos = ['animación' => '...', 'drama' => '...'];\nforeach ($generos as $___ => $descripcion)\n\n¿Qué nombre recibe la variable de la clave del array en este bucle?",
+    "opciones": [
+      "key",
+      "id",
+      "nombre",
+      "tipo"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "Observa el namespace importado en el modelo PeliculaRMM para el retorno de HasMany:\n\nuse Illuminate\\Database\\Eloquent\\Relations\\___;\n\n¿Qué clase se importa para que PHP 8 reconozca el tipado `: HasMany`?",
+    "opciones": [
+      "HasMany",
+      "Relation",
+      "Collection",
+      "EloquentHasMany"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el modelo User, los atributos que se pueden rellenar de forma masiva (mass assignment) se definen en un array llamado:\n\nprotected $___ = [\n    'name', 'email', 'password',\n];",
+    "opciones": [
+      "guarded",
+      "fillable",
+      "allowed",
+      "inputs"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el RMMSeeder, para obtener la fecha y hora actual y marcar un email como verificado:\n\n$u1->email_verified_at = ___();\n\n¿Qué función helper de Laravel devuelve una instancia de Carbon con la hora actual?",
+    "opciones": [
+      "time",
+      "date",
+      "current",
+      "now"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el método `crearNuevaCriticaRMM`, vemos que se encadenan varios métodos where:\n\nCriticaRMM::where('usuario', Auth::id())\n    ->___('pelicula', $pelicula_id)\n    ->count();\n\n¿Qué método se utiliza para añadir una segunda condición AND a la consulta SQL generada?",
+    "opciones": [
+      "andWhere",
+      "where",
+      "add",
+      "filter"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En la migración `criticas`, además del ID de la película y el usuario, al final se incluye:\n\n$table->___();\n\nEsto es indispensable para que Eloquent pueda gestionar automáticamente cuándo se escribió la crítica.",
+    "opciones": [
+      "dates()",
+      "timestamps()",
+      "created_at()",
+      "datetime()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el controlador `LoginController`, el método de cierre de sesión se llama:\n\npublic function ___(Request $request)\n{\n    Auth::logout();\n    ...\n}\n\n¿Cómo nombraste el método según el archivo de tu tarea?",
+    "opciones": [
+      "logout",
+      "cerrarSesion",
+      "logoutRMM",
+      "exit"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 5 cuarta parte",
+    "pregunta": "En el layout `publico.blade.php`, se evalúa la autenticación de esta forma:\n\n@auth\n   Cerrar sesión\n___\n   Hola, invitado\n@endauth\n\n¿Qué directiva Blade falta para la condición 'si no' (el equivalente a un bloque else)?",
+    "opciones": [
+      "@elseif",
+      "@guest",
+      "@else",
+      "@otherwise"
+    ],
+    "correcta": 2
+  },
+  {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Observa este código de la migración de 'generos':\n$table->____('nombre', 45);\n¿Qué método falta para indicar que 'nombre' es una cadena de texto de máximo 45 caracteres?",
+        "opciones": [
+            "text",
+            "varchar",
+            "string",
+            "char"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la migración de 'peliculas', para relacionar la clave foránea 'genero', el código es:\n$table->foreign('genero')->____('id')->on('generos');\n¿Qué palabra falta para completar la relación?",
+        "opciones": [
+            "references",
+            "pointsTo",
+            "constrained",
+            "links"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la migración de 'criticas', usaste una forma más corta para las claves foráneas:\n$table->foreignId('pelicula')->____('peliculas')->onDelete('cascade');\n¿Qué método falta en el hueco?",
+        "opciones": [
+            "references",
+            "constrained",
+            "onTable",
+            "linkedTo"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En todas las migraciones, dentro del método down(), aparece esto:\nSchema::____('criticas');\n¿Qué instrucción borra la tabla si existe?",
+        "opciones": [
+            "deleteTable",
+            "removeIfExists",
+            "dropIfExists",
+            "destroy"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'RMMSeeder.php', para encriptar la contraseña de los usuarios usaste:\n$u1->password = ____::make('RMM1');\n¿Qué clase de Laravel o Facade se usa aquí?",
+        "opciones": [
+            "Crypt",
+            "Hash",
+            "Bcrypt",
+            "Password"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el seeder, para verificar si un usuario ya existe antes de crearlo, pones:\nif (User::____('email', 'RMM1@email.RMM')->count() == 0)\n¿Qué método falta?",
+        "opciones": [
+            "find",
+            "search",
+            "where",
+            "get"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para obtener el género 'animación' en el seeder y poder asignarlo a una película, el código es:\n$genAnimacion = GeneroRMM::where('nombre', 'animación')->____();\n¿Qué método finaliza la consulta devolviendo el primer resultado?",
+        "opciones": [
+            "get",
+            "first",
+            "all",
+            "takeOne"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Al insertar la película en el seeder, le asignas el género así:\n$p1->genero = $genAnimacion->____;\n¿Qué propiedad del objeto '$genAnimacion' debes extraer para guardarla como clave foránea?",
+        "opciones": [
+            "id",
+            "nombre",
+            "key",
+            "value"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el modelo 'CriticaRMM.php', la declaración de la clase es:\nclass CriticaRMM extends ____ { ... }\n¿De qué clase base de Eloquent deben heredar los modelos?",
+        "opciones": [
+            "Controller",
+            "Migration",
+            "Model",
+            "Eloquent"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En los modelos utilizas: `use HasFactory;`. ¿Qué es exactamente 'HasFactory' en la estructura del código PHP?",
+        "opciones": [
+            "Un controlador",
+            "Una interfaz",
+            "Un Trait",
+            "Un Facade"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el modelo 'User', tienes esto para proteger contraseñas en serializaciones:\nprotected $____ = ['password', 'remember_token'];\n¿Cómo se llama la propiedad?",
+        "opciones": [
+            "hidden",
+            "invisible",
+            "protected",
+            "secret"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "También en 'User', tienes la propiedad `$casts`:\nprotected $casts = ['password' => '____'];\n¿Qué valor se asigna para que Laravel encripte automáticamente la contraseña?",
+        "opciones": [
+            "encrypted",
+            "hashed",
+            "bcrypt",
+            "secure"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'CriticaRMM.php', la relación N:1 hacia PeliculaRMM se define con:\npublic function peliculaAsociada(): ____ { ... }\n¿Qué tipo de retorno debe indicarse?",
+        "opciones": [
+            "HasOne",
+            "BelongsTo",
+            "HasMany",
+            "BelongsToMany"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'PeliculaRMM.php', la relación 1:N hacia las críticas se define con:\npublic function criticas(): ____ { ... }\n¿Qué tipo de retorno debe indicarse?",
+        "opciones": [
+            "HasMany",
+            "HasOne",
+            "BelongsTo",
+            "BelongsToMany"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el controlador 'CriticaControllerRMM', recuperas el ID de la película así:\n$pelicula_id = $request->____('pelicula_id') ?? old('pelicula_id');\n¿Qué método de Request extrae el valor?",
+        "opciones": [
+            "get",
+            "post",
+            "input",
+            "value"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Si la película no existe en 'mostrarFormularioCriticaRMM', devuelves:\nreturn ____('errores', ['mensaje' => \"La película no existe\"]);\n¿Qué helper falta?",
+        "opciones": [
+            "redirect",
+            "response",
+            "view",
+            "blade"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para verificar si el usuario ya votó, usaste:\nCriticaRMM::where('usuario', Auth::____())->where(...)->count();\n¿Cómo extraes el ID del usuario logueado?",
+        "opciones": [
+            "user_id()",
+            "id()",
+            "get()",
+            "key()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la validación de 'crearNuevaCriticaRMM', escribiste:\n'valoracion' => 'required|____|between:1,5'\n¿Qué regla exige que el dato sea un número sin decimales?",
+        "opciones": [
+            "number",
+            "numeric",
+            "integer",
+            "digits"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Al instanciar la crítica en el controlador, el código correcto es:\n$critica = ____ CriticaRMM();\n¿Qué palabra reservada de PHP crea el objeto?",
+        "opciones": [
+            "create",
+            "make",
+            "new",
+            "insert"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Tras rellenar los datos de '$critica', ¿qué método invocas para guardarlo en la base de datos?\n$critica->____();",
+        "opciones": [
+            "insert",
+            "store",
+            "push",
+            "save"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el controlador de borrado, verificas el checkbox de confirmación con:\nif (!$request->____('confirmacion')) { ... }\n¿Qué método comprueba si ese campo está presente en la petición?",
+        "opciones": [
+            "exists",
+            "has",
+            "contains",
+            "filled"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'borrarCriticaRMM', para eliminar físicamente el registro de la BD usas:\n$critica->____();",
+        "opciones": [
+            "delete",
+            "remove",
+            "destroy",
+            "drop"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', para intentar loguear al usuario se usa:\nif (Auth::____($credentials)) { ... }",
+        "opciones": [
+            "login",
+            "check",
+            "attempt",
+            "verify"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', si el login es correcto, el código es:\n$request->session()->____();\n¿Qué método regenera el ID de la sesión por seguridad?",
+        "opciones": [
+            "restart",
+            "regenerate",
+            "renew",
+            "start"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', tras el login exitoso rediriges con:\nreturn redirect()->____(route('zonaprivada'));\n¿Qué método envía a la URL que el usuario intentaba visitar antes de que le pidieran login?",
+        "opciones": [
+            "intended",
+            "previous",
+            "back",
+            "to"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Si falla el login, el controlador devuelve:\nreturn back()->withErrors(...)->____('email');\n¿Qué método de redirección mantiene el email que el usuario había escrito?",
+        "opciones": [
+            "keepInput",
+            "withInput",
+            "onlyInput",
+            "preserve"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el método 'logoutRMM', lo primero que ejecutas es:\nAuth::____();",
+        "opciones": [
+            "logout",
+            "exit",
+            "close",
+            "destroy"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para cerrar sesión completamente, también invalidas la sesión:\n$request->session()->____();",
+        "opciones": [
+            "destroy",
+            "clear",
+            "invalidate",
+            "flush"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Y para rematar el cierre de sesión, proteges contra CSRF regenerando el token:\n$request->session()->____();",
+        "opciones": [
+            "regenerateCsrf",
+            "regenerateToken",
+            "newToken",
+            "resetToken"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Pasando a las vistas, en 'formnuevacriticaRMM.blade.php', la primera línea es:\n@____('layouts.publico')\n¿Qué directiva hereda de la plantilla base?",
+        "opciones": [
+            "include",
+            "extends",
+            "inherits",
+            "layout"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para indicar el título de la página en Blade, usas:\n@____('titulo', 'Valorar película')",
+        "opciones": [
+            "section",
+            "yield",
+            "slot",
+            "title"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la plantilla base ('layouts/publico.blade.php'), para indicar dónde va el contenido principal pones:\n@____('contenido')",
+        "opciones": [
+            "show",
+            "section",
+            "yield",
+            "content"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En Blade, para imprimir el título de la película de forma segura escapando caracteres HTML, el código exacto es:",
+        "opciones": [
+            "{!! $pelicula->titulo !!}",
+            "{{ $pelicula->titulo }}",
+            "<?php echo $pelicula->titulo ?>",
+            "@print($pelicula->titulo)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En los enlaces, para generar la URL hacia la zona pública usando su nombre, pones:\n<a href=\"{{ ____('zonapublica') }}\">",
+        "opciones": [
+            "url",
+            "path",
+            "route",
+            "link"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Dentro del `<form>` de nueva crítica, es obligatorio poner el token de seguridad. ¿Qué fragmento de código usas?",
+        "opciones": [
+            "@token",
+            "{{ csrf_field() }}",
+            "@csrf",
+            "<input type='hidden' name='csrf'>"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para verificar en la vista si la validación del controlador falló, pones:\n@if ($errors->____())",
+        "opciones": [
+            "exist",
+            "fails",
+            "has",
+            "any"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para recorrer e imprimir los errores de validación en la vista, usas el código:\n@foreach ($errors->____() as $error)",
+        "opciones": [
+            "get",
+            "all",
+            "list",
+            "messages"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el formulario, para que el textarea no pierda lo que escribió el usuario tras un error de validación, usas:\n<textarea ...>{{ ____('comentario') }}</textarea>",
+        "opciones": [
+            "old",
+            "previous",
+            "keep",
+            "back"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el menú de navegación ('layouts.publico'), muestras el botón de 'Iniciar sesión' o el de 'Cerrar sesión' dependiendo de si el usuario está identificado. El bloque es:\n@____\n  Hola, {{ Auth::user()->name }}\n@else\n  Hola, invitado\n@endauth",
+        "opciones": [
+            "if(Auth::check())",
+            "login",
+            "auth",
+            "user"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para cargar tu archivo CSS en el layout, usas:\n<link rel=\"stylesheet\" href=\"{{ ____('css/estilos.css') }}\">",
+        "opciones": [
+            "url",
+            "public",
+            "asset",
+            "file"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'principal.blade.php', imprimes la media de valoraciones asegurando 2 decimales usando una función nativa de PHP. ¿Cuál es el código exacto?",
+        "opciones": [
+            "{{ round($pelicula->criticas_avg_valoracion, 2) }}",
+            "{{ format_number($pelicula->criticas_avg_valoracion, 2) }}",
+            "{{ number_format($pelicula->criticas_avg_valoracion, 2) }}",
+            "{{ $pelicula->criticas_avg_valoracion->format(2) }}"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'principal.blade.php' tienes el siguiente código:\n{{-- Si hay críticas, mostramos la media... --}}\n¿Qué hace exactamente este fragmento?",
+        "opciones": [
+            "Es una función condicional oculta.",
+            "Es un comentario HTML visible en el código fuente.",
+            "Es un comentario de Blade, ignorado al procesar la vista y oculto para el navegador.",
+            "Es una directiva para depurar variables."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'errores.blade.php', para mostrar el título usas:\n<h1>{{ $titulo ____ 'Upps! Acción no permitida.' }}</h1>\n¿Qué operador completa el código para dar un valor por defecto si $titulo es nulo?",
+        "opciones": [
+            "||",
+            "or",
+            "??",
+            "?:"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'confirmarborradoRMM.blade.php', envías el ID de la crítica en la URL de acción del formulario así:\n<form action=\"{{ route('borrarcriticaRMM', $critica->____) }}\" method=\"POST\">",
+        "opciones": [
+            "id",
+            "key",
+            "index",
+            "val"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'principal.blade.php', el bucle para iterar sobre todas las películas enviadas por el controlador es:\n@foreach ($peliculasRMM ____ $pelicula)\n¿Qué palabra reservada de PHP falta en el hueco?",
+        "opciones": [
+            "to",
+            "in",
+            "as",
+            "->"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'formnuevacriticaRMM.blade.php', necesitas que el controlador sepa a qué película se refiere la crítica enviada por POST. Para ello, usas un campo oculto. Identifica el código correcto:",
+        "opciones": [
+            "<input type=\"hidden\" name=\"pelicula_id\" value=\"{{ $pelicula->id }}\">",
+            "<input type=\"hide\" id=\"pelicula_id\" value=\"{{ $pelicula->id }}\">",
+            "{{ Form::hidden('pelicula_id', $pelicula->id) }}",
+            "<!-- pelicula_id = {{ $pelicula->id }} -->"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'privada_principal.blade.php', accedes al título de la película asociada a una crítica para mostrarlo en la tabla con este fragmento:\n<td><strong>{{ $critica->____->titulo }}</strong></td>\n¿Qué método de relación (definido en el modelo) usaste en el hueco?",
+        "opciones": [
+            "pelicula",
+            "peliculaAsociada",
+            "relPelicula",
+            "getPelicula"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En tu controlador 'CriticaControllerRMM', ¿cómo recuperas si el usuario pulsó el checkbox 'confirmacion' para borrar la crítica?",
+        "opciones": [
+            "$request->checkbox('confirmacion')",
+            "$request->has('confirmacion')",
+            "$_POST['confirmacion']",
+            "isset($confirmacion)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', al validar los datos, usas:\n$credentials = $request->validate([\n  'email' => 'required|____',\n  'password' => 'required',\n]);\n¿Qué regla asegura que el formato sea un correo electrónico?",
+        "opciones": [
+            "mail",
+            "email",
+            "correo",
+            "format:email"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En tu vista 'principal.blade.php', el hueco `@____` al final del bucle foreach cierra correctamente la iteración:",
+        "opciones": [
+            "endfor",
+            "stopforeach",
+            "endforeach",
+            "finish"
+        ],
+        "correcta": 2
+    },{
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Observa este código de la migración de 'generos':\n$table->____('nombre', 45);\n¿Qué método falta para indicar que 'nombre' es una cadena de texto de máximo 45 caracteres?",
+        "opciones": [
+            "text",
+            "varchar",
+            "string",
+            "char"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la migración de 'peliculas', para relacionar la clave foránea 'genero', el código es:\n$table->foreign('genero')->____('id')->on('generos');\n¿Qué palabra falta para completar la relación?",
+        "opciones": [
+            "references",
+            "pointsTo",
+            "constrained",
+            "links"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la migración de 'criticas', usaste una forma más corta para las claves foráneas:\n$table->foreignId('pelicula')->____('peliculas')->onDelete('cascade');\n¿Qué método falta en el hueco?",
+        "opciones": [
+            "references",
+            "constrained",
+            "onTable",
+            "linkedTo"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En todas las migraciones, dentro del método down(), aparece esto:\nSchema::____('criticas');\n¿Qué instrucción borra la tabla si existe?",
+        "opciones": [
+            "deleteTable",
+            "removeIfExists",
+            "dropIfExists",
+            "destroy"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'RMMSeeder.php', para encriptar la contraseña de los usuarios usaste:\n$u1->password = ____::make('RMM1');\n¿Qué clase de Laravel o Facade se usa aquí?",
+        "opciones": [
+            "Crypt",
+            "Hash",
+            "Bcrypt",
+            "Password"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el seeder, para verificar si un usuario ya existe antes de crearlo, pones:\nif (User::____('email', 'RMM1@email.RMM')->count() == 0)\n¿Qué método falta?",
+        "opciones": [
+            "find",
+            "search",
+            "where",
+            "get"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para obtener el género 'animación' en el seeder y poder asignarlo a una película, el código es:\n$genAnimacion = GeneroRMM::where('nombre', 'animación')->____();\n¿Qué método finaliza la consulta devolviendo el primer resultado?",
+        "opciones": [
+            "get",
+            "first",
+            "all",
+            "takeOne"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Al insertar la película en el seeder, le asignas el género así:\n$p1->genero = $genAnimacion->____;\n¿Qué propiedad del objeto '$genAnimacion' debes extraer para guardarla como clave foránea?",
+        "opciones": [
+            "id",
+            "nombre",
+            "key",
+            "value"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el modelo 'CriticaRMM.php', la declaración de la clase es:\nclass CriticaRMM extends ____ { ... }\n¿De qué clase base de Eloquent deben heredar los modelos?",
+        "opciones": [
+            "Controller",
+            "Migration",
+            "Model",
+            "Eloquent"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En los modelos utilizas: `use HasFactory;`. ¿Qué es exactamente 'HasFactory' en la estructura del código PHP?",
+        "opciones": [
+            "Un controlador",
+            "Una interfaz",
+            "Un Trait",
+            "Un Facade"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el modelo 'User', tienes esto para proteger contraseñas en serializaciones:\nprotected $____ = ['password', 'remember_token'];\n¿Cómo se llama la propiedad?",
+        "opciones": [
+            "hidden",
+            "invisible",
+            "protected",
+            "secret"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "También en 'User', tienes la propiedad `$casts`:\nprotected $casts = ['password' => '____'];\n¿Qué valor se asigna para que Laravel encripte automáticamente la contraseña?",
+        "opciones": [
+            "encrypted",
+            "hashed",
+            "bcrypt",
+            "secure"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'CriticaRMM.php', la relación N:1 hacia PeliculaRMM se define con:\npublic function peliculaAsociada(): ____ { ... }\n¿Qué tipo de retorno debe indicarse?",
+        "opciones": [
+            "HasOne",
+            "BelongsTo",
+            "HasMany",
+            "BelongsToMany"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'PeliculaRMM.php', la relación 1:N hacia las críticas se define con:\npublic function criticas(): ____ { ... }\n¿Qué tipo de retorno debe indicarse?",
+        "opciones": [
+            "HasMany",
+            "HasOne",
+            "BelongsTo",
+            "BelongsToMany"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el controlador 'CriticaControllerRMM', recuperas el ID de la película así:\n$pelicula_id = $request->____('pelicula_id') ?? old('pelicula_id');\n¿Qué método de Request extrae el valor?",
+        "opciones": [
+            "get",
+            "post",
+            "input",
+            "value"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Si la película no existe en 'mostrarFormularioCriticaRMM', devuelves:\nreturn ____('errores', ['mensaje' => \"La película no existe\"]);\n¿Qué helper falta?",
+        "opciones": [
+            "redirect",
+            "response",
+            "view",
+            "blade"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para verificar si el usuario ya votó, usaste:\nCriticaRMM::where('usuario', Auth::____())->where(...)->count();\n¿Cómo extraes el ID del usuario logueado?",
+        "opciones": [
+            "user_id()",
+            "id()",
+            "get()",
+            "key()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la validación de 'crearNuevaCriticaRMM', escribiste:\n'valoracion' => 'required|____|between:1,5'\n¿Qué regla exige que el dato sea un número sin decimales?",
+        "opciones": [
+            "number",
+            "numeric",
+            "integer",
+            "digits"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Al instanciar la crítica en el controlador, el código correcto es:\n$critica = ____ CriticaRMM();\n¿Qué palabra reservada de PHP crea el objeto?",
+        "opciones": [
+            "create",
+            "make",
+            "new",
+            "insert"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Tras rellenar los datos de '$critica', ¿qué método invocas para guardarlo en la base de datos?\n$critica->____();",
+        "opciones": [
+            "insert",
+            "store",
+            "push",
+            "save"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el controlador de borrado, verificas el checkbox de confirmación con:\nif (!$request->____('confirmacion')) { ... }\n¿Qué método comprueba si ese campo está presente en la petición?",
+        "opciones": [
+            "exists",
+            "has",
+            "contains",
+            "filled"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'borrarCriticaRMM', para eliminar físicamente el registro de la BD usas:\n$critica->____();",
+        "opciones": [
+            "delete",
+            "remove",
+            "destroy",
+            "drop"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', para intentar loguear al usuario se usa:\nif (Auth::____($credentials)) { ... }",
+        "opciones": [
+            "login",
+            "check",
+            "attempt",
+            "verify"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', si el login es correcto, el código es:\n$request->session()->____();\n¿Qué método regenera el ID de la sesión por seguridad?",
+        "opciones": [
+            "restart",
+            "regenerate",
+            "renew",
+            "start"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', tras el login exitoso rediriges con:\nreturn redirect()->____(route('zonaprivada'));\n¿Qué método envía a la URL que el usuario intentaba visitar antes de que le pidieran login?",
+        "opciones": [
+            "intended",
+            "previous",
+            "back",
+            "to"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Si falla el login, el controlador devuelve:\nreturn back()->withErrors(...)->____('email');\n¿Qué método de redirección mantiene el email que el usuario había escrito?",
+        "opciones": [
+            "keepInput",
+            "withInput",
+            "onlyInput",
+            "preserve"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el método 'logoutRMM', lo primero que ejecutas es:\nAuth::____();",
+        "opciones": [
+            "logout",
+            "exit",
+            "close",
+            "destroy"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para cerrar sesión completamente, también invalidas la sesión:\n$request->session()->____();",
+        "opciones": [
+            "destroy",
+            "clear",
+            "invalidate",
+            "flush"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Y para rematar el cierre de sesión, proteges contra CSRF regenerando el token:\n$request->session()->____();",
+        "opciones": [
+            "regenerateCsrf",
+            "regenerateToken",
+            "newToken",
+            "resetToken"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Pasando a las vistas, en 'formnuevacriticaRMM.blade.php', la primera línea es:\n@____('layouts.publico')\n¿Qué directiva hereda de la plantilla base?",
+        "opciones": [
+            "include",
+            "extends",
+            "inherits",
+            "layout"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para indicar el título de la página en Blade, usas:\n@____('titulo', 'Valorar película')",
+        "opciones": [
+            "section",
+            "yield",
+            "slot",
+            "title"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En la plantilla base ('layouts/publico.blade.php'), para indicar dónde va el contenido principal pones:\n@____('contenido')",
+        "opciones": [
+            "show",
+            "section",
+            "yield",
+            "content"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En Blade, para imprimir el título de la película de forma segura escapando caracteres HTML, el código exacto es:",
+        "opciones": [
+            "{!! $pelicula->titulo !!}",
+            "{{ $pelicula->titulo }}",
+            "<?php echo $pelicula->titulo ?>",
+            "@print($pelicula->titulo)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En los enlaces, para generar la URL hacia la zona pública usando su nombre, pones:\n<a href=\"{{ ____('zonapublica') }}\">",
+        "opciones": [
+            "url",
+            "path",
+            "route",
+            "link"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Dentro del `<form>` de nueva crítica, es obligatorio poner el token de seguridad. ¿Qué fragmento de código usas?",
+        "opciones": [
+            "@token",
+            "{{ csrf_field() }}",
+            "@csrf",
+            "<input type='hidden' name='csrf'>"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para verificar en la vista si la validación del controlador falló, pones:\n@if ($errors->____())",
+        "opciones": [
+            "exist",
+            "fails",
+            "has",
+            "any"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para recorrer e imprimir los errores de validación en la vista, usas el código:\n@foreach ($errors->____() as $error)",
+        "opciones": [
+            "get",
+            "all",
+            "list",
+            "messages"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el formulario, para que el textarea no pierda lo que escribió el usuario tras un error de validación, usas:\n<textarea ...>{{ ____('comentario') }}</textarea>",
+        "opciones": [
+            "old",
+            "previous",
+            "keep",
+            "back"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En el menú de navegación ('layouts.publico'), muestras el botón de 'Iniciar sesión' o el de 'Cerrar sesión' dependiendo de si el usuario está identificado. El bloque es:\n@____\n  Hola, {{ Auth::user()->name }}\n@else\n  Hola, invitado\n@endauth",
+        "opciones": [
+            "if(Auth::check())",
+            "login",
+            "auth",
+            "user"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "Para cargar tu archivo CSS en el layout, usas:\n<link rel=\"stylesheet\" href=\"{{ ____('css/estilos.css') }}\">",
+        "opciones": [
+            "url",
+            "public",
+            "asset",
+            "file"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'principal.blade.php', imprimes la media de valoraciones asegurando 2 decimales usando una función nativa de PHP. ¿Cuál es el código exacto?",
+        "opciones": [
+            "{{ round($pelicula->criticas_avg_valoracion, 2) }}",
+            "{{ format_number($pelicula->criticas_avg_valoracion, 2) }}",
+            "{{ number_format($pelicula->criticas_avg_valoracion, 2) }}",
+            "{{ $pelicula->criticas_avg_valoracion->format(2) }}"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'principal.blade.php' tienes el siguiente código:\n{{-- Si hay críticas, mostramos la media... --}}\n¿Qué hace exactamente este fragmento?",
+        "opciones": [
+            "Es una función condicional oculta.",
+            "Es un comentario HTML visible en el código fuente.",
+            "Es un comentario de Blade, ignorado al procesar la vista y oculto para el navegador.",
+            "Es una directiva para depurar variables."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'errores.blade.php', para mostrar el título usas:\n<h1>{{ $titulo ____ 'Upps! Acción no permitida.' }}</h1>\n¿Qué operador completa el código para dar un valor por defecto si $titulo es nulo?",
+        "opciones": [
+            "||",
+            "or",
+            "??",
+            "?:"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'confirmarborradoRMM.blade.php', envías el ID de la crítica en la URL de acción del formulario así:\n<form action=\"{{ route('borrarcriticaRMM', $critica->____) }}\" method=\"POST\">",
+        "opciones": [
+            "id",
+            "key",
+            "index",
+            "val"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'principal.blade.php', el bucle para iterar sobre todas las películas enviadas por el controlador es:\n@foreach ($peliculasRMM ____ $pelicula)\n¿Qué palabra reservada de PHP falta en el hueco?",
+        "opciones": [
+            "to",
+            "in",
+            "as",
+            "->"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'formnuevacriticaRMM.blade.php', necesitas que el controlador sepa a qué película se refiere la crítica enviada por POST. Para ello, usas un campo oculto. Identifica el código correcto:",
+        "opciones": [
+            "<input type=\"hidden\" name=\"pelicula_id\" value=\"{{ $pelicula->id }}\">",
+            "<input type=\"hide\" id=\"pelicula_id\" value=\"{{ $pelicula->id }}\">",
+            "{{ Form::hidden('pelicula_id', $pelicula->id) }}",
+            "<!-- pelicula_id = {{ $pelicula->id }} -->"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'privada_principal.blade.php', accedes al título de la película asociada a una crítica para mostrarlo en la tabla con este fragmento:\n<td><strong>{{ $critica->____->titulo }}</strong></td>\n¿Qué método de relación (definido en el modelo) usaste en el hueco?",
+        "opciones": [
+            "pelicula",
+            "peliculaAsociada",
+            "relPelicula",
+            "getPelicula"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En tu controlador 'CriticaControllerRMM', ¿cómo recuperas si el usuario pulsó el checkbox 'confirmacion' para borrar la crítica?",
+        "opciones": [
+            "$request->checkbox('confirmacion')",
+            "$request->has('confirmacion')",
+            "$_POST['confirmacion']",
+            "isset($confirmacion)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En 'LoginController', al validar los datos, usas:\n$credentials = $request->validate([\n  'email' => 'required|____',\n  'password' => 'required',\n]);\n¿Qué regla asegura que el formato sea un correo electrónico?",
+        "opciones": [
+            "mail",
+            "email",
+            "correo",
+            "format:email"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tarea 5 quinta parte",
+        "pregunta": "En tu vista 'principal.blade.php', el hueco `@____` al final del bucle foreach cierra correctamente la iteración:",
+        "opciones": [
+            "endfor",
+            "stopforeach",
+            "endforeach",
+            "finish"
+        ],
+        "correcta": 2
     }
 
 

@@ -8067,6 +8067,3306 @@ const BBDD_PREGUNTAS = [
     "pregunta": "En las vistas de la Tarea 5, para cerrar una directiva `@if`, se utiliza:\n\n@if(Route::is('...'))\n   Añadir\n@___",
     "opciones": ["end", "stop", "endif", "close"],
     "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de rutas de un API REST (F1):\n\nRoute::controller(XYZPeliculasControllerAPI::class)->group(function () {\n  Route::get('/listarPeliculas', 'listarPeliculas');\n  Route::post('/crearPelicula', 'crearPelicula');\n});\n\n¿Qué ventaja principal aporta el uso de `Route::controller(...)` envolviendo a este grupo de rutas?",
+    "opciones": [
+      "Permite que todas las rutas del grupo devuelvan automáticamente una respuesta en formato JSON.",
+      "Evita tener que repetir la clase del controlador (`[XYZPeliculasControllerAPI::class, 'metodo']`) en cada una de las rutas del grupo.",
+      "Añade automáticamente el prefijo '/api' a todas las rutas definidas dentro del grupo.",
+      "Valida que las peticiones a estas rutas provengan únicamente de clientes autenticados."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Analizando el fragmento de código de rutas (F2):\n\nRoute::put('/modificarArgumento/{pelicula}', 'modificarArgumento')->whereNumber('pelicula');\n\nSi un cliente realiza una petición PUT a la URL `/api/modificarArgumento/batman`, ¿qué ocurrirá antes de llegar al controlador?",
+    "opciones": [
+      "El controlador recibirá la cadena 'batman' y deberá devolver un error 400 por no ser numérico.",
+      "Laravel lanzará una excepción fatal de base de datos al intentar buscar la película 'batman'.",
+      "La ruta no coincidirá debido a la restricción `whereNumber`, por lo que Laravel devolverá automáticamente un error 404 Not Found.",
+      "Laravel ignorará la restricción `whereNumber` porque las rutas PUT no soportan validación de parámetros en la URL."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de código en un controlador de Laravel (F3):\n\npublic function crearPelicula(Request $request): JsonResponse {\n  $v = Validator::make($request->all(), [\n    'titulo' => 'required|string|max:60',\n    'duracion' => 'required|numeric'\n  ]);\n  // ...\n}\n\nSi queremos comprobar si la validación ha fallado para devolver un error al cliente, ¿qué método debemos llamar sobre el objeto `$v`?",
+    "opciones": [
+      "if ($v->isInvalid()) { ... }",
+      "if (!$v->isValid()) { ... }",
+      "if ($v->fails()) { ... }",
+      "if ($v->hasErrors()) { ... }"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el siguiente código de respuesta de un controlador API (F4):\n\nif ($v->fails()) {\n  return response()->json([\n    'errores' => Arr::flatten($v->errors()->getMessages())\n  ], _______);\n}\n\n¿Qué código de estado HTTP (espacio en blanco) es el estándar y más adecuado para indicar que la validación de los datos enviados por el cliente ha fallado?",
+    "opciones": [
+      "200",
+      "404",
+      "422",
+      "500"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado este código de cliente HTTP con Guzzle (F5):\n\n$operacion = $cliente->get('existePelicula', [\n  '_______' => [\n    'titulo' => 'Avatar',\n    'anio' => 2009\n  ]\n]);\n\n¿Qué clave debemos usar en el espacio en blanco para que Guzzle envíe estos parámetros en la URL de una petición GET (ej: `?titulo=Avatar&anio=2009`)?",
+    "opciones": [
+      "json",
+      "form_params",
+      "query",
+      "body"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Analizando este envío de datos con Guzzle en un cliente (F6):\n\n$operacion = $cliente->post('crearPelicula', [\n  'form_params' => [\n    'titulo' => 'Dune',\n    'genero_id' => 3\n  ]\n]);\n\n¿En qué formato viajarán los datos en el cuerpo de la petición HTTP hacia el servidor API?",
+    "opciones": [
+      "application/json",
+      "multipart/form-data",
+      "application/x-www-form-urlencoded",
+      "text/plain"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de un controlador API (F7):\n\nfunction modificarArgumento(Pelicula $pelicula, Request $request): JsonResponse {\n  if (!$request->isJson()) {\n    return response()->json(['errores' => ['Formato incorrecto']], 403);\n  }\n  // ...\n}\n\n¿Qué verifica exactamente la instrucción `$request->isJson()` en este contexto?",
+    "opciones": [
+      "Comprueba que el cuerpo de la petición contiene una cadena JSON válida, independientemente de las cabeceras.",
+      "Verifica que la cabecera 'Content-Type' de la petición HTTP especifique 'application/json'.",
+      "Comprueba que el cliente que hace la petición acepta JSON como respuesta ('Accept: application/json').",
+      "Intenta decodificar el cuerpo de la petición; si no da error, devuelve true."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa cómo se obtiene el cuerpo de la respuesta con Guzzle (F8):\n\n$operacion = $cliente->get('listarPeliculas');\nif ($operacion->getStatusCode() == 200) {\n  $datos = json_decode($operacion->getBody()->_______, true);\n}\n\n¿Qué método falta en el espacio en blanco para extraer el contenido en bruto (texto) de la respuesta de Guzzle antes de pasarlo a `json_decode`?",
+    "opciones": [
+      "getText()",
+      "read()",
+      "getContents()",
+      "__toString()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En un cliente Guzzle, tenemos la siguiente llamada (F9):\n\n$datos = json_decode($operacion->getBody()->getContents(), true);\n\n¿Para qué sirve el segundo parámetro `true` en la función `json_decode`?",
+    "opciones": [
+      "Para que decodifique los caracteres especiales (como acentos o eñes) en UTF-8.",
+      "Para forzar que si hay un error en el JSON, lance una excepción en lugar de devolver null.",
+      "Para que el resultado se devuelva como un array asociativo de PHP en lugar de un objeto (stdClass).",
+      "Para permitir la decodificación de JSON anidados con profundidad mayor a 512 niveles."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el controlador para borrar una película (F10):\n\nfunction borrarPelicula($pelicula): JsonResponse {\n  $peliculaObj = Pelicula::find($pelicula);\n  if (!$peliculaObj) {\n    return response()->json(['errores' => ['No existe']], _______);\n  }\n  $peliculaObj->delete();\n  return response()->json(['resultado' => 1], 200);\n}\n\n¿Qué código de estado HTTP (espacio en blanco) es el estándar REST para indicar que el recurso que se intenta borrar no existe?",
+    "opciones": [
+      "400",
+      "401",
+      "404",
+      "500"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Si en Guzzle usamos la opción `json` para enviar datos (F11):\n\n$operacion = $cliente->put('modificar/' . $id, [\n  'json' => [ 'argumento' => 'Nuevo argumento' ]\n]);\n\n¿Qué hace Guzzle internamente además de poner los datos en el cuerpo de la petición?",
+    "opciones": [
+      "Codifica el array con `json_encode` y añade automáticamente la cabecera `Content-Type: application/json`.",
+      "Envía los datos como si fueran parámetros en la URL pero encriptados.",
+      "Añade la cabecera `Accept: application/json` para asegurar que el servidor responda en ese formato.",
+      "Transforma el array en formato XML y lo comprime antes de enviarlo."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Analizando la ruta del servidor (F12):\n\nRoute::delete('/pelicula/{id}', 'borrarPelicula');\n\n¿Cómo sería la invocación correcta desde el cliente Guzzle para eliminar la película con ID 5?",
+    "opciones": [
+      "$cliente->request('DELETE', '/pelicula', ['query' => ['id' => 5]]);",
+      "$cliente->delete('/pelicula/5');",
+      "$cliente->post('/pelicula/delete/5');",
+      "$cliente->delete('/pelicula', ['form_params' => ['id' => 5]]);"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el final de este controlador (F13):\n\n$pelicula = Pelicula::create($datos);\nreturn response()->json(['resultado' => $pelicula->id], 201);\n\n¿Por qué se usa habitualmente el código HTTP 201 en lugar de 200 en este escenario?",
+    "opciones": [
+      "Porque 201 indica 'No Content', ideal si no devolvemos una vista HTML.",
+      "Porque 201 indica 'Created', siendo el código estándar REST al crear exitosamente un nuevo recurso.",
+      "Porque 201 fuerza al navegador del cliente a refrescar la página tras guardar el registro.",
+      "Porque 200 solo se permite en peticiones GET, no en peticiones POST."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En el código del cliente Guzzle vemos esto (F14):\n\nif ($operacion->getStatusCode() != 200) {\n  return self::ERROR_SERVICIO_WEB;\n}\n\nSabiendo que Guzzle lanza excepciones por defecto ante respuestas 4xx o 5xx, ¿qué configuración previa del cliente Guzzle asume este código para que no se interrumpa la ejecución y podamos leer el StatusCode?",
+    "opciones": [
+      "El cliente Guzzle debe instanciarse con la opción `['exceptions' => false]` o `['http_errors' => false]`.",
+      "El cliente Guzzle debe estar configurado con `['verify' => false]` para saltarse los errores HTTP.",
+      "Se ha usado la función `set_error_handler` de PHP para ignorar los errores.",
+      "No asume ninguna configuración, Guzzle nunca lanza excepciones con los códigos 4xx y 5xx."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente validador en el controlador (F15):\n\n$v = Validator::make($request->all(), [\n  'genero_id' => 'required|numeric|exists:generos,id'\n]);\n\n¿Qué comprueba exactamente la regla `exists:generos,id`?",
+    "opciones": [
+      "Comprueba que el array devuelto por `$request->all()` contenga una clave 'generos' con un subelemento 'id'.",
+      "Verifica en la base de datos que exista un registro en la tabla 'generos' cuyo campo 'id' coincida con el valor enviado.",
+      "Verifica que el archivo físico 'generos.php' contenga una variable llamada 'id'.",
+      "Comprueba que el modelo `Generos` exista y tenga definida una clave primaria llamada 'id'."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Al analizar el siguiente fragmento del cliente Guzzle (F16):\n\n$operacion = $cliente->put('modificarPelicula/' . $id, [\n  'form_params' => [ 'titulo' => 'Nuevo' ]\n]);\n\n¿Qué ocurriría si el servidor (Laravel) está esperando recibir los datos estrictamente en formato JSON (`$request->isJson()`)?",
+    "opciones": [
+      "Laravel convertiría automáticamente los datos 'form_params' a JSON en el servidor antes de validarlos.",
+      "El servidor procesaría la petición normalmente porque PUT y form_params es equivalente a JSON.",
+      "El servidor rechazaría la petición (probablemente con un 403 o 400, dependiendo del código) porque el cliente está enviando 'application/x-www-form-urlencoded'.",
+      "Guzzle daría un error fatal antes de enviar la petición porque no se puede usar 'form_params' con el método PUT."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el código de guardado en el controlador de Laravel (F17):\n\n$pelicula->argumento = $datos['argumento'];\n$pelicula->save();\nif ($pelicula->wasChanged()) {\n  return response()->json(['resultado' => 1], 200);\n}\n\n¿Qué utilidad tiene el método `$pelicula->wasChanged()` en este contexto?",
+    "opciones": [
+      "Saber si el nuevo argumento que se ha asignado es exactamente igual al que ya existía en la base de datos, evitando notificar un cambio si no lo hubo.",
+      "Verificar que la sentencia UPDATE no ha generado ninguna excepción a nivel de la base de datos MariaDB/MySQL.",
+      "Comprobar si el registro ha sido borrado por otro usuario durante el proceso de guardado.",
+      "Asegurar que los datos han pasado la validación antes de realizar el guardado en base de datos."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observando el siguiente fragmento de rutas en Laravel (F18):\n\nRoute::get('/listar', 'listar');\nRoute::get('/buscar/{id}', 'buscar');\n\nSi ambas rutas pertenecen al mismo controlador y hacemos una petición `GET /api/listar`, ¿qué podría pasar si invertimos el orden de definición de estas dos rutas en el archivo `api.php`?",
+    "opciones": [
+      "Laravel lanzaría un error de rutas duplicadas porque ambas usan el método GET.",
+      "La ruta `/listar` sería capturada por `/buscar/{id}` si no ponemos restricciones, tratando 'listar' como si fuera un ID.",
+      "No pasaría nada, en este caso concreto el orden no altera el resultado porque 'listar' es una ruta estática y tiene prioridad sobre el parámetro dinámico '{id}'.",
+      "Dejarían de funcionar ambas rutas porque Laravel exige definir primero las rutas con parámetros dinámicos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Tenemos este código en Laravel para retornar datos (F19):\n\nreturn response()->json($peliculas, 200);\n\nSi `$peliculas` es una colección de modelos Eloquent obtenida con `Pelicula::all()`, ¿qué formato tendrá el JSON resultante en el cliente?",
+    "opciones": [
+      "Será un objeto JSON con una única clave 'data' que contiene la lista de películas.",
+      "Será un array JSON (con corchetes `[]`) donde cada elemento es un objeto JSON representando una película.",
+      "Laravel dará un error porque `response()->json` no admite colecciones Eloquent, hay que usar `json_encode` primero.",
+      "Será un texto plano separado por comas, ya que las colecciones no se serializan solas a JSON."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el validador en el controlador API (F20):\n\n$v = Validator::make($request->all(), [\n  'titulo' => 'required|max:60'\n], [\n  'titulo.required' => 'El título es obligatorio'\n]);\n\n¿Para qué sirve el tercer parámetro (el array con el mensaje 'El título es obligatorio') en el método `make`?",
+    "opciones": [
+      "Para definir los valores por defecto si el cliente no envía el campo 'titulo'.",
+      "Para personalizar los mensajes de error de validación que se enviarán de vuelta al cliente en lugar de usar los que tiene Laravel por defecto en inglés.",
+      "Para inyectar cabeceras HTTP personalizadas en la respuesta de error.",
+      "Para forzar que el cliente vea ese mensaje como un 'hint' o ayuda, aunque la validación sea correcta."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Si vemos esta invocación en el cliente Guzzle (F21):\n\n$operacion = $cliente->delete('borrarPelicula/' . $id_pelicula);\n\n¿Cuál de las siguientes afirmaciones sobre el cuerpo de la petición (body) es cierta por lo general en las peticiones DELETE en REST?",
+    "opciones": [
+      "Guzzle siempre enviará un cuerpo JSON vacío (`{}`) por seguridad.",
+      "Las peticiones DELETE no deben llevar cuerpo (body), la información del recurso a borrar va en la propia URL.",
+      "Es obligatorio adjuntar un 'form_params' con un token de borrado, de lo contrario Guzzle da error.",
+      "Las peticiones DELETE deben incluir el cuerpo completo del objeto que se va a borrar para que el servidor compruebe si ha cambiado."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En un controlador Laravel tenemos el siguiente código (F22):\n\n$datos = $request->json()->all();\n\n¿Qué ocurre si la petición enviada por el cliente Guzzle usó `['form_params' => [...]]` en vez de `['json' => [...]]`?",
+    "opciones": [
+      "`$datos` estará vacío o será nulo, ya que el método `json()` busca específicamente el payload decodificado a partir del cuerpo JSON de la petición.",
+      "`$datos` contendrá la información del formulario porque Laravel es inteligente y hace el cast automático.",
+      "Se producirá una excepción 500 porque el método `json()` no existe en la clase Request.",
+      "Laravel lanzará una excepción 'FormFormatMismatch' que debe ser capturada con un try/catch."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En el cliente PHP con Guzzle (F23):\n\n$operacion = $cliente->get('listarGeneros');\n$lista = json_decode($operacion->getBody()->getContents(), true);\n\nSi el servidor Laravel devolvió un array vacío `[]` con código 200, ¿qué valor tendrá la variable `$lista` en PHP?",
+    "opciones": [
+      "null",
+      "false",
+      "Un objeto vacío (stdClass)",
+      "Un array vacío (array())"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento del servidor (F24):\n\n$existe = Pelicula::where('titulo', $request->titulo)->exists();\nif ($existe) {\n  return response()->json(['errores' => ['Ya existe']], 422);\n}\n\n¿Cuál es la diferencia de usar `exists()` en lugar de usar `first()` en este escenario?",
+    "opciones": [
+      "Ninguna, a nivel de rendimiento y consulta SQL ejecutan exactamente lo mismo.",
+      "`exists()` devuelve true/false realizando una consulta SQL optimizada (ej: `SELECT 1... LIMIT 1`), mientras que `first()` descarga todo el registro de la base de datos a memoria, lo cual es ineficiente si solo queremos saber si existe.",
+      "`first()` solo busca el primer registro insertado históricamente, mientras que `exists()` busca en toda la tabla.",
+      "`exists()` solo se puede utilizar en la clase DB, no a través del ORM Eloquent."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observando la respuesta de error de validación en Laravel (F25):\n\nreturn response()->json(['errores' => $v->errors()->all()], 422);\n\nSi fallan 3 reglas de validación en distintos campos, ¿qué tipo de estructura devolverá `$v->errors()->all()`?",
+    "opciones": [
+      "Un objeto asociativo cuyas claves son los nombres de los campos que fallaron.",
+      "Un string largo con todos los mensajes de error concatenados por comas.",
+      "Un array simple (lista) conteniendo los 3 mensajes de error de texto plano.",
+      "Un booleano `true` indicando que existen errores múltiples."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En una petición Guzzle para comprobar existencia (F26):\n\n$cliente->get('existe', [\n  'query' => ['titulo' => 'Alien']\n]);\n\n¿Cómo podemos acceder al valor del título enviado por el cliente desde el controlador de Laravel?",
+    "opciones": [
+      "$request->header('titulo')",
+      "$request->query('titulo') o $request->titulo o $request->input('titulo')",
+      "$request->body('titulo')",
+      "$request->route('titulo')"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el fragmento de código (F27):\n\nRoute::put('/pelicula/{id}', 'actualizar');\n\nSi llamamos a esta ruta pero utilizamos el método POST en nuestro cliente HTTP, ¿qué responderá Laravel por defecto?",
+    "opciones": [
+      "200 OK (Laravel convierte POST a PUT automáticamente si hay parámetros).",
+      "404 Not Found (no encuentra la ruta).",
+      "405 Method Not Allowed (La ruta existe pero el método HTTP usado no está definido para ella).",
+      "419 Page Expired (Falla el token CSRF)."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En la función de crear película (F28):\n\n$datos = $v->validated();\n$pelicula = Pelicula::create($datos);\n\n¿Qué contiene la variable `$datos` devuelta por `$v->validated()`?",
+    "opciones": [
+      "Todos los datos de la petición original `$request->all()`, independientemente de la validación.",
+      "Solo un valor booleano indicando que la validación fue un éxito.",
+      "Únicamente los datos del request que pasaron explícitamente por alguna regla de validación definida en el Validator.",
+      "Los modelos Eloquent de las relaciones que han sido validadas (como los géneros)."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En Guzzle, si usamos este fragmento de configuración (F29):\n\n$cliente = new Client([\n  'base_uri' => 'http://localhost/api/'\n]);\n$cliente->get('peliculas');\n\n¿A qué URL final se hará la petición GET?",
+    "opciones": [
+      "http://localhost/api/peliculas",
+      "http://localhost/peliculas",
+      "http://localhost/api/?url=peliculas",
+      "Dará error porque la ruta relativa 'peliculas' debe empezar obligatoriamente con una barra '/peliculas'."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente controlador en Laravel para listar datos (F30):\n\npublic function listarGeneros() {\n  return response()->json(Genero::all(), 200);\n}\n\n¿Qué ocurrirá si ejecutamos esta ruta y la tabla `generos` está totalmente vacía?",
+    "opciones": [
+      "Devolverá un error HTTP 404.",
+      "Devolverá un JSON con un array vacío `[]` y código 200.",
+      "Devolverá un error interno 500 porque `all()` no puede procesar tablas vacías.",
+      "Devolverá un JSON nulo `null` y código 204 No Content."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Analizando la ruta del API de Laravel (F31):\n\nRoute::post('/crear', [ApiController::class, 'crear']);\n\n¿Es necesario incluir en el cliente HTTP el token `@csrf` al hacer esta petición a través de la API, sabiendo que la ruta está en `routes/api.php`?",
+    "opciones": [
+      "Sí, todas las rutas de tipo POST en Laravel exigen el token CSRF por seguridad.",
+      "Solo es necesario si el cliente que hace la petición es un navegador web.",
+      "No, las rutas definidas en `routes/api.php` están protegidas por JWT automáticamente y no usan CSRF.",
+      "No, el middleware asociado al archivo `api.php` por defecto excluye la validación del token CSRF (ya que las APIs son 'stateless')."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el siguiente manejo de error en el cliente PHP con Guzzle (F32):\n\ntry {\n  $cliente->post('crear', ['json' => $datos]);\n} catch (ClientException $e) {\n  $respuesta = $e->getResponse();\n  echo $respuesta->getStatusCode();\n}\n\nSi Guzzle sí lanza excepciones y el servidor Laravel responde un error de validación (422), ¿qué imprimirá el `echo` del bloque catch?",
+    "opciones": [
+      "500 (ya que es una excepción)",
+      "422",
+      "Nada, la ejecución se detiene fatalmente en la excepción.",
+      "200 (porque Guzzle captura el error y lo convierte a correcto)."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente bloque de validación (F33):\n\n'anio' => 'required|numeric|min:1965|max:' . date('Y')\n\nSi el cliente envía en la petición `'anio' => 'hola'`, ¿qué regla fallará primero en Laravel por defecto?",
+    "opciones": [
+      "required",
+      "numeric",
+      "min",
+      "max"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En un controlador de actualización tenemos lo siguiente (F34):\n\nfunction actualizar(Request $request, $id) {\n  $pelicula = Pelicula::find($id);\n  //...\n}\n\n¿Por qué es preferible usar la firma `function actualizar(Request $request, Pelicula $pelicula)` en lugar de recuperar el ID y hacer `Pelicula::find($id)` manualmente?",
+    "opciones": [
+      "Porque consume menos memoria en el servidor.",
+      "Porque Laravel realiza automáticamente el 'Route Model Binding' (Autobinding), buscando la película en la base de datos o devolviendo un 404 automáticamente si no existe.",
+      "Porque de otra forma no se pueden guardar los cambios al usar el método `update()`.",
+      "No hay ninguna diferencia, ambas formas funcionan exactamente igual en todos los casos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Al leer el cuerpo de una respuesta JSON de un error (F35):\n\n$datos = json_decode($operacion->getBody()->getContents(), true);\nreturn $datos['errores'];\n\n¿Qué tipo de error de PHP o fallo se puede dar en esa segunda línea si el servidor devolvió accidentalmente una cadena de texto vacía y el código 500?",
+    "opciones": [
+      "Aviso de clave 'errores' no definida (Undefined array key) porque `$datos` será nulo o no tendrá esa clave al haber fallado el json_decode.",
+      "Excepción de acceso a memoria no válida.",
+      "Ninguno, PHP automáticamente creará un array con la clave 'errores' vacía.",
+      "Guzzle volverá a intentar la petición al detectar un json_decode fallido."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el paso de parámetros en GET usando Guzzle (F36):\n\n$cliente->get('buscar', ['query' => ['titulo' => 'Dune']]);\n\nSi tuviéramos que enviar el mismo dato pero a través de la propia cadena de la URL sin usar el array 'query', ¿cómo sería?",
+    "opciones": [
+      "$cliente->get('buscar/titulo/Dune');",
+      "$cliente->get('buscar?titulo=Dune');",
+      "$cliente->get('buscar:titulo=Dune');",
+      "$cliente->get('buscar[titulo]=Dune');"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En Laravel, para validar un campo opcional que no es obligatorio pero que, si se envía, debe ser numérico, usamos el siguiente string de validación (F37):\n\n'valoracion' => '_______|numeric'\n\n¿Qué palabra falta en el espacio en blanco?",
+    "opciones": [
+      "nullable",
+      "optional",
+      "sometimes",
+      "if_present"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente uso de Guzzle (F38):\n\n$operacion = $cliente->delete('pelicula/' . $id);\n\nSi el servidor no soporta el método DELETE en el servidor web (por configuración del firewall, por ejemplo), ¿qué opción nativa de HTML/HTTP nos permite 'simular' el DELETE mediante una petición POST en servicios web basados en Laravel?",
+    "opciones": [
+      "Añadir el parámetro `?_method=DELETE` en la URL de la petición POST.",
+      "Enviar el parámetro en el cuerpo `_type=DELETE`.",
+      "No se puede, hay que configurar el servidor obligatoriamente.",
+      "Añadir la cabecera `X-Delete-Request: true`."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Analizando la creación del cliente de Guzzle (F39):\n\n$cliente = new Client(['timeout' => 2.0]);\n\n¿Para qué sirve el parámetro `timeout` en esta configuración del cliente HTTP?",
+    "opciones": [
+      "Establece el número máximo de veces que intentará conectar en caso de fallo.",
+      "Define el tiempo en segundos que el cliente esperará como máximo para obtener una respuesta del servidor antes de lanzar un error por tiempo excedido.",
+      "Define los segundos que debe esperar el cliente antes de enviar la petición.",
+      "Controla el tiempo máximo de vida de la sesión o cookie del servidor remoto."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En el controlador de Laravel, queremos devolver los datos eliminados en la respuesta JSON (F40):\n\n$pelicula = Pelicula::find($id);\n$pelicula->delete();\nreturn response()->json(['resultado' => 1, 'eliminada' => _______ ], 200);\n\n¿Qué podemos poner en el espacio en blanco para enviar todos los atributos originales de la película eliminada?",
+    "opciones": [
+      "$pelicula->getAll()",
+      "$pelicula",
+      "$pelicula->toArray()",
+      "$pelicula->jsonSerialize()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Analizando el método del modelo Laravel en la función de modificación (F41):\n\n$pelicula->update($request->all());\n\nPara que esta instrucción funcione y no lance una excepción `MassAssignmentException`, ¿qué propiedad debe estar definida en el modelo `Pelicula`?",
+    "opciones": [
+      "protected $guarded = []; o protected $fillable = [...];",
+      "protected $massAssignment = true;",
+      "protected $table = 'peliculas';",
+      "public $timestamps = false;"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el cliente Guzzle y la opción HTTP (F42):\n\n$operacion = $cliente->request('PATCH', 'pelicula/' . $id, ['json' => ['titulo' => 'Dune 2']]);\n\nEn la arquitectura REST, ¿cuál es la diferencia semántica principal entre usar PUT y usar PATCH para actualizar un recurso?",
+    "opciones": [
+      "PUT requiere los datos en formato de formulario y PATCH requiere JSON.",
+      "PUT se usa para actualizar el recurso completo (reemplazándolo), mientras que PATCH se usa para realizar actualizaciones parciales (solo los campos enviados).",
+      "PATCH solo se permite si el recurso acaba de ser creado, PUT se usa para el resto.",
+      "No existe diferencia semántica, son sinónimos absolutos y en Laravel se rutean igual."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el fragmento de código (F43):\n\nRoute::apiResource('peliculas', PeliculasController::class);\n\nEsta directiva es un atajo para definir varias rutas. ¿Qué ruta NO se genera automáticamente al usar `apiResource` a diferencia de usar simplemente `resource`?",
+    "opciones": [
+      "GET /peliculas (index)",
+      "GET /peliculas/create (create)",
+      "POST /peliculas (store)",
+      "DELETE /peliculas/{pelicula} (destroy)"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el comportamiento de las respuestas en Laravel (F44):\n\nreturn Pelicula::all();\n\nSi desde un controlador en `routes/api.php` devolvemos directamente una colección Eloquent como en la línea anterior, ¿qué hace Laravel internamente?",
+    "opciones": [
+      "Devuelve un error porque no se ha invocado el método `response()->json()`.",
+      "Lo convierte automáticamente a JSON y lo devuelve con el código HTTP 200.",
+      "Lo serializa como una cadena en formato XML por defecto.",
+      "Devuelve la representación de memoria de los objetos PHP, que no puede ser leída por Guzzle."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En un controlador, vemos esta línea de validación (F45):\n\n'duracion' => 'required|integer|min:10|max:300'\n\n¿Qué comprueban las reglas min:10 y max:300 teniendo en cuenta que la regla anterior es `integer`?",
+    "opciones": [
+      "Comprueba que el número enviado tenga entre 10 y 300 caracteres de longitud.",
+      "Comprueba que el valor numérico enviado sea mayor o igual a 10 y menor o igual a 300.",
+      "Comprueba que la base de datos tenga capacidad entre 10 y 300 Bytes para guardar ese entero.",
+      "Comprueba que el valor enviado esté dentro del array con identificador 10 al 300."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Observa el análisis de errores en el cliente Guzzle (F46):\n\nif ($operacion->getStatusCode() == 404) {\n  return self::ERROR_PELICULA_NO_EXISTE;\n}\n\nSi el servidor devuelve un 404 debido a que se hizo una petición a un endpoint de la API mal escrito (ej: `/api/peliculaz`), ¿qué problema lógico tendría el código cliente anterior?",
+    "opciones": [
+      "Ninguno, procesará correctamente el error 404 y entenderá que la película no existe.",
+      "Que asumirá que la película no existe, cuando en realidad lo que no existe es la ruta (URL) solicitada del API.",
+      "Que Guzzle nunca lee códigos 404, devolverá un 500 por defecto.",
+      "Que los errores 404 de Laravel no devuelven body, haciendo fallar el cliente antes de ese 'if'."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Para la petición de login desde el cliente hacia nuestra API, usamos Guzzle (F47):\n\n$cliente->post('login', [\n  'auth' => ['usuario_admin', 'clave_supersecreta']\n]);\n\n¿Qué cabecera HTTP estándar inyecta Guzzle automáticamente cuando se utiliza la opción de array `'auth'` de esta forma?",
+    "opciones": [
+      "Authorization: Bearer ...",
+      "X-Auth-Token: ...",
+      "Authorization: Basic ...",
+      "Content-Type: auth/credentials"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente método para devolver una respuesta JSON en caso de error de servidor inesperado (F48):\n\ntry {\n  //...\n} catch (\\Exception $e) {\n  return response()->json(['error' => 'Fallo interno del servidor'], _______);\n}\n\n¿Cuál es el código HTTP adecuado para rellenar en el hueco indicando 'Internal Server Error'?",
+    "opciones": [
+      "400",
+      "401",
+      "403",
+      "500"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "Al diseñar nuestro servicio web REST, utilizamos los sustantivos en plural para las rutas según el estándar (F49):\n\nRoute::get('/api/_______', [PeliculaController::class, 'index']);\n\nSegún las buenas prácticas RESTful analizadas en el temario de clase para listar el catálogo general, ¿cuál es el texto más adecuado para rellenar el espacio?",
+    "opciones": [
+      "obtenerTodasLasPeliculas",
+      "listarPeliculas",
+      "pelicula",
+      "peliculas"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Repaso tarea 6 primera parte",
+    "pregunta": "En el cliente, si la variable `$datos` contiene `['titulo' => 'Alien', 'duracion' => 110]`, y ejecutamos esto (F50):\n\n$json_string = json_encode($datos);\n\n¿Qué formato exacto tendrá la cadena resultante alojada en `$json_string`?",
+    "opciones": [
+      "\"['titulo' => 'Alien', 'duracion' => 110]\"",
+      "\"{'titulo': 'Alien', 'duracion': 110}\"",
+      "\"{\\\"titulo\\\":\\\"Alien\\\",\\\"duracion\\\":110}\"",
+      "\"titulo=Alien&duracion=110\""
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de definición de rutas para un API:\n\nRoute::____('/peliculas', 'listarPeliculasPROF');\n\nSabiendo que esta ruta debe devolver al cliente un listado en formato JSON con todas las películas, ¿qué método HTTP debe completar el espacio en blanco según las convenciones REST explicadas por el profesor?",
+    "opciones": [
+      "post",
+      "get",
+      "put",
+      "delete"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de definición de rutas para un API:\n\nRoute::____('/crearPelicula', 'crearPeliculaPROF');\n\nSi el objetivo de este endpoint es recibir datos del cliente para insertar un nuevo registro en la base de datos, ¿qué método HTTP es el adecuado?",
+    "opciones": [
+      "get",
+      "post",
+      "update",
+      "patch"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de rutas en Laravel:\n\nRoute::delete('/borrarPeliculaPROF/____', 'borrarPeliculaPROF');\n\nPara indicar que la ruta debe recibir el identificador de la película a borrar como parámetro en la URL, ¿cómo se debe completar el fragmento?",
+    "opciones": [
+      "[pelicula]",
+      "$pelicula",
+      "{pelicula}",
+      "<pelicula>"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En un controlador de nuestra API (por ejemplo `XYZPeliculasControllerAPI`), tenemos el siguiente inicio de método:\n\npublic function listarPeliculasPROF(): ________\n\nSegún la videoconferencia, el controlador en vez de retornar una vista HTML debe retornar un documento en un formato específico. ¿Qué tipo de retorno de Laravel completa correctamente la declaración del método?",
+    "opciones": [
+      "View",
+      "JsonResponse",
+      "String",
+      "Array"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de un controlador API:\n\nreturn response()->____([\n  'resultado' => $pelicula->id\n], 200);\n\n¿Qué método de Laravel se utiliza para asegurar que la respuesta HTTP tenga el formato correcto y la cabecera `Content-Type: application/json`?",
+    "opciones": [
+      "json",
+      "send",
+      "view",
+      "text"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Analiza el siguiente fragmento de código (FRAGMENTO A):\n\n$v = Validator::make($request->all(), [\n  'titulo' => 'required|string|max:60',\n  ...\n]);\n\nSi queremos comprobar si los datos enviados por el cliente NO cumplen con estas reglas de validación, ¿qué método del objeto Validator debemos usar en un condicional `if`?",
+    "opciones": [
+      "$v->errors()",
+      "$v->invalid()",
+      "$v->fails()",
+      "$v->passed()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Imagina que en el FRAGMENTO A anterior la validación falla (`$v->fails()`). Según las indicaciones del profesor sobre emitir la respuesta con el código de estado adecuado, ¿qué código HTTP se debe devolver habitualmente cuando hay un error de validación de datos en una petición REST?",
+    "opciones": [
+      "200 OK",
+      "404 Not Found",
+      "422 Unprocessable Entity",
+      "500 Internal Server Error"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento en un controlador que procesa una actualización:\n\nif (!$request->____()) {\n  return response()->json(['errores' => ['Los datos enviados deben ser JSON']], 403);\n}\n\n¿Qué método del objeto Request se usa para comprobar si el cliente ha enviado la petición indicando que el contenido es JSON?",
+    "opciones": [
+      "hasJson",
+      "isJson",
+      "wantsJson",
+      "expectsJson"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Queremos crear una ruta PUT que obligue a que el parámetro de la URL sea numérico. ¿Qué fragmento de código (FRAGMENTO B) debe añadirse al final de la ruta?\n\nRoute::put('/modificar/{id}', 'modificarPelicula')->________;",
+    "opciones": [
+      "isNumeric('id')",
+      "whereNumber('id')",
+      "validate('id', 'numeric')",
+      "where('id', 'int')"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En el archivo donde definimos nuestra API REST, el profesor indica que las rutas no están en el mismo archivo que las vistas web. ¿En qué archivo de la arquitectura de Laravel debemos registrar estas rutas (`Route::get`, `Route::post`, etc.) para un servicio web?",
+    "opciones": [
+      "routes/web.php",
+      "routes/api.php",
+      "app/Http/routes.php",
+      "config/api.php"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado este código de validación:\n\nValidator::make($request->all(), [\n  'genero_id' => 'required|string|exists:____,id'\n]);\n\nSi queremos asegurarnos de que el 'genero_id' enviado coincida con un ID válido de una tabla existente en la base de datos llamada 'generos', ¿qué debemos poner en el espacio en blanco?",
+    "opciones": [
+      "GeneroPROF",
+      "database",
+      "generos",
+      "table"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Observa el siguiente fragmento de código de un controlador (FRAGMENTO C):\n\n$pelicula = PeliculaPROF::____($id);\nif (!$pelicula) {\n  return response()->json(['errores' => ['No existe la película']], 404);\n}\n\n¿Qué método del modelo Eloquent de Laravel se utiliza habitualmente para intentar recuperar un registro por su clave primaria, devolviendo null si no lo encuentra?",
+    "opciones": [
+      "search",
+      "get",
+      "find",
+      "where"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Tras procesar y guardar los datos correctamente en la creación de un nuevo recurso (método POST), devolvemos el ID de la nueva película al cliente. ¿Qué código HTTP es el más representativo para indicar que una petición de creación o procesamiento fue exitosa y se devuelve información correctamente?",
+    "opciones": [
+      "200",
+      "400",
+      "404",
+      "500"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Si un cliente intenta acceder a la ruta DELETE `/api/borrarPeliculaPROF/999` pero el ID 999 no existe en nuestra base de datos. En nuestro controlador verificamos esto y devolvemos un JSON de error. Según el profesor, ¿qué código de estado HTTP se debe incluir en esta respuesta?",
+    "opciones": [
+      "200",
+      "403",
+      "404",
+      "422"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Observa el siguiente fragmento para definir múltiples rutas en un controlador API (FRAGMENTO D):\n\nRoute::____(XYZPeliculasControllerAPI::class)->group(function () {\n  Route::get('/listar', 'listar');\n  Route::post('/crear', 'crear');\n});\n\n¿Qué método permite agrupar todas estas rutas bajo un mismo controlador de forma óptima en Laravel 9/10?",
+    "opciones": [
+      "controller",
+      "class",
+      "group",
+      "apiResource"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En la validación de la creación de una película, queremos extraer solo los datos que han pasado la validación exitosamente para usarlos en la creación del modelo. Si tenemos `$v = Validator::make(...)` y este pasa (`!$v->fails()`), ¿qué método usamos para recuperar los datos limpios?",
+    "opciones": [
+      "$v->clean()",
+      "$v->get()",
+      "$v->validated()",
+      "$request->all()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento (FRAGMENTO E):\n\nreturn response()->json([\n  'errores' => Arr::____($v->errors()->getMessages())\n], 422);\n\nEl profesor utiliza un método de la clase auxiliar `Arr` de Laravel para convertir un array multidimensional de mensajes de error en un array plano de una sola dimensión. ¿Cuál es ese método?",
+    "opciones": [
+      "collapse",
+      "map",
+      "merge",
+      "flatten"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En Laravel, para crear directamente un registro en la base de datos usando Eloquent enviándole un array de atributos validados, se utiliza un método estático del modelo:\n\n$pelicula = PeliculaPROF::____($datos);\n\n¿Cuál es ese método que inserta el registro y devuelve la instancia creada?",
+    "opciones": [
+      "insert",
+      "create",
+      "new",
+      "save"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Si un cliente envía datos malformados o si el JSON está vacío al intentar realizar una petición PUT, y controlamos esto en el controlador enviando un código HTTP, ¿cuál de los siguientes códigos significa \"Prohibido\" y se usa en el ejemplo del profesor cuando no se envían datos JSON (`!$request->isJson()`)?",
+    "opciones": [
+      "401",
+      "403",
+      "405",
+      "500"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Para borrar una película en Eloquent, primero la buscamos con `$pelicula = PeliculaPROF::find($id);`. Si existe, ¿qué método invocamos sobre el objeto `$pelicula` para eliminar el registro de la base de datos?",
+    "opciones": [
+      "$pelicula->remove();",
+      "$pelicula->destroy();",
+      "$pelicula->delete();",
+      "$pelicula->drop();"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Para modificar un modelo en base de datos, en el método PUT recibimos la película (ya sea buscándola por ID o inyectándola) y luego actualizamos su atributo:\n\n$pelicula->argumento = $datos['argumento'];\n$pelicula->____();\n\n¿Qué método final guarda realmente los cambios del objeto en la base de datos?",
+    "opciones": [
+      "update()",
+      "store()",
+      "save()",
+      "push()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el código de Laravel:\n\n$pelicula->save();\nif ($pelicula->____()) {\n  return response()->json(['resultado' => 1], 200);\n} else {\n  return response()->json(['resultado' => 0], 200);\n}\n\n¿Qué método de Eloquent permite saber si el modelo realmente sufrió modificaciones en sus atributos tras llamar a save()?",
+    "opciones": [
+      "isDirty()",
+      "wasChanged()",
+      "hasChanges()",
+      "isUpdated()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Para listar los géneros, solo queremos enviar al cliente los campos 'id', 'nombre' y 'descripcion', evitando enviar los 'timestamps'. ¿Qué método usamos antes de `->get()` para lograrlo?\n\nreturn response()->json(GeneroPROF::____('id', 'nombre', 'descripcion')->get());",
+    "opciones": [
+      "pluck",
+      "only",
+      "select",
+      "choose"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En un servicio web implementado con Laravel, ¿qué hace el método estático `Validator::make(...)`?",
+    "opciones": [
+      "Crea el registro en la base de datos si los datos son correctos.",
+      "Devuelve directamente un error 422 si los datos fallan.",
+      "Construye una instancia del validador con los datos y las reglas especificadas, lista para ser comprobada.",
+      "Lanza una excepción automática que detiene el script."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Al definir reglas de validación para un campo 'titulo' en la creación de películas:\n\n'titulo' => 'required|string|max:60|min:2'\n\n¿Qué significa exactamente la regla `required` en el contexto de la recepción de datos en el controlador?",
+    "opciones": [
+      "Que el campo puede ir vacío pero debe estar presente en la petición JSON.",
+      "Que el campo es obligatorio, no puede estar vacío, ni faltar en la petición enviada por el cliente.",
+      "Que el título debe ser único en la base de datos.",
+      "Que el campo debe ser requerido en el formulario HTML, aunque sea un API."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente código:\n\npublic function crearPeliculaPROF(____ $request): JsonResponse\n\n¿Qué clase de Laravel debemos inyectar (colocar en el espacio en blanco) para poder acceder a los datos que el cliente ha enviado en su petición HTTP (por ejemplo en un POST)?",
+    "opciones": [
+      "Response",
+      "Client",
+      "Request",
+      "JSON"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Cuando usamos `Route::apiResource('canciones', CancionController::class);` en Laravel, se crean varias rutas REST automáticamente. Según los apuntes, a diferencia de `Route::resource`, ¿qué operaciones NO se incluyen porque no se usan plantillas HTML en un API?",
+    "opciones": [
+      "index y show",
+      "store y destroy",
+      "create y edit",
+      "update y patch"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Si en una API queremos evitar devolver todas las películas si un cliente olvida pasar el ID, y decidimos comprobar que el dato de búsqueda es numérico antes de usar Eloquent:\n\nif (!____($pelicula)) {\n  $errores = ['No se ha recibido un id numérico'];\n}\n\n¿Qué función nativa de PHP se utiliza frecuentemente aquí para validar que el ID es un número antes de pasarlo a `find()`?",
+    "opciones": [
+      "is_int",
+      "is_numeric",
+      "ctype_digit",
+      "is_number"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Observa cómo se obtienen los datos JSON validados de un objeto Request:\n\n$v = Validator::make($request->____()->all(), ['argumento' => 'required']);\n\n¿Qué método del Request usamos explícitamente en Laravel para leer la carga útil (payload) cuando sabemos que el formato de entrada es estrictamente JSON?",
+    "opciones": [
+      "input",
+      "json",
+      "content",
+      "payload"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Según la videoconferencia, el bloque del Tema 6 será un examen tipo test. El objetivo de la parte del Servidor / API en Laravel es reconocer los flujos. ¿Cuál de los siguientes flujos es el habitual correcto descrito por el profesor para un método de controlador de API?",
+    "opciones": [
+      "Recibir datos -> Retornar vista HTML -> Guardar en BBDD",
+      "Recibir datos -> Validarlos -> Accionar modelo (BD) -> Emitir respuesta JSON con código HTTP",
+      "Emitir JSON -> Recibir validación HTTP -> Conectar a Guzzle",
+      "Validar modelo HTTP -> Renderizar JSON con Smarty -> Devolver 200 OK"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En Laravel, al devolver `response()->json(['resultado' => 1], 200);`, ¿qué formato interno utiliza PHP automáticamente para transformar el array asociativo PHP `['resultado' => 1]` en la cadena de texto de la respuesta?",
+    "opciones": [
+      "serialize()",
+      "json_encode()",
+      "json_decode()",
+      "XML conversion"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En la parte del servidor, definimos un validador con un tercer argumento (opcional) que es un array asociativo. ¿Para qué sirve este array extra en el método `Validator::make($datos, $reglas, $mensajes_personalizados)`?",
+    "opciones": [
+      "Para añadir nuevas reglas de validación en tiempo de ejecución.",
+      "Para definir los tipos de datos en la base de datos.",
+      "Para especificar los mensajes de error en español que se devolverán al cliente si la validación falla.",
+      "Para establecer el código HTTP (422) por defecto."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Si queremos borrar un recurso existente en una API RESTful, el cliente debe usar el verbo HTTP DELETE. En nuestro controlador, ¿qué código de estado es el más correcto si el cliente intenta borrar un recurso proporcionando un ID que NO existe en la base de datos?",
+    "opciones": [
+      "404",
+      "200",
+      "401",
+      "500"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Queremos verificar si ya existe una película en la BD con exactamente el mismo título, año y dirección antes de crear una nueva:\n\n$resultado = PeliculaPROF::where('titulo', trim($datos['titulo']))\n  ->where('anio', intval($datos['anio']))\n  ->where('direccion', trim($datos['direccion']))\n  ->____();\n\n¿Qué método terminador de Eloquent devuelve un booleano (true o false) indicando si hay algún registro que cumpla esas condiciones?",
+    "opciones": [
+      "first",
+      "get",
+      "exists",
+      "count"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Si `$resultado` de la pregunta anterior es `true`, la película ya existe. Devolvemos un error al cliente:\n\nreturn response()->json([\n  'errores' => ['La película ya existe']\n], ____);\n\n¿Qué código HTTP se usa en la tarea para indicar que la validación semántica de negocio (como datos duplicados) ha fallado?",
+    "opciones": [
+      "200",
+      "403",
+      "422",
+      "404"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En los archivos del servidor, vemos que hay un prefijo `api/` en todas las rutas cuando las consumimos con Guzzle (ej. `http://localhost/api/listarGeneros`). Sin embargo, en el archivo `routes/api.php` escribimos solo `Route::get('/listarGeneros', ...);`. ¿Por qué ocurre esto?",
+    "opciones": [
+      "Porque el archivo se llama api.php.",
+      "Porque Guzzle añade automáticamente el prefijo 'api/'.",
+      "Porque Laravel aplica automáticamente el prefijo 'api/' y un middleware sin estado a todas las rutas declaradas en routes/api.php.",
+      "Porque Apache/XAMPP redirige todo el tráfico web hacia la carpeta /api."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En Laravel, ¿qué propiedad del modelo Eloquent especifica los campos que pueden ser asignados masivamente al usar métodos como `Model::create($datos)`?",
+    "opciones": [
+      "$hidden",
+      "$fillable",
+      "$guarded",
+      "$table"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado un endpoint `GET /api/listarPeliculas`, el controlador hace lo siguiente:\n\nreturn response()->json(PeliculaPROF::all());\n\n¿Qué información espera el cliente obtener como resultado?",
+    "opciones": [
+      "Un mensaje de texto confirmando la existencia de la tabla.",
+      "Un array JSON que contiene objetos con los atributos de todas las películas de la base de datos.",
+      "Una vista HTML con una tabla renderizada de las películas.",
+      "Un archivo XML con los datos estructurados."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Imagina que estamos actualizando (PUT) solo el argumento de la película.\nEl validador se escribe así: `Validator::make($request->json()->all(), ['argumento' => 'required|string|max:255|min:10'])`.\nSi el cliente envía un texto de 5 caracteres, ¿qué ocurrirá en el controlador?",
+    "opciones": [
+      "Se lanzará un error 500 en el servidor y la ejecución se cortará.",
+      "La validación fallará ($v->fails() será true) y deberemos devolver un JSON con el mensaje de error y código 422.",
+      "Se cortará el texto a 10 caracteres automáticamente y se guardará.",
+      "La base de datos rechazará la consulta lanzando una SQL Exception."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Según el profesor en la videoconferencia, en la Tarea 6 diseñamos un controlador enfocado a un API. ¿Cuál es la diferencia principal entre un controlador web clásico y un controlador API REST en Laravel?",
+    "opciones": [
+      "El controlador web no puede usar base de datos.",
+      "El controlador API usa funciones estáticas exclusivamente.",
+      "El controlador API en vez de retornar una vista (HTML), retorna un documento serializado, habitualmente en formato JSON.",
+      "El controlador API no utiliza modelos MVC."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En la tarea se implementa el borrado seguro. Si la película a borrar SÍ existe y es borrada correctamente (`$pelicula->delete()`), ¿cuál es la estructura de retorno JSON definida por el profesor en la tarea para indicar éxito?",
+    "opciones": [
+      "return response()->json(['resultado' => 1], 200);",
+      "return response()->json(['error' => false], 404);",
+      "return response()->json(['borrado' => true], 201);",
+      "return response()->view('exito');"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Si se envía una petición GET a un endpoint que solo está definido para POST (ej. `Route::post('/crearPelicula', ...)`), ¿qué error HTTP lanzará el framework automáticamente?",
+    "opciones": [
+      "404 Not Found",
+      "405 Method Not Allowed",
+      "422 Unprocessable Entity",
+      "500 Internal Server Error"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Al realizar una inserción de película, recibimos `$request->all()`. Si uno de los campos recibidos tiene espacios al principio y final y queremos asegurarnos de limpiarlo antes de usarlo en un `where` para comprobar su existencia, ¿qué función básica de PHP usamos, como se vio en el ejemplo de la tarea?",
+    "opciones": [
+      "clean()",
+      "strip_tags()",
+      "trim()",
+      "htmlspecialchars()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Para la validación del 'anio' (año) en la creación de una película, las reglas son `'anio' => 'required|numeric|min:1965|max:' . date('Y')`.\nSi un cliente envía `\"anio\": \"1980\"` como cadena JSON, ¿pasará la regla `numeric`?",
+    "opciones": [
+      "No, porque Laravel requiere estrictamente el tipo integer (int) si se usa 'numeric'.",
+      "Sí, porque Laravel puede interpretar cadenas que contienen números válidos como numéricos.",
+      "No, porque 1980 es menor que 1965.",
+      "Sí, siempre y cuando no se use date('Y')."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el siguiente fragmento de rutas:\n\nRoute::____('/mascota/{id}', 'ActualizarMascota');\nRoute::____('/mascota/{id}', 'ModificarMascotaParcial');\n\nEn la teoría REST, ¿qué dos métodos HTTP se utilizan convencionalmente para actualizar recursos completos y parcialmente, respectivamente?",
+    "opciones": [
+      "POST y GET",
+      "PUT y PATCH",
+      "DELETE y POST",
+      "UPDATE y MODIFY"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Un controlador REST tiene el método genérico:\n\npublic function store(Request $request)\n{\n    $item = Modelo::create($request->all());\n    return response()->json($item, 201);\n}\n\n¿Por qué devuelve 201 en lugar de 200 HTTP?",
+    "opciones": [
+      "201 significa 'No Content', indicando que no hay respuesta que procesar.",
+      "201 significa 'Created', y es la práctica recomendada en REST para indicar que un nuevo recurso ha sido creado exitosamente.",
+      "201 indica que hubo errores pero se forzó la creación.",
+      "200 está reservado solo para respuestas HTML."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Según los apuntes y la videoconferencia, en un servicio web REST en Laravel, la comunicación es 'sin estado' (Stateless). ¿Qué significa esto a nivel práctico en el controlador de la API?",
+    "opciones": [
+      "Que no podemos guardar datos en la base de datos (el estado).",
+      "Que el servidor no guarda información de la sesión del cliente (como variables de sesión PHP) entre peticiones; cada petición debe ser independiente.",
+      "Que no podemos usar el código HTTP 200.",
+      "Que el servidor solo puede estar ubicado en un único estado geográfico."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "Dado el fragmento de la clase `PeliculaPROF`:\n\nclass PeliculaPROF extends Model\n{\n    protected $table = 'peliculas';\n}\n\n¿Por qué se especifica manualmente `$table = 'peliculas'`?",
+    "opciones": [
+      "Porque Eloquent obliga a declarar siempre el nombre de la tabla en todos los modelos.",
+      "Para sobreescribir la convención por defecto de Eloquent, que buscaría una tabla llamada 'pelicula_p_r_o_fs'.",
+      "Porque es una medida de seguridad contra inyecciones SQL.",
+      "Porque 'peliculas' es una palabra reservada en MySQL."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En la tarea, la ruta de creación está definida como `Route::post('/crearPeliculaPROF', ...);`\nSi el cliente hace la petición, pero olvida incluir el Content-Length en la cabecera, es un problema de protocolo. Pero si el cliente envía todos los datos vacíos (`{}`), ¿quién detiene la ejecución y previene el error en la BD?",
+    "opciones": [
+      "El archivo routes/api.php",
+      "El método Validator::make() en el controlador, al evaluar la regla 'required'.",
+      "El modelo Eloquent mediante sus relaciones.",
+      "La directiva whereNumber() en la ruta."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 primera parte",
+    "pregunta": "En la creación del controlador API, usamos: `php artisan make:controller CancionController --api`\n¿Qué ventaja tiene usar la bandera `--api` al generar este archivo?",
+    "opciones": [
+      "Instala automáticamente Guzzle en el proyecto.",
+      "Crea un archivo rutas en automático dentro de routes/api.php.",
+      "Genera los métodos del controlador (index, store, show, update, destroy) sin los métodos orientados a vistas HTML (create, edit).",
+      "Configura el archivo .env para usar SQLite."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el cliente Guzzle, para obtener la lista de géneros usamos: `$operacion = $cliente->____('listarGenerosPROF');`[cite: 441]. ¿Qué método falta para hacer una petición de lectura básica al API?",
+    "opciones": [
+      "post",
+      "get",
+      "put",
+      "delete"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para decodificar la respuesta JSON en Guzzle usamos: `$lista = json_decode($operacion->getBody()->____(), true);`[cite: 443]. ¿Qué método se utiliza para extraer el contenido en formato texto de la respuesta?",
+    "opciones": [
+      "read()",
+      "getContents()",
+      "getText()",
+      "getString()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En las peticiones con Guzzle, para verificar el éxito: `if ($operacion->____() != 200) { return self::ERROR_SERVICIO_WEB; }`[cite: 442]. ¿Qué método nos da el código HTTP de respuesta?",
+    "opciones": [
+      "getStatus()",
+      "getStatusCode()",
+      "getCode()",
+      "httpStatus()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para enviar parámetros en la URL mediante una petición GET con Guzzle: `$cliente->get('existePeliculaPROF', ['____' => ['titulo' => $titulo]]);`[cite: 448]. ¿Qué clave del array de opciones debemos usar?",
+    "opciones": [
+      "query",
+      "form_params",
+      "json",
+      "body"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para enviar datos simulando un formulario (x-www-form-urlencoded) en un POST: `$cliente->post('crearPeliculaPROF', ['____' => ['titulo' => $titulo]]);`[cite: 453]. ¿Qué clave es la correcta?",
+    "opciones": [
+      "query",
+      "form_params",
+      "json",
+      "multipart"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Cuando hay un error en los datos de entrada, la API devuelve: `if ($operacion->getStatusCode() == ____) { return $datos['errores']; }`[cite: 449]. ¿Qué código numérico indica fallo de validación en la tarea?",
+    "opciones": [
+      "404",
+      "500",
+      "422",
+      "403"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para enviar los datos directamente en formato JSON mediante un PUT: `$cliente->put('modificar', ['____' => ['argumento' => $argumento]]);`[cite: 459]. ¿Qué clave de Guzzle usamos?",
+    "opciones": [
+      "json",
+      "form_params",
+      "body_json",
+      "query"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Si al intentar modificar una película, obtenemos: `if ($operacion->getStatusCode() == 404)`[cite: 460]. ¿Qué nos está indicando el servidor API con este código?",
+    "opciones": [
+      "Que no tenemos permisos para modificarla.",
+      "Que los datos enviados no son válidos.",
+      "Que la película que intentamos modificar no existe.",
+      "Que el servidor está apagado."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Según el controlador de la tarea, si recibe datos incorrectos de formato: `if ($operacion->getStatusCode() == 403) { return self::ERROR_DATOS_NO_JSON; }`[cite: 461]. ¿Qué significa el error 403 en este contexto específico?",
+    "opciones": [
+      "Fallo en la base de datos.",
+      "Datos no enviados en el formato JSON esperado.",
+      "La ruta no permite el método PUT.",
+      "El usuario no está autenticado."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para solicitar el borrado de un recurso en el API usando Guzzle: `$operacion = $cliente->____('borrarPeliculaPROF/' . $id_pelicula);`[cite: 466]. ¿Qué método invocamos?",
+    "opciones": [
+      "remove",
+      "delete",
+      "destroy",
+      "erase"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En las rutas de Laravel, para aplicar un mismo controlador a varias rutas: `Route::controller(XYZPeliculasControllerAPI::class)->____(function () { ... });`[cite: 1011]. ¿Qué método agrupa las rutas?",
+    "opciones": [
+      "group",
+      "bind",
+      "wrap",
+      "set"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el archivo api.php, para exigir que el parámetro {pelicula} sea numérico: `Route::put('/modificar/{pelicula}', '...')->____('pelicula');`[cite: 1011]. ¿Qué restricción se usa?",
+    "opciones": [
+      "whereInt",
+      "mustBeNumeric",
+      "whereNumber",
+      "isInteger"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el controlador, para iniciar la comprobación de los datos entrantes: `$v = Validator::____($request->all(), [...]);`[cite: 470]. ¿Qué método estático crea el validador?",
+    "opciones": [
+      "create",
+      "make",
+      "build",
+      "start"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el array de reglas de validación, para hacer que un campo sea obligatorio: `'titulo' => '____|string|max:60'`[cite: 470]. ¿Qué regla falta?",
+    "opciones": [
+      "mandatory",
+      "needed",
+      "required",
+      "must_exist"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para validar que el id de género enviado realmente está en la tabla `generos`: `'genero_id' => 'required|string|____:generos,id'`[cite: 471]. ¿Qué regla de Laravel verifica esto en la BD?",
+    "opciones": [
+      "in_table",
+      "exists",
+      "foreign",
+      "has"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para validar que la duración es un número: `'duracion' => 'required|____|min:1|max:500'`[cite: 471]. ¿Qué regla se aplica?",
+    "opciones": [
+      "int",
+      "integer",
+      "numeric",
+      "number"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para comprobar en el controlador si la validación no se cumplió: `if ($v->____()) { return response()->json(...); }`[cite: 473]. ¿Qué método indica el fallo?",
+    "opciones": [
+      "fails",
+      "isInvalid",
+      "hasErrors",
+      "error"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para devolver una respuesta JSON correctamente formateada en el controlador: `return ____()->json(['resultado' => 1], 200);`[cite: 475]. ¿Qué función auxiliar (helper) debemos usar?",
+    "opciones": [
+      "reply",
+      "return",
+      "response",
+      "send"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el modelo, para verificar si ya existe un registro con ciertas condiciones sin traer los datos completos: `PeliculaPROF::where('titulo', $titulo)->____();`[cite: 474]. ¿Qué método devuelve un booleano?",
+    "opciones": [
+      "exists",
+      "count",
+      "check",
+      "find"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para insertar un nuevo registro en la base de datos masivamente a partir de un array de datos válidos: `$pelicula = PeliculaPROF::____($datos);`[cite: 475]. ¿Qué método de Eloquent se usa?",
+    "opciones": [
+      "make",
+      "insert",
+      "save",
+      "create"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En la función de modificar el argumento, para verificar que el cliente mandó la cabecera JSON: `if (!$request->____()) { return response()->json(['errores'], 403); }`[cite: 476]. ¿Qué método del Request hace esto?",
+    "opciones": [
+      "isJson",
+      "wantsJson",
+      "hasJson",
+      "checkJson"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Al actualizar un modelo Eloquent, para consolidar los cambios en la base de datos: `$pelicula->argumento = $datos['argumento']; $pelicula->____();`[cite: 480]. ¿Qué método lanza el UPDATE?",
+    "opciones": [
+      "update",
+      "push",
+      "save",
+      "store"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para verificar si el modelo guardado realmente sufrió modificaciones (y no era igual a lo que ya había): `if ($pelicula->____()) { return ... }`[cite: 480]. ¿Qué método de Laravel nos lo dice?",
+    "opciones": [
+      "isDirty",
+      "hasChanges",
+      "wasChanged",
+      "isModified"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En la función de borrado de la API, para asegurarse de que el ID recibido por parámetro es un número: `if (!____($pelicula)) { ... }`[cite: 481]. ¿Qué función genérica de PHP se utiliza?",
+    "opciones": [
+      "is_numeric",
+      "is_int",
+      "is_integer",
+      "is_number"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para recuperar un modelo de la BD usando su identificador principal (id): `$pelicula = PeliculaPROF::____($pelicula);`[cite: 482]. ¿Qué método de Eloquent busca por clave primaria?",
+    "opciones": [
+      "find",
+      "search",
+      "get",
+      "locate"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para borrar permanentemente un registro instanciado en Eloquent: `$pelicula->____();`[cite: 483]. ¿Qué método ejecuta la instrucción DELETE en la BD?",
+    "opciones": [
+      "remove",
+      "erase",
+      "destroy",
+      "delete"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En la lectura del CSV del cliente: `'titulo' => $datos['titulo'] ____ ''`[cite: 453]. ¿Qué operador PHP devuelve el segundo valor si el primero es null o no existe?",
+    "opciones": [
+      "||",
+      "??",
+      "?:",
+      "or"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el cliente, para forzar que el valor devuelto sea interpretado como entero por PHP: `return ____($datos['resultado']);`[cite: 462]. ¿Qué función de casteo se usa?",
+    "opciones": [
+      "intval",
+      "to_int",
+      "parse_int",
+      "integer"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para procesar un archivo con datos separados por comas línea a línea en el cliente: `$linea = ____($linea_str);`[cite: 484]. ¿Qué función de PHP convierte el string en array parseando el CSV?",
+    "opciones": [
+      "explode_csv",
+      "parse_csv",
+      "str_getcsv",
+      "split_csv"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Al extraer los datos de un array en PHP, para unir los mensajes de error en un solo string: `implode(\"\", $resultado)`[cite: 501]. ¿Qué hace exactamente la función `implode`?",
+    "opciones": [
+      "Divide el string en un array.",
+      "Une los elementos del array en un solo string.",
+      "Elimina los elementos vacíos del array.",
+      "Codifica el array a formato JSON."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para definir una ruta que responda a la acción de crear (enviando datos): `Route::____('/crearPeliculaPROF', 'crearPeliculaPROF');`[cite: 1011]. ¿Qué verbo RESTful se usa?",
+    "opciones": [
+      "get",
+      "put",
+      "delete",
+      "post"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para convertir los mensajes de error anidados del validador de Laravel en un array de un solo nivel: `'errores' => Arr::____($v->errors()->getMessages())`[cite: 473]. ¿Qué método helper se usa?",
+    "opciones": [
+      "collapse",
+      "flatten",
+      "merge",
+      "simplify"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Una vez que la validación es correcta, para recuperar solo los datos que han pasado las reglas: `$datos = $v->____();`[cite: 473]. ¿Qué método usamos?",
+    "opciones": [
+      "data",
+      "all",
+      "get",
+      "validated"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En la consulta Eloquent, para limpiar los espacios en blanco sobrantes antes de buscar: `PeliculaPROF::where('titulo', ____($datos['titulo']))`[cite: 474]. ¿Qué función de PHP aplicamos?",
+    "opciones": [
+      "clean",
+      "trim",
+      "strip_tags",
+      "strip_spaces"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para indicar un error interno del servidor web (no contemplado por el API directamente) en Guzzle, ¿qué código HTTP devuelve el servidor por defecto en PHP? [cite: 736]",
+    "opciones": [
+      "404",
+      "422",
+      "500",
+      "200"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para obtener un parámetro de una petición GET de Laravel (opcional si no se ha usado Router Binding): `$id = $_GET['id'] ?? null;`[cite: 905]. En Laravel, ¿qué método es equivalente a `$request->...`?",
+    "opciones": [
+      "$request->input('id')",
+      "$request->get_param('id')",
+      "$request->value('id')",
+      "$request->parameter('id')"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Para convertir el JSON recibido en un array asociativo usando PHP puro: `json_decode($json_string, ____)`[cite: 449]. ¿Qué parámetro asegura que sea un array y no un objeto stdClass?",
+    "opciones": [
+      "1",
+      "false",
+      "true",
+      "'array'"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Al crear el validador: `Validator::make(..., [...], [ 'titulo.required' => 'El título es obligatorio' ])`[cite: 471]. ¿Para qué sirve este tercer array de parámetros?",
+    "opciones": [
+      "Para añadir reglas condicionales.",
+      "Para definir los valores por defecto.",
+      "Para especificar mensajes de error personalizados.",
+      "Para definir tipos de datos en la base de datos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Sobre el cliente por comandos HTTPie visto en teoría: `HTTPie se presenta en tres versiones distintas: Desktop, Terminal y ____ App`[cite: 790]. ¿Cuál falta?",
+    "opciones": [
+      "Mobile",
+      "Console",
+      "Web",
+      "Server"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En Laravel, para generar un recurso de API completo que incluya métodos como index, store, update y destroy automáticamente: `Route::____('canciones', CancionController::class);`[cite: 976]. ¿Qué método estático de Route se usa?",
+    "opciones": [
+      "resource",
+      "apiResource",
+      "crud",
+      "apiGroup"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En la tarea, si el ID proporcionado para borrar no es numérico, creamos un array de errores: `$errores = ['No se ha recibido un id numérico'];`[cite: 481]. ¿Qué devuelve `count($errores)`?",
+    "opciones": [
+      "0",
+      "1",
+      "2",
+      "null"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Al validar un objeto JSON entrante para procesar solo sus claves: `$v = Validator::make($request->____()->all(), ...);`[cite: 477]. ¿Qué método lee el payload JSON puro si vino con ese content-type?",
+    "opciones": [
+      "body",
+      "payload",
+      "json",
+      "data"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el cliente Guzzle, si necesitamos añadir parámetros a la URL (query string) para un GET: `['____' => ['titulo' => $titulo]]`[cite: 448]. ¿Qué palabra es la clave correcta?",
+    "opciones": [
+      "query",
+      "params",
+      "url_data",
+      "search"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Según la teoría de la unidad 6, ¿qué formato es el más usado y ligero para la transferencia de datos en servicios RESTful modernos? [cite: 745]",
+    "opciones": [
+      "XML",
+      "SOAP",
+      "JSON",
+      "YAML"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En Laravel, para validar un año que no sea superior al año actual dinámicamente: `'anio' => 'max:' . ____('Y')`[cite: 470]. ¿Qué función nativa de PHP usamos para obtener el año?",
+    "opciones": [
+      "time",
+      "now",
+      "date",
+      "year"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Al devolver la respuesta tras borrar correctamente en la API: `return response()->json(['resultado' => 1], ____);`[cite: 483]. ¿Qué código HTTP se envía habitualmente si la respuesta lleva contenido extra?",
+    "opciones": [
+      "201",
+      "204",
+      "200",
+      "404"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En el cliente, para decidir qué función llamar basándonos en la primera columna del CSV: `____ ($linea[0]) { case 'CREAR': ... break; }`[cite: 485]. ¿Qué estructura de control es?",
+    "opciones": [
+      "if",
+      "while",
+      "match",
+      "switch"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Si en Guzzle usamos `$client->request('GET', '', ['query' => ['id' => 1]]);`[cite: 926]. ¿Es esto equivalente a `$client->get('', ['query' => ['id' => 1]]);`?",
+    "opciones": [
+      "No, `request` siempre hace peticiones POST.",
+      "No, la sintaxis del array cambia completamente.",
+      "Sí, `request` recibe el verbo HTTP como primer parámetro.",
+      "Sí, pero `request` es síncrono y `get` es asíncrono."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "En una migración de Laravel, para añadir campos automáticos `created_at` y `updated_at`: `$table->____();`[cite: 955]. ¿Qué método los genera?",
+    "opciones": [
+      "timestamps",
+      "dates",
+      "add_times",
+      "auto_dates"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 segunda parte",
+    "pregunta": "Al definir la base de datos de un proyecto Laravel nuevo, se deben configurar los parámetros como `DB_DATABASE`[cite: 952]. ¿En qué archivo de la raíz del proyecto se ajustan?",
+    "opciones": [
+      ".config",
+      ".env",
+      "database.php",
+      "settings.ini"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado el siguiente fragmento para usar Guzzle en un cliente PHP:\n\n$cliente = new GuzzleHttp\\____(['base_uri' => 'http://localhost/api/']);\n\n¿Qué clase de la librería Guzzle completa el código para inicializar el cliente HTTP según lo visto en la tarea?",
+    "opciones": [
+      "Request",
+      "Client",
+      "Connection",
+      "Server"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el archivo PROF_PeticionesAPI.php se realiza la siguiente petición (FRAGMENTO A):\n\n$operacion = $cliente->____('listarGenerosPROF');\n\nSi queremos obtener información del servidor (un listado) sin modificarla, ¿qué método HTTP de Guzzle usamos convencionalmente?",
+    "opciones": [
+      "post",
+      "put",
+      "get",
+      "fetch"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el código del cliente Guzzle, al recibir la respuesta del API de Laravel, se ejecuta la siguiente línea:\n\n$codigo = $operacion->____();\n\nSegún la videoconferencia, debemos analizar el código devuelto. ¿Qué método de Guzzle extrae el código de estado HTTP (ej: 200, 404, 422)?",
+    "opciones": [
+      "getStatus()",
+      "getCode()",
+      "getStatusCode()",
+      "getHttpCode()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado el siguiente fragmento en PROF_PeticionesAPI.php para preparar la decodificación de la respuesta:\n\n$lista = json_decode($operacion->getBody()->____(), true);\n\n¿Qué método de Guzzle encadenado tras getBody() se usa para extraer el cuerpo de la respuesta en formato de cadena de texto (string)?",
+    "opciones": [
+      "read()",
+      "getContents()",
+      "text()",
+      "toString()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Observa el siguiente código donde comprobamos la existencia de una película mediante GET:\n\n$cliente->get('existePeliculaPROF', [\n  '____' => [\n    'titulo' => $titulo,\n    'anio' => $anio\n  ]\n]);\n\nComo la petición es GET, los parámetros deben ir añadidos en la URL (Query String). ¿Qué clave asociativa utiliza Guzzle para esto?",
+    "opciones": [
+      "form_params",
+      "json",
+      "body",
+      "query"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado el siguiente fragmento para la creación (POST) de un recurso en PROF_PeticionesAPI.php:\n\n$cliente->post('crearPeliculaPROF', [\n  '____' => [\n    'titulo' => $datos['titulo'],\n    ...\n  ]\n]);\n\nSi el servidor espera recibir los datos como un formulario HTML tradicional (`x-www-form-urlencoded`), ¿qué opción de Guzzle usamos?",
+    "opciones": [
+      "query",
+      "form_params",
+      "multipart",
+      "json"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En la modificación del argumento (PUT), enviamos la petición así:\n\n$cliente->put('modificarArgumentoPeliculaPROF/' . $id, [\n  '____' => [\n    'argumento' => $argumento\n  ]\n]);\n\nPara que Guzzle codifique los datos como un documento JSON automáticamente y añada la cabecera Content-Type correcta, ¿qué clave usamos?",
+    "opciones": [
+      "json",
+      "form_params",
+      "body",
+      "headers"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el análisis de las respuestas del API (FRAGMENTO B):\n\n$datos = json_decode($str_json, ____);\n\nEl profesor siempre añade un segundo parámetro a `json_decode`. ¿Qué valor booleano se pasa para que el JSON se convierta en un array asociativo en PHP y no en un objeto genérico?",
+    "opciones": [
+      "false",
+      "true",
+      "1",
+      "0"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado el siguiente fragmento de Guzzle para tratar fallos de validación:\n\nif ($operacion->getStatusCode() == 422) {\n  $datos = json_decode(..., true);\n  return $datos['____'];\n}\n\nSabiendo que el API de Laravel (servidor) devolvía algo como `['errores' => ['El título es obligatorio']]`, ¿qué índice del array de `$datos` debemos leer para extraerlos?",
+    "opciones": [
+      "mensajes",
+      "error",
+      "errores",
+      "fails"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Para borrar una película, usamos Guzzle de la siguiente forma:\n\n$operacion = $cliente->____('borrarPeliculaPROF/' . $id_pelicula);\n\n¿Qué verbo HTTP, fundamental en arquitecturas REST para la eliminación, debe completar el método?",
+    "opciones": [
+      "remove",
+      "delete",
+      "destroy",
+      "drop"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En `PROF_PeticionesAPI.php`, si la operación devuelve un código distinto a 200 al listar géneros, el profesor gestiona el error así:\n\nif ($operacion->getStatusCode() != 200) {\n  return self::____;\n}\n\n¿Qué constante devuelve la clase para indicar al cliente web que hubo un fallo en el servicio web?",
+    "opciones": [
+      "ERROR_PELICULA_NO_EXISTE",
+      "ERROR_DATOS_NO_JSON",
+      "ERROR_SERVICIO_WEB",
+      "HTTP_ERROR"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado este fragmento de cliente consumiendo la API de borrado:\n\nif ($operacion->getStatusCode() == 404) {\n  return self::ERROR_PELICULA_NO_EXISTE;\n}\n\nSegún la teoría REST, ¿qué indica exactamente el código HTTP 404 que devuelve Laravel en este contexto?",
+    "opciones": [
+      "Que la validación de los datos falló.",
+      "Que el servidor ha caído (Internal Server Error).",
+      "Que el recurso solicitado (el ID de la película a borrar) no se ha encontrado.",
+      "Que el usuario no tiene permisos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Observa cómo se construye la URL de la petición DELETE o PUT en el cliente:\n\n$cliente->delete('borrarPeliculaPROF/' . $id_pelicula);\n\n¿A qué concepto de diseño RESTful responde el hecho de incluir el identificador de la película directamente en la propia URI?",
+    "opciones": [
+      "State Transfer Pattern",
+      "Stateless Navigation",
+      "Identificación de URI de recursos jerárquicos",
+      "Paso de variables SOAP"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Analizando el archivo client/index.php, procesamos un textarea que contiene líneas separadas con datos:\n\n$linea = ____($linea_str);\n\n¿Qué función nativa de PHP se utiliza en la tarea para separar una cadena de texto (string) con formato CSV en un array indexado de campos?",
+    "opciones": [
+      "explode",
+      "str_split",
+      "str_getcsv",
+      "fgetcsv"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En PROF_Operaciones.php, se verifica que la línea CSV tenga el número correcto de datos antes de crear una película:\n\nif (____($linea) == 7) {\n  $datos = ['titulo' => $linea[1], ...];\n}\n\n¿Qué función de PHP completa el condicional para contar cuántos elementos tiene el array `$linea`?",
+    "opciones": [
+      "sizeof",
+      "length",
+      "count",
+      "array_length"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Al analizar el JSON de respuesta exitosa (200 OK) al insertar una película con Guzzle:\n\n$datos = json_decode(..., true);\nreturn ____($datos['resultado']);\n\n¿Qué función se usa en el cliente para garantizar que el ID devuelto por el API se convierta y retorne estrictamente como un tipo entero de PHP?",
+    "opciones": [
+      "parse_int",
+      "(number)",
+      "intval",
+      "toInt"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado el siguiente fragmento en PROF_Operaciones.php tras recibir la respuesta de la creación:\n\nif (is_int($resultado)) {\n  if ($resultado > 0) {\n    $lineaInforme = \"Película creada con éxito (ID: \" . $resultado . \")\";\n  }\n}\n\nSabiendo que `PROF_crearPelicula()` puede devolver un array (si hay errores 422) o un número (el ID), ¿por qué se evalúa con `is_int($resultado)`?",
+    "opciones": [
+      "Porque el servidor devuelve un string con 'Éxito'.",
+      "Para discernir si el servidor devolvió un ID numérico válido en vez del array de mensajes de error de validación.",
+      "Porque Guzzle devuelve las respuestas siempre como objetos stdClass.",
+      "Para evitar inyecciones SQL."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Si `$resultado` no es un número y contiene el array de errores del 422, el cliente formatea los errores así (FRAGMENTO C):\n\n$lineaInforme = \"Errores: <ul><li>\" . ____(\"</li><li>\", $resultado) . \"</li></ul>\";\n\n¿Qué función de PHP une todos los strings del array de errores en una sola cadena usando los tags HTML como pegamento?",
+    "opciones": [
+      "concat",
+      "split",
+      "implode",
+      "join_array"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Dado el fragmento de inicialización de la clase `PROF_PeticionesAPI`:\n\nuse GuzzleHttp\\Client as GClientPROF;\n\npublic static function PROF_crearPelicula(____ $cliente, $datos)\n\nPara que la firma del método requiera el tipo correcto de objeto basándose en el 'use' anterior, ¿qué alias debemos usar en el espacio en blanco?",
+    "opciones": [
+      "GuzzleClient",
+      "Client",
+      "GClientPROF",
+      "HttpClient"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En PROF_PeticionesAPI.php, al procesar la lista de géneros (FRAGMENTO D):\n\nforeach ($listaDeGeneros as $genero) {\n  $generos[intval($genero['____'])] = $genero;\n}\n\nPara facilitar las búsquedas, se indexa cada género en el array local usando su identificador único. ¿Qué clave del array JSON ocupa ese espacio?",
+    "opciones": [
+      "id",
+      "nombre",
+      "descripcion",
+      "clave"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Si desde Guzzle parseamos un JSON proveniente del API de Laravel: `{\"resultado\": 0}` (porque no se modificó nada en BBDD).\n\n$datos = json_decode($json, true);\n\n¿Qué afirmación es correcta si evaluamos `$datos['resultado'] === false` en PHP?",
+    "opciones": [
+      "Devolverá true, porque 0 y false son idénticos.",
+      "Devolverá false, porque 0 es un entero y false es booleano (comparación estricta).",
+      "Lanzará un error de conversión de tipos.",
+      "La variable no existe en el array."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Observa la petición Guzzle de creación (FRAGMENTO E):\n\n$operacion = $cliente->post('crearPeliculaPROF', ['form_params' => [...Datos...]]);\n\n¿Mediante qué objeto/método recupera Laravel en el servidor estos datos para validarlos, según la arquitectura que hemos estudiado?",
+    "opciones": [
+      "Mediante la superglobal $_GET exclusivamente.",
+      "Mediante las variables de entorno del archivo .env",
+      "Mediante el objeto $request instanciado, por ejemplo, invocando $request->all().",
+      "A través de parámetros incrustados en la URI del route."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el archivo cliente index.php, para mostrar en una tabla HTML un dato del API:\n\n<?= ____($genero['nombre'] ?? '') ?>\n\n¿Qué función se usa repetidamente en la vista del cliente para proteger la impresión de estos textos contra código HTML no deseado (XSS)?",
+    "opciones": [
+      "htmlentities",
+      "strip_tags",
+      "htmlspecialchars",
+      "json_encode"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En PROF_Operaciones.php, el array de CSV se evalúa en un `switch` para operaciones en masa:\n\nswitch ($linea) {\n  case 'MODIFICAR':\n    $informe = ...;\n    ____;\n  case 'BORRAR':\n    ...\n}\n\nPara que la instrucción se detenga después de 'MODIFICAR' y no continúe ejecutando el caso 'BORRAR', ¿qué palabra reservada debe ir en el espacio en blanco?",
+    "opciones": [
+      "stop",
+      "exit",
+      "return",
+      "break"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Si un API en Laravel tiene la validación `if (!$request->isJson()) { return 403; }`.\n¿Cómo debe construir el desarrollador su petición en Guzzle para cumplir este requisito y evitar el Forbidden?",
+    "opciones": [
+      "Usando 'form_params' en las opciones.",
+      "Usando 'query' en las opciones.",
+      "Usando la opción 'json' en el array de configuración de la petición para que añada el Content-Type correcto.",
+      "Añadiendo '.json' al final de la URL."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Según la estructura enseñada para el consumo de API, ¿qué representa habitualmente el valor que el servidor devuelve en el JSON `{\"resultado\": X}` al realizar una creación POST exitosa?",
+    "opciones": [
+      "Un mensaje de error detallado.",
+      "El identificador único (ID) del nuevo registro insertado en la base de datos.",
+      "El número total de filas de la tabla.",
+      "Un valor true siempre."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Observa el fragmento del archivo 'composer.json' del cliente:\n\n\"require\": {\n  \"guzzlehttp/guzzle\": \"^7.8\"\n}\n\n¿Cuál es la finalidad de incluir este bloque en el proyecto del cliente?",
+    "opciones": [
+      "Para instalar el servidor web Apache.",
+      "Para que el gestor Composer sepa que debe descargar la librería Guzzle para realizar peticiones HTTP y la añada al autoloader.",
+      "Para inicializar la base de datos MySQL.",
+      "Para definir las reglas de validación (Validator) de Laravel."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Si el API de Laravel devuelve un error de validación 422: `{\"errores\": [\"El título es obligatorio\"]}` y lo recibimos en Guzzle:\n\n¿Qué secuencia de código es la correcta para imprimir ese error por pantalla en el cliente?",
+    "opciones": [
+      "echo $operacion['errores'];",
+      "$datos = json_decode($operacion->getBody()->getContents(), true); echo $datos['errores'];",
+      "echo $operacion->getMessage();",
+      "echo json_decode($operacion)->error;"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el cliente iteramos los géneros recibidos del servidor:\n\n<?php foreach ($listaDeGeneros as $genero): ?>\n  <td><?= $genero['nombre'] ?></td>\n<?php endforeach; ?>\n\nPara que `$listaDeGeneros` contenga esta estructura en PHP, el servidor Laravel tuvo que enviar un JSON válido. ¿Qué método de Laravel empaquetó esa colección de modelos en JSON?",
+    "opciones": [
+      "response()->xml()",
+      "response()->json()",
+      "response()->html()",
+      "response()->text()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En PROF_Operaciones.php se trata la línea del CSV:\n\nif (count($linea) == 3) {\n  $resultado = PROF_PeticionesAPI::PROF_modificarArgumentoPelicula($cliente, $linea[1], $linea[2]);\n}\n\nSi el usuario introduce `MODIFICAR,4,Nueva historia épica`, ¿qué dato estamos pasando como `$linea[1]` al método que hace la petición Guzzle?",
+    "opciones": [
+      "La palabra 'MODIFICAR'",
+      "El ID numérico de la película a actualizar (4)",
+      "El texto del argumento ('Nueva historia épica')",
+      "Un array vacío"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el cliente preparamos un envío POST:\n\n$datos = [\n  'titulo' => $linea[1],\n  'genero_id' => $linea[2]\n];\n\nSi el usuario olvida incluir el `genero_id` en el CSV, Guzzle enviará un campo vacío. Según el profesor y las reglas (`'genero_id' => 'required'`), ¿qué código de estado devolverá la API?",
+    "opciones": [
+      "200 OK",
+      "404 Not Found",
+      "422 Unprocessable Entity",
+      "500 Internal Server Error"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Analiza la inicialización de Guzzle:\n\n$cliente = new GuzzleHttp\\Client(['base_uri' => 'http://localhost/api/']);\n\nSi posteriormente hacemos una petición con `$cliente->get('listarGenerosPROF')`, ¿cuál es la URL final a la que se envía la petición HTTP?",
+    "opciones": [
+      "http://localhost/listarGenerosPROF",
+      "http://localhost/api/listarGenerosPROF",
+      "http://localhost/api/?get=listarGenerosPROF",
+      "https://localhost/api/listarGenerosPROF"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "El método `PROF_borrarPelicula` comprueba explícitamente los códigos 404 y 200 de la respuesta Guzzle. Si recibe un error 500 (Internal Server Error) desde Laravel, llega a la última línea de la función:\n\nreturn self::____;\n\n¿Qué valor constante se diseñó en la tarea para informar a la vista de que falló el servicio web de forma imprevista?",
+    "opciones": [
+      "ERROR_PELICULA_NO_EXISTE",
+      "ERROR_DATOS_NO_JSON",
+      "ERROR_SERVICIO_WEB",
+      "null"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En Laravel definimos la ruta `PUT /modificarArgumentoPeliculaPROF/{pelicula}`. En Guzzle la llamamos así:\n\n$cliente->put('modificarArgumentoPeliculaPROF/9', ...);\n\nSegún la arquitectura REST, ¿por qué el '9' se concatena a la propia URL en lugar de pasarlo oculto en el cuerpo de la petición?",
+    "opciones": [
+      "Porque es una exigencia exclusiva del protocolo SOAP.",
+      "Porque en REST, la URI (Uniform Resource Identifier) debe identificar jerárquicamente al recurso específico sobre el que actúa el método HTTP.",
+      "Porque Guzzle no soporta el envío de cuerpos en peticiones PUT.",
+      "Para saltar las validaciones del servidor."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En PROF_PeticionesAPI.php se construye un array con el operador `??` (Fusión null):\n\n'titulo' => $datos['titulo'] ?? '',\n\n¿Qué comportamiento tiene esta sintaxis al construir los 'form_params' para enviar con Guzzle?",
+    "opciones": [
+      "Comprueba si es un string y si no lanza una excepción.",
+      "Si `$datos['titulo']` existe y no es nulo, usa su valor; de lo contrario, envía una cadena vacía, previniendo errores en PHP.",
+      "Duplica el contenido de la variable.",
+      "Realiza una petición a la base de datos automáticamente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En Guzzle, usamos `query` para un GET con el objetivo de comprobar datos repetidos:\n\n$cliente->get('existePeliculaPROF', ['query' => ['titulo' => 'Batman']]);\n\n¿Cómo traduce Guzzle esto en la petición HTTP real que viaja por la red?",
+    "opciones": [
+      "Enviará el cuerpo (body) de la petición con `{\"titulo\": \"Batman\"}`.",
+      "Añadirá los datos a la URL como una query string: `/existePeliculaPROF?titulo=Batman`.",
+      "Creará una cabecera HTTP llamada 'Query-Titulo'.",
+      "Descargará el recurso en un archivo XML."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "El API devuelve un 422 con: `{\"errores\": [\"Falta el título\", \"Falta el año\"]}`.\nSi en el cliente Guzzle hacemos `$resultado = json_decode($json, true);`, ¿de qué tipo es `$resultado['errores']` según la estructura devuelta?",
+    "opciones": [
+      "Un objeto simple (stdClass).",
+      "Un string literal con comas.",
+      "Un array indexado que contiene dos strings.",
+      "Un tipo numérico entero."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Según la documentación de la Unidad 6 y la configuración del API, a diferencia de SOAP que usa obligatoriamente XML, ¿qué formato es el estándar predominante hoy y el utilizado en la tarea para el intercambio en API RESTful?",
+    "opciones": [
+      "XML",
+      "YAML",
+      "JSON",
+      "CSV"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Observa el fragmento del cliente PHP al borrar con éxito:\n\n$datos = json_decode($operacion->getBody()->getContents(), true);\nreturn intval($datos['____']);\n\nSi recordamos el controlador Laravel, al borrar devuelve `return response()->json(['resultado' => 1], 200);`. ¿Qué clave del array debe ir en el espacio para recuperar el 1?",
+    "opciones": [
+      "resultado",
+      "deleted",
+      "éxito",
+      "id"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Laravel tiene la ruta definida como `->whereNumber('pelicula')`. Si desde Guzzle el cliente hace esto:\n\n$cliente->delete('borrarPeliculaPROF/xyz');\n\nComo 'xyz' no cumple el requisito numérico, la ruta no coincide. ¿Qué código HTTP devolverá el framework automáticamente indicando que esa ruta no existe?",
+    "opciones": [
+      "200 OK",
+      "404 Not Found",
+      "422 Unprocessable Entity",
+      "500 Internal Server Error"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el archivo cliente index.php, los comandos a ejecutar se recogen de un formulario HTML:\n\n<textarea name=\"____\" id=\"datos\" cols=\"90\" rows=\"10\"></textarea>\n\nPara que en PHP podamos recoger este bloque de texto con `$_POST['datos']`, ¿qué debe ir en el atributo name?",
+    "opciones": [
+      "textarea",
+      "datos",
+      "texto",
+      "csv"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En PROF_Operaciones.php al actualizar, leemos el resultado que extrajo Guzzle:\n\nif ($resultado > 0) {\n  $lineaInforme = \"Argumento modificado con éxito.\";\n} else {\n  $lineaInforme = \"Error... El argumento no ha cambiado.\";\n}\n\nSi Laravel retornó `$resultado = 0` usando la comprobación `$pelicula->wasChanged()`, ¿qué significa esto a nivel de base de datos?",
+    "opciones": [
+      "Que no existía conexión a la base de datos.",
+      "Que el argumento nuevo que enviamos en JSON era idéntico al que la película ya tenía guardado, por lo que no hubo cambios reales.",
+      "Que la película ha sido borrada.",
+      "Que hubo un error de validación 422."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el cliente listamos las películas llamando al API con GET:\n\n$listaDePeliculas = json_decode(..., true);\n\nSabiendo que el servidor envió `PeliculaPROF::select(...)->get()` convertido a JSON. En PHP, ¿qué estructura de datos representa ahora `$listaDePeliculas`?",
+    "opciones": [
+      "Un array multidimensional (una lista de arrays asociativos).",
+      "Un solo string grande con HTML incrustado.",
+      "Una instancia de la clase Modelo de Eloquent.",
+      "Una clase SoapClient pura."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Para la parte del cliente usando Guzzle, se pide enviar el body como JSON (FRAGMENTO G):\n\n$operacion = $cliente->put('endpoint', ['json' => ['argumento' => 'nuevo_texto']]);\n\n¿Por qué es preferible usar la clave `json` en lugar de codificarlo a mano con `json_encode` y mandarlo en `body`?",
+    "opciones": [
+      "Porque 'body' está deprecado en Guzzle.",
+      "Porque Guzzle convierte automáticamente el array y además añade la cabecera HTTP 'Content-Type: application/json' necesaria para el servidor.",
+      "Porque convierte la petición en GET.",
+      "Porque cifra los datos con TLS internamente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el frontend del cliente web (index.php), antes de construir la tabla de géneros, se asegura su integridad:\n\n<?php if (!empty($listaDeGeneros) && ____($listaDeGeneros)): ?>\n\n¿Qué función completa la condición asegurando que la variable se puede recorrer con un `foreach` sin lanzar error de tipo?",
+    "opciones": [
+      "is_object",
+      "is_array",
+      "is_null",
+      "isset"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "Si un desarrollador comete un error en el cliente al decodificar y omite el parámetro `true`:\n\n$datos = json_decode($json);\n\nDado que el JSON es `{\"resultado\": 1}`, ¿qué sintaxis orientada a objetos tendría que usar en PHP para extraer el '1' en lugar de la sintaxis de array asociativo?",
+    "opciones": [
+      "$datos['resultado']",
+      "$datos->resultado",
+      "$datos::resultado",
+      "get_object_vars($datos)"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el flujo del cliente, si el CSV detecta que el comando de la línea es 'CREAR', se llama a una función estática de operaciones:\n\n$informe[$n] = OperacionesAPI::PROF_Operacion____($cliente, $linea);\n\n¿Qué nombre completa la función que se encarga de aislar los datos del CSV y preparar la petición al servidor?",
+    "opciones": [
+      "CrearPelicula",
+      "InsertData",
+      "PostPelicula",
+      "SaveCSV"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En la configuración de las rutas del servidor Laravel:\n\nRoute::delete('/borrarPeliculaPROF/{pelicula}', 'borrarPeliculaPROF');\n\nSi Guzzle invoca el método enviando la URL `.../borrarPeliculaPROF/14`. ¿Cómo sabe Laravel qué id borrar y se lo inyecta a la función del controlador `borrarPeliculaPROF($pelicula)`?",
+    "opciones": [
+      "Lo busca dentro del json enviado mediante $request->all().",
+      "El framework enruta el segmento de la URI que coincide con '{pelicula}' y lo pasa como argumento al método del controlador.",
+      "Lo guarda en una variable global temporal.",
+      "Pregunta de nuevo al cliente Guzzle."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "En el cliente `index.php`, si tras consultar al API `$peliculas` es un array vacío porque no hay datos, el bloque HTML dice:\n\n<?php if (!empty($peliculas) && is_array($peliculas)): ?> ... <table ...> ... <?php else: ?> <p>No hay películas para mostrar</p> <?php endif; ?>\n\n¿Qué renderizará la vista finalmente?",
+    "opciones": [
+      "Una tabla HTML sin las etiquetas <tr>.",
+      "El párrafo '<p>No hay películas para mostrar</p>'.",
+      "Un error 500 fatal.",
+      "Un volcado de array usando var_dump."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 tercera parte",
+    "pregunta": "La videoconferencia hace mucho énfasis en la naturaleza de REST y Guzzle. Si Guzzle realiza una petición POST creando una película, y un segundo después un GET, se dice que es una comunicación 'Stateless' (sin estado). ¿Qué implica esto?",
+    "opciones": [
+      "Que el servidor guarda la identidad de Guzzle usando la variable PHP `$_SESSION` para el GET.",
+      "Que cada petición es totalmente independiente; el servidor de Laravel no recuerda a Guzzle ni mantiene variables de estado en memoria compartida entre las dos peticiones.",
+      "Que el servidor deniega la segunda conexión.",
+      "Que la conexión se queda inactiva."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Dado el código del cliente Guzzle (F1):\n\n$operacion = $cliente->____('listarGenerosPROF');\n\nSabiendo que esta ruta en el servidor está definida como `Route::get('/listarGenerosPROF', ...)`, ¿qué método debemos usar en el cliente Guzzle para realizar la petición correctamente?",
+    "opciones": [
+      "post",
+      "get",
+      "request",
+      "fetch"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el cliente Guzzle tenemos (F2):\n\n$listaDeGeneros = json_decode($operacion->getBody()->getContents(), ____);\n\nPara que la variable `$listaDeGeneros` sea un array asociativo en PHP (y no un objeto stdClass), ¿qué valor debe ir en el espacio en blanco?",
+    "opciones": [
+      "false",
+      "1",
+      "true",
+      "JSON_ARRAY"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Analizando la comprobación de errores en Guzzle (F3):\n\nif ($operacion->getStatusCode() != ____) {\n    return self::ERROR_SERVICIO_WEB;\n}\n\nSi queremos verificar que la petición GET se ha realizado de forma completamente exitosa según el estándar HTTP, ¿qué código numérico falta?",
+    "opciones": [
+      "404",
+      "201",
+      "500",
+      "200"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el cliente, al enviar datos por GET (F4):\n\n$operacion = $cliente->get('existePeliculaPROF', [\n    '____' => [\n        'titulo' => $titulo,\n        'anio' => $anio\n    ]\n]);\n\n¿Qué clave usa Guzzle para añadir estos parámetros a la URL (ej: `?titulo=...&anio=...`)?",
+    "opciones": [
+      "form_params",
+      "json",
+      "query",
+      "url_data"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al crear una película desde el cliente Guzzle (F5):\n\n$operacion = $cliente->post('crearPeliculaPROF', [\n    '____' => $datos\n]);\n\nSi el servidor espera estrictamente que el cuerpo de la petición sea un JSON (`$request->isJson()`), ¿qué opción debemos utilizar en Guzzle?",
+    "opciones": [
+      "body",
+      "json",
+      "form_params",
+      "multipart"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Observa el manejo de la respuesta de error de validación (F6):\n\nif ($operacion->getStatusCode() == 422) {\n    $datos = json_decode(..., true);\n    return $datos['____'];\n}\n\nSegún el controlador del servidor, cuando falla la validación se devuelve `response()->json(['errores' => ...], 422)`. ¿Qué clave debemos usar para extraer esos mensajes?",
+    "opciones": [
+      "errors",
+      "errores",
+      "message",
+      "fallos"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la función de borrar en el cliente Guzzle (F7):\n\n$operacion = $cliente->____('borrarPeliculaPROF/' . $id_pelicula);\n\nPara respetar la arquitectura RESTful y el verbo HTTP correspondiente a la eliminación, ¿qué método de Guzzle se debe usar?",
+    "opciones": [
+      "remove",
+      "delete",
+      "destroy",
+      "drop"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al leer el archivo CSV en el index del cliente (F8):\n\n$linea = ____($linea_str);\n\n¿Qué función nativa de PHP se utiliza en la tarea para convertir una línea de texto con valores separados por comas en un array?",
+    "opciones": [
+      "explode",
+      "str_getcsv",
+      "csv_to_array",
+      "json_decode"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el archivo index.php del cliente se evalúa la operación (F9):\n\nswitch ($linea[0]) {\n    case '____':\n        $informe[$numLinea]['resultado'] = OperacionesAPI::PROF_OperacionCrearPelicula(...);\n        break;\n}\n\nPara que coincida con la llamada a la función de creación, ¿qué texto suele venir en la primera posición del CSV según la tarea?",
+    "opciones": [
+      "POST",
+      "INSERT",
+      "CREAR",
+      "NUEVO"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al comprobar si se tienen todos los datos para crear una película (F10):\n\nif (count($linea) == ____) {\n    $datos = ['titulo' => $linea[1], 'genero_id' => $linea[2]...];\n}\n\nSabiendo que el índice llega hasta `$linea[6]` (año) y `$linea[0]` es la acción, ¿cuántos elementos debe tener el array como mínimo?",
+    "opciones": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el archivo de rutas `api.php` del servidor (F11):\n\nRoute::____(XYZPeliculasControllerAPI::class)->group(function () {\n    Route::get('/listarPeliculasPROF', 'listarPeliculasPROF');\n});\n\n¿Qué método estático de `Route` nos permite agrupar varias rutas para que todas utilicen la misma clase controladora sin tener que repetirla?",
+    "opciones": [
+      "middleware",
+      "controller",
+      "prefix",
+      "class"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En las rutas del servidor (F12):\n\nRoute::put('/modificar/{pelicula}', 'modificar')->____('pelicula');\n\n¿Qué restricción de Laravel usamos para asegurar que el parámetro de ruta `{pelicula}` solo acepte dígitos (un ID numérico)?",
+    "opciones": [
+      "whereInteger",
+      "mustBeNumber",
+      "whereNumber",
+      "isNumeric"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el archivo `web.php` (F13):\n\nRoute::post('/registro_de_usuarios', [RegistroController::class,'registrar'])->____('web.registro');\n\n¿Qué método se utiliza para asignarle un alias o nombre a la ruta, permitiendo referenciarla fácilmente desde las vistas Blade?",
+    "opciones": [
+      "alias",
+      "name",
+      "as",
+      "id"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Analizando el controlador de API (F14):\n\npublic function crearPeliculaPROF(Request $request): ____ {\n    // ...\n    return response()->json(...);\n}\n\nEn PHP 8/Laravel, ¿qué tipo de retorno (type hint) es el más adecuado y estándar declarar en este método que devuelve un JSON?",
+    "opciones": [
+      "Array",
+      "String",
+      "JsonResponse",
+      "Void"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el controlador, creando el validador (F15):\n\n$v = Validator::____($request->all(), [\n    'titulo' => 'required|string|max:60|min:2'\n]);\n\n¿Qué método estático de la clase (o Facade) Validator se utiliza para inicializar una nueva instancia de validación?",
+    "opciones": [
+      "create",
+      "build",
+      "make",
+      "init"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En las reglas de validación (F16):\n\n'genero_id' => 'required|string|____:generos,id'\n\n¿Qué regla de Laravel verifica que el valor enviado exista en una tabla específica de la base de datos (en este caso, en la tabla `generos`, columna `id`)?",
+    "opciones": [
+      "exists",
+      "in",
+      "foreign",
+      "check"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En las reglas de validación del año (F17):\n\n'anio' => 'required|numeric|min:1965|____:' . date('Y')\n\nPara indicar que el año enviado no puede ser mayor que el año actual, ¿qué regla de validación debemos anteponer al valor generado por `date('Y')`?",
+    "opciones": [
+      "lessThan",
+      "max",
+      "before",
+      "limit"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el controlador, para verificar si la validación tuvo errores (F18):\n\nif ($v->____()) {\n    return response()->json(['errores' => ...], 422);\n}\n\n¿Qué método del objeto validador devuelve `true` si alguna regla no se ha cumplido?",
+    "opciones": [
+      "isInvalid",
+      "hasErrors",
+      "fails",
+      "error"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Dentro del controlador, cuando la validación falla (F19):\n\nreturn response()->json([\n    'errores' => Arr::____($v->errors()->getMessages())\n], 422);\n\n¿Qué método de la clase `Arr` convierte un array multidimensional (como el que devuelve getMessages) en un array simple de un solo nivel?",
+    "opciones": [
+      "flatten",
+      "collapse",
+      "merge",
+      "simplify"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el controlador, si la película ya existe se devuelve un error (F20):\n\nif ($resultado) {\n    return response()->____(['errores' => ['La película ya existe']], 422);\n}\n\n¿Qué método de la función helper `response()` transforma automáticamente el array PHP en una cadena con formato JSON?",
+    "opciones": [
+      "send",
+      "json",
+      "array",
+      "body"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el controlador para crear el registro en BD (F21):\n\n$pelicula = PeliculaPROF::____($datos);\n\nSabiendo que `$datos` es un array validado, ¿qué método de Eloquent se usa para instanciar y guardar el modelo en la base de datos en un solo paso (asignación masiva)?",
+    "opciones": [
+      "insert",
+      "save",
+      "create",
+      "make"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al modificar el argumento, comprobamos el formato de entrada (F22):\n\nif (!$request->____()) {\n    return response()->json(['errores' => ['Los datos deben ser JSON']], 403);\n}\n\n¿Qué método del objeto `Request` verifica si la petición entrante tiene el Content-Type de JSON?",
+    "opciones": [
+      "hasJson",
+      "wantsJson",
+      "isJson",
+      "checkJson"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al modificar una película en el controlador (F23):\n\n$datos = $v->____();\n$pelicula->argumento = $datos['argumento'];\n\n¿Qué método del validador recupera exclusivamente los datos que pasaron exitosamente por las reglas de validación (ignorando datos extraños)?",
+    "opciones": [
+      "all",
+      "safe",
+      "validated",
+      "get"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Para aplicar los cambios a la base de datos (F24):\n\n$pelicula->argumento = $datos['argumento'];\n$pelicula->____();\n\n¿Qué método de la instancia de Eloquent ejecuta la sentencia UPDATE en la base de datos para guardar las modificaciones?",
+    "opciones": [
+      "update",
+      "push",
+      "commit",
+      "save"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Para verificar si el guardado realmente cambió algún valor (F25):\n\nif ($pelicula->____()) {\n    return response()->json(['resultado' => 1], 200);\n}\n\n¿Qué método de Eloquent devuelve `true` si el modelo tenía cambios respecto a la base de datos justo después de haber hecho un `save()`?",
+    "opciones": [
+      "isDirty",
+      "wasChanged",
+      "hasModifications",
+      "isModified"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la función de borrar (F26):\n\nfunction borrarPeliculaPROF($pelicula): JsonResponse {\n    if (!____($pelicula)) {\n        $errores = ['No se ha recibido un id numérico'];\n    }\n}\n\n¿Qué función estándar de PHP usamos para comprobar si la variable contenida en `$pelicula` es un número o una cadena numérica?",
+    "opciones": [
+      "is_int",
+      "is_numeric",
+      "is_number",
+      "ctype_digit"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al buscar el registro a borrar en el controlador (F27):\n\n$peliculaObj = PeliculaPROF::____($pelicula);\n\nSabiendo que `$pelicula` contiene el ID numérico (clave primaria), ¿qué método de Eloquent busca y devuelve el registro correspondiente o `null` si no existe?",
+    "opciones": [
+      "find",
+      "search",
+      "get",
+      "whereId"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Para eliminar el registro de la base de datos (F28):\n\nif ($peliculaObj) {\n    $peliculaObj->____();\n    return response()->json(['resultado' => 1], 200);\n}\n\n¿Qué método de Eloquent ejecuta la sentencia DELETE en la tabla correspondiente a ese modelo instanciado?",
+    "opciones": [
+      "destroy",
+      "remove",
+      "delete",
+      "erase"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la migración de crear tabla películas (F29):\n\n$table->tinyText('argumento');\n$table->integer('anio');\n$table->____();\n\n¿Qué método de Blueprint genera automáticamente las columnas `created_at` y `updated_at` en Laravel?",
+    "opciones": [
+      "timeFields",
+      "timestamps",
+      "dateColumns",
+      "autoDates"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la migración de películas, al definir la clave foránea (F30):\n\n$table->foreign('genero_id')->____('id')->on('generos');\n\n¿Qué método se usa para indicar a qué columna de la tabla referenciada apunta nuestra clave foránea?",
+    "opciones": [
+      "pointsTo",
+      "references",
+      "mapsTo",
+      "target"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la migración de películas, sobre la clave foránea (F31):\n\n$table->foreign('genero_id')->references('id')->on('generos')->____('cascade');\n\nSi queremos que al borrar un género se borren automáticamente las películas asociadas a él, ¿qué método falta?",
+    "opciones": [
+      "onDelete",
+      "onRemove",
+      "cascadeOnDelete",
+      "deleteBehavior"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el método down() de las migraciones (F32):\n\npublic function down(): void {\n    Schema::____('peliculas');\n}\n\n¿Qué método de la clase Schema se usa habitualmente para revertir la migración eliminando la tabla de forma segura si existe?",
+    "opciones": [
+      "deleteTable",
+      "dropIfExists",
+      "remove",
+      "truncate"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el seeder PROFSeeder.php, para crear un usuario (F33):\n\nUser::create([\n    'name' => 'PROF1',\n    'password' => Hash::____('PROF1')\n]);\n\n¿Qué método de la Facade `Hash` se utiliza para encriptar la contraseña de forma segura (normalmente usando Bcrypt) antes de guardarla?",
+    "opciones": [
+      "crypt",
+      "encrypt",
+      "make",
+      "hash"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el seeder, para insertar géneros sin duplicarlos (F34):\n\nGeneroPROF::____(['nombre' => $genero['nombre']], $genero);\n\n¿Qué método de Eloquent busca un registro por los primeros atributos y, si no lo encuentra, lo crea usando los atributos del segundo array?",
+    "opciones": [
+      "createOrIgnore",
+      "firstOrCreate",
+      "insertIfNotExists",
+      "updateOrCreate"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el seeder, para evitar duplicar usuarios verificando antes (F35):\n\nif (User::where('name', 'PROF2')->____() === 0) {\n    User::create([...]);\n}\n\n¿Qué método de Eloquent ejecuta la consulta y devuelve el número de registros encontrados que coinciden con la condición?",
+    "opciones": [
+      "amount",
+      "sum",
+      "total",
+      "count"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el seeder, después de crear el usuario le asignamos una fecha (F36):\n\n$u->email_verified_at = ____();\n$u->save();\n\n¿Qué helper o función de Laravel/PHP devuelve la fecha y hora actual para registrarla en la base de datos?",
+    "opciones": [
+      "current_date",
+      "now",
+      "today",
+      "timestamp"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la vista Blade `registro.blade.php` (F37):\n\n@____('password_confirmation')\n    {{$message}}\n@enderror\n\n¿Qué directiva de Blade se utiliza para comprobar si existe un error de validación para un campo específico y mostrar su mensaje?",
+    "opciones": [
+      "ifError",
+      "validate",
+      "error",
+      "catch"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el archivo `composer.json` del cliente (F38):\n\n\"require\": {\n    \"guzzlehttp/____\": \"^7.8\"\n}\n\n¿Cuál es el nombre correcto del paquete (librería) que instalamos mediante Composer para hacer peticiones HTTP desde PHP?",
+    "opciones": [
+      "curl",
+      "http-client",
+      "guzzle",
+      "requests"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "De acuerdo al temario de la Unidad 6 (F39), cuando usamos Guzzle o consumimos un servicio web, ¿qué protocolo subyacente de la capa de aplicación se utiliza para el intercambio de datos en las APIs RESTful?",
+    "opciones": [
+      "FTP",
+      "HTTP",
+      "SOAP",
+      "TCP"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Según el temario y la implementación de la tarea (F40), el formato JSON ha desplazado a otro formato que era muy común en los servicios SOAP. ¿Qué formato era el utilizado nativamente por SOAP?",
+    "opciones": [
+      "YAML",
+      "XML",
+      "CSV",
+      "HTML"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En el archivo del cliente `PROF_Operaciones.php`, uniendo los mensajes de error (F41):\n\n$lineaInforme = \"Errores: \" . ____(\"\", $resultado);\n\nSi `$resultado` es un array de strings (mensajes de error), ¿qué función de PHP los concatena en un único string vacío de separación?",
+    "opciones": [
+      "concat",
+      "join_array",
+      "implode",
+      "merge_strings"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En las rutas del API en Laravel, al definir `Route::post('/crearPeliculaPROF', ...)` (F42). Si consumimos esta ruta desde un cliente externo como Guzzle, ¿por qué no necesitamos enviar el token `@csrf`?",
+    "opciones": [
+      "Porque Guzzle lo genera automáticamente leyendo la caché del servidor.",
+      "Porque las peticiones POST nunca requieren token CSRF en Laravel.",
+      "Porque las rutas en `routes/api.php` no incluyen el middleware `VerifyCsrfToken` por defecto al ser 'stateless'.",
+      "Porque el token CSRF solo es necesario si usamos el formato XML."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Viendo cómo Laravel gestiona los Request, en el controlador (F43):\n\n$v = Validator::make($request->json()->____(), [...]);\n\nSi usamos `$request->json()`, ¿qué método encadenamos después para obtener el array completo de datos parseados del cuerpo JSON?",
+    "opciones": [
+      "get",
+      "all",
+      "toArray",
+      "body"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "De acuerdo a la teoría de servicios REST (F44) mencionada por el profesor, si se enviara una petición POST a `/api/peliculas` para crear un recurso y este se crea correctamente, ¿qué código HTTP es el más purista/estándar para responder 'Creado'?",
+    "opciones": [
+      "200 OK",
+      "201 Created",
+      "202 Accepted",
+      "204 No Content"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la teoría y ejemplos de Laravel (F45):\n\nRoute::____('canciones', CancionController::class);\n\n¿Qué método estático en Laravel genera automáticamente las rutas para las acciones index, store, show, update y destroy en un contexto de API?",
+    "opciones": [
+      "apiResource",
+      "resourceAPI",
+      "groupAPI",
+      "crud"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la migración de películas, vimos `ALTER TABLE peliculas ADD CONSTRAINT check_duracion` (F46). Sabiendo que Laravel ofrece migraciones para ser agnóstico de base de datos, el uso de sentencias `\\DB::statement(\"...\")` implica:",
+    "opciones": [
+      "Que el código se ejecutará más rápido que con los métodos de Blueprint.",
+      "Que estamos ejecutando SQL crudo (raw SQL) específico del motor de base de datos que estemos usando (ej. MySQL/MariaDB).",
+      "Que es la única manera de añadir claves foráneas en Laravel.",
+      "Que Eloquent validará automáticamente estas restricciones en PHP."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En la vista principal blade (F47):\n\n<p>Los endpoints disponibles son:</p>\n\nEn la terminología de servicios web REST, ¿qué es exactamente un 'endpoint'?",
+    "opciones": [
+      "El punto final donde se corta la conexión del servidor.",
+      "El token de seguridad que se envía en las cabeceras.",
+      "La dirección o URL específica (junto con su método HTTP) expuesta por el servidor para acceder a un recurso.",
+      "El formato de salida que tendrá la respuesta (JSON o XML)."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Según la Videoconferencia del profesor (F48), se dejó claro que un tema específico de la teoría no iba a ser evaluado en el examen por estar obsoleto frente a REST. ¿Cuál era?",
+    "opciones": [
+      "SOAP",
+      "HTTPie",
+      "Guzzle",
+      "JSON"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "En Guzzle, cuando instanciamos el cliente (F49):\n\n$cliente = new GClientPROF(['base_uri' => 'http://...']);\n\n¿Qué ventaja principal nos aporta configurar el `base_uri`?",
+    "opciones": [
+      "Evita tener que escribir la ruta completa en cada petición (`get`, `post`), permitiendo usar rutas relativas.",
+      "Añade seguridad encriptando todas las comunicaciones hacia esa URL.",
+      "Verifica automáticamente el certificado SSL del servidor destino.",
+      "Asigna una cabecera 'Origin' estricta para evitar errores de CORS en PHP."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 cuarta parte",
+    "pregunta": "Al retornar datos de Eloquent (F50):\n\nreturn response()->json(GeneroPROF::all(), 200);\n\n¿Qué hace Laravel internamente con la colección de modelos devuelta por `all()` antes de enviarla al cliente HTTP?",
+    "opciones": [
+      "La envía como un archivo descargable .json.",
+      "Serializa todos los objetos Eloquent (y sus atributos) en un array JSON, ignorando métodos internos y propiedades ocultas (hidden).",
+      "Devuelve un error si no aplicamos un bucle `foreach` previamente para extraer los atributos.",
+      "Convierte la colección a una tabla HTML formateada si el cliente es Guzzle."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Según la videoconferencia, en el archivo `routes/api.php` de nuestro servidor agrupamos varias rutas bajo el mismo controlador (FRAGMENTO 1):\n\nRoute::____(XYZPeliculasControllerAPI::class)->group(function () {\n    Route::get('/listarPeliculasPROF', 'listarPeliculasPROF');\n    ...\n});\n\n¿Qué método de la clase Route permite definir el controlador común para todo el grupo de rutas?",
+    "opciones": [
+      "controller",
+      "class",
+      "uses",
+      "namespace"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Dado el código de rutas (FRAGMENTO 2):\n\nRoute::delete('/borrarPeliculaPROF/{pelicula}', 'borrarPeliculaPROF')->____('pelicula');\n\nEl profesor insiste en que las rutas deben ser precisas. ¿Qué método encadenado usamos en la tarea para asegurar que el parámetro `{pelicula}` sea estrictamente un valor numérico y evitar errores posteriores?",
+    "opciones": [
+      "isInteger",
+      "whereNumeric",
+      "assertNumber",
+      "whereNumber"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Al diseñar un controlador de API REST como se pide en la tarea, observamos la firma de este método (FRAGMENTO 3):\n\npublic function listarPeliculasPROF(): ________\n\nSegún la teoría y la videoconferencia, el controlador no devuelve vistas HTML. ¿Qué tipo de dato de Laravel debe retornar para cumplir con la arquitectura de la tarea?",
+    "opciones": [
+      "View",
+      "String",
+      "JsonResponse",
+      "Array"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el controlador del servidor, para enviar los datos de las películas de vuelta al cliente Guzzle, usamos (FRAGMENTO 4):\n\nreturn ____()->json(PeliculaPROF::select('id', 'titulo', 'genero_id', 'duracion', 'anio', 'direccion', 'argumento')->get());\n\n¿Qué función global o *helper* de Laravel se invoca antes de `json()` para generar la respuesta HTTP adecuada?",
+    "opciones": [
+      "request",
+      "response",
+      "return",
+      "send"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Observa cómo evitamos enviar datos innecesarios al cliente en el FRAGMENTO 4:\n\nPeliculaPROF::____('id', 'titulo', 'genero_id', 'duracion', 'anio', 'direccion', 'argumento')->get()\n\n¿Qué método de Eloquent se usa en la tarea para indicar explícitamente qué columnas recuperar de la base de datos, omitiendo por ejemplo los timestamps (`created_at`, `updated_at`)?",
+    "opciones": [
+      "only",
+      "pluck",
+      "select",
+      "choose"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la creación de una película (POST), recibimos los datos del cliente. Observa el FRAGMENTO 5:\n\npublic function crearPeliculaPROF(____ $request): JsonResponse\n\n¿Qué clase inyectamos en el método del controlador para acceder a los datos de la petición HTTP recibida?",
+    "opciones": [
+      "Input",
+      "Client",
+      "Connection",
+      "Request"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "El profesor indicó en la videoconferencia que el flujo de un API pasa por recibir los datos y validarlos. Observa el FRAGMENTO 6:\n\n$v = Validator::make($request->all(), [\n    'titulo' => 'required|string|max:60|min:2',\n    ...\n]);\n\n¿Qué hace el método `$request->all()` en esta invocación?",
+    "opciones": [
+      "Devuelve todas las cabeceras HTTP de la petición.",
+      "Devuelve un array con todos los datos de entrada proporcionados en la petición (payload).",
+      "Valida automáticamente todos los datos recibidos.",
+      "Limpia los datos de etiquetas HTML."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el FRAGMENTO 6, hay una regla específica para el año: `'anio' => 'required|numeric|min:1965|max:' . date('Y')`.\nSi un usuario envía el año 1960, la validación fallará. ¿Qué método usamos en el controlador para verificar si la validación ha fallado?",
+    "opciones": [
+      "$v->fails()",
+      "$v->isInvalid()",
+      "$v->hasErrors()",
+      "$v->error()"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la tarea, si la validación falla, enviamos los errores devueltos por Laravel. (FRAGMENTO 7):\n\nreturn response()->json([\n    'errores' => Arr::____($v->errors()->getMessages())\n], 422);\n\n¿Qué método de la clase `Arr` se utiliza para convertir el array multidimensional de mensajes de error en un array de una sola dimensión?",
+    "opciones": [
+      "collapse",
+      "merge",
+      "flatten",
+      "pluck"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Según la arquitectura REST implementada en la tarea, si los datos enviados por el cliente para crear una película (POST) NO pasan las reglas de validación, ¿qué código de estado HTTP devuelve el servidor obligatoriamente (mostrado en el FRAGMENTO 7)?",
+    "opciones": [
+      "400 Bad Request",
+      "422 Unprocessable Entity",
+      "404 Not Found",
+      "403 Forbidden"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Para la regla `'genero_id' => 'required|string|exists:generos,id'`, ¿qué está comprobando exactamente la regla `exists` sobre el dato recibido?",
+    "opciones": [
+      "Que la variable `genero_id` existe en el array del Request.",
+      "Que el ID de género proporcionado existe realmente en la columna `id` de la tabla `generos` de la base de datos.",
+      "Que el género está activo en la sesión del usuario.",
+      "Que el valor enviado no es nulo ni vacío."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Una vez la validación pasa correctamente (`!$v->fails()`), el controlador recupera los datos limpios y validados (FRAGMENTO 8):\n\n$datos = $v->____();\n\n¿Qué método del validador proporciona este array seguro de datos en Laravel?",
+    "opciones": [
+      "all",
+      "safe",
+      "validated",
+      "get"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la tarea se pide comprobar si la película ya existe antes de crearla (FRAGMENTO 9):\n\n$resultado = PeliculaPROF::where('titulo', trim($datos['titulo']))\n    ->where('anio', intval($datos['anio']))\n    ->____();\n\n¿Qué método terminador de Eloquent devuelve un booleano (true o false) para comprobar si hay algún registro que cumpla esas condiciones?",
+    "opciones": [
+      "exists",
+      "count",
+      "first",
+      "get"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Si al comprobar la existencia de la película en el servidor descubrimos que ya existe, detenemos el proceso y devolvemos un mensaje. ¿Qué código HTTP usamos en la tarea para indicar que hay un conflicto o error semántico (la película ya existe)?",
+    "opciones": [
+      "200",
+      "404",
+      "422",
+      "500"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Al insertar exitosamente una película con `$pelicula = PeliculaPROF::create($datos);`, queremos devolver el ID al cliente Guzzle. Observa el FRAGMENTO 10:\n\nreturn response()->json(['resultado' => $pelicula->____], 200);\n\n¿A qué propiedad del modelo `$pelicula` accedemos para enviar el identificador autogenerado por la base de datos?",
+    "opciones": [
+      "identifier",
+      "primary_key",
+      "id",
+      "clave"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el controlador `modificarArgumentoPeliculaPROF` (PUT), el profesor obliga a que la petición se haga enviando un documento JSON. (FRAGMENTO 11):\n\nif (!$request->____()) {\n    return response()->json(['errores' => ['Los datos enviados deben ser JSON']], 403);\n}\n\n¿Qué método del Request usamos para verificar que el cliente indicó en las cabeceras que el contenido es JSON?",
+    "opciones": [
+      "isJson",
+      "hasJson",
+      "expectsJson",
+      "wantsJson"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Si un cliente intenta actualizar un argumento enviando datos que no son JSON, el servidor detecta que `$request->isJson()` es falso. Según el FRAGMENTO 11, ¿qué código de estado HTTP se devuelve indicando que el acceso de esta manera está 'Prohibido'?",
+    "opciones": [
+      "401",
+      "403",
+      "404",
+      "405"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Para leer exclusivamente el contenido que el cliente envió como JSON puro y validar esos datos en una petición PUT, ¿qué método encadenado del Request usa el profesor? (FRAGMENTO 12)\n\n$v = Validator::make($request->____()->all(), ['argumento' => 'required']);",
+    "opciones": [
+      "input",
+      "payload",
+      "content",
+      "json"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Después de asignar el nuevo argumento a la película (`$pelicula->argumento = $datos['argumento'];`), debemos guardarlo en base de datos. (FRAGMENTO 13):\n\n$pelicula->____();\n\n¿Qué método de Eloquent consolida el cambio en la tabla?",
+    "opciones": [
+      "store",
+      "update",
+      "save",
+      "push"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "El cliente Guzzle espera saber si el argumento realmente cambió (porque quizás enviaron el mismo texto que ya estaba). (FRAGMENTO 14):\n\nif ($pelicula->____()) {\n    return response()->json(['resultado' => 1], 200);\n}\n\n¿Qué método de Eloquent se usa tras `save()` para saber si se modificaron datos en la base de datos?",
+    "opciones": [
+      "wasChanged",
+      "isDirty",
+      "hasChanges",
+      "isUpdated"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el controlador `borrarPeliculaPROF($pelicula)` primero se valida si el ID recibido es un número para evitar fallos. (FRAGMENTO 15):\n\nif (!____($pelicula)) {\n    $errores = ['No se ha recibido un id numérico de película'];\n}\n\n¿Qué función nativa de PHP se emplea aquí para verificar el parámetro de la ruta?",
+    "opciones": [
+      "is_int",
+      "is_number",
+      "is_numeric",
+      "ctype_digit"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Al intentar borrar, debemos verificar si la película existe en la base de datos. (FRAGMENTO 16):\n\n$pelicula = PeliculaPROF::____($pelicula);\nif (!$pelicula) {\n    $errores = [\"No existe ninguna película\"];\n}\n\n¿Qué método de Eloquent busca un registro por su clave primaria, devolviendo `null` si no lo encuentra?",
+    "opciones": [
+      "search",
+      "get",
+      "first",
+      "find"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Si un cliente invoca el método DELETE con un ID de película que no existe, el servidor ejecuta la validación del FRAGMENTO 16. ¿Qué código de estado HTTP se debe retornar para informar adecuadamente en un API REST de que el recurso no se halló?",
+    "opciones": [
+      "200",
+      "401",
+      "404",
+      "422"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Una vez comprobado que la película existe en el controlador de borrado, procedemos a eliminarla físicamente. (FRAGMENTO 17):\n\n$pelicula->____();\nreturn response()->json(['resultado' => 1], 200);\n\n¿Cuál es el método de Eloquent para borrar una instancia de la base de datos?",
+    "opciones": [
+      "remove",
+      "destroy",
+      "delete",
+      "drop"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Pasamos a la parte del cliente (Guzzle). En la clase `PROF_PeticionesAPI`, el profesor definió constantes para los códigos de error internos del cliente. (FRAGMENTO 18):\n\nconst ERROR_SERVICIO_WEB = ____;\nconst ERROR_DATOS_NO_JSON = -2;\nconst ERROR_PELICULA_NO_EXISTE = -3;\n\n¿Qué valor numérico tiene la constante ERROR_SERVICIO_WEB según los archivos de la tarea?",
+    "opciones": [
+      "-1",
+      "0",
+      "404",
+      "500"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el cliente, para solicitar el listado de películas al servidor Laravel, usamos Guzzle con el verbo HTTP correspondiente. (FRAGMENTO 19):\n\n$operacion = $cliente->____('listarPeliculasPROF');\n\nSegún los principios REST y la tarea, ¿qué método recupera información (solo lectura)?",
+    "opciones": [
+      "fetch",
+      "get",
+      "post",
+      "request"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Al analizar la respuesta de Guzzle en el cliente, el profesor comprueba el código HTTP antes de procesar el JSON. (FRAGMENTO 20):\n\nif ($operacion->____() != 200) {\n    return self::ERROR_SERVICIO_WEB;\n}\n\n¿Qué método de la respuesta de Guzzle devuelve el código de estado (ej. 200, 422)?",
+    "opciones": [
+      "getStatus",
+      "getHttpCode",
+      "getStatusCode",
+      "getCode"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Si el código HTTP es correcto, convertimos el JSON de la respuesta en una estructura de PHP. (FRAGMENTO 21):\n\n$listaDePeliculas = ____($operacion->getBody()->getContents(), true);\n\n¿Qué función nativa de PHP realiza esta conversión de formato texto JSON a un array asociativo?",
+    "opciones": [
+      "json_encode",
+      "json_parse",
+      "json_decode",
+      "unserialize"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el cliente, al verificar si existe una película (petición GET), pasamos parámetros adjuntos a la URL. (FRAGMENTO 22):\n\n$operacion = $cliente->get('existePeliculaPROF', [\n    '____' => [\n        'titulo' => $titulo,\n        'anio' => $anio\n    ]\n]);\n\n¿Qué clave de configuración en Guzzle añade estos parámetros a la cadena de consulta (Query String) de la URL?",
+    "opciones": [
+      "form_params",
+      "json",
+      "query",
+      "headers"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Cuando se consumen servicios en el cliente y el servidor Laravel detecta duplicados o datos faltantes, retorna un código HTTP 422. En Guzzle esto se intercepta así (FRAGMENTO 23):\n\nif ($operacion->getStatusCode() == 422) {\n    $datos = json_decode($operacion->getBody()->getContents(), true);\n    return $datos['____'];\n}\n\n¿Qué índice o clave extrae el cliente del array `$datos` para mostrar los mensajes de fallo al usuario?",
+    "opciones": [
+      "errores",
+      "mensajes",
+      "fails",
+      "error"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Para la creación de una película (POST), Guzzle debe enviar los datos emulando un formulario estándar (`application/x-www-form-urlencoded`). (FRAGMENTO 24):\n\n$operacion = $cliente->post('crearPeliculaPROF', [\n    '____' => [\n        'titulo' => $datos['titulo'] ?? '',\n        ...\n    ]\n]);\n\n¿Qué clave de configuración en Guzzle realiza este comportamiento automáticamente?",
+    "opciones": [
+      "json",
+      "body",
+      "query",
+      "form_params"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el cliente, al construir los datos para el POST (FRAGMENTO 24), el profesor utiliza el operador `??` (ej. `$datos['titulo'] ?? ''`). ¿Para qué se utiliza este operador de fusión null (null coalescing) aquí?",
+    "opciones": [
+      "Para cifrar la variable.",
+      "Para evaluar si la variable es numérica.",
+      "Para asegurar que, si el índice no existe en el array `$datos`, se asigne una cadena vacía en su lugar, evitando un warning en PHP.",
+      "Para que el servidor Laravel lo interprete como NULL estricto en la base de datos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Si la película se crea con éxito en el servidor, este devuelve un JSON: `{\"resultado\": 5}` (siendo 5 el ID nuevo). En el cliente lo leemos y aseguramos su tipo. (FRAGMENTO 25):\n\nreturn ____($datos['resultado']);\n\n¿Qué función nativa de PHP utiliza el profesor para forzar que el dato extraído sea un entero?",
+    "opciones": [
+      "intval",
+      "(int)",
+      "parse_int",
+      "to_integer"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el cliente, cuando realizamos la modificación del argumento (PUT), la URL incluye el ID de la película. (FRAGMENTO 26):\n\n$operacion = $cliente->put('modificarArgumentoPeliculaPROF/' . ____, [...]);\n\n¿Qué variable concatena el profesor a la URL para seguir la estructura de rutas RESTful donde el recurso se identifica en la URI?",
+    "opciones": [
+      "$titulo",
+      "$id_pelicula",
+      "$datos",
+      "$argumento"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Para la petición PUT de modificación, el servidor Laravel exige que los datos vayan codificados en JSON (`$request->isJson()`). ¿Cómo configuramos Guzzle en el cliente para que envíe los datos de esta forma? (FRAGMENTO 27):\n\n$operacion = $cliente->put('...', [\n    '____' => [\n        'argumento' => $argumento\n    ]\n]);",
+    "opciones": [
+      "form_params",
+      "json",
+      "query",
+      "headers_json"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la gestión de la respuesta PUT, si el cliente envía un ID de una película que ya no existe, el servidor retornará un HTTP 404. ¿Cómo lo captura Guzzle? (FRAGMENTO 28):\n\nif ($operacion->getStatusCode() == 404) {\n    return self::____;\n}\n\n¿Qué constante diseñada por el profesor se devuelve en este caso particular?",
+    "opciones": [
+      "ERROR_SERVICIO_WEB",
+      "ERROR_DATOS_NO_JSON",
+      "ERROR_PELICula_NO_ENCONTRADA",
+      "ERROR_PELICULA_NO_EXISTE"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Para realizar el borrado, el cliente debe usar el método HTTP que la teoría de servicios web REST define como idóneo para eliminaciones. (FRAGMENTO 29):\n\n$operacion = $cliente->____('borrarPeliculaPROF/' . $id_pelicula);\n\n¿Qué método invoca Guzzle en el código del cliente?",
+    "opciones": [
+      "delete",
+      "remove",
+      "drop",
+      "destroy"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "La lógica en el controlador para crear películas devuelve el ID creado como `['resultado' => $pelicula->id]`. En la clase `PROF_Operaciones.php`, el cliente evalúa ese retorno. (FRAGMENTO 30):\n\nif (is_int($resultado)) {\n    if ($resultado > 0) {\n        $lineaInforme = \"Película creada con éxito (ID: \" . $resultado . \")\";\n    }\n}\n\nSabiendo que si hay errores devuelve un Array de strings en vez del ID numérico, ¿qué verifica `is_int($resultado)`?",
+    "opciones": [
+      "Comprueba que no se hayan devuelto errores de validación y que se tenga un ID numérico de éxito.",
+      "Verifica si hubo una excepción SQL.",
+      "Se asegura de que el número sea positivo.",
+      "Valida que el JSON no esté vacío."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En `PROF_Operaciones.php`, cuando `$resultado` contiene los errores de validación (array), el cliente prepara un mensaje HTML uniendo los errores. (FRAGMENTO 31):\n\n$lineaInforme = \"Errores...: <ul><li>\" . ____(\"</li><li>\", $resultado) . \"</li></ul>\";\n\n¿Qué función de PHP junta todos los elementos del array de errores en un solo string, separados por el delimitador HTML?",
+    "opciones": [
+      "explode",
+      "concat",
+      "implode",
+      "join_array"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En el archivo principal del cliente `index.php`, al inicializar Guzzle, el profesor configura la URL base del API. (FRAGMENTO 32):\n\n$cliente = new GClientPROF([\n    '____' => API_BASE_URL,\n    'http_errors' => false\n]);\n\n¿Qué opción de Guzzle permite definir la raíz de la URL para que en peticiones posteriores solo indiquemos el endpoint (ej. `get('listar')`)?",
+    "opciones": [
+      "url_base",
+      "root_uri",
+      "base_uri",
+      "host"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la inicialización del cliente Guzzle (FRAGMENTO 32), la opción `'http_errors' => false` es vital. Según la videoconferencia y la arquitectura de la tarea, ¿qué ocurre si NO se pone esta opción y Laravel devuelve un error 422 o 404?",
+    "opciones": [
+      "Guzzle ignora la respuesta completamente.",
+      "Guzzle intentará automáticamente arreglar el JSON.",
+      "Guzzle lanzará una excepción fatal en PHP (ClientException) deteniendo la ejecución del script, en vez de permitirnos leer el código de estado.",
+      "Guzzle forzará un código 200 siempre."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En `index.php`, los comandos masivos llegan en un textarea separados por saltos de línea. Se procesan iterando `$datos`. (FRAGMENTO 33):\n\nforeach ($datos as $linea_str) {\n    $linea = ____($linea_str);\n    switch ($linea) {\n       case 'CREAR': ...\n\n¿Qué función se emplea para convertir una cadena de texto en formato CSV (valores separados por comas) en un array indexado `$linea`?",
+    "opciones": [
+      "str_split",
+      "str_getcsv",
+      "explode",
+      "fgetcsv"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la parte de frontend del cliente (index.php), al imprimir los datos obtenidos del API en una tabla HTML (ej. `$pelicula['titulo']`), el profesor utiliza protección. (FRAGMENTO 34):\n\n<td><?= ____($pelicula['titulo'] ?? '') ?></td>\n\n¿Qué función se utiliza siempre para proteger la vista de posibles ataques XSS convirtiendo caracteres especiales en entidades HTML?",
+    "opciones": [
+      "htmlentities",
+      "strip_tags",
+      "htmlspecialchars",
+      "urlencode"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "La videoconferencia destaca que la arquitectura en Laravel y en Guzzle para la Tarea 6 es *Stateless* (sin estado). En la práctica, al realizar un GET justo después de un POST, ¿qué significa esto para el servidor Laravel?",
+    "opciones": [
+      "El servidor recuerda mediante la sesión de PHP qué Guzzle acaba de crear la película.",
+      "El servidor procesa el GET de forma completamente independiente; no sabe ni le importa si la petición anterior provino del mismo cliente.",
+      "El servidor guarda una cookie temporal para vincular ambas peticiones.",
+      "El servidor denegará el GET porque el POST consumió el token de estado."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la arquitectura MVC empleada en la parte del servidor (API), ¿cuál es el componente responsable principal de interactuar directamente con la base de datos para extraer o insertar las películas?",
+    "opciones": [
+      "El Controlador (Controller)",
+      "La Ruta (Route)",
+      "El Modelo (Model, Ej: PeliculaPROF)",
+      "La Vista (View, o el renderizador JSON)"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "En la API, cuando se hace un `GET /api/listarGenerosPROF`, el controlador responde: `return response()->json(GeneroPROF::select(...)->get());`. En la vista MVC, ¿quién actúa como \"la Vista\" en este flujo de servicio web RESTful?",
+    "opciones": [
+      "Un archivo Blade (`generos.blade.php`).",
+      "El propio navegador web renderizando HTML.",
+      "El documento JSON devuelto, ya que serializa los datos en una representación estructurada para el cliente.",
+      "La base de datos MySQL al procesar el select."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Para el consumo de la API de creación (POST), la teoría indica que los códigos de error ayudan a entender qué falló. Según la tarea, si falta el campo 'titulo', Guzzle recibe un 422 Unprocessable Entity. ¿Quién originó este código 422?",
+    "opciones": [
+      "Guzzle, al detectar que falta un parámetro.",
+      "El objeto Request de PHP de forma nativa.",
+      "El método Validator de Laravel en el controlador, al verificar la regla 'required' y fallar.",
+      "El motor de base de datos MySQL por una restricción NOT NULL."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Si un desarrollador en la parte de Guzzle se equivoca y realiza un `GET` hacia `crearPeliculaPROF` (el cual está definido en el servidor solo como POST), ¿qué código de estado HTTP estándar devolverá el servidor Laravel indicando que el verbo GET no se permite en esa ruta?",
+    "opciones": [
+      "404 Not Found",
+      "405 Method Not Allowed",
+      "500 Internal Server Error",
+      "403 Forbidden"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "El profesor recalcó en la videoconferencia la importancia de extraer la respuesta de los métodos en el cliente. Si `$operacion = $cliente->delete(...)` se ejecuta con éxito, ¿cuál de los siguientes es el procedimiento que usa el profesor para leer el texto crudo del JSON devuelto?",
+    "opciones": [
+      "$operacion->getBody()->getContents();",
+      "$operacion->readJson();",
+      "$operacion->getPayload();",
+      "file_get_contents($operacion);"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "repaso tarea 6 quinta parte",
+    "pregunta": "Basándote en el repaso de la Tarea 6 que pide el profesor, el flujo principal del Servidor de la API consta de 4 pasos esenciales. ¿Cuál es el orden correcto del flujo en un método típico de controlador para crear o modificar?",
+    "opciones": [
+      "1) Recibir Request, 2) Validar Request, 3) Realizar acción en el Modelo (BBDD), 4) Emitir Respuesta JSON.",
+      "1) Validar Request, 2) Recibir Request, 3) Emitir Respuesta JSON, 4) Realizar acción en el Modelo.",
+      "1) Realizar acción en Modelo, 2) Validar Request, 3) Recibir Request, 4) Emitir Respuesta JSON.",
+      "1) Emitir Respuesta JSON, 2) Realizar acción en Modelo, 3) Validar Request, 4) Recibir Request."
+    ],
+    "correcta": 0
   }
 
 

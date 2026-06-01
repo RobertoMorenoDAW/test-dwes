@@ -258,6 +258,11 @@
 
             background-color: var(--color-principal);
             padding: 20px;
+
+            /* --- NUEVO --- */
+            box-sizing: border-box; /* Evita que el padding empuje la caja fuera de la pantalla */
+            padding-bottom: 80px; /* Aumenta el scroll inferior para que las últimas preguntas se vean perfectas en el iPad */
+
             overflow-y: auto;
             border-left: 3px solid var(--color-secundario);
         }

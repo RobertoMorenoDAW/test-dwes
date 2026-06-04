@@ -11367,6 +11367,215 @@ const BBDD_PREGUNTAS = [
       "1) Emitir Respuesta JSON, 2) Realizar acción en Modelo, 3) Validar Request, 4) Recibir Request."
     ],
     "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué es fundamentalmente Composer en el desarrollo de aplicaciones web con PHP?",
+    "opciones": [
+      "Un servidor web ligero optimizado para entornos de desarrollo.",
+      "Un gestor de dependencias que permite declarar, descargar y mantener actualizadas las librerías de terceros en un proyecto.",
+      "Un framework que implementa de forma nativa el patrón de arquitectura Modelo-Vista-Controlador.",
+      "Un compilador de código PHP encargado de transformar scripts en binarios ejecutables."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para inicializar un proyecto de Composer de forma interactiva a través de la terminal, ¿qué comando debemos ejecutar?",
+    "opciones": [
+      "composer install",
+      "composer create-project",
+      "composer init",
+      "composer setup"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un proyecto ya dispone de un archivo 'composer.json' configurado y descargamos el código sin la carpeta 'vendor', ¿qué comando recupera e instala todas las dependencias indicadas?",
+    "opciones": [
+      "composer update",
+      "composer install",
+      "composer download",
+      "composer require"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Queremos añadir a nuestro proyecto la librería de plantillas Smarty y que quede registrada automáticamente en el archivo de configuración. ¿Qué comando es el adecuado?",
+    "opciones": [
+      "composer require smarty/smarty",
+      "composer add smarty/smarty",
+      "composer install smarty/smarty",
+      "composer dependency-get smarty/smarty"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué comando de Composer debemos usar si queremos instalar una dependencia (como por ejemplo phpunit/phpunit) que solo va a ser necesaria durante la etapa de desarrollo local?",
+    "opciones": [
+      "composer require phpunit/phpunit --production-false",
+      "composer require-dev phpunit/phpunit",
+      "composer install-dev phpunit/phpunit",
+      "composer dev-add phpunit/phpunit"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si modificamos la sección 'autoload' de nuestro archivo 'composer.json' para remapear directorios, ¿qué comando debemos ejecutar para forzar la regeneración del mapa de clases de carga automática sin reinstalar paquetes?",
+    "opciones": [
+      "composer clean-cache",
+      "composer update-map",
+      "composer status",
+      "composer dump-autoload"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué información clave se almacena de forma automática en el archivo 'composer.lock'?",
+    "opciones": [
+      "Las rutas relativas del enrutador central y los endpoints del servidor web.",
+      "Las versiones exactas y los hashes criptográficos de los paquetes instalados, garantizando que todo el equipo use las mismas versiones.",
+      "Las credenciales y tokens de acceso de la base de datos relacional de producción.",
+      "El código fuente binario precompilado de las vistas de la aplicación."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué función cumple un espacio de nombres (namespace) en PHP?",
+    "opciones": [
+      "Es una directiva para ocultar y proteger variables lógicas globales contra ataques informáticos.",
+      "Permite encapsular clases, interfaces, funciones y constantes para evitar conflictos de nombres cuando coinciden elementos de librerías distintas.",
+      "Actúa como una base de datos temporal indexada en la memoria caché del servidor.",
+      "Es una estructura obligatoria para declarar herencia múltiple entre superclases."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si queremos declarar que una clase pertenece al espacio de nombres 'RMM04\\modelo', ¿dónde y cómo debe colocarse dicha declaración en el archivo PHP?",
+    "opciones": [
+      "Al final del archivo mediante la expresión: declare(namespace='RMM04\\modelo');",
+      "En la primera línea transcurrida la apertura de la etiqueta <?php utilizando: namespace RMM04\\modelo;",
+      "Dentro del cuerpo de la propia clase, justo antes del constructor utilizando la palabra: static namespace;",
+      "En un archivo de configuración externo denominado 'autoload.php' exclusivamente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si estamos dentro de un archivo PHP con un namespace distinto y queremos hacer referencia a la clase 'Pelicula' del espacio de nombres 'RMM04\\modelo' mediante un alias corto, ¿qué directiva usaremos en la cabecera?",
+    "opciones": [
+      "import RMM04\\modelo\\Pelicula;",
+      "use RMM04\\modelo\\Pelicula;",
+      "require_namespace('RMM04\\modelo\\Pelicula');",
+      "include_class RMM04\\modelo\\Pelicula;"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Bajo la recomendación de carga automática PSR-4, ¿qué relación debe existir entre el namespace de una clase y su ubicación física en el disco?",
+    "opciones": [
+      "Ninguna, Composer busca el nombre del archivo de forma aleatoria por todo el disco duro del servidor.",
+      "La estructura del espacio de nombres debe corresponderse unívocamente con la jerarquía de subcarpetas y el nombre del archivo del sistema de archivos.",
+      "Todos los archivos del proyecto deben estar obligatoriamente en una única carpeta raíz plana llamada vendor.",
+      "Las clases deben almacenarse de forma cifrada dentro de una base de datos SQLite interna."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dado el siguiente fragmento del archivo composer.json:\n\n\"psr-4\": { \"RMM04\\\\\": \"srcrmm/\" }\n\n¿Dónde buscará el autoloader una clase declarada como 'namespace RMM04\\modelo;' e instanciada como 'new Pelicula();'?",
+    "opciones": [
+      "En la ruta de la carpeta: srcrmm/Pelicula.php",
+      "En la ruta de la carpeta: srcrmm/modelo/Pelicula.php",
+      "En la ruta de la carpeta: vendor/RMM04/srcrmm/modelo.php",
+      "En la raíz del proyecto con el nombre: RMM04_modelo_Pelicula.json"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para poder utilizar el sistema de autoloteo (autoloading) generado por Composer en nuestro punto de entrada único (index.php), ¿qué archivo debemos incluir obligatoriamente?",
+    "opciones": [
+      "require 'vendor/autoload.php';",
+      "include 'composer.json';",
+      "require 'srcrmm/modelo/Peliculas.php';",
+      "require 'composer.lock';"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué sucede si intentamos instanciar una clase utilizando su nombre simplificado sin haber puesto la cláusula 'use' correspondiente ni indicar su ruta cualificada completa en un archivo con namespace diferente?",
+    "opciones": [
+      "PHP la busca de forma automática en todas las subcarpetas del proyecto por cortesía.",
+      "Se produce un error fatal (Fatal Error) indicando que la clase no ha sido encontrada.",
+      "El script se ejecuta de forma normal pero omite las llamadas a los métodos lógicos de esa clase.",
+      "Composer descarga automáticamente la clase que falta desde internet en tiempo real."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si en la cabecera de un archivo declaramos:\n\nuse RMM04\\servicios\\DBResult as Resultado;\n\n¿Cómo podemos instanciar o usar dicha clase de forma válida en el código inferior?",
+    "opciones": [
+      "$res = new DBResult();",
+      "$res = new Resultado();",
+      "$res = RMM04\\servicios\\Resultado::getInstance();",
+      "$res = new RMM04\\servicios\\DBResult as Resultado();"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál es la responsabilidad primordial de la capa de la Vista (View) en el patrón de arquitectura MVC?",
+    "opciones": [
+      "Procesar las credenciales de sesión del usuario y validar la seguridad perimetral.",
+      "Realizar consultas directas y transacciones relacionales contra las tablas SQL.",
+      "Recibir los datos procesados del flujo y encargarse de la interfaz de usuario, renderizando y maquetando el formato final (HTML/CSS).",
+      "Interceptar las peticiones HTTP del cliente y determinar el método de enrutamiento."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál es la responsabilidad primordial de la capa del Modelo (Model) en el patrón de arquitectura MVC?",
+    "opciones": [
+      "Gestionar las peticiones de entrada del usuario a través de la URL o variables globales.",
+      "Albergar los datos de la aplicación, las reglas relacionales de negocio y encargarse de interactuar con la persistencia o base de datos.",
+      "Compilar y almacenar en caché los archivos del motor de plantillas visuales.",
+      "Proporcionar componentes gráficos de interfaz de usuario como formularios estáticos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál es la responsabilidad primordial del Controlador (Controller) en el patrón de arquitectura MVC?",
+    "opciones": [
+      "Almacenar las estructuras lógicas de las tablas de la base de datos de forma permanente.",
+      "Actuar como intermediario o 'director de orquesta', capturando la petición del usuario, solicitando datos al modelo e indicándole a la vista qué debe mostrar.",
+      "Maquetar las etiquetas y selectores CSS del documento visual final.",
+      "Configurar las directivas de mapeo PSR-4 en los archivos JSON."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Analiza este código:\n\n```html\n<h1>Lista de Películas</h1>\n{foreach $peliculas as $p}\n    <p>{$p->getTitulo()}</p>\n{/foreach}\n```\n¿A qué componente del patrón MVC pertenece estrictamente?",
+    "opciones": [
+      "Al Controlador",
+      "Al Modelo",
+      "A la Vista",
+      "Al Enrutador"
+    ],
+    "correcta": 2
   }
 
 

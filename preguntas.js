@@ -11576,6 +11576,798 @@ const BBDD_PREGUNTAS = [
       "Al Enrutador"
     ],
     "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué comando básico de Composer inicializa de manera interactiva un nuevo archivo de configuración en la raíz de un proyecto?",
+    "opciones": [
+      "composer install",
+      "composer create-project",
+      "composer init",
+      "composer config"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un proyecto no utiliza espacios de nombres ni carpetas jerárquicas en sus clases, ¿qué directiva de 'autoload' se define en el composer.json para listarlas?",
+    "opciones": [
+      "\"psr-4\"",
+      "\"classmap\"",
+      "\"files\"",
+      "\"exclude-from-classmap\""
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Después de añadir o modificar manualmente una ruta de directorios en el bloque 'classmap' del archivo 'composer.json', ¿qué comando regenera el archivo 'autoload.php'?",
+    "opciones": [
+      "composer dumpautoload",
+      "composer update-autoload",
+      "composer install --refresh",
+      "composer clear-cache"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué comando de Composer añade y descarga de manera automatizada un paquete de terceros (como smarty/smarty) a la sección 'require' del proyecto?",
+    "opciones": [
+      "composer require smarty/smarty",
+      "composer install smarty/smarty",
+      "composer add smarty/smarty",
+      "composer get smarty/smarty"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para limpiar u omitir las dependencias de desarrollo y descargar únicamente los paquetes críticos de producción al desplegar en un servidor real, ¿qué flag se añade al comando de instalación?",
+    "opciones": [
+      "composer install --no-dev",
+      "composer install --production",
+      "composer install --omit=dev",
+      "composer install --pure"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si clonas un repositorio que tiene el archivo 'composer.json' y 'composer.lock', pero carece de la carpeta 'vendor', ¿qué comando restaura fielmente el entorno exacto?",
+    "opciones": [
+      "composer update",
+      "composer upgrade",
+      "composer install",
+      "composer refresh"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál es la extensión de archivo estándar que utilizan por defecto las plantillas visuales renderizadas por el motor de Smarty?",
+    "opciones": [
+      ".smarty",
+      ".tpl",
+      ".blade.php",
+      ".html.php"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si en un script controlador ejecutamos la sentencia '$smarty->assign('usuario', 'Roberto');', ¿cómo se proyecta de forma directa este valor dentro de la plantilla Smarty?",
+    "opciones": [
+      "<?php echo $usuario; ?>",
+      "{{ usuario }}",
+      "{$usuario}",
+      "[% usuario %]"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál de las siguientes sentencias representa la etiqueta correcta para escribir un comentario interno dentro de una plantilla de Smarty?",
+    "opciones": [
+      "",
+      "{* Este es un comentario *}",
+      "// Este es un comentario",
+      "{# Este es un comentario #}"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si tenemos un objeto '$pelicula' con un método público 'getTitulo()', ¿cuál es la sintaxis nativa de Smarty para invocar dicho método e imprimirlo en pantalla?",
+    "opciones": [
+      "{$pelicula->getTitulo()}",
+      "{$pelicula.getTitulo}",
+      "{{ pelicula.getTitulo() }}",
+      "{$pelicula->titulo}"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dada la siguiente declaración en la cabecera de un archivo PHP:\n\nnamespace RMM04\\modelo;\n\n¿Cuál es la función primordial de esta línea de código?",
+    "opciones": [
+      "Importar dinámicamente las funciones del motor relacional de PDO.",
+      "Encapsular las clases de este archivo bajo el espacio lógico 'RMM04\\modelo' para evitar colisiones de nombres globales.",
+      "Vincular el archivo de forma automática con la base de datos MySQL.",
+      "Declarar una interfaz abstracta para el patrón controlador."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para instanciar la clase 'Pelicula' que pertenece al namespace 'RMM04\\modelo' desde un script que está en el namespace global sin usar la palabra clave 'use', ¿cómo debemos escribir la sentencia?",
+    "opciones": [
+      "$p = new RMM04::modelo::Pelicula();",
+      "$p = new \\RMM04\\modelo\\Pelicula();",
+      "$p = new srcrmm/modelo/Pelicula();",
+      "$p = new Pelicula(RMM04\\modelo);"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si queremos simplificar la codificación y escribir únicamente '$p = new Pelicula();' en un archivo con un namespace ajeno, ¿qué directiva debemos situar en la sección superior?",
+    "opciones": [
+      "import RMM04\\modelo\\Pelicula;",
+      "include_namespace RMM04\\modelo\\Pelicula;",
+      "use RMM04\\modelo\\Pelicula;",
+      "require_class RMM04\\modelo\\Pelicula;"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para poder registrar y utilizar las rutas lógicas del cargador automático de Composer en la aplicación, ¿qué archivo debe ser incluido obligatoriamente al inicio del script en el index.php?",
+    "opciones": [
+      "require_once 'composer.json';",
+      "require_once 'vendor/autoload.php';",
+      "require_once 'srcrmm/servicios/ConexionPDO.php';",
+      "require_once 'composer.lock';"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dentro del patrón arquitectónico MVC, ¿cuál es el componente encargado de procesar la entrada de datos, validar la lógica de sesión del usuario y coordinar el flujo llamando al modelo?",
+    "opciones": [
+      "La Vista (View)",
+      "El Modelo (Model)",
+      "El Controlador (Controller)",
+      "La Base de Datos relacional"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dentro del patrón MVC, ¿qué componente gestiona exclusivamente las sentencias SQL preparadas, las transacciones PDO y las reglas de consistencia de datos de negocio?",
+    "opciones": [
+      "El Controlador (Controller)",
+      "El Modelo (Model)",
+      "La Vista (View)",
+      "El Servidor Apache"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Analiza la siguiente instrucción PHP:\n\n$titulo = trim($_POST['titulo'] ?? '');\nif (empty($titulo)) { $errores['titulo'] = 'Obligatorio'; }\n\n¿A qué capa lógica del patrón MVC pertenece por excelencia esta validación inicial de flujo?",
+    "opciones": [
+      "Al Modelo",
+      "A la Vista",
+      "Al Controlador",
+      "Al motor Smarty"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Analiza la siguiente función:\n\npublic static function existe(PDO $pdo, int $id) {\n    $sql = 'SELECT COUNT(*) FROM generos WHERE id = :id';\n    $stmt = $pdo->prepare($sql);\n    $stmt->execute([':id' => $id]);\n    return $stmt->fetchColumn() > 0;\n}\n\n¿A qué componente del patrón MVC corresponde?",
+    "opciones": [
+      "Al Controlador",
+      "A la Vista",
+      "Al Modelo",
+      "Al Enrutador Frontal"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Analiza las siguientes líneas escritas en un script del servidor:\n\n$smarty->assign('listaPeliculas', $peliculas);\n$smarty->display('listado.tpl');\n\n¿Dónde se localiza habitualmente esta llamada de asignación y renderizado?",
+    "opciones": [
+      "En un método de una clase del Modelo.",
+      "En un método de una clase del Controlador, delegando el control a la Vista.",
+      "Dentro de la estructura interna del archivo composer.json.",
+      "En la clase de servicio ConexionPDO."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un archivo contiene maquetación HTML pura junto a directivas lógicas como '{if isset($error)}' y '{foreach $generos as $g}', ¿qué capa del MVC se está implementando?",
+    "opciones": [
+      "El Controlador",
+      "El Modelo",
+      "La Vista",
+      "El Mapeador PSR-4"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "En la programación orientada a objetos en PHP, ¿qué operador específico se utiliza para instanciar un objeto basado en una clase determinada?",
+    "opciones": [
+      "instanceof",
+      "clone",
+      "new",
+      "->"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué nombre de método especial reserva PHP para definir el constructor dentro de una clase?",
+    "opciones": [
+      "public function initialize()",
+      "public function __construct()",
+      "public function init()",
+      "public function Constructor()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dada una variable que contiene un objeto instanciado '$prueba', ¿qué operador se utiliza para invocar un método público de dicha instancia en PHP?",
+    "opciones": [
+      "El punto ( . )",
+      "El operador flecha ( -> )",
+      "El doble dos puntos ( :: )",
+      "La barra invertida ( \\ )"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si una propiedad dentro de una clase PHP se declara mediante 'private $mensaje;', ¿cuál es el alcance legal de su visibilidad?",
+    "opciones": [
+      "Puede leerse y modificarse desde cualquier script de la aplicación.",
+      "Es accesible solo desde los métodos de la propia clase que la define.",
+      "Es accesible desde la clase que la define y también desde sus clases hijas.",
+      "Se puede proyectar directamente en la vista sin pasar por el controlador."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si una propiedad dentro de una clase PHP se declara mediante 'protected $id;', ¿qué visibilidad se le está otorgando?",
+    "opciones": [
+      "No es accesible externamente, excepto para aquellas clases hijas que extiendan la clase base por herencia.",
+      "Es accesible únicamente desde las plantillas HTML compiladas.",
+      "Queda expuesta públicamente para cualquier instancia del proyecto.",
+      "Solo puede ser manipulada por las librerías ubicadas en vendor."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "En PHP, ¿cuál es el operador de resolución de ámbito utilizado para acceder a constantes de clase o invocar métodos estáticos sin necesidad de instanciar la clase?",
+    "opciones": [
+      "El operador flecha ( -> )",
+      "El doble dos puntos ( :: )",
+      "El asterisco combinado ( * )",
+      "El ampersand de referencia ( & )"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Deseamos declarar una constante inmutable denominada 'LADO_MAX' con un valor numérico de 300 dentro de una estructura de clase. ¿Cuál es la sintaxis correcta en PHP?",
+    "opciones": [
+      "define('LADO_MAX', 300);",
+      "const LADO_MAX = 300;",
+      "public static $LADO_MAX = 300;",
+      "protected int $LADO_MAX = 300;"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Al implementar el patrón de enrutamiento estático basado en acciones URL (Router), ¿qué estructura de control condicional se utiliza habitualmente en el index.php para desviar el flujo al controlador?",
+    "opciones": [
+      "Un bucle for",
+      "Una sentencia try-catch",
+      "Un bloque switch o match",
+      "Una directiva include_once en cascada"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si en una clase declaramos un método mediante 'public static function conectar()', ¿qué particularidad tiene este método respecto a su invocación?",
+    "opciones": [
+      "Requiere instanciar obligatoriamente un objeto con 'new' antes de ser llamado.",
+      "Es un método estático y puede invocarse directamente a nivel de clase usando el nombre de la clase y el operador '::'.",
+      "Solo puede ser ejecutado de forma asíncrona mediante peticiones AJAX.",
+      "Su cuerpo lógico reside en el motor de plantillas Smarty."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál es el propósito fundamental de inyectar la instancia de la clase 'PDO' como parámetro en los métodos lógicos del Modelo de datos?",
+    "opciones": [
+      "Habilitar el renderizado dinámico de las subvistas en Smarty.",
+      "Proporcionar al modelo la conexión activa a la base de datos para preparar y ejecutar las consultas SQL de persistencia.",
+      "Mapear los espacios de nombres bajo el estándar de Composer.",
+      "Recoger los parámetros globales enviados por el cliente mediante POST."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál es la función del archivo 'composer.lock' en la gestión de un proyecto web estructurado por capas?",
+    "opciones": [
+      "Bloquear el servidor Apache para evitar inyecciones de código malicioso.",
+      "Fijar y registrar de forma estricta las versiones exactas de las librerías instaladas en el servidor, garantizando que el entorno sea idéntico en desarrollo y producción.",
+      "Compilar en caché las plantillas .tpl modificadas recientemente.",
+      "Mapear los métodos estáticos hacia el controlador centralizado."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dentro del archivo 'composer.json', ¿en qué sección específica se configura el mapeado dinámico de carga de clases basado en el estándar industrial PSR-4?",
+    "opciones": [
+      "\"require\"",
+      "\"autoload\"",
+      "\"authors\"",
+      "\"minimum-stability\""
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un desarrollador elimina accidentalmente la carpeta entera 'vendor' de su espacio de trabajo, ¿qué comando básico de Composer la reconstruye por completo?",
+    "opciones": [
+      "composer require",
+      "composer init",
+      "composer install",
+      "composer update-lock"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si queremos utilizar un alias simplificado para referenciar una clase de otro namespace de la forma: 'use RMM04\\servicios\\DBResult as Resultado;', ¿cómo la instanciaríamos legítimamente?",
+    "opciones": [
+      "$res = new DBResult();",
+      "$res = new Resultado();",
+      "$res = new RMM04\\servicios\\Resultado();",
+      "$res = use Resultado();"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dada la directiva en el composer.json: '\"psr-4\": { \"RMM04\\\\\": \"srcrmm/\" }'. Si instanciamos 'new \\RMM04\\servicios\\ConexionPDO()', ¿dónde buscará Composer el archivo físico?",
+    "opciones": [
+      "En la ruta: vendor/RMM04/servicios/ConexionPDO.php",
+      "En la ruta: srcrmm/servicios/ConexionPDO.php",
+      "En la ruta raíz: servicios/ConexionPDO.php",
+      "En la ruta: srcrmm/ConexionPDO.servicios.php"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si necesitamos recuperar un valor de tipo entero enviado de un formulario de forma segura contra inyecciones usando una clase helper 'Peticion', ¿cuál es el método adecuado?",
+    "opciones": [
+      "$id = $peticion->getInt('id');",
+      "$id = (int)$_POST['id'];",
+      "$id = $peticion->getString('id');",
+      "$id = $peticion->has('id');"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Cuál de las siguientes opciones describe el uso correcto de la directiva de Smarty para incluir una subplantilla de cabecera común dentro de otra plantilla principal?",
+    "opciones": [
+      "{extends file='cabecera.tpl'}",
+      "{include file='cabecera.tpl'}",
+      "{block name='cabecera'}",
+      ""
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un desarrollador mezcla código de consultas SQL e instrucciones SQL 'INSERT INTO...' dentro de un archivo de plantilla con extensión '.tpl', ¿qué principio del patrón MVC está violando de forma crítica?",
+    "opciones": [
+      "El principio de autoloteo mediante PSR-4.",
+      "La separación estricta de responsabilidades, entremezclando la persistencia de datos (Modelo) con la capa de presentación (Vista).",
+      "La configuración del archivo de bloqueo composer.lock.",
+      "La inmutabilidad de los métodos controladores estáticos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué directiva de Smarty delimita un bloque genérico heredable que puede ser sobrescrito por una plantilla hija que extienda la plantilla base?",
+    "opciones": [
+      "{include}",
+      "{block} ... {/block}",
+      "{foreach}",
+      "{assign}"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para indicar en una plantilla de Smarty que se desea heredar la maquetación base de un archivo denominado 'layout.tpl', ¿qué sentencia debe colocarse en la primera línea?",
+    "opciones": [
+      "{include file='layout.tpl'}",
+      "{extends file='layout.tpl'}",
+      "{block name='layout'}",
+      "{$layout}"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un método de persistencia del modelo ejecuta la directiva '$stmt->setFetchMode(PDO::FETCH_CLASS, Pelicula::class);', ¿cuál es el beneficio directo obtenido?",
+    "opciones": [
+      "Retornar un array asociativo limpio compatible con JavaScript.",
+      "Instanciar e hidratar de forma automatizada objetos de la clase 'Pelicula' mapeando las columnas de la tabla con las propiedades de la entidad.",
+      "Configurar los asteriscos de errores dentro de la sesión activa.",
+      "Definir el espacio de nombres de los controladores relacionales."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si en un controlador verificamos una petición mediante el condicional 'if ($peticion->isPost())', ¿qué comportamiento HTTP del cliente se está evaluando?",
+    "opciones": [
+      "Si el usuario está logueado en la sesión de Smarty.",
+      "Si la solicitud HTTP ha sido transmitida mediante el método seguro POST (típicamente desde un formulario).",
+      "Si se ha modificado el archivo estático composer.json.",
+      "Si la base de datosPDO ha retornado un conjunto vacío de registros."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Para asegurar que las variables y campos de un formulario persistan de forma temporal en pantalla tras cometer un error de validación de datos, ¿dónde se almacenan antes de redirigir?",
+    "opciones": [
+      "En el mapa de clases de Composer.",
+      "En variables globales de sesión mediante la superglobal '$_SESSION'.",
+      "En constantes estáticas dentro del archivo ConexionPDO.",
+      "En el archivo físico eventos.log de la carpeta vendor."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "En PHP, si deseas forzar la detención inmediata del programa imprimiendo un mensaje descriptivo en el caso de que falle la conexión PDO a la base de datos, ¿qué constructor del lenguaje se suele invocar dentro del bloque 'catch'?",
+    "opciones": [
+      "echo",
+      "die() o exit()",
+      "unset()",
+      "throw"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Dada la propiedad de clase 'private ?string $titulo = null;', ¿qué funcionalidad específica aporta el operador de interrogación ( ? ) situado antes del tipo de dato?",
+    "opciones": [
+      "Indica que el atributo es de visibilidad pública protegida.",
+      "Permite que la propiedad acepte de forma legal un valor de tipo 'string' o, alternativamente, el estado nulo ('null').",
+      "Fuerza a Composer a mapear la clase bajo demanda PSR-4.",
+      "Denota que el método es un constructor mágico de Smarty."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si un desarrollador requiere cambiar los autores o el nombre del proyecto gestionado por Composer, ¿cuál es el único archivo fuente que debe editar manualmente?",
+    "opciones": [
+      "vendor/autoload.php",
+      "composer.lock",
+      "composer.json",
+      "index.php"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "En una clase PHP, ¿qué pseudo-variable se utiliza dentro de los métodos de instancia para hacer referencia al propio contexto u objeto actual?",
+    "opciones": [
+      "self",
+      "parent",
+      "$this",
+      "static"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "Si una clase del Modelo contiene código SQL puro embebido y realiza transacciones directas, ¿se considera una práctica correcta dentro del patrón de diseño arquitectónico MVC?",
+    "opciones": [
+      "No, el código SQL debe estar exclusivamente confinado en las plantillas Smarty de la vista.",
+      "Sí, es la responsabilidad del Modelo encargarse de la abstracción, persistencia e integridad de los datos de negocio.",
+      "No, las clases del Modelo solo manejan el enrutamiento mediante switches.",
+      "Sí, siempre que se herede de forma explícita de la carpeta vendor."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "A diferencia de otros lenguajes como C++ o Java, ¿cuántos métodos constructores diferentes y sobrecargados en número de parámetros puede albergar como máximo una clase PHP?",
+    "opciones": [
+      "Tantos como desee el desarrollador separados por comas.",
+      "Únicamente un solo constructor por clase (__construct).",
+      "Dos: uno público estático y otro privado de instancia.",
+      "Ninguno, PHP carece de constructores nativos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 segunda parte",
+    "pregunta": "¿Qué sucede de forma predeterminada si intentamos instanciar una clase PHP que ha sido explícitamente declarada bajo el modificador 'abstract class'?",
+    "opciones": [
+      "PHP crea un clon idéntico en la memoria del servidor de producción.",
+      "Se produce un error fatal (Fatal Error) en tiempo de ejecución, dado que las clases abstractas no se pueden instanciar directamente.",
+      "Composer descarga los paquetes que faltan de internet de forma interactiva.",
+      "El script desvía el flujo de ejecución a la vista por defecto de Smarty."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "¿Qué comando de Composer lee el archivo 'composer.json' e instala las dependencias en la carpeta 'vendor' respetando estrictamente el archivo de bloqueo 'composer.lock' si existe?",
+    "opciones": [
+      "composer init",
+      "composer install",
+      "composer require",
+      "composer update"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Si queremos declarar que un archivo PHP pertenece al espacio de nombres 'RMM04\\controlador', ¿cuál es la sintaxis exacta y su ubicación obligatoria?",
+    "opciones": [
+      "Al final del archivo: declare(namespace = 'RMM04\\controlador');",
+      "En la primera línea imprimible tras la apertura de <?php: namespace RMM04\\controlador;",
+      "Dentro de la clase: public function setNamespace('RMM04\\controlador');",
+      "En el archivo index.php mediante un array asociativo."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Dentro del patrón MVC, ¿cuál es la responsabilidad exclusiva de la capa del Modelo?",
+    "opciones": [
+      "Capturar las acciones del usuario de la URL e invocar las plantillas de Smarty.",
+      "Gestionar los datos, las reglas de negocio de la aplicación y la persistencia o comunicación con la base de datos.",
+      "Maquetar las etiquetas HTML/CSS y renderizar los componentes visuales.",
+      "Cargar automáticamente las clases externas registradas en Packagist."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Analiza las siguientes líneas de código en PHP:\n\n```php\nclass PeliculaController {\n    public static function mostrarListado($pdo, $smarty) {\n        $peliculas = Peliculas::listar($pdo);\n        $smarty->assign('peliculas', $peliculas);\n        $smarty->display('listado.tpl');\n    }\n}\n```\n¿A qué capa del patrón MVC pertenece de forma inequívoca esta estructura?",
+    "opciones": [
+      "Al Modelo",
+      "A la Vista",
+      "Al Controlador",
+      "Al Enrutamiento del Servidor Apache"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "¿Cuál es la directiva básica de Smarty utilizada para indicar que una plantilla hereda el diseño estructural de otra plantilla base llamada 'layout.tpl'?",
+    "opciones": [
+      "{include file='layout.tpl'}",
+      "{extends file='layout.tpl'}",
+      "{block name='layout'}",
+      "{$layout.tpl}"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Si queremos añadir una librería externa a nuestro proyecto y registrarla automáticamente en la sección 'require' de nuestro composer.json, ¿qué comando de terminal debemos emplear?",
+    "opciones": [
+      "composer init",
+      "composer install",
+      "composer require <nombre_paquete>",
+      "composer update"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Para poder utilizar de forma inmediata cualquier clase del proyecto o de terceros sin incluir manualmente decenas de archivos 'require', ¿qué archivo autogenerado por Composer debemos incluir al inicio de nuestra aplicación?",
+    "opciones": [
+      "require 'composer.json';",
+      "require 'vendor/autoload.php';",
+      "require 'composer.lock';",
+      "require 'srcrmm/servicios/ConexionPDO.php';"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Dada la siguiente directiva de Smarty: `{block name='contenido'} ... {/block}`. ¿Cuál es su utilidad primordial en la maquetación por capas?",
+    "opciones": [
+      "Proyectar un array asociativo directamente desde el modelo sin pasar por el controlador.",
+      "Definir una sección o región que puede ser sobrescrita o personalizada por una plantilla hija.",
+      "Establecer una conexión persistente PDO con la base de datos.",
+      "Comentar un bloque de código para que no sea interpretado por el servidor."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Si estamos dentro de una clase PHP y queremos declarar una constante de clase con visibilidad pública y valor '300', ¿cuál es la sintaxis correcta?",
+    "opciones": [
+      "public define('LIMITE', 300);",
+      "public const LIMITE = 300;",
+      "public static $LIMITE = 300;",
+      "protected int $LIMITE = 300;"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Si una propiedad dentro de una clase PHP se define como `private $id;`, ¿desde qué lugar o contexto se puede acceder o modificar directamente este atributo?",
+    "opciones": [
+      "Desde cualquier script o archivo exterior de la aplicación.",
+      "Únicamente desde el interior de los métodos de la propia clase que la define.",
+      "Desde la propia clase y desde cualquier otra clase hija que la extienda.",
+      "Directamente desde los archivos de la vista (.tpl) de Smarty."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "¿Qué ocurre si ejecutamos el comando `composer update` en la raíz de la aplicación?",
+    "opciones": [
+      "Se borra la carpeta vendor y se formatea la configuración de la base de datos.",
+      "Se buscan las versiones más recientes permitidas en el 'composer.json', se descargan y se actualiza el archivo 'composer.lock'.",
+      "Se crea un nuevo espacio de nombres interactivo bajo el estándar PSR-4.",
+      "Se compilan de forma estática todas las plantillas .tpl a formato HTML nativo."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Si en un archivo de la capa de la Vista (plantilla Smarty) se requiere imprimir el valor de una variable asignada llamada 'titulo', ¿cuál es la sintaxis correcta?",
+    "opciones": [
+      "<?php echo $titulo; ?>",
+      "{{ titulo }}",
+      "{$titulo}",
+      "[[ $titulo ]]"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Analiza las siguientes líneas de código PHP:\n\n```php\n$id = $_GET['id'] ?? '';\nif (empty($id)) {\n    $smarty->assign('error', 'El identificador es obligatorio');\n    $smarty->display('error.tpl');\n    exit;\n}\n```\n¿A qué capa del patrón MVC pertenece la responsabilidad de procesar y validar este flujo?",
+    "opciones": [
+      "Al Modelo",
+      "A la Vista",
+      "Al Controlador",
+      "Al Enrutador Frontal"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 tercera parte",
+    "pregunta": "Si en la cabecera de un archivo declaramos `use RMM04\\modelo\\Pelicula;`, ¿qué ventaja nos aporta esta instrucción en el resto del script?",
+    "opciones": [
+      "Importa físicamente los bytes del archivo Pelicula.php en esa posición.",
+      "Nos permite usar el nombre corto de la clase 'Pelicula' directamente sin escribir su namespace completo cada vez.",
+      "Instancia automáticamente un objeto vacío de la clase Pelicula.",
+      "Conecta de forma segura la clase con el motor de persistencia PDO."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "¿Qué es Composer en el ecosistema PHP y cuál es su función principal?",
+    "opciones": [
+      "Un framework que implementa el patrón MVC para desarrollar aplicaciones web.",
+      "Un gestor de dependencias que permite gestionar e instalar paquetes y librerías reutilizables en tu proyecto.",
+      "Un motor de plantillas (como Smarty o Blade) para generar vistas en HTML separando la lógica.",
+      "Un enrutador automático que asocia URLs con controladores específicos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "Si clonas o descargas un proyecto que ya contiene un archivo composer.json y necesitas descargar a la carpeta vendor los paquetes especificados para que el proyecto funcione, ¿qué comando debes ejecutar?",
+    "opciones": [
+      "composer require",
+      "composer update",
+      "composer install",
+      "composer init"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "Necesitas añadir la librería monolog/monolog a tu proyecto. ¿Qué comando utilizas en la terminal para descargarla y añadirla automáticamente a tus dependencias?",
+    "opciones": [
+      "composer require monolog/monolog",
+      "composer install monolog/monolog",
+      "composer add monolog/monolog",
+      "composer update monolog/monolog"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "¿Cómo se declara correctamente un espacio de nombres (namespace) al principio de un archivo PHP para encapsular sus clases y evitar colisiones de nombres?",
+    "opciones": [
+      "use RMM04\\modelo;",
+      "include 'RMM04\\modelo';",
+      "import RMM04\\modelo;",
+      "namespace RMM04\\modelo;"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "Si tenemos una clase que pertenece al espacio de nombres RMM04\\modelo, ¿cómo la importamos en el archivo del controlador para poder instanciarla simplemente con su nombre (sin escribir toda la ruta)?",
+    "opciones": [
+      "require RMM04\\modelo\\Pelicula;",
+      "namespace RMM04\\modelo\\Pelicula;",
+      "use RMM04\\modelo\\Pelicula;",
+      "import RMM04\\modelo\\Pelicula;"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "Dado el siguiente fragmento de código, ¿a qué capa del patrón MVC pertenece?\n\n$idproducto = filter_input(INPUT_POST, 'idprod', FILTER_VALIDATE_INT);\nif ($idproducto !== null && $idproducto !== false) {\n    $p = Producto::rescatar($idproducto);\n    $resultado = Favorito::nuevoFavorito($_SESSION['usuario'], $p);\n}\n$smarty->assign('resultado', $resultado);\n$smarty->display('vista.tpl');",
+    "opciones": [
+      "Al Modelo, porque está modificando directamente la base de datos.",
+      "A la Vista, porque utiliza sentencias de Smarty para pintar el HTML final.",
+      "Al Controlador, porque recoge el evento/datos, invoca al modelo y le pasa los datos resultantes a la vista.",
+      "Al Enrutador, porque define qué URL llama a qué función."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "Analiza este fragmento de código. ¿A qué parte de la arquitectura MVC corresponde?\n\n<!DOCTYPE html>\n<html lang=\"es\">\n<body>\n{foreach $peliculas as $peli}\n  <h1>{$peli->getTitulo()}</h1>\n{/foreach}\n</body>\n</html>",
+    "opciones": [
+      "Vista, porque su única responsabilidad es presentar los datos al usuario iterando sobre la información recibida con sintaxis de Smarty.",
+      "Controlador, porque tiene una estructura de control (foreach) para decidir qué películas procesar.",
+      "Modelo, porque está accediendo a los datos llamando al método getTitulo().",
+      "Capa de acceso a datos, porque es donde se ejecutan las sentencias finales."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "preguntas tema 4 primera parte",
+    "pregunta": "Observa el siguiente código. ¿En qué capa del patrón MVC debe ubicarse?\n\npublic static function borrarPelicula(PDO $pdo, int $id): int|DBResult {\n    $sql = \"DELETE FROM peliculas WHERE id = :id\";\n    $stmt = $pdo->prepare($sql);\n    $stmt->bindParam(':id', $id, PDO::PARAM_INT);\n    $stmt->execute();\n    return $stmt->rowCount();\n}",
+    "opciones": [
+      "En el Controlador, ya que recibe un identificador (id) por parámetro y ejecuta una acción directiva.",
+      "En la Vista, porque devuelve el resultado de las filas afectadas (rowCount) para que el usuario las vea.",
+      "En el Presentador, porque prepara la consulta SQL aislándola del resto del código.",
+      "En el Modelo, ya que es el encargado de la lógica de negocio, de manejar los datos propios de la aplicación y su persistencia en la base de datos."
+    ],
+    "correcta": 3
   }
 
 

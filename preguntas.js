@@ -12368,7 +12368,3296 @@ const BBDD_PREGUNTAS = [
       "En el Modelo, ya que es el encargado de la lógica de negocio, de manejar los datos propios de la aplicación y su persistencia en la base de datos."
     ],
     "correcta": 3
-  }
+  },
+  {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En el archivo principal donde configuras la vista de tu aplicación web (frontend), ¿cómo le indicas a JAXON cuál es la ruta del archivo PHP (el backend) que se encargará de recibir y procesar las peticiones AJAX?",
+        "opciones": [
+            "jaxon()->setOption('core.request.uri', 'backend.php');",
+            "jaxon()->setUrl('backend.php');",
+            "A través del atributo 'action' de la etiqueta <form action='backend.php'>.",
+            "jaxon()->register(Jaxon::BACKEND_URL, 'backend.php');"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "A la hora de incluir JAXON en nuestra página web, necesitamos imprimir varias variables en el HTML. ¿Qué método nos devuelve el código JavaScript generado automáticamente con las funciones PHP que hemos registrado para poder invocarlas desde el cliente?",
+        "opciones": [
+            "jaxon()->getJs()",
+            "jaxon()->getFunctions()",
+            "jaxon()->getScript()",
+            "jaxon()->exportJavascript()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Según indicó el profesor, ¿cuál es el objetivo fundamental de la tecnología AJAX?",
+        "opciones": [
+            "Generar gráficos 3D complejos directamente en el navegador del usuario.",
+            "Permitir al navegador establecer una comunicación asíncrona con el servidor para actualizar dinámicamente la página sin necesidad de recargarla por completo.",
+            "Proteger las contraseñas de los usuarios mediante cifrado avanzado en el frontend.",
+            "Sustituir por completo el uso de bases de datos relacionales en el servidor."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué nombre reciben las aplicaciones web cuya interfaz se actualiza dinámicamente de forma completa sin cambiar de página, usando Javascript y AJAX para comunicarse con el servidor?",
+        "opciones": [
+            "Aplicaciones Multi-Page (MPA).",
+            "Aplicaciones Estáticas (SA).",
+            "Single Page Applications (SPA).",
+            "Aplicaciones SOAP."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "El profesor incidió en que las aplicaciones con Jaxon requieren el uso de Composer. ¿Qué comando se utiliza para instalar la dependencia de Jaxon (jaxon-php/jaxon-core) en nuestro proyecto?",
+        "opciones": [
+            "composer download jaxon-php/jaxon-core",
+            "composer install jaxon-php",
+            "composer require jaxon-php/jaxon-core",
+            "composer get jaxon"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Para poder utilizar las librerías instaladas con Composer (como Jaxon o Guzzle) en nuestro código PHP, ¿qué archivo debemos incluir obligatoriamente usando 'require_once'?",
+        "opciones": [
+            "vendor/autoload.php",
+            "composer/init.php",
+            "vendor/jaxon.php",
+            "setup.json"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Al crear la estructura de un proyecto con JAXON, ¿qué tarea principal realizamos en el archivo 'setup.php' según el esquema visto en el temario?",
+        "opciones": [
+            "Imprimir las etiquetas HTML y el CSS de la página.",
+            "Registrar las funciones o clases PHP para que puedan ser invocadas remotamente desde el cliente.",
+            "Realizar peticiones FETCH a servidores externos.",
+            "Conectar exclusivamente con la base de datos."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Cuál es la instrucción correcta para registrar una función PHP llamada 'borrarPelicula' en JAXON?",
+        "opciones": [
+            "jaxon()->add('borrarPelicula');",
+            "jaxon()->register(Jaxon::CALLABLE_FUNCTION, 'borrarPelicula');",
+            "jaxon()->export('borrarPelicula');",
+            "Jaxon::registerAjax('borrarPelicula');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En la arquitectura JAXON, ¿cuál es la responsabilidad exclusiva del archivo habitualmente llamado 'backend.php'?",
+        "opciones": [
+            "Crear las tablas en la base de datos.",
+            "Procesar las peticiones AJAX entrantes y enviarlas a la función PHP registrada correspondiente.",
+            "Generar el código Javascript y el diseño CSS.",
+            "Mostrar el formulario HTML al usuario."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué método de JAXON se debe utilizar en el archivo backend.php para procesar la petición AJAX recibida?",
+        "opciones": [
+            "jaxon()->processRequest();",
+            "jaxon()->executeAjax();",
+            "jaxon()->handle();",
+            "jaxon()->run();"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Es vital comprobar si hay una petición entrante antes de procesarla en el backend. ¿Con qué método se hace esto?",
+        "opciones": [
+            "jaxon()->isAjax()",
+            "jaxon()->checkRequest()",
+            "jaxon()->canProcessRequest()",
+            "jaxon()->hasData()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Una vez registrada la función 'listarPeliculas' en el backend de Jaxon, ¿cómo se llamará por defecto la función JavaScript generada automáticamente para invocarla desde el navegador?",
+        "opciones": [
+            "ajax_listarPeliculas()",
+            "call_listarPeliculas()",
+            "jaxon_listarPeliculas()",
+            "php_listarPeliculas()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Según el ciclo de vida de una función manejadora en JAXON (destacado por el profesor), ¿qué tipo de objeto DEBE retornar siempre la función en PHP?",
+        "opciones": [
+            "Un objeto de la clase PDO.",
+            "Una cadena de texto con HTML plano.",
+            "Un objeto instanciado de la clase Jaxon\\Response.",
+            "Un array asociativo codificado en JSON."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "El profesor insistió mucho en este punto: ¿Qué ocurre si dentro de una función registrada en JAXON haces uso de la instrucción 'echo' para mostrar un texto por pantalla?",
+        "opciones": [
+            "El texto aparecerá correctamente en una alerta emergente en el navegador.",
+            "JAXON convertirá automáticamente el 'echo' en una instrucción para el DOM.",
+            "Se corromperá el mensaje JSON que espera recibir Jaxon-JS y la actualización de la interfaz fallará.",
+            "El servidor web se reiniciará por seguridad."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Cómo se instancia correctamente el objeto de respuesta dentro de una función manejadora de JAXON?",
+        "opciones": [
+            "$response = new Response(); (o jaxon()->newResponse());",
+            "$response = jaxon()->getResponse();",
+            "$response = new Ajax();",
+            "$response = jaxon()->create();"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Deseas reemplazar por completo el contenido de un <div> con id='resultados'. ¿Qué método del objeto Response de JAXON utilizarías?",
+        "opciones": [
+            "$response->replace('resultados', 'nuevo texto');",
+            "$response->assign('resultados', 'innerHTML', 'nuevo texto');",
+            "$response->write('resultados', 'nuevo texto');",
+            "$response->set('resultados', 'nuevo texto');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Deseas añadir un nuevo mensaje al FINAL del contenido actual de un elemento con id='log'. ¿Qué método del objeto Response es el adecuado?",
+        "opciones": [
+            "$response->append('log', 'innerHTML', 'nuevo mensaje');",
+            "$response->prepend('log', 'innerHTML', 'nuevo mensaje');",
+            "$response->assign('log', 'innerHTML', 'nuevo mensaje');",
+            "$response->insertAfter('log', 'nuevo mensaje');"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Deseas añadir un texto justo AL PRINCIPIO del contenido que ya tiene un elemento con id='notificaciones'. ¿Qué método usarías?",
+        "opciones": [
+            "$response->insert('notificaciones', 'texto');",
+            "$response->append('notificaciones', 'innerHTML', 'texto');",
+            "$response->prepend('notificaciones', 'innerHTML', 'texto');",
+            "$response->addFirst('notificaciones', 'texto');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué método del objeto Response de JAXON se utiliza para mostrar un cuadro de diálogo nativo del navegador con un mensaje para el usuario?",
+        "opciones": [
+            "$response->popup('¡Hola!');",
+            "$response->dialog('¡Hola!');",
+            "$response->window('¡Hola!');",
+            "$response->alert('¡Hola!');"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Si necesitas limpiar por completo (dejar en blanco) el contenido interno de un elemento con id='errores', ¿qué instrucción es la más directa usando el objeto Response?",
+        "opciones": [
+            "$response->remove('errores');",
+            "$response->clear('errores');",
+            "$response->delete('errores');",
+            "$response->empty('errores');"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué método del objeto Response te permite ordenar al navegador que ejecute un código o función Javascript puro tras procesar la petición AJAX?",
+        "opciones": [
+            "$response->execute('miFuncion();');",
+            "$response->eval('miFuncion();');",
+            "$response->script('miFuncion();');",
+            "$response->js('miFuncion();');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué ocurre cuando en JAXON-PHP usamos una instrucción como $response->assign('titulo', 'value', '');?",
+        "opciones": [
+            "Se borra el atributo 'id' del elemento 'titulo'.",
+            "Se limpia el valor introducido en un campo de formulario (input) cuyo id sea 'titulo'.",
+            "Se elimina el elemento 'titulo' del DOM por completo.",
+            "Genera un error porque 'value' no es una propiedad válida."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En la interfaz de usuario (HTML), si queremos evitar que un formulario se envíe de la manera tradicional recargando la página, ¿qué instrucción Javascript debemos añadir en el evento 'onsubmit' después de invocar a Jaxon?",
+        "opciones": [
+            "preventDefault();",
+            "return false;",
+            "stopSubmit();",
+            "jaxon.halt();"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Si usamos Jaxon-JS nativo en el cliente, ¿cómo se puede obtener el valor de un campo de texto con id='isbn' para pasarlo por parámetro a una función?",
+        "opciones": [
+            "jaxon.getValue('isbn')",
+            "jaxon.$('isbn').value",
+            "jaxon.input('isbn')",
+            "jaxon.get('isbn')"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Si un formulario tiene múltiples campos y queremos enviarlos todos de golpe a la función PHP del backend, ¿qué utilidad de Jaxon-JS en el cliente facilita esta tarea?",
+        "opciones": [
+            "jaxon.getAllInputs()",
+            "jaxon.serialize('formId')",
+            "jaxon.getFormValues('formId')",
+            "jaxon.fetchForm('formId')"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "JAXON-PHP incluye factorías para generar código Javascript dinámicamente. ¿Para qué sirve específicamente el 'Parameter Factory' invocado con pm()?",
+        "opciones": [
+            "Para conectar con la base de datos mediante parámetros.",
+            "Para generar el código Javascript necesario para recuperar datos de la interfaz (ej. pm()->input('id')).",
+            "Para sanear las variables $_POST automáticamente.",
+            "Para modificar los parámetros del archivo php.ini."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Usando la factoría de peticiones de Jaxon (Request Factory) dentro de una plantilla HTML, ¿cómo generaríamos el código Javascript para llamar a la función 'borrar' enviando el valor del input 'id_libro'?",
+        "opciones": [
+            "<?= rq()->call('borrar', pm()->input('id_libro')) ?>",
+            "<?= jaxon()->borrar(pm()->input('id_libro')) ?>",
+            "<?= request('borrar', 'id_libro') ?>",
+            "<?= call('borrar')->with('id_libro') ?>"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué ventaja aporta encadenar el método ->confirm() al usar el Request Factory en la vista (ej. rq()->call('borrar')->confirm('¿Seguro?'))?",
+        "opciones": [
+            "Autentica al usuario en el servidor antes de ejecutar la función.",
+            "Genera código Javascript que mostrará un cuadro de confirmación nativo; si el usuario cancela, la petición AJAX no se envía.",
+            "Envía un correo de confirmación al administrador del sistema.",
+            "Realiza una doble petición AJAX por seguridad."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En Javascript puro (sin Jaxon), ¿cuál de los siguientes es el objeto originalmente creado para realizar peticiones AJAX y que está incorporado nativamente en los navegadores?",
+        "opciones": [
+            "FetchRequest",
+            "AjaxRequest",
+            "XMLHttpRequest",
+            "HTTPConnection"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué función moderna de Javascript introducida en ECMAScript 2015 se utiliza ampliamente como alternativa basada en promesas para hacer peticiones AJAX?",
+        "opciones": [
+            "get()",
+            "request()",
+            "fetch()",
+            "ajax()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "El profesor destacó el proceso de validación. ¿Por qué NO es suficiente con prevalidar los datos únicamente en el frontend usando Javascript?",
+        "opciones": [
+            "Porque Javascript es muy lento procesando cadenas de texto.",
+            "Porque el usuario podría tener Javascript deshabilitado o alterar el código en su navegador, siendo imprescindible validar siempre en el servidor (PHP).",
+            "Porque Jaxon no permite ejecutar funciones Javascript de validación.",
+            "Porque HTML5 ya valida todos los datos automáticamente sin necesidad de PHP."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En un servicio web con arquitectura de tipo REST, ¿qué método (o verbo) HTTP se utiliza por convención para BORRAR un recurso?",
+        "opciones": [
+            "POST",
+            "GET",
+            "DELETE",
+            "PUT"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En un servicio web con arquitectura de tipo REST, ¿qué método (o verbo) HTTP se suele utilizar para MODIFICAR o actualizar un recurso existente?",
+        "opciones": [
+            "POST",
+            "GET",
+            "DELETE",
+            "PUT"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Cuando una petición AJAX envía la carga útil de datos en formato JSON crudo (raw), ¿qué cabecera HTTP (Header) debe configurarse en la petición?",
+        "opciones": [
+            "Content-Type: text/html",
+            "Content-Type: application/x-www-form-urlencoded",
+            "Content-Type: application/json",
+            "Content-Type: multipart/form-data"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Si un script PHP de nuestro backend (una API) recibe datos AJAX codificados en formato JSON crudo, ¿cómo debe leer esos datos ya que no estarán en el array $_POST?",
+        "opciones": [
+            "Usando filter_input(INPUT_JSON, 'datos')",
+            "Leyendo el flujo de entrada con file_get_contents('php://input') y luego usando json_decode()",
+            "Accediendo a la variable global $_JSON",
+            "Usando la función nativa parse_json_request()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué formato estructurado de intercambio de datos se utiliza mayoritariamente en la comunicación asíncrona de Jaxon y de servicios REST actuales por su ligereza y facilidad de parseo en Javascript?",
+        "opciones": [
+            "XML",
+            "YAML",
+            "JSON",
+            "CSV"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En PHP, ¿qué función se emplea para convertir un array asociativo o un objeto de PHP en una cadena de texto con formato JSON para enviarlo al cliente web?",
+        "opciones": [
+            "json_encode()",
+            "json_decode()",
+            "serialize()",
+            "json_stringify()"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En PHP, ¿qué función se emplea para decodificar una cadena JSON que hemos recibido y transformarla de nuevo en un objeto o array nativo de PHP?",
+        "opciones": [
+            "json_encode()",
+            "json_decode()",
+            "unserialize()",
+            "json_parse()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Si utilizamos la función pm()->form('nuevaPelicula') en la vista para recopilar datos y mandarlos por AJAX, ¿qué recibirá la función PHP en el backend como parámetro?",
+        "opciones": [
+            "Un objeto XMLHttpRequest.",
+            "Un string con el formato 'clave=valor'.",
+            "Un array asociativo donde las claves son los nombres (name) de los inputs del formulario.",
+            "Una instancia de la clase FormData de PHP."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En un entorno Jaxon, ¿cómo ocultarías por completo un elemento div del DOM con id='resultados' usando el objeto Response?",
+        "opciones": [
+            "$response->assign('resultados', 'style.display', 'none');",
+            "$response->hide('resultados');",
+            "$response->invisible('resultados');",
+            "$response->assign('resultados', 'visible', 'false');"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué componente de JAXON-PHP es el encargado de generar e imprimir en el HTML la ruta y etiquetas <script> que enlazan con el código fuente de la librería Javascript de Jaxon?",
+        "opciones": [
+            "jaxon()->getScript()",
+            "jaxon()->getJs()",
+            "jaxon()->getCss()",
+            "jaxon()->printLibrary()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "El profesor hizo hincapié en el concepto de 'Aplicación Web Híbrida' (Mashup). ¿A qué hace referencia este concepto?",
+        "opciones": [
+            "A una aplicación que usa simultáneamente PHP y HTML en el mismo archivo.",
+            "A la combinación de datos y funcionalidades de diferentes fuentes o servicios externos (ej. usando APIs de terceros o mapas) para crear una aplicación más rica.",
+            "A una aplicación que funciona tanto en Windows como en Linux.",
+            "A aplicaciones desarrolladas usando únicamente la librería JQuery."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Cuál de las siguientes librerías de JavaScript, de código abierto y ligera, permite la integración de mapas de proveedores de teselas como OpenStreetMap en una aplicación web híbrida en el cliente?",
+        "opciones": [
+            "Guzzle",
+            "Leaflet",
+            "Composer",
+            "Jaxon-JS"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Dentro de la lógica de una función PHP en Jaxon (como registrarPelicula), si detectas errores en la validación, ¿qué estrategia habitual usas para informar al usuario sin recargar la página?",
+        "opciones": [
+            "Hacer un header('Location: error.php') para redirigir a otra vista.",
+            "Retornar un false lógico y cerrar la conexión a la base de datos.",
+            "Usar el objeto Response para hacer assign() enviando los mensajes de error a los span/divs correspondientes junto a los campos del formulario.",
+            "Hacer un echo 'Error en la validación' antes de salir de la función."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Al inicializar Jaxon en el archivo de setup, se suele definir una ruta. ¿Para qué sirve jaxon()->setOption('core.request.uri', 'rutabackend.php')?",
+        "opciones": [
+            "Le dice a Javascript en qué URL exacta del servidor se encuentra el archivo que procesará todas sus peticiones AJAX asíncronas.",
+            "Le indica al servidor dónde encontrar la base de datos MySQL.",
+            "Define la ruta de inicio de sesión de la aplicación.",
+            "Redirige al usuario a esa ruta cuando finaliza una petición de forma automática."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "En un bloque script de la vista, decides incluir la llamada directa: jaxon_listarPeliculas(); sin asociarlo a ningún evento (como onclick). ¿Qué provocará esto en el navegador?",
+        "opciones": [
+            "Dará un error de sintaxis porque las funciones jaxon_ siempre exigen un evento disparador.",
+            "Ejecutará la petición AJAX de forma inmediata y automática justo en el momento en que el navegador lea e interprete esa línea durante la carga inicial de la página.",
+            "Pausará la carga completa de la página hasta que el usuario pulse Enter.",
+            "No hará nada, se necesita obligatoriamente usar rq()->call()."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Al examinar el código autogenerado por JAXON, te das cuenta de que la comunicación entre cliente y servidor se realiza por debajo usando la tecnología estándar de la web. ¿Cuál de estos métodos es el más utilizado nativamente por los navegadores antiguos y modernos para este fin?",
+        "opciones": [
+            "WebSocketRequest",
+            "XMLHttpRequest",
+            "Flash HTTP Client",
+            "Java Applet HTTP"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "¿Qué es 'Composer' y por qué ha sido fundamental desde la Unidad 4 hasta la Unidad 7 en la creación de nuestros proyectos PHP?",
+        "opciones": [
+            "Es un framework MVC similar a Laravel.",
+            "Es un IDE (Entorno de Desarrollo) específico para PHP.",
+            "Es un sistema de gestión de dependencias para PHP, necesario para instalar paquetes de terceros como Jaxon, Guzzle o plantillas.",
+            "Es un servidor web integrado que sustituye a Apache o Nginx."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Dentro de un proyecto, ¿qué archivo lee Composer para saber qué librerías exactas (y qué versiones) debe instalar al ejecutar 'composer install'?",
+        "opciones": [
+            "setup.php",
+            "composer.json",
+            "config.xml",
+            "dependencies.txt"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 primera parte",
+        "pregunta": "Si en la consola escribes 'composer init' en una carpeta vacía, ¿qué ocurrirá principalmente?",
+        "opciones": [
+            "Se iniciará el servidor web interno de PHP en el puerto 8000.",
+            "Se descargarán automáticamente todas las librerías existentes en Packagist.",
+            "Se iniciará un asistente interactivo para crear el archivo base 'composer.json' de tu nuevo proyecto.",
+            "Se formateará el código PHP para cumplir con los estándares PSR."
+        ],
+        "correcta": 2
+    },
+    {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Cuál es el principal objetivo del formato de examen tipo test enfocado en el reconocimiento visual según el profesor?",
+    "opciones": [
+      "Escribir código JavaScript y PHP desde cero sin usar librerías.",
+      "Interpretar opciones, reconocer fragmentos de código, entender la lógica interna y descartar las opciones incorrectas o absurdas.",
+      "Memorizar todos los métodos avanzados de la API de JAXON-JS.",
+      "Demostrar conocimientos exclusivos sobre llamadas SOAP y XML puro."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Respecto a la tecnología AJAX, ¿qué aclaración explícita hace el profesor sobre el contenido evaluable en el examen?",
+    "opciones": [
+      "Es obligatorio saber implementar AJAX puro a mano mediante objetos XMLHttpRequest.",
+      "Se exigirá programar promesas nativas con fetch y peticiones complejas con jQuery sin ayuda.",
+      "No se pedirá escribir AJAX puro a mano ni promesas, sino comprender el concepto base y cómo lo simplifica la librería.",
+      "Se evaluará únicamente la configuración de flujos asíncronos en entornos de Node.js."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué aspecto de la tarea inicial está íntimamente relacionado con el concepto teórico de 'Aplicaciones Híbridas' que entrará en el examen?",
+    "opciones": [
+      "El diseño visual de hojas de estilo CSS locales.",
+      "El análisis de la implantación de AJAX e integración de servicios externos en diferentes sitios web.",
+      "La configuración estricta de contenedores aislados de Docker.",
+      "La serialización directa de modelos utilizando Eloquent ORM."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Según la arquitectura de JAXON explicada en la videoconferencia, ¿de qué se encarga específicamente el componente denominado 'Setup'?",
+    "opciones": [
+      "De renderizar el código HTML final directamente en la ventana del navegador.",
+      "De interceptar las respuestas JSON y desencadenar alertas del DOM.",
+      "De la configuración inicial y del registro de las funciones PHP que podrán ser invocadas de forma remota.",
+      "De realizar las peticiones HTTP GET o POST utilizando la extensión cURL nativa."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Cuál es la función del archivo o componente 'Backend' en el flujo de trabajo de JAXON?",
+    "opciones": [
+      "Generar de forma automatizada las plantillas de vistas HTML del usuario.",
+      "Recibir la petición AJAX, procesar la respuesta e invocar a las funciones PHP previamente registradas.",
+      "Capturar el evento onclick del usuario antes de que se inicie la comunicación de red.",
+      "Almacenar las credenciales secretas de las API Keys en cookies permanentes del cliente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Cómo contribuye la configuración inicial del proyecto JAXON al comportamiento del 'Frontend'?",
+    "opciones": [
+      "Permite vaciar la memoria del servidor de manera dinámica.",
+      "Sigue el patrón MVC para obligar a almacenar los datos en formato serializado local.",
+      "Sirve para generar automáticamente el código JavaScript que va a automatizar las peticiones AJAX en la vista del usuario.",
+      "Inyecta hojas de estilo CSS para optimizar la carga estática de las páginas."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Dentro del ciclo de vida de una función controlada por JAXON, ¿cuál es el primer paso obligatorio al recibir los datos desde el formulario HTML?",
+    "opciones": [
+      "Modificar directamente el modelo relacional de la base de datos.",
+      "Validar estrictamente los datos recibidos.",
+      "Instanciar de forma inmediata un objeto de tipo Response.",
+      "Transformar los parámetros recibidos a una estructura XML usando SimpleXML."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Tras completar la validación inicial dentro de una función de JAXON, ¿qué acción del ciclo de vida se encarga de alterar los datos persistentes?",
+    "opciones": [
+      "La modificación o actualización del DOM en el lado del cliente.",
+      "La ejecución de acciones pertinentes sobre el modelo o la base de datos.",
+      "El envío automático de un encabezado HTTP de redirección 401 Unauthorized.",
+      "La llamada al método heredado $response->script()."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Para retornar comandos de interfaz desde una función de PHP controlada por JAXON, ¿qué paso crucial resalta el profesor?",
+    "opciones": [
+      "Utilizar la sentencia echo o funciones como print_r() para ver los resultados.",
+      "Instanciar obligatoriamente un objeto Response proporcionado por la librería JAXON.",
+      "Interrumpir el script llamando a die() pasándole un JSON crudo.",
+      "Ejecutar un método estático de la clase DB para registrar los logs en el backend."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "A la hora de alterar visualmente la vista del usuario desde PHP con JAXON, ¿qué heramienta se utiliza?",
+    "opciones": [
+      "Selectores CSS puros incrustados en etiquetas <style>.",
+      "Los métodos asociados al objeto Response de JAXON (como assign, clear o append) para definir qué elementos HTML sufrirán modificaciones.",
+      "El flujo global de entrada php://input mediante consultas de lectura directa.",
+      "Funciones nativas de manipulación de cadenas de texto como trim() o base64_encode()."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿De qué manera viajan los comandos del objeto Response desde el servidor hacia el navegador para que Jaxon-JS los interprete?",
+    "opciones": [
+      "Se envían estructurados como un archivo de configuración de texto plano YAML.",
+      "Se encapsulan automáticamente por JAXON en un formato JSON que viaja al navegador.",
+      "Se transmiten como un documento XML parseado por SimpleXMLElement.",
+      "Se propagan directamente a través de los parámetros query string de la ruta HTTP."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Al realizar la invocación de una función registrada en JAXON desde el código JavaScript del navegador (vista), ¿qué prefijo obligatorio se debe anteponer al nombre de la función?",
+    "opciones": [
+      "ajax_",
+      "php_",
+      "jaxon_",
+      "backend_"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Respecto al uso de dependencias, ¿qué noción básica destaca el profesor sobre el papel de Composer en este tema?",
+    "opciones": [
+      "Ha servido para compilar y empaquetar el motor de plantillas Smarty en el entorno del cliente.",
+      "Es el encargado de gestionar de forma exclusiva los mapas y teselas de OpenStreetMap.",
+      "Se utiliza para inicializar el proyecto e instalar el paquete correspondiente a la librería JAXON.",
+      "Permite interceptar eventos onsubmit de formularios HTML asíncronos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si queremos registrar una función PHP clásica para que sea accesible mediante llamadas remotas de JAXON, ¿qué sintaxis básica empleamos en el setup?",
+    "opciones": [
+      "$jaxon->register(Jaxon::CALLABLE_FUNCTION, 'nombre_de_la_funcion');",
+      "jaxon()->setOption('core.functions', 'nombre_de_la_funcion');",
+      "$response->call('nombre_de_la_funcion');",
+      "jaxon()->register(Jaxon::BACKEND_URL, 'nombre_de_la_funcion');"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Para inicializar el objeto de respuesta reglamentario dentro de una función controlada por JAXON en la tarea base, ¿qué clase o instanciación se utiliza?",
+    "opciones": [
+      "$response = new stdClass();",
+      "$response = new Response();",
+      "$response = jaxon()->getResponse();",
+      "$response = new JaxonResponse();"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si deseamos limpiar por completo el contenido (innerHTML) de una sección HTML con ID 'listaPeliculas' desde PHP usando JAXON, ¿qué método del objeto Response es el más directo?",
+    "opciones": [
+      "$response->assign('listaPeliculas', 'innerHTML', '');",
+      "$response->clear('listaPeliculas');",
+      "$response->script('document.getElementById(\"listaPeliculas\").innerHTML = \"\";');",
+      "Las opciones A y B son válidas y consiguen limpiar el contenido."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Dado el siguiente fragmento de código usado en la tarea: $response->assign('listaPeliculas', 'innerHTML', $htmlPeliculas); ¿Qué acción realiza exactamente en el navegador del usuario?",
+    "opciones": [
+      "Borra las clases CSS asociadas al elemento con ID 'listaPeliculas'.",
+      "Sustituye el contenido HTML interno del elemento cuyo ID es 'listaPeliculas' por la cadena almacenada en $htmlPeliculas.",
+      "Inyecta un script ejecutable que llama a la función controladora listarPeliculasRMM().",
+      "Modifica las propiedades de visibilidad del elemento cambiándolas a 'block'."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si necesitas cambiar el estilo visual de visualización de un bloque (por ejemplo, para ocultar un contenedor de errores con ID 'genero_errores'), ¿qué llamada de JAXON es correcta?",
+    "opciones": [
+      "$response->assign('genero_errores', 'style.display', 'none');",
+      "$response->clear('genero_errores', 'style.display');",
+      "$response->append('genero_errores', 'none');",
+      "jaxon()->setOption('genero_errores', 'none');"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si dentro de una función de JAXON en PHP (como registrarPeliculaRMM) necesitas pedirle al navegador que ejecute otra función JavaScript autogenerada como 'jaxon_listarPeliculasRMM();', ¿qué método debes usar?",
+    "opciones": [
+      "$response->call('jaxon_listarPeliculasRMM()');",
+      "$response->script('jaxon_listarPeliculasRMM();');",
+      "$response->assign('script', 'innerHTML', 'jaxon_listarPeliculasRMM();');",
+      "jaxon()->register('jaxon_listarPeliculasRMM();');"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué ocurre si una función registrada por JAXON emite un 'echo' o imprime texto HTML directo antes de retornar el objeto Response?",
+    "opciones": [
+      "Se añade automáticamente al comienzo del DOM de la página principal.",
+      "Mejora el rendimiento de la prevalidación de datos del formulario.",
+      "Puede corromper o 'estropear' el formato de la respuesta JSON/Jaxon esperado por el navegador.",
+      "Se almacena en el archivo global de logs de errores de base de datos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Al presionar un botón HTML para borrar una película, se desea mostrar una confirmación antes de llamar a la función JAXON. ¿Cuál es la sintaxis correcta en el evento inline de la vista?",
+    "opciones": [
+      "onclick='jaxon_borrarPeliculaRMM(id);'",
+      "onclick='if(confirm(\"¿Estás seguro?\")) { jaxon_borrarPeliculaRMM(id); }'",
+      "onclick='jaxon()->confirm(\"¿Estás seguro?\", borrarPeliculaRMM(id));'",
+      "onsubmit='return jaxon_borrarPeliculaRMM(id);'"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Cuando pasamos todos los campos de un formulario HTML de golpe a una función de JAXON desde el cliente, ¿qué utilidad proporciona la librería JavaScript de Jaxon?",
+    "opciones": [
+      "jaxon.getFormValues('id_del_formulario')",
+      "jaxon.$('id_del_formulario').value",
+      "jaxon.serializeForm('id_del_formulario')",
+      "jaxon.sendFormData('id_del_formulario')"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "En las funciones registradas de la tarea (como registrarPeliculaRMM($formulario)), ¿cómo se accede a un campo específico enviado a través de los valores del formulario?",
+    "opciones": [
+      "$formulario = filter_input(INPUT_POST, 'titulo');",
+      "$titulo = trim($formulario['titulo'] ?? '');",
+      "$titulo = $_POST['titulo'];",
+      "$titulo = jaxon()->getParam('titulo');"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si un servicio web remoto (como la API de OMDB) requiere autenticación mediante una clave única que se pasa como parámetro en la URL de consulta (query string), ¿cómo se denomina habitualmente esta clave?",
+    "opciones": [
+      "Bearer Token",
+      "HTTP Basic Authorization",
+      "API Key",
+      "Session Cookie"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Utilizando la librería Guzzle en PHP para consultar un servicio web externo, ¿cuál es la forma recomendada de pasar parámetros de consulta en la URL (por ejemplo, el título de la película a buscar y la API Key)?",
+    "opciones": [
+      "Concatenar manualmente las cadenas controlando los espacios en blanco con trim().",
+      "Utilizar la opción 'query' en el array de opciones del método de Guzzle.",
+      "Enviar los datos codificados en el cuerpo de la petición mediante la opción 'form_params'.",
+      "Almacenar los parámetros temporalmente en el array superglobal $_SESSION."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "En el archivo 'setup.php' de nuestra tarea se aprecian registros de funciones como 'registrarPeliculaRMM' y 'borrarPeliculaRMM'. ¿Por qué llevan las siglas 'RMM' añadidas al final?",
+    "opciones": [
+      "Son siglas obligatorias de la arquitectura interna del framework JAXON.",
+      "Hacen referencia a los métodos estrictos de enrutamiento del lado del cliente.",
+      "Corresponden a las iniciales del alumno (Roberto Moreno Moreno) para identificar de forma unívoca su autoría en la prueba.",
+      "Indican que las funciones modifican tablas con relaciones de 'uno a muchos'."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Cuando el servidor externo de OMDB responde a una consulta HTTP realizada con Guzzle, ¿qué código de estado HTTP se debe comprobar para asegurar que la respuesta es completamente correcta antes de tratar los datos?",
+    "opciones": [
+      "401 Unauthorized",
+      "404 Not Found",
+      "200 OK",
+      "500 Internal Server Error"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Al recibir la respuesta en crudo de la API de OMDB a través de Guzzle ($res->getBody()), ¿qué función se utiliza para transformar esa cadena JSON en un array asociativo manipulable por PHP?",
+    "opciones": [
+      "json_encode($body)",
+      "json_decode($body, true)",
+      "Simplexml_load_string($body)",
+      "unserialize($body)"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si el formato JSON recibido de un servicio web externo no es válido o está corrompido, ¿qué función de PHP nos permite detectar de forma estricta este error en el formateo?",
+    "opciones": [
+      "json_last_error()",
+      "is_numeric()",
+      "empty()",
+      "error_log()"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Dentro del bloque try-catch que envuelve una petición de red con Guzzle, ¿qué tipo de excepción específica se debe capturar para gestionar errores de conexión o caídas del servidor remoto?",
+    "opciones": [
+      "Exception $e",
+      "RequestException o alertas de red genéricas",
+      "Jaxon\\Exception",
+      "PDOException"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "A la hora de maquetar el listado de películas devuelto por OMDB e inyectarlo en el frontend, ¿en qué propiedad HTML se suele volcar la estructura de la tabla dinámicamente?",
+    "opciones": [
+      "value",
+      "style.display",
+      "innerHTML",
+      "className"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Al codificar un parámetro de búsqueda de texto para meterlo de forma segura en una URL manual (como el título de una película con espacios), ¿qué función de PHP realiza la conversión?",
+    "opciones": [
+      "base64_encode()",
+      "urlencode()",
+      "trim()",
+      "json_encode()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué método del cliente GuzzleHttp\\Client permite deshabilitar el lanzamiento automático de excepciones ante respuestas con estados HTTP de error como 404 o 500?",
+    "opciones": [
+      "Configurar la opción ['http_errors' => false] en la inicialización o en la petición.",
+      "Configurar la opción ['verify' => false] para ignorar la verificación SSL.",
+      "Utilizar de forma obligatoria el flujo php://input.",
+      "Llamar al método alias $client->delete()."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si un método de la clase Response de JAXON añade contenido visual al final del interior de un elemento HTML, ¿qué comando de la API PHP se está ejecutando?",
+    "opciones": [
+      "clear",
+      "assign",
+      "append",
+      "prepend"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué diferencia conceptual básica existe entre una migración y un seeder en la arquitectura de un proyecto web actual?",
+    "opciones": [
+      "La migración añade registros de datos y el seeder crea las vistas en Blade.",
+      "La migración crea o modifica la estructura de la base de datos (tablas), mientras que el seeder rellena esas tablas con datos iniciales.",
+      "La migración configura las llamadas AJAX y el seeder gestiona las promesas con fetch.",
+      "No existe ninguna diferencia, ambos términos son alias de la librería JAXON."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "A nivel conceptual, ¿qué es un ORM (como Eloquent) mencionado en la videoconferencia como herramienta clave para interactuar con la base de datos?",
+    "opciones": [
+      "Un motor de plantillas que renderiza HTML en el lado del cliente.",
+      "Un mapeador que vincula los registros de las tablas relacionales de la base de datos con clases y objetos en PHP.",
+      "Una extensión de JavaScript que simula el comportamiento de jQuery.",
+      "Un protocolo de redifusión web equivalente a los canales RSS."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Para asegurar que las funciones controladoras de JAXON mantengan la separación de conceptos del patrón MVC, ¿qué recomendó hacer el profesor en la tarea?",
+    "opciones": [
+      "Escribir las consultas SQL relacionales directamente en el archivo index.php.",
+      "Sacar la lógica de consulta y base de datos a archivos externos o clases de modelo dedicadas.",
+      "Eliminar el uso de Composer y de la carpeta vendor.",
+      "Implementar la lógica completa de la aplicación utilizando únicamente código JavaScript en el frontend."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "En las aplicaciones web tradicionales, la interfaz de usuario se actualiza recargando la página entera. ¿Qué cambio drástico introduce la tecnología AJAX en este comportamiento?",
+    "opciones": [
+      "Obliga al uso de un servidor secundario basado en Node.js.",
+      "Permite establecer comunicación asíncrona con el servidor web y actualizar la interfaz dinámicamente sin necesidad de recargar la página completa.",
+      "Sustituye por completo el uso de bases de datos relacionales por archivos de texto serializados.",
+      "Restringe las interacciones del usuario al uso exclusivo de la consola de depuración (console.log)."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Cuando una aplicación gestiona e implementa su interfaz de usuario íntegramente desde JavaScript en una única página inicial que se actualiza mediante AJAX, ¿con qué siglas se conoce?",
+    "opciones": [
+      "SOA (Architecture Oriented Services)",
+      "SPA (Single Page Application)",
+      "MVC (Model View Controller)",
+      "API (Application Programming Interface)"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "A la hora de enlazar el frontend con el backend en JAXON, ¿qué método de la libreríaPHP se utiliza para especificar la URI exacta del script controlador (por ejemplo, 'backend.php')?",
+    "opciones": [
+      "jaxon()->setOption('js.lib.uri', 'backend.php');",
+      "jaxon()->setOption('core.request.uri', 'backend.php');",
+      "jaxon()->register(Jaxon::CALLABLE_FUNCTION, 'backend.php');",
+      "$response->script('backend.php');"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "En el contexto de la Unidad 7, ¿qué es Leaflet?",
+    "opciones": [
+      "Una extensión de PHP que permite parsear documentos estructurados en XML.",
+      "Una librería de JavaScript ligera y de código abierto que facilita la integración de mapas interactivos en páginas web.",
+      "Un componente de backend diseñado para interceptar llamadas con tokens de portador.",
+      "Un subcomando de Composer que instala herramientas de desarrollo como PHP Unit."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué nombre reciben las pequeñas piezas en forma de mosaico que utiliza Leaflet para conformar y dar continuidad visual a un mapa?",
+    "opciones": [
+      "Tokens",
+      "Popups",
+      "Teselas (tiles)",
+      "Feeds"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si queremos centrar la vista de un mapa de OpenStreetMap en unas coordenadas geográficas determinadas con un nivel de ampliación concreto usando Leaflet, ¿qué método JavaScript de la librería llamamos?",
+    "opciones": [
+      "map.addTo()",
+      "map.setView([latitud, longitud], zoom)",
+      "map.bindPopup()",
+      "map.openPopup()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué elemento interactivo podemos superponer en un mapa de Leaflet para destacar una ubicación exacta y asociarle una etiqueta de texto que se abra al hacer clic?",
+    "opciones": [
+      "Un validador FormData",
+      "Un marcador (marker) junto con un popup",
+      "Un flujo inyectado cURL",
+      "Un objeto CookieJar"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué protocolo o estándar avanzado se menciona en el temario como el más extendido para permitir que un usuario autorice de forma segura el acceso a sus datos privados de un servicio de terceros (como Google Drive) sin revelar su contraseña?",
+    "opciones": [
+      "HTTP Basic Authorization",
+      "OAuth2",
+      "HTTP Digest",
+      "SAML"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Cuando un servicio web seguro de tipo REST requiere que incluyamos un Token de Portador en cada petición HTTP, ¿en qué cabecera específica se añade?",
+    "opciones": [
+      "Content-Type: application/json",
+      "WWW-Authenticate: Basic",
+      "Authorization: Bearer <token>",
+      "X-API-Key: <token>"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Si un servicio web que utiliza autenticación por sesiones requiere que guardemos y reenviemos las cookies recibidas en las sucesivas peticiones de Guzzle, ¿qué objeto especializado nos proporciona la librería para este cometido?",
+    "opciones": [
+      "FileCookieJar o CookieJar",
+      "RequestException",
+      "SimpleXMLElement",
+      "FormData"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "Cuando se realiza una petición HTTP de tipo POST o DELETE enviando datos en formato JSON crudo mediante Guzzle, ¿qué opción se debe usar en el array de configuración de la petición?",
+    "opciones": [
+      "'form_params'",
+      "'query'",
+      "'json'",
+      "'cookies'"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "En un servicio web del backend que recibe datos en formato JSON crudo, ¿por qué no se pueden recopilar estos datos a través del array superglobal $_POST?",
+    "opciones": [
+      "Porque los datos JSON requieren obligatoriamente el uso de tokens Bearer.",
+      "Porque no viajan codificados con el formato estándar de formulario 'x-www-form-urlencoded'.",
+      "Porque JAXON deshabilita por defecto el acceso a las variables globales.",
+      "Porque el modelo de la base de datos bloquea las peticiones asíncronas."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Segunda Parte",
+    "pregunta": "¿Qué flujo especial de PHP se debe leer mediante 'file_get_contents' para capturar el cuerpo de una petición con datos JSON en crudo que llega al backend?",
+    "opciones": [
+      "php://output",
+      "$_SERVER['REQUEST_METHOD']",
+      "php://input",
+      "$_SESSION['auth']"
+    ],
+    "correcta": 2
+  },
+  {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué es OpenStreetMap según el temario de la Unidad 7?",
+        "opciones": [
+            "Un framework PHP para hacer peticiones AJAX.",
+            "Un proyecto de código abierto y gratuito para la creación, publicación y visualización de mapas.",
+            "Una API privada de pago idéntica a Google Maps Plattform.",
+            "Una librería de JavaScript para crear animaciones 3D en el navegador."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué es Leaflet?",
+        "opciones": [
+            "Un gestor de dependencias para PHP.",
+            "Una librería de JavaScript ligera y de código abierto que permite integrar mapas de diferentes fuentes en páginas web.",
+            "Un protocolo de seguridad para la autenticación en aplicaciones híbridas.",
+            "Una base de datos documental para guardar coordenadas geográficas."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Usando la librería Leaflet en JavaScript, ¿cómo se inicializa un mapa para que se muestre dentro de un contenedor HTML `<div id=\"mapa_div\"></div>`?",
+        "opciones": [
+            "let map = new OpenStreetMap('mapa_div');",
+            "let map = Leaflet.create('mapa_div');",
+            "let map = L.map('mapa_div');",
+            "let map = document.getMap('mapa_div');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En Leaflet, una vez inicializado el mapa, ¿qué método se utiliza para establecer las coordenadas del punto central y el nivel de zoom inicial?",
+        "opciones": [
+            "map.centerAndZoom([latitud, longitud], zoom);",
+            "map.setView([latitud, longitud], zoom);",
+            "map.locate([latitud, longitud], zoom);",
+            "map.init([latitud, longitud], zoom);"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué método de Leaflet permite asociar un pequeño cuadro de texto (popup) informativo a un marcador del mapa cuando el usuario hace clic sobre él?",
+        "opciones": [
+            "marcador.addText('Texto');",
+            "marcador.setTooltip('Texto');",
+            "marcador.bindPopup('Texto');",
+            "marcador.showInfo('Texto');"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En un servicio web basado en la arquitectura REST, ¿cuál es el verbo o método HTTP que se utiliza convencionalmente para OBTENER información o leer un recurso?",
+        "opciones": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En un servicio web basado en la arquitectura REST, ¿cuál es el verbo HTTP que se utiliza convencionalmente para INSERTAR o crear nueva información?",
+        "opciones": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En un servicio web basado en la arquitectura REST, ¿cuál es el verbo HTTP que se utiliza para BORRAR información?",
+        "opciones": [
+            "GET",
+            "POST",
+            "DELETE",
+            "PUT"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En un servicio web basado en la arquitectura REST, ¿cuál es el verbo HTTP que se utiliza habitualmente para MODIFICAR o actualizar información existente?",
+        "opciones": [
+            "GET",
+            "POST",
+            "DELETE",
+            "PUT"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué es la librería Guzzle que el profesor menciona como fundamental para esta unidad y que has usado en tu tarea?",
+        "opciones": [
+            "Un cliente HTTP para PHP que permite enviar peticiones a otros servidores web y consumir APIs de forma sencilla.",
+            "Una librería de JavaScript para validar formularios en el navegador.",
+            "Un framework CSS para maquetar el frontend.",
+            "Un motor de plantillas alternativo a Blade y Smarty."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Sabiendo que Guzzle se instala mediante Composer, ¿cuál es el comando correcto para añadirlo a tu proyecto?",
+        "opciones": [
+            "composer install guzzle",
+            "composer download guzzlehttp",
+            "composer require guzzlehttp/guzzle",
+            "composer add guzzle-php"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Dentro de un script PHP, ¿cómo se instancia correctamente un nuevo cliente HTTP de Guzzle?",
+        "opciones": [
+            "$clienteHTTP = new HTTPClient();",
+            "$clienteHTTP = new GuzzleHttp\\Client();",
+            "$clienteHTTP = Guzzle::create();",
+            "$clienteHTTP = new GuzzleClient();"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Cuál es el método genérico del cliente Guzzle que se utiliza para realizar una petición HTTP especificando el método como primer parámetro (ej. 'GET' o 'POST')?",
+        "opciones": [
+            "$clienteHTTP->request('GET', $url);",
+            "$clienteHTTP->send('GET', $url);",
+            "$clienteHTTP->fetch('GET', $url);",
+            "$clienteHTTP->call('GET', $url);"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Una vez recibida la respuesta de una petición Guzzle en la variable `$response`, ¿qué método nos devuelve el objeto con el cuerpo del mensaje recibido?",
+        "opciones": [
+            "$response->getText();",
+            "$response->getBody();",
+            "$response->getContent();",
+            "$response->getData();"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Para extraer el texto plano del cuerpo de una respuesta Guzzle (Body), ¿qué método final debes usar?",
+        "opciones": [
+            "$body->toString();",
+            "$body->readAll();",
+            "$body->getContents();",
+            "$body->parseText();"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Al realizar una petición con Guzzle a una URL con HTTPS, si el certificado SSL da problemas en tu servidor local, ¿qué opción debes pasarle a Guzzle para que no verifique el certificado?",
+        "opciones": [
+            "['verify' => false]",
+            "['ssl' => ignore]",
+            "['secure' => false]",
+            "['ignore_cert' => true]"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si quieres enviar parámetros en la propia URL (query string) usando Guzzle, ¿qué clave debes utilizar en el array de opciones?",
+        "opciones": [
+            "['url_params' => [...]]",
+            "['query' => [...]]",
+            "['get_data' => [...]]",
+            "['parameters' => [...]]"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En tu tarea con la API de OMDB, usaste `$client = new \\GuzzleHttp\\Client(['http_errors' => false]);`. ¿Para qué sirve exactamente esa opción `http_errors => false`?",
+        "opciones": [
+            "Para que PHP ignore errores de sintaxis en el código.",
+            "Para forzar a la API a devolver siempre un código 200 OK.",
+            "Para ocultar los errores de Javascript en la consola del navegador.",
+            "Para evitar que Guzzle lance excepciones ante errores HTTP (como 404 o 500) y permitirte procesar la respuesta manualmente evaluando el status code."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué excepción específica es recomendable capturar en un bloque try-catch cuando se hacen peticiones HTTP con Guzzle por si falla la conexión?",
+        "opciones": [
+            "PDOException",
+            "GuzzleHttp\\Exception\\ConnectionError",
+            "GuzzleHttp\\Exception\\RequestException",
+            "HttpException"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si necesitas realizar una petición POST a una API REST enviando los datos directamente codificados en formato JSON crudo, ¿qué clave usas en el array de opciones de Guzzle?",
+        "opciones": [
+            "['form_params' => $datos]",
+            "['json' => $datos]",
+            "['body_json' => $datos]",
+            "['data' => $datos]"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si necesitas realizar una petición POST simulando el envío de un formulario HTML clásico (Content-Type: application/x-www-form-urlencoded), ¿qué clave usas en Guzzle?",
+        "opciones": [
+            "['form_params' => $datos]",
+            "['post_data' => $datos]",
+            "['form' => $datos]",
+            "['url_encoded' => $datos]"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Al consumir un servicio web con Guzzle, si necesitas enviar una cabecera personalizada (como Authorization o X-API-Key), ¿cómo se indica en las opciones?",
+        "opciones": [
+            "['custom_headers' => ['Authorization' => '...']]",
+            "['http_headers' => ['Authorization' => '...']]",
+            "['headers' => ['Authorization' => '...']]",
+            "['head' => ['Authorization' => '...']]"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué método del objeto Response de Guzzle te permite consultar el valor de una cabecera concreta recibida desde el servidor remoto (por ejemplo, 'Content-Type')?",
+        "opciones": [
+            "$response->getHead('Content-Type')",
+            "$response->getHeader('Content-Type')",
+            "$response->checkHeader('Content-Type')",
+            "$response->headers('Content-Type')"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Para verificar si una petición HTTP con Guzzle ha devuelto un código 200 OK (como hiciste en la tarea de OMDB), ¿qué método del objeto Response debes llamar?",
+        "opciones": [
+            "$response->getStatus()",
+            "$response->getCode()",
+            "$response->getHttpCode()",
+            "$response->getStatusCode()"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Según el temario, ¿a qué nos referimos con el concepto de 'Aplicación Web Híbrida' o 'Mashup'?",
+        "opciones": [
+            "A una aplicación que usa HTML y CSS en el mismo archivo.",
+            "A la combinación de datos y funcionalidades de diferentes fuentes o servicios externos (como APIs o mapas) para crear nuevos servicios más ricos.",
+            "A un código que funciona igual en Windows y en Linux.",
+            "A una aplicación desarrollada nativamente para móviles y web al mismo tiempo."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué es una 'API Key' (Clave de API)?",
+        "opciones": [
+            "Una clave secreta única proporcionada por un servicio web para identificar y autorizar a la aplicación que realiza las peticiones.",
+            "La contraseña del administrador de la base de datos MySQL.",
+            "Un método de encriptación simétrica para la transferencia de archivos.",
+            "Una librería de PHP para generar números aleatorios."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En tu tarea, a la hora de conectarte a la API de películas (OMDB), ¿cómo le enviabas la API Key al servidor remoto usando Guzzle?",
+        "opciones": [
+            "En el cuerpo de la petición POST con 'form_params'.",
+            "A través de una Cookie de sesión.",
+            "Como un parámetro directamente en la ruta (query string) de la URL: `?apikey={$apikey}`.",
+            "Codificándola en Base64 dentro de la cabecera WWW-Authenticate."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Cuál es el protocolo estándar utilizado para permitir que un usuario otorgue consentimiento a nuestra aplicación para acceder a su información privada en otro servicio (ej. Google Drive) sin cedernos su contraseña?",
+        "opciones": [
+            "SAML",
+            "OAuth2",
+            "HTTP Digest",
+            "SOAP Token"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿En qué consiste la autenticación HTTP Basic?",
+        "opciones": [
+            "En enviar el nombre de usuario y la contraseña codificados en Base64 mediante la cabecera 'Authorization' en cada petición HTTP.",
+            "En enviar únicamente el nombre de usuario en texto plano en la URL.",
+            "En iniciar sesión mediante un formulario POST y recibir una cookie de por vida.",
+            "En utilizar un certificado SSL emitido por el gobierno."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En los esquemas de autenticación basados en Tokens (donde el servidor te devuelve un token tras loguearte), ¿cómo se envía habitualmente este token en las siguientes peticiones?",
+        "opciones": [
+            "En la cabecera: X-Token-Send: <token>",
+            "Como parte del cuerpo del JSON obligatoriamente.",
+            "En la cabecera: Authorization: Bearer <token>",
+            "En la cabecera: Content-Type: Token <token>"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si un servicio web remoto requiere iniciar sesión y utiliza Cookies para recordar nuestra autenticación, ¿qué herramienta de Guzzle nos permite almacenar y reenviar automáticamente esas cookies?",
+        "opciones": [
+            "SessionStorage",
+            "CookieJar",
+            "CookieManager",
+            "BrowserEmulator"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si las credenciales de autenticación enviadas a un servicio REST fallan, ¿qué código de estado HTTP suele retornar el servidor para indicar 'No Autorizado'?",
+        "opciones": [
+            "404 Not Found",
+            "500 Internal Server Error",
+            "403 Forbidden",
+            "401 Unauthorized"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si tu propio servidor web implementa autenticación HTTP Basic, ¿en qué variable global de PHP se recibe automáticamente el nombre de usuario?",
+        "opciones": [
+            "$_SERVER['PHP_AUTH_USER']",
+            "$_POST['username']",
+            "$_SESSION['user']",
+            "$_GET['auth_user']"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Siguiendo la pregunta anterior, ¿en qué variable global de PHP se recibe automáticamente la contraseña enviada por HTTP Basic?",
+        "opciones": [
+            "$_POST['password']",
+            "$_SERVER['PHP_AUTH_PW']",
+            "$_SERVER['HTTP_PASSWORD']",
+            "$_SESSION['passwd']"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Dado que las cabeceras de autenticación (como HTTP Basic) y las API Keys suelen enviarse en texto plano, ¿qué medida de seguridad es indispensable aplicar en los servicios web para evitar que sean interceptadas?",
+        "opciones": [
+            "Usar siempre el verbo POST, ya que no se puede interceptar.",
+            "Comprimir la petición en un archivo ZIP.",
+            "Servir la API obligatoriamente mediante el protocolo HTTPS para cifrar la comunicación.",
+            "Cambiar la API Key cada 5 minutos."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué función nativa de PHP convierte un array asociativo o un objeto de PHP en una cadena de texto con notación JSON?",
+        "opciones": [
+            "json_encode()",
+            "json_decode()",
+            "json_stringify()",
+            "serialize()"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué función nativa de PHP analiza una cadena de texto JSON y la convierte en un objeto (o array) de PHP?",
+        "opciones": [
+            "json_parse()",
+            "json_decode()",
+            "json_encode()",
+            "unserialize()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Al usar la función `json_decode($json, true)`, ¿qué efecto tiene pasarle `true` como segundo parámetro?",
+        "opciones": [
+            "Ignora los errores de sintaxis del JSON.",
+            "Obliga a que las claves del JSON estén en mayúsculas.",
+            "Devuelve un array asociativo en lugar de un objeto estándar de PHP (stdClass).",
+            "Fuerza la descarga del JSON como archivo adjunto en el navegador."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "En tu tarea, tras realizar el `json_decode` a la respuesta de OMDB, ejecutas la comprobación: `if (json_last_error() !== JSON_ERROR_NONE)`. ¿Cuál es el propósito de esta línea?",
+        "opciones": [
+            "Comprobar si la película buscada no existe en la base de datos.",
+            "Verificar si la conexión con la API se ha cortado por falta de internet.",
+            "Confirmar si el código de estado HTTP era 404.",
+            "Verificar que el texto recibido se ha decodificado correctamente sin errores de formato o sintaxis en el JSON."
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si un endpoint de tu backend (API REST) recibe una petición POST con los datos codificados en formato JSON crudo (raw), ¿cómo se debe leer ese contenido en PHP?",
+        "opciones": [
+            "Mediante la función file_get_contents('php://input')",
+            "Accediendo directamente al array $_POST",
+            "Consultando la variable $_JSON",
+            "Leyendo el archivo temporal en $_FILES"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Para procesar documentos en formato XML, ¿qué extensión viene habilitada por defecto en PHP (desde la v5.1.2) que convierte fácilmente un XML en un objeto manipulable?",
+        "opciones": [
+            "DOMDocument",
+            "SimpleXML",
+            "XMLParser",
+            "SAXReader"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Usando la extensión SimpleXML, ¿qué función te permite cargar y procesar un documento XML que ya tienes guardado en una variable de texto en PHP?",
+        "opciones": [
+            "simplexml_load_string()",
+            "simplexml_load_file()",
+            "xml_parse_string()",
+            "new XMLDocument()"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Usando la extensión SimpleXML, ¿qué función te permite cargar y procesar un documento XML indicándole directamente la URL remota o la ruta del archivo?",
+        "opciones": [
+            "simplexml_import_url()",
+            "simplexml_load_string()",
+            "simplexml_load_file()",
+            "file_get_xml()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si tienes un objeto SimpleXML `$xml` que contiene un listado de libros `<libro>`, ¿cómo iterarías por cada uno de ellos en PHP?",
+        "opciones": [
+            "while($libro = $xml->next())",
+            "foreach ($xml->libro as $libro)",
+            "for($i=0; $i<$xml->length; $i++)",
+            "foreach ($xml->getElementsByTagName('libro') as $libro)"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "¿Qué función nativa de PHP utilizaste en tu tarea para codificar el título de la película y evitar que caracteres especiales (como acentos o espacios) rompieran la URL de OMDB?",
+        "opciones": [
+            "urlencode()",
+            "htmlspecialchars()",
+            "base64_encode()",
+            "utf8_encode()"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "A la hora de programar un endpoint de una API REST (por ejemplo, `delete.php`), ¿por qué es importante realizar una comprobación como `if ($_SERVER['REQUEST_METHOD'] != 'DELETE')` al principio?",
+        "opciones": [
+            "Para ahorrar memoria en el servidor.",
+            "Para indicar al navegador que oculte los parámetros en la URL.",
+            "Para garantizar que ese script sólo se ejecute si se le invoca usando el verbo HTTP correcto, y devolver error en caso contrario.",
+            "Para que la base de datos sepa qué instrucción SQL va a ejecutarse luego."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Según recalcó el profesor en la videoconferencia, ¿por qué es fundamental dominar el uso básico de Composer a partir de la Unidad 4?",
+        "opciones": [
+            "Porque permite diseñar bases de datos relacionales visualmente.",
+            "Porque la gestión de dependencias (instalar paquetes como Jaxon o Guzzle) y el autoload de clases son imprescindibles en las aplicaciones modernas de PHP.",
+            "Porque es la única forma de compilar el código PHP a lenguaje máquina.",
+            "Porque sustituye por completo el uso de consultas SQL."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "De acuerdo con los consejos de estudio del profesor en la videoconferencia, ¿cómo será el formato de evaluación para los conceptos de la Unidad 7 (Jaxon, AJAX, Guzzle) en el examen?",
+        "opciones": [
+            "Preguntas tipo test, centradas en el reconocimiento de la sintaxis y la lógica, descartando opciones que 'no tengan sentido'.",
+            "Desarrollo completo desde cero de un servicio web REST en una hoja en blanco.",
+            "Preguntas cortas donde hay que escribir entre 15 y 20 líneas de código Guzzle.",
+            "Una prueba práctica cronometrada en el ordenador."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Tal y como ha comentado el profesor al recomendar hacer la 'chuleta' de repaso, el ciclo de vida de una función manejadora (backend) que usas en Jaxon consta siempre de tres grandes pasos. ¿Cuáles son?",
+        "opciones": [
+            "Compilar, ejecutar y renderizar HTML puro.",
+            "Instalar dependencias, configurar el archivo ini y arrancar Apache.",
+            "Recibir los datos (vía AJAX) y validarlos, modificar el modelo (Base de Datos) y generar/devolver un objeto Response.",
+            "Abrir una conexión cURL, leer el archivo XML y hacer un echo del resultado."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 tercera parte",
+        "pregunta": "Si en la API de OMDB recibes un JSON con la estructura `{\"Response\":\"True\", \"Search\":[...]}` y lo decodificas con `json_decode($body, true)`, ¿cómo compruebas en PHP si `Response` es igual a 'True' (tal y como hiciste en tu tarea)?",
+        "opciones": [
+            "if ($datos->Response == 'True')",
+            "if ($datos.Response == 'True')",
+            "if ($datos['Response'] == 'True')",
+            "if (isset($datos, 'Response', 'True'))"
+        ],
+        "correcta": 2
+    },
+    {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para enlazar el frontend con el archivo del servidor en JAXON, debemos configurar la URI de destino. Completa el hueco en el código: jaxon()->setOption('_____', 'backend.php');",
+    "opciones": [
+      "core.request.uri",
+      "core.backend.url",
+      "js.app.route",
+      "ajax.backend.path"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "En la vista HTML, necesitamos imprimir el bloque de JavaScript generado por JAXON que mapea las funciones PHP del backend. Completa la línea: echo jaxon()->_____();",
+    "opciones": [
+      "getJs",
+      "exportJavascript",
+      "getScript",
+      "getFunctions"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para registrar una función PHP independiente llamada 'buscarPeliculaRMM' en nuestro archivo de configuración, empleamos el siguiente código: $jaxon->register(_____, 'buscarPeliculaRMM');",
+    "opciones": [
+      "Jaxon::PHP_FUNCTION",
+      "Jaxon::CALLABLE_FUNCTION",
+      "Jaxon::REGISTER_METHOD",
+      "Jaxon::CALLBACK_FUNC"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Dentro de la función PHP del backend controlada por JAXON, ¿cómo instanciamos correctamente el objeto reglamentario de respuesta? Completa el fragmento: $response = new _____();",
+    "opciones": [
+      "JaxonResponse",
+      "AjaxResponse",
+      "Response",
+      "JsonResponse"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si en el backend registramos la función PHP 'borrarPeliculaRMM', ¿cómo debe invocarse de forma obligatoria desde el evento inline de un botón en el HTML de la vista?",
+    "opciones": [
+      "onclick=\"borrarPeliculaRMM(id);\"",
+      "onclick=\"jaxon_borrarPeliculaRMM(id);\"",
+      "onclick=\"ajax_borrarPeliculaRMM(id);\"",
+      "onclick=\"jaxon()->borrarPeliculaRMM(id);\""
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Queremos sustituir todo el contenido interno de un contenedor HTML con ID 'tablaPeliculas' por una estructura HTML almacenada en la variable $html. Completa el método: $response->_____('tablaPeliculas', 'innerHTML', $html);",
+    "opciones": [
+      "assign",
+      "append",
+      "html",
+      "replace"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para agregar una nueva fila HTML al final de una tabla existente con ID 'historial_logs' sin alterar lo que ya hay dentro, completamos la instrucción de la respuesta con: $response->_____('historial_logs', 'innerHTML', $nuevaFila);",
+    "opciones": [
+      "prepend",
+      "assign",
+      "insert",
+      "append"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si deseamos vaciar por completo el contenido interno de un bloque de notificación cuyo ID es 'genero_errores', ejecutamos el método directo: $response->_____('genero_errores');",
+    "opciones": [
+      "clear",
+      "remove",
+      "clean",
+      "reset"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "En el frontend, para recopilar y serializar de forma automática todos los inputs de un formulario con ID 'formRegistro', introducimos el método de la librería cliente: _____( 'formRegistro' )",
+    "opciones": [
+      "jaxon.serializeForm",
+      "jaxon.getFormValues",
+      "jaxon.$('formRegistro').values",
+      "FormData.serialize"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si enviamos un formulario con jaxon.getFormValues(), ¿cómo extraemos de manera segura el campo de texto 'titulo' dentro de la función PHP destructora? Completa la línea:\nfunction registrarPeliculaRMM($formulario) {\n  $titulo = _____;\n}",
+    "opciones": [
+      "$_POST['titulo']",
+      "filter_input(INPUT_POST, 'titulo')",
+      "$formulario['titulo'] ?? ''",
+      "jaxon()->getParam('titulo')"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Queremos ocultar un cuadro de texto cuyo ID es 'capa_mensajes' modificando dinámicamente su propiedad CSS display desde PHP. Completa el fragmento: $response->assign('capa_mensajes', '_____', 'none');",
+    "opciones": [
+      "style.display",
+      "css.display",
+      "display",
+      "visibility"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para indicarle al navegador del usuario que ejecute una alerta o instrucción JavaScript arbitraria en texto plano desde una función de JAXON, empleamos el método: $response->_____(\"alert('Registro guardado');\");",
+    "opciones": [
+      "call",
+      "execute",
+      "script",
+      "eval"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Qué consecuencia directa tiene incluir por descuido una sentencia 'echo' o imprimir HTML en crudo dentro de una función controladora de JAXON antes de retornar el objeto Response?",
+    "opciones": [
+      "El texto se añade de forma automática al principio de la vista HTML.",
+      "Se corrompe el formato estructurado JSON de la respuesta asíncrona, provocando un fallo en el cliente de JavaScript.",
+      "Mejora los tiempos de respuesta del servidor web al saltarse el buffer de salida.",
+      "Se almacena de forma aislada en el archivo maestro de logs de errores de MySQL."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Al final de nuestro script del backend ('backend.php'), ¿qué instrucción se encarga de capturar la petición HTTP entrante, invocar la función PHP registrada pertinente y devolver los comandos JSON? jaxon()->_____();",
+    "opciones": [
+      "sendResponse",
+      "processRequest",
+      "compile",
+      "executeRequest"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para incrustar una confirmación nativa en el botón de la vista de forma que solo se dispare la llamada remota de JAXON si el usuario acepta, completamos el evento inline: onclick=\"if(_____) { jaxon_borrarPeliculaRMM(id); }\"",
+    "opciones": [
+      "alert('¿Seguro?')",
+      "jaxon.confirm('¿Seguro?')",
+      "prompt('¿Seguro?')",
+      "confirm('¿Estás seguro de borrar esta película?')"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "De acuerdo con lo expuesto por el profesor en la videoconferencia, ¿qué es conceptualmente una Single Page Application (SPA) o aplicación híbrida?",
+    "opciones": [
+      "Una aplicación web orientada exclusivamente a dispositivos móviles que no requiere el uso de hojas de estilo CSS.",
+      "Un modelo de aplicación web que carga un único documento inicial y actualiza sus componentes mediante AJAX de forma asíncrona sin refrescar toda la pantalla.",
+      "Un software de escritorio que duplica las bases de datos relacionales en formato plano XML de manera local.",
+      "Un sistema web en el que el código fuente de JavaScript está totalmente deshabilitado por razones de seguridad."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para consumir servicios web remotos o APIs de terceros (como el buscador de OMDB) desde nuestros scripts de PHP mediante orientación a objetos, ¿qué cliente HTTP instalamos con Composer?",
+    "opciones": [
+      "GuzzleHttp\\Client",
+      "CurlNativa\\Manager",
+      "JaxonClient\\Http",
+      "PDO\\HttpClient"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Queremos hacer una petición GET mediante Guzzle y adjuntar parámetros de búsqueda de manera limpia en la query string de la URL. Completa el array de opciones: $client->request('GET', $url, [ '_____' => ['apikey' => $key, 's' => $busqueda] ]);",
+    "opciones": [
+      "form_params",
+      "body",
+      "query",
+      "json"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Al capturar la respuesta JSON en crudo procedente de una API de servicios web mediante Guzzle, ¿qué función de PHP empleamos para transformarla en un array asociativo? $datos = _____( $res->getBody(), true );",
+    "opciones": [
+      "json_encode",
+      "unserialize",
+      "simplexml_load_string",
+      "json_decode"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si deseamos validar de forma estricta si ha ocurrido un fallo de formateo o de sintaxis durante el procesamiento de un string JSON recibido, consultamos la función nativa: _____",
+    "opciones": [
+      "json_last_error()",
+      "error_get_last()",
+      "check_json_syntax()",
+      "is_null()"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Al usar GuzzleHttp, si el servidor externo contesta con un código HTTP de error de cliente o servidor (como 404 o 500), ¿qué excepción captura este fallo por defecto dentro del bloque try-catch?",
+    "opciones": [
+      "PDOException",
+      "GuzzleHttp\\Exception\\RequestException",
+      "Jaxon\\Exception\\CoreException",
+      "JsonException"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si queremos configurar el cliente de Guzzle para que NO lance excepciones automáticas ante respuestas con códigos HTTP de estado erróneos (como 400 o 500), debemos incluir la opción: '_____' => false",
+    "opciones": [
+      "exceptions",
+      "verify",
+      "http_errors",
+      "debug"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Qué librería de JavaScript, caracterizada por ser open-source y muy ligera, se introduce en la Unidad 7 para desplegar mapas interactivos?",
+    "opciones": [
+      "GoogleMapsSDK",
+      "Leaflet",
+      "OpenLayers",
+      "JaxonMap"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Con qué término técnico se conocen las pequeñas imágenes cuadradas en cuadrícula que Leaflet solicita dinámicamente para dar continuidad visual a un mapa?",
+    "opciones": [
+      "Layers",
+      "Markers",
+      "Popups",
+      "Teselas (tiles)"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para inicializar el objeto de mapa de Leaflet y fijar su centro de visualización geográfico y nivel de zoom, completamos la instrucción JavaScript: let map = L.map('mapa')._____( [37.38, -6.00], 13 );",
+    "opciones": [
+      "center",
+      "init",
+      "setView",
+      "locate"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Queremos crear una chincheta o marcador en unas coordenadas con Leaflet e inyectarlo en el mapa. Completa el fragmento de código JavaScript: L._____( [37.38, -6.00] ).addTo(map);",
+    "opciones": [
+      "popup",
+      "marker",
+      "tileLayer",
+      "pin"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Qué protocolo o estándar de la industria se estudia en este tema para posibilitar accesos delegados y autorizaciones seguras mediante tokens sin revelar contraseñas?",
+    "opciones": [
+      "OAuth2",
+      "BasicAuth",
+      "SAML",
+      "HTTPS Digest"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Cuando consumimos una API REST autorizada mediante Token de Portador (Bearer Token), ¿cuál es la estructura correcta para inyectar dicha credencial en las cabeceras con Guzzle?",
+    "opciones": [
+      "'query' => [ 'token' => $token ]",
+      "'headers' => [ 'Authorization' => 'Bearer ' . $token ]",
+      "'auth' => [ 'bearer', $token ]",
+      "'headers' => [ 'X-API-Key' => $token ]"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si un servicio web remoto requiere que guardemos y mantengamos vivas sus cookies de sesión en las sucesivas peticiones de Guzzle, ¿qué elemento debemos instanciar y pasar en la configuración?",
+    "opciones": [
+      "Un objeto CookieJar (o FileCookieJar)",
+      "Un array superglobal $_SESSION serializado",
+      "Una cabecera Content-Type de tipo multipart/form-data",
+      "Una opción 'verify' fijada en true"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Deseamos enviar un array asociativo transformándolo automáticamente en una cadena estructurada JSON (raw body) en una petición POST con Guzzle. Completa el hueco: $client->request('POST', $url, [ '_____' => $datos ]);",
+    "opciones": [
+      "form_params",
+      "multipart",
+      "body",
+      "json"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Por qué un script de procesamiento backend que recibe datos formateados en un JSON crudo no puede recopilarlos de forma ordinaria leyendo la superglobal $_POST?",
+    "opciones": [
+      "Porque JAXON borra el array $_POST antes de abrir los hilos asíncronos.",
+      "Porque $_POST solo mapea flujos de datos codificados bajo formatos estándar de formulario como application/x-www-form-urlencoded.",
+      "Porque los datos JSON requieren obligatoriamente de cifrado por certificados SSL.",
+      "Porque el protocolo HTTP impide el uso de superglobales en llamadas asíncronas."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para capturar la cadena de texto cruda JSON (raw body) que llega al cuerpo de la petición HTTP del servidor en el backend, abrimos el flujo de lectura especial: $json = file_get_contents('_____');",
+    "opciones": [
+      "php://output",
+      "php://stdin",
+      "php://input",
+      "php://buffer"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Dentro del ciclo de vida y despliegue coordinado de bases de datos, ¿qué diferencia funcional básica divide a una Migración de un Seeder?",
+    "opciones": [
+      "La migración construye las interfaces de Blade y el seeder crea las conexiones asíncronas de JAXON.",
+      "La migración define o modifica el esquema estructural de la base de datos (tablas), mientras que el seeder inyecta datos iniciales o de prueba.",
+      "El seeder compila el JavaScript cliente y la migración traduce objetos asociativos a XML.",
+      "No hay diferencias reales, representan términos sinónimos dentro de la API core de JAXON."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "En las explicaciones del profesor se menciona el concepto de ORM (como Eloquent). ¿Cuál es su cometido principal?",
+    "opciones": [
+      "Un motor de plantillas que renderiza marcas HTML en la pantalla del usuario.",
+      "Un mapeador objeto-relacional que asocia los registros de las tablas a objetos de programación en PHP para agilizar las operaciones de datos.",
+      "Un sistema de seguridad perimetral diseñado para detener inyecciones en peticiones AJAX.",
+      "Un gestor de paquetes de dependencias JavaScript alternativo a NPM o Bower."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Con el objetivo de respetar el patrón MVC y no mezclar la lógica de base de datos con la visualización en las funciones de JAXON, ¿qué buena práctica se implementó en la tarea?",
+    "opciones": [
+      "Escribir las cadenas de consulta relacionales inline directamente en el index.php.",
+      "Extraer las operaciones SQL relacionales a clases independientes de Modelo (como Pelicula o Genero).",
+      "Eliminar por completo el cargador vendor/autoload.php del proyecto.",
+      "Programar todas las interacciones de base de datos usando scripts manuales de fetch en JavaScript."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Al concatenar variables de texto de manera manual dentro de los parámetros URL de una petición HTTP string, ¿qué función de PHP codifica de forma segura los caracteres especiales y espacios? _____( $texto )",
+    "opciones": [
+      "base64_encode",
+      "json_encode",
+      "urlencode",
+      "trim"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "En el material de la tarea base del tema se implementa el método helper DB::doSQL(). ¿Qué tarea realiza principalmente en el backend?",
+    "opciones": [
+      "Inyectar mapas interactivos de Leaflet en la vista.",
+      "Encapsular y automatizar las rutinas repetitivas de prepare(), execute() y fetchAll() de la extensión PDO de manera segura contra inyecciones SQL.",
+      "Establecer túneles de comunicación SOAP asíncronos con APIs externas.",
+      "Compilar las opciones globales de configuración del core de JAXON."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Cuando ejecutamos una sentencia SQL de manipulación (como INSERT, UPDATE o DELETE) a través de la función DB::doSQL(), ¿qué valor devuelve de forma común?",
+    "opciones": [
+      "Un array asociativo con el contenido completo de la tabla alterada.",
+      "Un entero que cuantifica el número de filas o registros afectados por la operación.",
+      "Un objeto instanciado de tipo Jaxon\\Response\\Response.",
+      "Una cadena formateada en JSON con el esquema estructural de claves."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Tras insertar un registro en la base de datos relacional con PDO, queremos recuperar de inmediato el ID único incremental asignado de manera automática. ¿Qué método invocamos? $conexion->_____();",
+    "opciones": [
+      "getGeneratedKey",
+      "last_id",
+      "lastInsertId",
+      "getLastPrimaryKey"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Según las pautas del curso, ¿por qué los métodos de controlador del backend llevan añadidas las iniciales del alumno (por ejemplo, 'registrarPeliculaRMM')?",
+    "opciones": [
+      "Porque constituye un requisito sintáctico ineludible fijado por el compilador de JAXON-JS.",
+      "Para validar de manera fehaciente la autoría individual del estudiante en el desarrollo de la prueba frente a copias o plagios.",
+      "Para indicarle al framework que trabaje bajo una arquitectura estructurada orientada a Singletons.",
+      "Para activar de forma automatizada las funciones de geolocalización espacial de Leaflet."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para procesar un documento estructurado de tipo XML en PHP y extraer información de forma muy sencilla y directa, ¿qué extensión nativa orientada a objetos se recomienda?",
+    "opciones": [
+      "DOMDocument",
+      "XMLParserProcedural",
+      "SimpleXML",
+      "GuzzleXml"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Si tenemos los datos XML dentro de una variable de texto string en PHP, ¿qué función de la extensión SimpleXML empleamos para parsearla? $xml = _____( $cadenaXML );",
+    "opciones": [
+      "simplexml_load_file",
+      "simplexml_load_string",
+      "xml_decode",
+      "json_decode"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Asumiendo que $xml es un objeto de tipo SimpleXMLElement con varios elementos repetidos '<pelicula>', ¿cuál es la forma correcta de recorrerlos en PHP?",
+    "opciones": [
+      "for ($i=0; $i < $xml->length(); $i++)",
+      "while ($peli = $xml->getNextNode())",
+      "$xml->iterate('pelicula', function($peli))",
+      "foreach ($xml->pelicula as $peli)"
+    ],
+    "correcta": 4
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Qué archivo maestro situado en la raíz de nuestro proyecto web centraliza la declaración de dependencias, librerías externas y paquetes requeridos por la aplicación?",
+    "opciones": [
+      "composer.json",
+      "autoload.php",
+      "jaxon.config.json",
+      "package.json"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Para descargar y sincronizar en la carpeta local vendor todas las dependencias declaradas en un proyecto que acabamos de clonar, ¿qué comando ejecutamos por consola?",
+    "opciones": [
+      "composer init",
+      "composer install",
+      "composer update-core",
+      "php jaxon install"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Completa el espacio para incluir de forma correcta el script de autocarga de clases generado por Composer al principio de nuestra aplicación: require_once '_____/autoload.php';",
+    "opciones": [
+      "vendor",
+      "composer",
+      "core",
+      "jaxon"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "En la división estructural de JAXON, ¿cuál es la responsabilidad encomendada al componente de 'Frontend'?",
+    "opciones": [
+      "Procesar las consultas SQL relacionales directamente en el motor MySQL.",
+      "Capturar los eventos de interfaz del usuario en el navegador y disparar de forma transparente las funciones JavaScript con prefijo jaxon_ hacia el servidor.",
+      "Gestionar de forma remota los paquetes de dependencias con Composer.",
+      "Analizar sintácticamente cadenas de texto XML del ayuntamiento."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "¿Qué acción se ejecuta en la aplicación cliente de inmediato después de que el objeto Response se transforma en JSON y es transmitido de vuelta por HTTP al navegador?",
+    "opciones": [
+      "Se almacena de forma persistente en una base de datos local SQLite.",
+      "El motor de JavaScript de JAXON (Jaxon-JS) lee de forma secuencial los comandos para alterar selectivamente los elementos del DOM sin recargar la página.",
+      "Se fuerza de inmediato una recarga completa de toda la ventana del navegador.",
+      "Se detiene la ejecución del servidor web enviando un código de error de red."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "Queremos verificar si un input obligatorio (como el año de lanzamiento) contiene caracteres numéricos. Completa el fragmento de código condicional de JAXON:\nif ( _____( $datos['anio'] ) ) {\n  $response->alert('Error'); return $response;\n}",
+    "opciones": [
+      "filter_has_var",
+      "!is_numeric",
+      "empty",
+      "is_null"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "Unidad 7 - Repaso Tema 7 Cuarta Parte",
+    "pregunta": "A modo de síntesis teórica, ¿cuál es la ventaja primordial que aporta el empleo de una librería integradora de AJAX como JAXON en un desarrollo backend en PHP?",
+    "opciones": [
+      "Abstrae la comunicación asíncrona, permitiendo definir el comportamiento interactivo del DOM del navegador directamente desde métodos de PHP sin necesidad de codificar JavaScript manual complejo.",
+      "Sustituye de forma nativa el uso de hojas de estilo CSS en el lado del cliente.",
+      "Incrementa la velocidad de ancho de banda físico de la conexión a internet de los usuarios.",
+      "Elimina por completo la necesidad de implementar servidores HTTP tradicionales como Apache o Nginx."
+    ],
+    "correcta": 0
+  },
+  {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En el archivo setup de tu proyecto, necesitas indicarle a JAXON dónde está el archivo que procesará las peticiones. ¿Qué código falta en la siguiente línea?\n\n$jaxon = jaxon();\n$jaxon->setOption('core.request.uri', [_____]);",
+        "opciones": [
+            "BASE_URL . 'backend.php'",
+            "'frontend.php'",
+            "jaxon()->getScript()",
+            "'index.php'"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En el archivo backend.php, debes procesar la petición AJAX, pero antes debes comprobar si existe una petición válida. ¿Qué método falta?\n\nif($jaxon->[_____]())\n{\n    $jaxon->processRequest();\n}",
+        "opciones": [
+            "hasAjaxRequest",
+            "checkRequest",
+            "canProcessRequest",
+            "isReady"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En el index.php, necesitas obtener el código Javascript propio de la librería Jaxon-JS para inyectarlo en el HTML. ¿Qué código falta?\n\n$jaxonCss = $jaxon->getCss();\n$jaxonJs = $jaxon->[_____]();\n$jaxonScript = $jaxon->getScript();",
+        "opciones": [
+            "getJavascript",
+            "getJs",
+            "getLibrary",
+            "getFunctions"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Para poder llamar a la función 'listarPeliculasRMM' desde el navegador, primero debes registrarla en Jaxon. ¿Qué constante de Jaxon falta?\n\n$jaxon->register(Jaxon::[_____], 'listarPeliculasRMM');",
+        "opciones": [
+            "AJAX_METHOD",
+            "REGISTER_FUNCTION",
+            "CALLABLE_FUNCTION",
+            "EXPORT_JS"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Toda función registrada en JAXON (backend) debe retornar un objeto específico para poder enviar comandos al navegador. ¿Qué código falta?\n\nfunction funcion1($fechaYhora) {\n    $response = [_____];\n    // ... \n    return $response;\n}",
+        "opciones": [
+            "new AJAX()",
+            "new Response()",
+            "json_encode()",
+            "new stdClass()"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En tu función auxiliar 'logMessage', quieres añadir un texto AL PRINCIPIO del contenedor de logs sin borrar lo anterior. ¿Qué método de JAXON utilizas?\n\nfunction logMessage(Response $r, mixed $dato) {\n    $r->[_____]('log', 'innerHTML', '<div>' . $dato . '</div>');\n}",
+        "opciones": [
+            "assign",
+            "append",
+            "prepend",
+            "clear"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Quieres reemplazar todo el contenido de la tabla de películas por el nuevo HTML generado. ¿Qué método falta?\n\n$htmlPeliculas = \"<table><tbody>...\";\n$response->[_____]('listaPeliculas', 'innerHTML', $htmlPeliculas);",
+        "opciones": [
+            "assign",
+            "prepend",
+            "write",
+            "append"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Tras insertar una película con éxito, quieres que JAXON ordene al navegador ejecutar automáticamente la función Javascript que recarga la lista. ¿Qué método de Response usas?\n\n$response->[_____]('jaxon_listarPeliculasRMM();');",
+        "opciones": [
+            "execute",
+            "eval",
+            "call",
+            "script"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Al recibir resultados de la API de OMDB, necesitas hacer visible el contenedor que estaba oculto usando estilos CSS desde JAXON. ¿Qué parámetro falta?\n\n$response->assign('peliculasOMDB_encontradas', '[_____]', 'block');",
+        "opciones": [
+            "class",
+            "visibility",
+            "style.display",
+            "css"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Antes de validar el formulario, usas un bucle para vaciar los mensajes de error mostrados previamente en la interfaz. ¿Qué método falta?\n\nforeach($campos as $campo) {\n    $response->[_____]($campo.'_errores', 'innerHTML', '');\n}",
+        "opciones": [
+            "clear",
+            "assign",
+            "delete",
+            "remove"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En el index.php, usas el Request Factory de JAXON para generar un botón que envíe todos los datos de un formulario al backend. ¿Qué código falta para el Parameter Factory?\n\n<input type=\"button\" onclick=\"<?=rq()->call('registrarPeliculaRMM', [_____])?>\" value=\"Añadir\">",
+        "opciones": [
+            "pm()->form('nuevaPelicula')",
+            "jaxon.getForm('nuevaPelicula')",
+            "pm()->input('nuevaPelicula')",
+            "rq()->form('nuevaPelicula')"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Para enviar un único dato HTML crudo desde la vista hacia una función JAXON en el backend usando fábricas, ¿qué método de Parameter Factory (pm) usas?\n\n<?=rq()->call('funcion2', pm()->[_____]('RMM'))?>",
+        "opciones": [
+            "value",
+            "html",
+            "string",
+            "text"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En el formulario HTML, debes evitar que al pulsar 'Enter' o 'Submit' la página se recargue tradicionalmente, permitiendo que AJAX haga el trabajo. ¿Qué instrucción falta?\n\n<form id=\"nuevaPelicula\" onSubmit=\"[_____]\">",
+        "opciones": [
+            "preventDefault();",
+            "return false;",
+            "jaxon.stop();",
+            "event.cancel();"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Si has registrado en PHP una función llamada 'borrarPeliculaRMM', ¿cómo se llama exactamente la función generada por la librería para invocarla desde Javascript?\n\n<button onclick='if(confirm(\"...\")) { [_____](id); }'>Borrar</button>",
+        "opciones": [
+            "ajax_borrarPeliculaRMM",
+            "call_borrarPeliculaRMM",
+            "jaxon_borrarPeliculaRMM",
+            "php_borrarPeliculaRMM"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En tu script final de index.php, llamas a la carga inicial de las películas. Dado que la función PHP no requiere parámetros, ¿qué le falta a la llamada Javascript?\n\njaxon_listarPeliculasRMM[_____];",
+        "opciones": [
+            "(null)",
+            "(false)",
+            "()",
+            "(this)"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Para evitar que Guzzle lance excepciones PHP si la API remota devuelve un error 404 y poder leer el status code manualmente, ¿qué opción debes añadir al instanciar el cliente?\n\n$client = new \\GuzzleHttp\\Client([[_____] => false]);",
+        "opciones": [
+            "'throw_exceptions'",
+            "'http_errors'",
+            "'catch_errors'",
+            "'verify'"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En Guzzle, utilizas un método genérico para ejecutar la petición HTTP indicando el verbo 'GET' como primer parámetro. ¿Cuál es ese método?\n\n$res = $client->[_____]('GET', $url);",
+        "opciones": [
+            "send",
+            "fetch",
+            "call",
+            "request"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Tras realizar la petición a OMDB, quieres procesar el cuerpo SOLO si la respuesta del servidor fue correcta (HTTP 200 OK). ¿Qué método de Guzzle usas?\n\nif ($res->[_____]() == 200) { \n    // Procesar datos...\n}",
+        "opciones": [
+            "getStatus",
+            "getHttpCode",
+            "getStatusCode",
+            "getCode"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Una vez confirmado el código 200 en Guzzle, necesitas extraer el contenido recibido para pasarlo a json_decode. ¿Qué método usas para obtener el cuerpo?\n\n$body = $res->[_____]();\n$datos = json_decode($body, true);",
+        "opciones": [
+            "getContent",
+            "getText",
+            "getBody",
+            "getData"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Después de decodificar el JSON de la API de OMDB, quieres asegurarte de que el formato recibido no contenía errores de sintaxis antes de usar los datos. ¿Qué función de PHP llamas?\n\nif ([_____]() !== JSON_ERROR_NONE) {\n    logMessage($response, \"Formato inválido\");\n}",
+        "opciones": [
+            "json_check_errors",
+            "json_last_error",
+            "json_validate",
+            "is_valid_json"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Para enviar un título de película con espacios o acentos en una URL (API OMDB), debes evitar que la cadena se rompa. ¿Qué función PHP falta?\n\n$url = \"http://www.omdbapi.com/?apikey={$apikey}&s=\" . [_____]($titulo);",
+        "opciones": [
+            "htmlspecialchars",
+            "utf8_encode",
+            "base64_encode",
+            "urlencode"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En tus modelos, utilizas una clase genérica DB para obtener el objeto de conexión a la base de datos MySQL. ¿Qué método estático falta en la llamada?\n\n$conexion = DB::[_____]();\nif (!$conexion) { return []; }",
+        "opciones": [
+            "getConn",
+            "connect",
+            "getInstance",
+            "open"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Al insertar un registro usando tu modelo Pelicula, pasas un array con los valores que sustituirán las interrogaciones (?) de la sentencia SQL. ¿Qué array falta?\n\n$sql = \"INSERT INTO peliculas (...) VALUES (?, ?, ?, ?, ?, ?)\";\n$filas = DB::doSQL($conexion, $sql, [_____]);",
+        "opciones": [
+            "[$titulo, $genero, $direccion, $duracion, $argumento, $anio]",
+            "$_POST",
+            "$_GET",
+            "json_encode($formulario)"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Tras un INSERT exitoso, necesitas devolver el ID autogenerado por la base de datos para registrarlo en el LOG de tu tarea. ¿Qué método del objeto de conexión PDO utilizas?\n\nif ($filasAfectadas > 0) {\n    return $conexion->[_____]();\n}",
+        "opciones": [
+            "insert_id",
+            "lastInsertId",
+            "getGeneratedId",
+            "lastId"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En la función 'borrarPeliculaRMM', el enunciado pide verificar que el ID recibido sea obligatoriamente un número antes de intentar borrar. ¿Qué función PHP usas?\n\nif (![_____]($id)) {\n    logMessage($response, \"El ID no es numérico\");\n    return $response;\n}",
+        "opciones": [
+            "is_int",
+            "is_number",
+            "is_numeric",
+            "ctype_digit"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Imagina que consumes una API externa usando Guzzle y necesitas enviar la información codificada directamente como un JSON en el cuerpo del POST. ¿Qué clave de array debes usar?\n\n$client->post($url, [[_____] => $datosAEnviar]);",
+        "opciones": [
+            "'form_params'",
+            "'json'",
+            "'body'",
+            "'raw_data'"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Usando la librería de mapas Leaflet, al cargar las teselas de OpenStreetMap, las condiciones de uso exigen que se añada el texto de copyright. ¿Qué opción debes rellenar?\n\nL.tileLayer(url, {\n    [_____]: '&copy; OpenStreetMap'\n}).addTo(map);",
+        "opciones": [
+            "copyright",
+            "footer",
+            "attribution",
+            "credits"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Si añades un marcador en Leaflet y quieres que al hacerle clic muestre un globo de texto informativo (Catedral de Cádiz), ¿qué método encadenas?\n\nlet marcador = L.marker([lat, lng]).addTo(map);\nmarcador.[_____]('Catedral de Cádiz');",
+        "opciones": [
+            "setTooltip",
+            "bindPopup",
+            "addText",
+            "showInfo"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En Javascript puro, para seleccionar el botón de borrado buscando dentro del formulario por su id y tipo de input usando selectores CSS (como se muestra en el temario), ¿qué usas?\n\ndocument.[_____]('#borrarnumero input[type=button]').onclick = function() { ... };",
+        "opciones": [
+            "querySelector",
+            "getElementById",
+            "getElementsByTagName",
+            "find"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Para prevalidar datos o enviar un formulario tradicional a través de fetch, Javascript cuenta con un objeto nativo que recopila todo. ¿Qué código le falta al constructor?\n\nlet formData = new FormData([_____]);",
+        "opciones": [
+            "this.form",
+            "document.getElementById('form1')",
+            "jaxon.getForm('form1')",
+            "document.form1"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Si quieres consumir una URL que devuelve un documento XML (como un RSS) usando la extensión que viene habilitada por defecto en PHP, ¿qué función invocas?\n\n$xml = [_____]('http://ejemplo.com/rss');",
+        "opciones": [
+            "simplexml_load_string",
+            "xml_parse",
+            "simplexml_load_file",
+            "new DOMDocument"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Una vez definidos los scripts de JAXON en PHP, debes inyectarlos en tu documento HTML. ¿Cómo incluyes la librería base que obtuviste previamente con getJs()?\n\n<?php echo [_____] ?>",
+        "opciones": [
+            "$jaxonScript",
+            "$jaxonCss",
+            "$jaxonJs",
+            "$jaxon->lib()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En la respuesta JSON de OMDB, el estado de la búsqueda viene en el atributo 'Response'. ¿Cómo verificas en PHP que devolvió verdadero (True) usando el array asociativo?\n\nif (isset($datos['Response']) && [_____] == 'True') {\n    // Mostrar películas\n}",
+        "opciones": [
+            "$datos->Response",
+            "$datos['Response']",
+            "$response->isTrue()",
+            "json_decode('Response')"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Al prevalidar en Javascript puro usando expresiones regulares, ¿qué método nativo del objeto string utilizas para comprobar que solo hay números?\n\nif (!edad.[_____](/^[1-9]+$/)) { errores=true; }",
+        "opciones": [
+            "test",
+            "match",
+            "check",
+            "verify"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Usando Guzzle, quieres hacer una petición GET pero necesitas enviar la API Key adjunta en la propia URL (como parámetro query string). ¿Qué clave usas en las opciones?\n\n$client->get($url, [[_____] => ['api_key' => $apiKey]]);",
+        "opciones": [
+            "'url_params'",
+            "'get_data'",
+            "'query'",
+            "'parameters'"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En una petición AJAX usando el API Fetch moderno, el primer '.then()' suele procesar la respuesta para devolver el cuerpo en formato JSON y pasarlo al siguiente '.then()'. ¿Qué código falta?\n\nfetch(url).then(response => [_____])\n         .then(data => console.log(data));",
+        "opciones": [
+            "response.json()",
+            "JSON.parse(response)",
+            "response.body()",
+            "response.text()"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En Jaxon, si quieres eliminar o dejar completamente vacío el contenido HTML de un 'div' localizado por su 'id', puedes usar un método rápido de la clase Response. ¿Cuál es?\n\n$response->[_____]('listaPeliculas');",
+        "opciones": [
+            "empty",
+            "delete",
+            "clear",
+            "remove"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Si tienes JQuery cargado en el frontend, Jaxon te permite usar un alias para interactuar directamente con selectores CSS en el servidor. ¿Qué método de Response usas?\n\n$response->[_____]('#numero')->val(90);",
+        "opciones": [
+            "jquery",
+            "jq",
+            "selector",
+            "find"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Si tu script PHP recibe una petición tipo DELETE o PUT con una carga útil codificada como un JSON crudo (raw), ¿cómo debes leer el flujo de entrada?\n\n$datos = json_decode([_____]('php://input'));",
+        "opciones": [
+            "$_POST",
+            "fread",
+            "file_get_contents",
+            "filter_input"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En Javascript puro (sin usar fetch o jQuery), ¿cuál es el objeto que se debe instanciar para realizar una petición AJAX de manera tradicional?\n\nlet xhr = new [_____]();\nxhr.open('GET', 'archivo.php');",
+        "opciones": [
+            "XMLHttpRequest",
+            "AjaxRequest",
+            "HTTPRequest",
+            "JaxonRequest"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Para autenticarte en un servicio externo con Guzzle usando 'HTTP Basic', debes enviar las credenciales codificadas en Base64 en una cabecera HTTP específica. ¿Cuál es la clave de esa cabecera?\n\n$client->request('GET', $url, ['headers' => [\n    '[_____]' => 'Basic ' . $auth\n]]);",
+        "opciones": [
+            "WWW-Authenticate",
+            "Authorization",
+            "Auth-Token",
+            "Basic-Auth"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Si un servicio web remoto implementa autenticación HTTP Basic en PHP, ¿en qué variable superglobal automática se recibe el 'nombre de usuario' introducido?\n\n$usuario = $_SERVER['[_____]'];",
+        "opciones": [
+            "HTTP_AUTH_USER",
+            "PHP_AUTH_USER",
+            "REMOTE_USER",
+            "AUTH_USERNAME"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En tu tarea, procesaste la URL del póster devuelto por OMDB. Si existía imagen, creabas una etiqueta <img> inyectando la URL en el 'src'. ¿Qué variable falta?\n\n$poster = ($peli['Poster'] != 'N/A') ? \"<img src='[_____]' ...>\" : \"Sin imagen\";",
+        "opciones": [
+            "{$peli['Url']}",
+            "{$peli['Image']}",
+            "{$peli['Poster']}",
+            "{$poster}"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "El 'Parameter Factory' de JAXON (llamado usando pm()) permite generar JS dinámico para recuperar datos del HTML. ¿Qué método usas para obtener el valor de un '<input>' por su ID?\n\n<?=rq()->call('borrarPelicula', pm()->[_____]('numeroABorrar'))?>",
+        "opciones": [
+            "value",
+            "val",
+            "input",
+            "get"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Al leer un documento XML procesado con SimpleXML, quieres iterar por todas las etiquetas <libro> que están dentro del elemento principal. ¿Qué sintaxis del foreach falta?\n\nforeach ($xml->libro [_____] $libro) { \n    echo $libro->titulo;\n}",
+        "opciones": [
+            "=>",
+            "as",
+            "in",
+            "of"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "Usando el 'Request Factory' de JAXON (rq()) incrustado en HTML, puedes añadir un cuadro de confirmación nativo que cancelará la llamada si el usuario dice 'No'. ¿Qué método encadenas?\n\n<?=rq()->call('borrar')->[_____]('¿Estás seguro?')?>",
+        "opciones": [
+            "alert",
+            "confirm",
+            "dialog",
+            "verify"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En jQuery, para interceptar el envío de un formulario (submit) y detener el comportamiento tradicional del navegador de recargar la página, debes retornar un booleano. ¿Qué instrucción usas?\n\n$('#form1').submit(function() { \n    // código ajax \n    [_____]; \n});",
+        "opciones": [
+            "return false",
+            "return true",
+            "break",
+            "preventDefault()"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En Javascript puro (ECMAScript), ¿cuál es el método que se utiliza para añadir un nuevo elemento al FINAL de una estructura dinámica Array?\n\nlet a = [1-3];\na.[_____]('D');",
+        "opciones": [
+            "append",
+            "add",
+            "insert",
+            "push"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 quinta parte",
+        "pregunta": "En PHP, cuando obtienes el Body de la respuesta de Guzzle, este devuelve un objeto 'Stream'. Si quieres forzar que ese Stream se convierta en un texto procesable (string), ¿qué casteo u operación aplicas?\n\n$textoRecibido = [_____] $response->getBody();",
+        "opciones": [
+            "(string)",
+            "(text)",
+            "(json)",
+            "parse_str"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En Javascript, deseas añadir un nuevo elemento al final de un array existente. ¿Qué método falta en el siguiente código?\n\nlet a = [1-3];\na.[_____]('D');",
+        "opciones": [
+            "add",
+            "push",
+            "append",
+            "insert"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para acceder a un elemento del DOM mediante su atributo 'id' usando Javascript puro, ¿qué función utilizas?\n\nlet divSalida = document.[_____]('salida');",
+        "opciones": [
+            "querySelectorId",
+            "getElementByName",
+            "getElementById",
+            "findId"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Si quieres utilizar un selector CSS avanzado en Javascript puro para seleccionar un <span> dentro de un div con clase 'nombreClase', ¿qué método usas?\n\ndocument.[_____]('div.nombreClase span').innerHTML = 'ejemplo';",
+        "opciones": [
+            "querySelector",
+            "getElementsByClassName",
+            "getSelector",
+            "findCSS"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Utilizando la librería JQuery, ¿qué símbolo se utiliza por defecto como alias para invocar a sus funciones y seleccionar elementos del DOM?\n\nlet lista1 = [_____]('#ejemplo');",
+        "opciones": [
+            "jQuery()",
+            "J()",
+            "$",
+            "_"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En JQuery, ¿qué método encadenado debes usar para añadir una nueva clase CSS a un elemento previamente seleccionado?\n\n$('#salida').[_____]('caja');",
+        "opciones": [
+            "setClass",
+            "addClass",
+            "css",
+            "appendClass"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En JQuery, si deseas insertar contenido HTML justo al FINAL del contenido actual de un contenedor, ¿qué método utilizas?\n\n$('#salida').[_____]('<B>valor</B>');",
+        "opciones": [
+            "insertAfter",
+            "push",
+            "append",
+            "html"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Al interceptar el envío de un formulario en Javascript (evento onsubmit) para hacer una petición AJAX, necesitas recopilar todos sus datos. ¿Qué pasas al constructor de FormData si estás dentro de la propia función del evento?\n\ndocument.getElementById('form1').onsubmit = function() {\n  let formData = new FormData([_____]);\n};",
+        "opciones": [
+            "document",
+            "this",
+            "form1",
+            "self"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Configurando una petición AJAX antigua con XMLHttpRequest, ¿qué método establece el tipo de verbo HTTP y la URL de destino?\n\nvar xmlhttp = new XMLHttpRequest();\nxmlhttp.[_____]('GET', 'backend/listarnumeros.php');",
+        "opciones": [
+            "start",
+            "init",
+            "open",
+            "connect"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para verificar que una petición XMLHttpRequest ha finalizado por completo, ¿qué constante se evalúa en la propiedad readyState?\n\nif (this.readyState == XMLHttpRequest.[_____] && this.status == 200) { ... }",
+        "opciones": [
+            "FINISHED",
+            "DONE",
+            "COMPLETE",
+            "OK"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Usando el API moderno fetch() en Javascript, ¿en qué propiedad del objeto de configuración indicas el verbo HTTP a usar?\n\nfetch('backend/nuevonumero.php', {\n  [_____]: 'POST',\n  body: formData\n})",
+        "opciones": [
+            "type",
+            "action",
+            "method",
+            "verb"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Haciendo uso del método abreviado de JQuery para peticiones POST, ¿qué método encadenado gestiona la respuesta si la petición AJAX tuvo éxito?\n\n$.post('backend.php', datos).[_____](function (respuesta) {\n  console.log(respuesta);\n});",
+        "opciones": [
+            "success",
+            "then",
+            "done",
+            "ok"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En un servicio REST, si deseas enviar los datos codificados directamente como JSON crudo desde Javascript, ¿qué cabecera debes configurar obligatoriamente en tu petición?\n\n[_____]: application/json",
+        "opciones": [
+            "Data-Type",
+            "Accept",
+            "Content-Type",
+            "X-Requested-With"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para inicializar el objeto base de JAXON en tu archivo setup.php, usas la función auxiliar. ¿Qué código falta?\n\n$jaxon = [_____]();",
+        "opciones": [
+            "new Jaxon",
+            "jaxon",
+            "JaxonFactory",
+            "getJaxon"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Configurando JAXON, debes decirle a la librería qué archivo PHP atenderá las peticiones AJAX en el servidor. ¿Qué propiedad ajustas en setOption?\n\n$jaxon->setOption('[_____]', 'backend.php');",
+        "opciones": [
+            "core.request.uri",
+            "ajax.backend.url",
+            "server.script.path",
+            "jaxon.ajax.handler"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En la función 'logMessage' de tu tarea, usas un método del objeto Response de JAXON para inyectar el texto AL PRINCIPIO de la caja de logs. ¿Cuál es?\n\n$r->[_____]('log', 'innerHTML', '<div>Texto</div>');",
+        "opciones": [
+            "assign",
+            "append",
+            "prepend",
+            "insertFirst"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En tu tarea, tras guardar una película y borrar los mensajes de error visuales, debes vaciar el input HTML para que el usuario pueda escribir de nuevo. ¿Qué atributo cambias con assign?\n\n$response->assign($campo, '[_____]', '');",
+        "opciones": [
+            "innerHTML",
+            "text",
+            "value",
+            "placeholder"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Generando un botón en HTML con PHP y JAXON, quieres recopilar automáticamente TODOS los datos del formulario 'nuevaPelicula'. ¿Qué método de la factoría 'pm()' usas?\n\n<?=rq()->call('registrarPeliculaRMM', pm()->[_____]('nuevaPelicula'))?>",
+        "opciones": [
+            "serialize",
+            "form",
+            "inputs",
+            "getValues"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Antes de validar el formulario de películas, utilizas un bucle para limpiar visualmente las etiquetas 'span' de error. ¿Qué valor envías al innerHTML?\n\nforeach($campos as $campo) {\n  $response->assign($campo.'_errores', 'innerHTML', [_____]);\n}",
+        "opciones": [
+            "null",
+            "false",
+            "''",
+            "0"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Al generar un botón de borrado con JAXON (Request Factory), ¿qué método encadenas para que aparezca una alerta nativa preguntando al usuario si está seguro, deteniendo la petición si cancela?\n\n<?=rq()->call('borrarPeliculaRMM', 5)->[_____]('¿Seguro que deseas borrarla?')?>",
+        "opciones": [
+            "alert",
+            "confirm",
+            "prompt",
+            "verify"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Al usar el cliente HTTP Guzzle en tu función de buscar películas en OMDB, omites que PHP lance excepciones ante códigos 404 configurando el cliente. ¿Qué clase instancias?\n\n$client = new \\[_____](['http_errors' => false]);",
+        "opciones": [
+            "GuzzleHttp\\Request",
+            "GuzzleHttp\\Client",
+            "GuzzleHttp\\Connection",
+            "GuzzleHttp\\Api"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para realizar la consulta a la API remota de OMDB, debes llamar a un método del cliente Guzzle indicando el verbo HTTP (GET) y la URL. ¿Qué método es?\n\n$res = $client->[_____]('GET', $url);",
+        "opciones": [
+            "send",
+            "fetch",
+            "request",
+            "call"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Tras una petición HTTP exitosa con Guzzle, extraes el cuerpo de la respuesta y luego lo transformas a un array PHP asociativo con decodificación JSON. ¿Qué método usas para extraer el cuerpo?\n\n$datos = json_decode($res->[_____](), true);",
+        "opciones": [
+            "getText",
+            "getBody",
+            "getContents",
+            "getJson"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Tras usar json_decode(), aplicas una validación de seguridad para confirmar que el JSON recibido de la API de OMDB no está corrupto o mal formado. ¿Qué función de PHP utilizas?\n\nif ([_____]() !== JSON_ERROR_NONE) { logMessage(...); }",
+        "opciones": [
+            "json_check_errors",
+            "is_valid_json",
+            "json_validate",
+            "json_last_error"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para insertar el título introducido por el usuario en la URL de OMDB, debes asegurarte de codificar los espacios y caracteres especiales de forma segura. ¿Qué función nativa usas?\n\n$url = 'http://www.omdbapi.com/?apikey=...&s=' . [_____]($titulo);",
+        "opciones": [
+            "base64_encode",
+            "urlencode",
+            "htmlspecialchars",
+            "utf8_encode"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En tu función registrarPeliculaRMM, lo primero que haces es sanear los datos del formulario eliminando los espacios en blanco sobrantes a izquierda y derecha. ¿Qué función usas?\n\n$titulo = [_____]($formulario['titulo'] ?? '');",
+        "opciones": [
+            "strip_tags",
+            "trim",
+            "clean",
+            "htmlspecialchars"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En tu modelo PDO (Pelicula::insertar), una vez ejecutado el INSERT exitosamente, devuelves el ID autonumérico que MySQL le ha asignado al registro. ¿Qué método de la conexión llamas?\n\nreturn $conexion->[_____]();",
+        "opciones": [
+            "insert_id",
+            "lastId",
+            "lastInsertId",
+            "getGeneratedId"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En Pelicula::borrar, la consulta SQL utiliza consultas preparadas para evitar Inyección SQL. ¿Qué comodín pones en la sentencia para vincular luego el parámetro?\n\n$sql = 'DELETE FROM peliculas WHERE id = [_____]';",
+        "opciones": [
+            "?",
+            ":id",
+            "%s",
+            "$1"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Construyendo las opciones del `<select>` de géneros mediante PHP, interpolas variables dentro de comillas dobles. ¿Qué variable usas para imprimir el texto visible del género?\n\n$htmlGeneros .= \"<option value='{$genero['id']}'>[_____]</option>\";",
+        "opciones": [
+            "{$genero['nombre']}",
+            "{$genero['value']}",
+            "{$genero['text']}",
+            "{$genero['titulo']}"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Iniciando un mapa con Leaflet en un div preparado en el HTML, utilizas el objeto global 'L'. ¿Qué método crea la instancia del mapa pasándole el ID del contenedor?\n\nvar map = L.[_____]('map');",
+        "opciones": [
+            "createMap",
+            "init",
+            "map",
+            "new"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En Leaflet, para decirle al mapa de dónde debe cargar las imágenes (teselas) de OpenStreetMap, debes crear la capa y añadirla. ¿Qué función genera esta capa?\n\nL.[_____](osm_tile_template, { attribution: '&copy; OpenStreetMap' }).addTo(map);",
+        "opciones": [
+            "addLayer",
+            "tileLayer",
+            "imageLayer",
+            "mapLayer"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para centrar el mapa de Leaflet en unas coordenadas concretas (latitud y longitud) con un zoom predeterminado, se utiliza el siguiente método:\n\nmap.[_____]([latitud, longitud], zoom);",
+        "opciones": [
+            "setCenter",
+            "setView",
+            "focus",
+            "locate"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Al instanciar un marcador en Leaflet, si deseas que al pulsarlo se despliegue un globo con texto informativo, le vinculas un popup con el siguiente método:\n\nmarker.[_____]('Catedral de Cádiz');",
+        "opciones": [
+            "addTooltip",
+            "setInfo",
+            "showText",
+            "bindPopup"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Al autenticarte en una API REST externa que exige 'HTTP Basic', debes enviar el usuario y contraseña codificados en Base64 en las cabeceras usando Guzzle. ¿Qué palabra precede a la cadena en la cabecera?\n\n$headers = ['Authorization' => '[_____] ' . base64_encode($u.':'.$p)];",
+        "opciones": [
+            "Bearer",
+            "Token",
+            "Basic",
+            "Digest"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Si un servicio web remoto te autentica a través de sesiones en lugar de Tokens, el servidor PHP almacena los datos en la variable superglobal asociada. ¿Cuál es?\n\n[_____]['auth'] = $user;",
+        "opciones": [
+            "$_COOKIE",
+            "$_SERVER",
+            "$_SESSION",
+            "$_POST"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para que Guzzle almacene automáticamente las cookies de sesión devueltas por un servidor (como PHPSESSID) y las reenvíe en las siguientes llamadas, se instancia la siguiente clase:\n\n$jar = new \\GuzzleHttp\\Cookie\\[_____];",
+        "opciones": [
+            "CookieJar",
+            "SessionManager",
+            "CookieStore",
+            "SessionJar"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Usando Guzzle para hacer una petición POST a una API REST, si deseas que los datos del array asociativo `$datosNuevoMonumento` se codifiquen automáticamente a JSON, usas esta clave en el array de opciones:\n\n$options = ['cookies' => $jar, '[_____]' => $datosNuevoMonumento];",
+        "opciones": [
+            "form_params",
+            "body",
+            "raw",
+            "json"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para procesar un feed RSS (que es XML) desde un string o un archivo de forma nativa en PHP convirtiéndolo en un objeto fácilmente iterable, se utiliza la función:\n\n$xml = [_____]($cadena_o_archivo);",
+        "opciones": [
+            "simplexml_load_string",
+            "xml_parse",
+            "DOMDocument_load",
+            "json_decode"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En un objeto de la clase SimpleXMLElement de PHP, si el documento XML contiene múltiples nodos `<libro>`, puedes iterarlos de forma sencilla con un foreach. ¿Cómo referencias esos nodos?\n\nforeach ($xml->[_____] as $libro)",
+        "opciones": [
+            "nodes('libro')",
+            "libro",
+            "getChildren('libro')",
+            "elements"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Si configuras tu propio script PHP para que proteja los recursos solicitando autenticación HTTP Basic al navegador, la contraseña tecleada por el usuario llega automáticamente a PHP a través de:\n\n$pass = $_SERVER['[_____]'];",
+        "opciones": [
+            "PHP_AUTH_PW",
+            "HTTP_PASSWORD",
+            "AUTH_PASS",
+            "REMOTE_PASS"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Cuando tu API REST recibe una petición PUT o DELETE y los datos vienen codificados en el cuerpo del mensaje como JSON crudo (en lugar de form-urlencoded), ¿de dónde debe leerlos PHP?\n\n$datos = json_decode(file_get_contents('[_____]'));",
+        "opciones": [
+            "php://input",
+            "$_POST",
+            "php://stdin",
+            "$_JSON"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En Javascript, la propiedad length sirve para conocer el número de elementos de un array. ¿Cómo se utiliza en el código?\n\nlet longitudDeArray = a.[_____];",
+        "opciones": [
+            "size()",
+            "count()",
+            "length",
+            "getLength()"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Para realizar la consulta en la API de OMDB, debías incrustar tu propia API Key en la URL como un parámetro de consulta (Query String). ¿Cuál es el nombre exacto de ese parámetro según tu código?\n\n$url = 'http://www.omdbapi.com/?[_____]={$apikey}&s=Batman';",
+        "opciones": [
+            "key",
+            "token",
+            "apikey",
+            "auth"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Al configurar una petición GET con Guzzle en la que debes enviar cabeceras personalizadas (como tokens de autenticación), utilizas un array de opciones. ¿Qué clave principal envuelve a las cabeceras?\n\n$response = $clienteHTTP->request('GET', $url, ['[_____]' => $headers]);",
+        "opciones": [
+            "http_headers",
+            "head",
+            "auth",
+            "headers"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Es una buena práctica englobar las peticiones Guzzle en un bloque Try-Catch para gestionar caídas del servidor remoto o errores 404/500 no silenciados. ¿Qué tipo de excepción específica capturas?\n\ncatch (GuzzleHttp\\Exception\\[_____] $e)",
+        "opciones": [
+            "ConnectionError",
+            "HttpException",
+            "RequestException",
+            "GuzzleException"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Si un usuario no envía credenciales válidas a tu API protegida con HTTP Basic, debes responderle exigiendo autenticación. ¿Qué cabecera HTTP debes forzar con la función header() en PHP?\n\nheader('[_____]: Basic realm=\"APP\"');",
+        "opciones": [
+            "WWW-Authenticate",
+            "Authorization-Required",
+            "HTTP-Auth",
+            "Request-Auth"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En Javascript puro, para pre-validar que un input de texto (como la edad) contenga exclusivamente números, se suele usar una expresión regular. ¿Qué método del String ejecuta esta comprobación?\n\nif (!edad.[_____](/^[1-9]+$/)) { error = true; }",
+        "opciones": [
+            "test",
+            "check",
+            "match",
+            "verify"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En el script backend.php de JAXON, justo después de comprobar si hay una petición válida entrante, debes ordenar a la librería que despache la función. ¿Qué método invocas?\n\nif(jaxon()->canProcessRequest()) { jaxon()->[_____](); }",
+        "opciones": [
+            "execute",
+            "run",
+            "processRequest",
+            "handle"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "En los modelos (como Pelicula o Genero) de la tarea, en caso de fallo al instanciar la conexión con PDO, dejas constancia en el log de PHP utilizando un método de tu clase DB. ¿Cuál es?\n\nerror_log(DB::[_____]());",
+        "opciones": [
+            "fetchError",
+            "getLastError",
+            "errorInfo",
+            "getPDOError"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Tal y como ha recalcado el profesor, ¿qué instrucción esencial de la herramienta de consola de dependencias de PHP se debe ejecutar para instalar Jaxon según lo definido en el archivo json?\n\ncomposer [_____] jaxon-php/jaxon-core:~4.1",
+        "opciones": [
+            "add",
+            "install",
+            "download",
+            "require"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "repaso tema 7 sexta parte",
+        "pregunta": "Si el cliente web manda una petición AJAX a PHP pero Jaxon no ha registrado ninguna función manejadora en el servidor, ¿qué ocurre con el objeto de respuesta?\n\njaxon()->register(Jaxon::[_____], 'listarPeliculasRMM');",
+        "opciones": [
+            "AJAX_FUNCTION",
+            "REGISTER_METHOD",
+            "CALLABLE_FUNCTION",
+            "EXPORT_JS"
+        ],
+        "correcta": 2
+    }
 
 
 

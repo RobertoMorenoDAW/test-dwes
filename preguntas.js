@@ -15657,6 +15657,116 @@ const BBDD_PREGUNTAS = [
             "EXPORT_JS"
         ],
         "correcta": 2
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Dado el siguiente código de la migración:\n\nSchema::create('criticas', function (Blueprint $table) {\n    $table->id();\n    $table->integer('valoracion');\n    $table->tinyText('comentario');\n    $table->foreignId('pelicula')->constrained('peliculas')->onDelete('cascade')->onUpdate('cascade');\n    $table->timestamps();\n});\n\n¿Qué tipo de campo y con qué propósito se genera al ejecutar la instrucción `$table->id();`? [1, 2]",
+        "opciones": [
+            "Crea un campo 'id' de texto para almacenar el DNI del usuario.",
+            "Crea un campo llamado 'id' que actúa como clave primaria autoincremental de la tabla.",
+            "Crea una clave foránea genérica llamada 'id'.",
+            "Crea un identificador único global (UUID) de 36 caracteres."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "En base al siguiente fragmento de código:\n\nSchema::create('criticas', function (Blueprint $table) {\n    $table->id();\n    $table->integer('valoracion');\n    $table->tinyText('comentario');\n    $table->foreignId('pelicula')->constrained('peliculas')->onDelete('cascade')->onUpdate('cascade');\n    $table->timestamps();\n});\n\n¿Qué indica la instrucción `constrained('peliculas')` encadenada a `$table->foreignId('pelicula')`? [1, 3]",
+        "opciones": [
+            "Renombra la columna de 'pelicula' a 'peliculas'.",
+            "Obliga a que la columna 'pelicula' no pueda quedar vacía (NOT NULL).",
+            "Establece una restricción de clave foránea que vincula el campo 'pelicula' con la clave primaria de la tabla 'peliculas'.",
+            "Comprueba que la tabla 'peliculas' esté vacía antes de insertar una crítica."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Observa el siguiente código donde se establecen las claves foráneas:\n\n$table->foreignId('pelicula')->constrained('peliculas')->onDelete('cascade')->onUpdate('cascade');\n$table->foreignId('usuario')->constrained('users')->onDelete('cascade')->onUpdate('cascade');\n\n¿Qué sucedería en la base de datos si se elimina el registro de un usuario en la tabla 'users' debido a la instrucción `onDelete('cascade')`? [1]",
+        "opciones": [
+            "La base de datos impedirá que el usuario sea borrado mostrando un error de restricción.",
+            "El campo 'usuario' en la tabla de críticas pasará a tener un valor nulo.",
+            "Se borrarán automáticamente todas las críticas que estuvieran asociadas a ese usuario eliminado.",
+            "Se borrará la película asociada a las críticas de ese usuario."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Dado el siguiente bloque de código:\n\nSchema::create('criticas', function (Blueprint $table) {\n    $table->id();\n    $table->integer('valoracion');\n    $table->tinyText('comentario');\n    // ... \n    $table->timestamps();\n});\n\n¿Qué efecto tiene la llamada a `$table->timestamps();` al aplicar esta migración a la base de datos? [1, 4]",
+        "opciones": [
+            "Registra en un archivo de log de Laravel la hora exacta en la que se ejecutó la migración.",
+            "Genera automáticamente dos columnas en la tabla para registrar la fecha y hora de creación (`created_at`) y de última actualización (`updated_at`).",
+            "Crea un único campo llamado 'timestamps' de tipo numérico.",
+            "Actualiza el campo 'comentario' para que siempre incluya la fecha en la que se escribió."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Analiza el siguiente fragmento de código de la migración:\n\npublic function down(): void\n{\n    Schema::dropIfExists('criticas');\n}\n\n¿Cuál es la finalidad de este método `down()` y qué instrucción ejecuta exactamente en la base de datos? [1, 5]",
+        "opciones": [
+            "Se utiliza para deshacer la migración (rollback) y elimina la tabla 'criticas' de la base de datos si esta existe.",
+            "Se utiliza para vaciar todos los registros de la tabla 'criticas', dejando su estructura intacta.",
+            "Se utiliza para crear la tabla 'criticas' de nuevo si esta ha sido borrada accidentalmente.",
+            "Actualiza la tabla 'criticas' con las nuevas columnas añadidas en el código."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Dado el siguiente código:\n\nreturn new class extends Migration\n{\n    public function up(): void\n    {\n        Schema::create('criticas', function (Blueprint $table) { \n            $table->id(); \n            $table->integer('valoracion');\n            // ...\n        });\n    }\n};\n\nSi ejecutamos el comando `php artisan migrate`, ¿qué función cumple exactamente el método `up()` dentro de esta clase? [1, 5]",
+        "opciones": [
+            "Deshace los cambios recientes introducidos en la tabla 'criticas'.",
+            "Sube el archivo de la migración al servidor de producción remoto.",
+            "Contiene las instrucciones necesarias (como Schema::create) que se aplicarán para agregar nuevas tablas o columnas a la base de datos.",
+            "Genera datos de prueba falsos para rellenar la tabla recién creada."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Observa el siguiente fragmento al que le falta una palabra clave:\n\nSchema::create('criticas', function (Blueprint $table) {\n    $table->id();\n    $table->____('valoracion');\n    $table->tinyText('comentario');\n    //...\n});\n\nSabiendo que el campo 'valoracion' de la crítica debe almacenar un número entero en la base de datos, ¿qué palabra completaría correctamente el código? [1]",
+        "opciones": [
+            "number",
+            "numeric",
+            "int",
+            "integer"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Dado el siguiente código incompleto de la migración:\n\nSchema::create('criticas', function (Blueprint $table) {\n    $table->id();\n    $table->integer('valoracion');\n    $table->tinyText('comentario');\n    $table->____('pelicula')->constrained('peliculas');\n});\n\n¿Qué método de Laravel se usa en el hueco indicado para definir un campo que actuará como clave foránea (almacenando un ID vinculado a otra tabla)? [1, 3]",
+        "opciones": [
+            "foreignId",
+            "primaryKey",
+            "referenceId",
+            "relationId"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Dado el siguiente fragmento inicial donde se define la clase de la migración:\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends ____\n{\n    public function up(): void { ... }\n};\n\n¿De qué clase base de Laravel hereda esta clase anónima para poder ejecutar los cambios en la estructura de la base de datos? [1]",
+        "opciones": [
+            "Blueprint",
+            "Schema",
+            "Migration",
+            "Database"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "Migración de críticas tema5",
+        "pregunta": "Dado el siguiente código:\n\nSchema::create('criticas', function (Blueprint $table) {\n    // ...\n    $table->tinyText('comentario');\n    // ...\n});\n\n¿A qué equivale el uso del método `tinyText` dentro del esquema de Blueprint de Laravel? [1]",
+        "opciones": [
+            "A crear una columna de texto numérico que almacena un máximo de 10 dígitos.",
+            "A crear una columna en la base de datos de tipo texto pequeño, ideal para comentarios cortos.",
+            "A encriptar el comentario insertado para que ocupe menos espacio en el disco duro del servidor.",
+            "A generar una etiqueta de texto HTML invisible en la vista final de la aplicación."
+        ],
+        "correcta": 1
     }
 
 

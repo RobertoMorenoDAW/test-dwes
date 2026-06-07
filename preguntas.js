@@ -16207,7 +16207,557 @@ const BBDD_PREGUNTAS = [
             "link"
         ],
         "correcta": 2
-    }
+    },
+    {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente fragmento de código del archivo de rutas:\n\nRoute::controller(XYZPeliculasControllerAPI::class)->group(function () {\n    Route::get('/listarPeliculasPROF', 'listarPeliculasPROF');\n    Route::post('/crearPeliculaPROF', 'crearPeliculaPROF');\n});\n\n¿Qué función cumple el método `controller(XYZPeliculasControllerAPI::class)` en este bloque?",
+    "opciones": [
+      "Definir que todas las rutas del grupo devolverán una vista en formato HTML.",
+      "Asignar de forma compartida el mismo controlador (`XYZPeliculasControllerAPI`) a todas las rutas definidas dentro del grupo, evitando repetirlo en cada línea.",
+      "Restringir el acceso para que solo los administradores puedan ejecutar esas rutas.",
+      "Ejecutar inmediatamente los métodos de las rutas al cargar el archivo en el servidor."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Analiza este código de definición de rutas:\n\nRoute::get('/listarPeliculasPROF', 'listarPeliculasPROF');\nRoute::post('/crearPeliculaPROF', 'crearPeliculaPROF');\n\nSi el cliente hace una petición HTTP `GET` a la URL `/crearPeliculaPROF`, ¿qué sucederá en el servidor?",
+    "opciones": [
+      "Se ejecutará el método 'crearPeliculaPROF' pero sin insertar datos en la base de datos.",
+      "El servidor devolverá un error HTTP 405 (Method Not Allowed) porque la ruta '/crearPeliculaPROF' está definida estrictamente para el verbo POST.",
+      "Redirigirá automáticamente a la ruta '/listarPeliculasPROF'.",
+      "Se insertará una película vacía en la base de datos."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente fragmento para definir una ruta de actualización:\n\nRoute::put('/modificarArgumentoPeliculaPROF/____', 'modificarArgumentoPeliculaPROF')->whereNumber('pelicula');\n\nPara que Laravel pueda capturar dinámicamente el identificador de la película desde la URL y pasarlo al controlador, ¿cómo debe rellenarse el espacio en blanco?",
+    "opciones": [
+      "$pelicula",
+      "[pelicula]",
+      "{pelicula}",
+      "<pelicula>"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente fragmento de código de la API:\n\nRoute::delete('/borrarPeliculaPROF/{pelicula}', 'borrarPeliculaPROF')->whereNumber('pelicula');\n\n¿Qué ocurre si un cliente envía una petición HTTP `DELETE` a la dirección `/borrarPeliculaPROF/superman`?",
+    "opciones": [
+      "El servidor buscará y borrará la película cuyo título sea 'superman'.",
+      "Se ejecutará el método 'borrarPeliculaPROF', el cual recibirá el valor 'superman' en su parámetro.",
+      "El servidor devolverá automáticamente un error 404 (Not Found), porque la cadena 'superman' no cumple con la restricción `whereNumber` definida en la ruta.",
+      "El servidor convertirá automáticamente la palabra 'superman' a 0 y borrará la película con ID 0."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Observa el siguiente bloque de código:\n\nRoute::controller(XYZPeliculasControllerAPI::class)->group(function () {\n    Route::get('/listarPeliculasPROF', 'listarPeliculasPROF');\n    Route::post('/crearPeliculaPROF', 'crearPeliculaPROF');\n    Route::put('/modificarArgumentoPeliculaPROF/{pelicula}', 'modificarArgumentoPeliculaPROF');\n    Route::delete('/borrarPeliculaPROF/{pelicula}', 'borrarPeliculaPROF');\n});\n\nSi el servidor recibe la petición HTTP válida `PUT /modificarArgumentoPeliculaPROF/9`, ¿qué método del controlador se ejecutaría?",
+    "opciones": [
+      "Se ejecutarían los métodos 'crearPeliculaPROF' y 'modificarArgumentoPeliculaPROF' en secuencia.",
+      "Se ejecutaría el método 'put'.",
+      "Se ejecutaría el método 'XYZPeliculasControllerAPI'.",
+      "Se ejecutaría exclusivamente el método 'modificarArgumentoPeliculaPROF' de la clase XYZPeliculasControllerAPI."
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente código extraído de la cabecera del archivo de rutas:\n\n/*\n| Here is where you can register API routes for your application. These\n| routes are loaded by the RouteServiceProvider and all of them will\n| be assigned to the \"api\" middleware group.\n*/\n\nSabiendo que estas rutas se asignan al grupo middleware \"api\", ¿cuál es una característica fundamental de estas rutas según la arquitectura REST estudiada?",
+    "opciones": [
+      "Devuelven obligatoriamente vistas generadas con el motor de plantillas Blade.",
+      "Son rutas sin estado (stateless), lo que significa que el servidor no guarda información de la sesión del cliente entre distintas peticiones.",
+      "Sólo pueden ser consumidas mediante el protocolo de comunicación SOAP.",
+      "Inician y mantienen abierta una conexión persistente (tipo WebSocket) con el cliente."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente fragmento para definir una ruta incompleta:\n\nRoute::____('/crearPeliculaPROF', 'crearPeliculaPROF');\n\nSabiendo que la función de esta ruta en la API es insertar un nuevo registro de una película enviando los datos encapsulados, ¿qué verbo HTTP de la arquitectura REST completa correctamente la instrucción de Laravel?",
+    "opciones": [
+      "get",
+      "post",
+      "put",
+      "delete"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente fragmento de código al inicio del archivo:\n\nuse Illuminate\\Support\\Facades\\Route;\nuse App\\Http\\Controllers\\Api\\XYZPeliculasControllerAPI;\nuse App\\Http\\Controllers\\Api\\XYZGenerosControllerAPI;\n\n¿Qué papel cumplen las sentencias `use` en este script de PHP dentro de la arquitectura de Laravel?",
+    "opciones": [
+      "Ejecutan automáticamente todos los controladores en el momento en que se carga el archivo de rutas.",
+      "Establecen las rutas base del servidor web Apache.",
+      "Importan los espacios de nombres (namespaces) de los controladores para que puedan ser referenciados directamente por su nombre de clase en las definiciones de las rutas.",
+      "Realizan la conexión directa con la base de datos para recuperar los géneros y las películas."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Analiza este fragmento de código:\n\nRoute::controller(XYZGenerosControllerAPI::class)->group(function () {\n    Route::get('/listarGenerosPROF', 'listarGenerosPROF');\n});\n\nSi el objetivo de esta ruta en nuestra API es devolver el catálogo completo de géneros disponibles sin alterarlos, ¿qué formato de salida esperará recibir habitualmente un cliente (como Guzzle) al llamar a este endpoint mediante GET?",
+    "opciones": [
+      "Una cadena de texto con formato JSON.",
+      "Una página HTML completa.",
+      "Un documento en formato XML.",
+      "Una consulta SQL cruda."
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "routes tema6",
+    "pregunta": "Dado el siguiente código:\n\nRoute::put('/modificarArgumentoPeliculaPROF/{pelicula}', 'modificarArgumentoPeliculaPROF')->whereNumber('pelicula');\n\n¿Qué ocurriría si, en lugar de invocar el método encadenado `->whereNumber('pelicula')`, el programador no hubiera puesto ninguna restricción al final de la ruta?",
+    "opciones": [
+      "La ruta daría un error de compilación en PHP.",
+      "Laravel exigiría que se le pasara un texto (string) obligatoriamente.",
+      "La ruta aceptaría cualquier cadena de texto o número enviado por URL como parámetro '{pelicula}', dejando la responsabilidad de validar que es numérico íntegramente al código interno del controlador.",
+      "Guzzle no podría comunicarse con esa ruta."
+    ],
+    "correcta": 2
+  },
+   {
+    "tema": "controllers tema 6",
+    "pregunta": "Dado el siguiente código del controlador `XYZGenerosControllerAPI`:\n\npublic function listarGenerosPROF(): JsonResponse\n{\n    return response()->____(\n        GeneroPROF::select('id', 'nombre', 'descripcion')->get()\n    );\n}\n\nSegún las indicaciones del profesor, un controlador API no retorna vistas HTML. ¿Qué método completa la respuesta para asegurar que los datos se serialicen correctamente al formato estándar de intercambio de la API?",
+    "opciones": [
+      "view",
+      "xml",
+      "json",
+      "send"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Observa cómo se obtiene el listado de películas en `XYZPeliculasControllerAPI`:\n\nPeliculaPROF::select('id', 'titulo', 'genero_id', 'duracion', 'anio', 'direccion', 'argumento')->____()\n\nTras seleccionar estrictamente las columnas que queremos devolver (evitando los timestamps u otros datos innecesarios), ¿qué método terminador de Eloquent se usa para ejecutar la consulta y recuperar la colección de registros?",
+    "opciones": [
+      "all()",
+      "get()",
+      "fetch()",
+      "execute()"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "En la firma del método para procesar la creación de una película (POST):\n\npublic function crearPeliculaPROF(____ $request): JsonResponse\n{\n    $v = Validator::make($request->all(), [...]);\n    ...\n}\n\n¿Qué clase de Laravel se inyecta en el espacio en blanco para poder recibir y manipular todos los datos que el cliente (Guzzle) ha enviado en el cuerpo de la petición?",
+    "opciones": [
+      "Response",
+      "Client",
+      "Request",
+      "Input"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Analiza la gestión de errores de validación en `crearPeliculaPROF`:\n\nif ($v->fails()) {\n    return response()->json([\n        'errores' => Arr::flatten($v->errors()->getMessages())\n    ], ____);\n}\n\nSi el cliente envía un título vacío y la validación falla, ¿qué código de estado HTTP se devuelve habitualmente en un API REST para indicar \"Entidad No Procesable\" (Unprocessable Entity)?",
+    "opciones": [
+      "200",
+      "404",
+      "422",
+      "500"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Dado este fragmento de validación:\n\nreturn response()->json([\n    'errores' => Arr::____($v->errors()->getMessages())\n], 422);\n\nLos mensajes de error de Laravel vienen por defecto en un array multidimensional. ¿Qué método de la clase auxiliar `Arr` emplea el profesor para convertir todos esos errores en un array plano de una sola dimensión que Guzzle pueda leer fácilmente?",
+    "opciones": [
+      "map",
+      "collapse",
+      "merge",
+      "flatten"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "En el método de creación, tras comprobar que los datos no contienen errores de validación (`if ($v->fails())`), se recuperan para crear el modelo:\n\n$datos = $v->____();\n$pelicula = PeliculaPROF::create($datos);\n\n¿Qué método del validador recupera un array seguro exclusivamente con los datos que han pasado las reglas?",
+    "opciones": [
+      "all()",
+      "get()",
+      "validated()",
+      "clean()"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Dado el siguiente código en la validación de `crearPeliculaPROF`:\n\nValidator::make($request->all(), [\n    'genero_id' => 'required|string|exists:____,id',\n    ...\n]);\n\nPara que Laravel verifique que el género enviado por el cliente realmente existe en la base de datos, ¿qué nombre de tabla debe ir en el espacio en blanco?",
+    "opciones": [
+      "database",
+      "GeneroPROF",
+      "generos",
+      "table"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Analiza este fragmento que comprueba si la película ya está repetida:\n\n$resultado = PeliculaPROF::where('titulo', trim($datos['titulo']))\n    ->where('anio', intval($datos['anio']))\n    ->where('direccion', trim($datos['direccion']))\n    ->____();\n\n¿Qué método terminador de Eloquent devuelve `true` o `false` indicando si la base de datos contiene algún registro que coincida con esos filtros?",
+    "opciones": [
+      "first()",
+      "get()",
+      "count()",
+      "exists()"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "En el controlador `modificarArgumentoPeliculaPROF`, el profesor realiza esta comprobación de seguridad antes de procesar la petición PUT:\n\nif (!$request->____()) {\n    return response()->json(['errores' => ['Los datos enviados deben ser JSON']], 403);\n}\n\n¿Qué método de la petición (`Request`) verifica que las cabeceras HTTP del cliente indicaban un Content-Type de aplicación JSON?",
+    "opciones": [
+      "hasJson",
+      "expectsJson",
+      "isJson",
+      "wantsJson"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "En el mismo método de modificar el argumento, fíjate cómo se leen los datos antes de validarlos:\n\n$v = Validator::make(\n    $request->____()->all(),\n    ['argumento' => 'required|string|max:255|min:10'],\n    ...\n);\n\nDado que hemos verificado que el formato es JSON puro, ¿qué método usamos para extraer específicamente el payload decodificado del JSON enviado?",
+    "opciones": [
+      "json",
+      "payload",
+      "input",
+      "content"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Observa el proceso de guardado tras asignar el nuevo argumento:\n\n$pelicula->argumento = $datos['argumento'];\n$pelicula->save();\n\nif ($pelicula->____()) {\n    return response()->json(['resultado' => 1], 200);\n} else {\n    return response()->json(['resultado' => 0], 200);\n}\n\n¿Qué método de Eloquent nos dice si realmente se actualizaron los datos en la base de datos o si el cliente envió un argumento idéntico al que ya había?",
+    "opciones": [
+      "wasChanged",
+      "isDirty",
+      "hasChanges",
+      "isUpdated"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "En el controlador del borrado seguro, el código recibe el parámetro por la URL e inicia las validaciones:\n\nfunction borrarPeliculaPROF($pelicula): JsonResponse\n{\n    $errores = [];\n    if (!____($pelicula)) {\n        $errores = ['No se ha recibido un id numérico de película'];\n    }\n    ...\n}\n\n¿Qué función nativa de PHP comprueba si el valor pasado desde la ruta (ej. '9' o 'abc') es un valor numérico?",
+    "opciones": [
+      "is_int",
+      "is_numeric",
+      "is_number",
+      "ctype_digit"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Continuando con la validación del borrado, tras comprobar que es numérico, intentamos localizar el recurso en base de datos:\n\n$pelicula = PeliculaPROF::____($pelicula);\nif (!$pelicula) {\n    $errores = [\"No existe ninguna película con id=$pelicula\"];\n}\n\nSabiendo que `$pelicula` contiene el ID numérico que buscamos, ¿qué método del modelo utiliza internamente un `SELECT` por la clave primaria devolviendo el objeto si existe, o `null` si no lo encuentra?",
+    "opciones": [
+      "search",
+      "get",
+      "find",
+      "first"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Finalmente en el borrado, si se acumularon errores (por ID no numérico o película no encontrada), detenemos el proceso con este código:\n\nif (count($errores) > 0) {\n    return response()->json(['errores' => $errores], ____);\n}\n\nEn un servicio web REST, ¿qué código de estado HTTP es el más correcto devolver aquí para indicar al cliente Guzzle que la película que intenta borrar no ha sido encontrada?",
+    "opciones": [
+      "200",
+      "403",
+      "404",
+      "422"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "controllers tema 6",
+    "pregunta": "Si las comprobaciones de borrado fueron exitosas, el controlador ejecuta la eliminación y emite la respuesta:\n\n$pelicula->delete();\nreturn response()->json(['resultado' => 1], ____);\n\nTal y como explicó el profesor, ¿qué código HTTP devuelve el controlador en la tarea al finalizar con éxito una eliminación o una modificación y adjuntar el resultado '1' en el payload?",
+    "opciones": [
+      "204",
+      "201",
+      "200",
+      "500"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Dado el siguiente fragmento de la migración de géneros:\n\n$table->string('nombre', 45)->unique();\n\n¿Qué describe exactamente el método encadenado `->unique()` al crear esta columna en la base de datos?",
+    "opciones": [
+      "Indica que el campo 'nombre' será la clave primaria de la tabla.",
+      "Añade una restricción en la base de datos para garantizar que no puedan existir dos géneros con exactamente el mismo nombre.",
+      "Establece que el campo no puede estar vacío (NOT NULL).",
+      "Asigna un valor aleatorio y único por defecto si el usuario no introduce ninguno."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Observa el siguiente código de la migración de críticas:\n\n$table->____('pelicula_id')->constrained('peliculas')->onDelete('cascade')->onUpdate('cascade');\n\nPara definir la columna y al mismo tiempo prepararla como clave foránea en una sola línea en las versiones recientes de Laravel, ¿qué método completa el espacio en blanco?",
+    "opciones": [
+      "foreignId",
+      "unsignedBigInteger",
+      "foreign",
+      "references"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "En todas las migraciones (críticas, géneros, películas) aparece esta instrucción al final del bloque de creación de las columnas:\n\n$table->timestamps();\n\n¿Qué acción describe correctamente lo que hace este método en la estructura de la tabla generada?",
+    "opciones": [
+      "Almacena la fecha y hora en la que se ejecutó la migración en el servidor.",
+      "Crea un único campo llamado 'timestamps' para guardar un registro de tiempo UNIX.",
+      "Crea automáticamente dos columnas especiales (created_at y updated_at) para registrar cuándo se crea y cuándo se modifica cada registro.",
+      "Convierte la zona horaria de la tabla a UTC automáticamente."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Observa el fragmento utilizado para eliminar la tabla si necesitamos dar marcha atrás a la migración de géneros:\n\npublic function ____(): void\n{\n    Schema::dropIfExists('generos');\n}\n\n¿Cuál es el nombre del método que Laravel ejecuta por defecto para revertir o deshacer los cambios de una migración?",
+    "opciones": [
+      "down",
+      "rollback",
+      "undo",
+      "reverse"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Analiza este código de la tabla películas:\n\n$table->foreign('genero_id')->references('id')->on('generos')->onDelete('cascade');\n\n¿Qué describe exactamente este fragmento de código sobre el comportamiento de la base de datos?",
+    "opciones": [
+      "Que si se borra una película, el género asociado también se borrará de la tabla géneros para mantener la cascada.",
+      "Que no se puede borrar un género si tiene películas asociadas (restringe el borrado).",
+      "Que si un género es eliminado de la tabla 'generos', todas las películas que tengan asignado ese género se eliminarán automáticamente en cascada.",
+      "Que el ID de la película y el ID del género deben ser idénticos."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "En la migración de películas se observa este fragmento opcional añadido por el profesor para incorporar restricciones (constraints):\n\n\\DB::____(\"ALTER TABLE peliculas ADD CONSTRAINT check_duracion CHECK (duracion > 0 AND duracion < 500)\");\n\n¿Qué método de la clase o fachada DB completa el código para permitir la ejecución de esta sentencia SQL cruda?",
+    "opciones": [
+      "query",
+      "sql",
+      "statement",
+      "execute"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Dado el código en la creación de la tabla películas:\n\n$table->string('titulo', 60);\n\n¿Qué describe o qué significa el segundo parámetro (el número 60) que se le pasa al método `string()`?",
+    "opciones": [
+      "El valor predeterminado que tendrá el título si no se proporciona.",
+      "El número de veces que puede repetirse ese título en la tabla.",
+      "La longitud máxima de caracteres permitidos para esa columna en la base de datos (equivalente a un VARCHAR de 60).",
+      "El tamaño en bytes reservado en el disco para la columna."
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "En la migración de películas, antes de definir la relación de clave foránea de forma manual, la columna se declara previamente así:\n\n$table->____('genero_id');\n\nPara que esta columna sea totalmente compatible y coincida con el tipo de dato que Laravel utiliza por defecto en las claves primarias (`$table->id()`), ¿qué tipo de columna completa el código?",
+    "opciones": [
+      "integer",
+      "bigInteger",
+      "unsignedBigInteger",
+      "foreign_key"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Revisando las migraciones de la tarea, en la tabla de críticas encontramos `$table->____('comentario');` y en géneros `$table->____('descripcion');`.\n\nPara almacenar textos que pueden componerse de algunos párrafos cortos, superando el límite habitual de un VARCHAR pero sin llegar a ser textos enormes, ¿qué método emplea el profesor para completar el código?",
+    "opciones": [
+      "text",
+      "longText",
+      "mediumText",
+      "tinyText"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "migrations tema6",
+    "pregunta": "Analiza este código presente en el método down() de las migraciones:\n\nSchema::dropIfExists('criticas');\n\n¿Qué describe exactamente la acción del método `dropIfExists` sobre el esquema de la base de datos?",
+    "opciones": [
+      "Borra todo el contenido de la tabla 'criticas', pero deja la estructura de la tabla intacta.",
+      "Intenta eliminar la tabla 'criticas', verificando primero si existe en la base de datos para prevenir que se lance un error de SQL si la tabla no fue creada previamente.",
+      "Elimina la tabla 'criticas' y todas sus copias de seguridad existentes.",
+      "Elimina las relaciones foráneas de la tabla, pero mantiene la tabla principal."
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Dado el siguiente fragmento del archivo `composer.json` del cliente:\n\n\"require\": {\n    \"____/guzzle\": \"^7.8\"\n}\n\n¿Qué paquete completa correctamente este archivo para instalar la librería que usamos para consumir la API?",
+    "opciones": [
+      "guzzlehttp",
+      "laravel",
+      "php-http",
+      "guzzle-client"
+    ],
+    "correcta": 0
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En el archivo `index.php`, al inicializar el cliente Guzzle, observamos la siguiente configuración:\n\n$cliente = new GClientPROF([\n    'base_uri' => API_BASE_URL,\n    '____' => false,\n    'headers' => ['Accept' => 'application/json']\n]);\n\n¿Qué clave de configuración se utiliza aquí para evitar que Guzzle lance excepciones automáticas en PHP si el servidor devuelve errores 404 o 422, permitiéndonos leer los códigos de respuesta manualmente?",
+    "opciones": [
+      "allow_redirects",
+      "http_errors",
+      "exceptions",
+      "catch_errors"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En el procesamiento del textarea en `index.php`, tenemos el siguiente bucle:\n\nforeach ($datos as $linea_str) {\n    $linea = ____($linea_str);\n    switch ($linea) {\n        case 'CREAR': ...\n}\n\n¿Qué función nativa de PHP se utiliza en la tarea para transformar la cadena de texto de la línea (por ejemplo: \"CREAR,Alien,2,Scott...\") en un array indexado `$linea`?",
+    "opciones": [
+      "explode",
+      "str_split",
+      "str_getcsv",
+      "json_decode"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Analiza este código en `PROF_Operaciones.php` para la creación:\n\nif (count($linea) == 7) {\n    $datos = [\n        'titulo' => $linea[1],\n        'genero_id' => $linea[2],\n        ...\n    ];\n    $resultado = PROF_PeticionesAPI::PROF_crearPelicula($cliente, $datos);\n}\n\nSi el usuario introduce en el textarea la línea `CREAR,Batman,1,Nolan,140,El caballero oscuro,2008`, ¿qué dato se está asignando a `$datos['titulo']` a través de `$linea[1]`?",
+    "opciones": [
+      "CREAR",
+      "Batman",
+      "1",
+      "Nolan"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En `PROF_Operaciones.php`, cuando el servidor devuelve un array de errores de validación (`$resultado`), se formatea para mostrarlo en HTML así:\n\n$lineaInforme = \"Errores en los datos: <ul><li>\" . ____(\"</li><li>\", $resultado) . \"</li></ul>\";\n\n¿Qué función de PHP completa este hueco para unir todos los mensajes de error del array en una única cadena, usando las etiquetas HTML como separador?",
+    "opciones": [
+      "concat",
+      "implode",
+      "join_strings",
+      "array_merge"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En `PROF_PeticionesAPI.php`, al comprobar si existe una película (petición GET), pasamos parámetros así:\n\n$operacion = $cliente->get('existePeliculaPROF', [\n    '____' => [\n        'titulo' => $titulo,\n        'anio' => $anio\n    ]\n]);\n\nDado que en un GET los parámetros deben viajar adjuntos a la URL, ¿qué clave del array de opciones de Guzzle se usa aquí?",
+    "opciones": [
+      "form_params",
+      "json",
+      "query",
+      "body"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Para la creación de una película (POST), la función `PROF_crearPelicula` envía los datos simulando un formulario clásico HTML (`x-www-form-urlencoded`). Observa el código:\n\n$operacion = $cliente->post('crearPeliculaPROF', [\n    '____' => [\n        'titulo' => $datos['titulo'] ?? '',\n        ...\n    ]\n]);\n\n¿Qué opción de Guzzle automatiza este formato de envío?",
+    "opciones": [
+      "query",
+      "json",
+      "multipart",
+      "form_params"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En `PROF_PeticionesAPI.php` al modificar el argumento (PUT), el código es el siguiente:\n\n$operacion = $cliente->put('modificarArgumentoPeliculaPROF/' . $id_pelicula, [\n    '____' => [\n        'argumento' => $argumento,\n    ]\n]);\n\nLa API exige estrictamente que el cuerpo sea JSON puro (`$request->isJson()`). ¿Qué clave de Guzzle transforma el array y añade automáticamente la cabecera `Content-Type: application/json`?",
+    "opciones": [
+      "body",
+      "json",
+      "form_params",
+      "headers"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Al realizar una operación en `PROF_PeticionesAPI.php`, si la validación falla en el servidor, Guzzle lo captura así:\n\nif ($operacion->getStatusCode() == 422) {\n    $datos = json_decode($operacion->getBody()->getContents(), true);\n    return $datos['____'];\n}\n\nSabiendo que el servidor devuelve un JSON estructurado, ¿qué índice extraemos del array `$datos` porque contiene los mensajes de error devueltos por Laravel?",
+    "opciones": [
+      "error",
+      "errores",
+      "mensajes",
+      "fails"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En las peticiones PUT o DELETE dentro de `PROF_PeticionesAPI.php`, controlamos si el recurso no fue hallado en el servidor:\n\nif ($operacion->getStatusCode() == 404) {\n    return self::____;\n}\n\n¿Qué constante (definida al inicio de esta clase cliente) devuelve la función para informar a `PROF_Operaciones.php` del problema?",
+    "opciones": [
+      "ERROR_SERVICIO_WEB",
+      "ERROR_DATOS_NO_JSON",
+      "ERROR_PELICULA_NO_EXISTE",
+      "NOT_FOUND_API"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Observa el fragmento para borrar una película:\n\n$operacion = $cliente->____('borrarPeliculaPROF/' . $id_pelicula);\n\nPara solicitar la eliminación de un recurso en una API RESTful usando Guzzle, ¿qué verbo o método HTTP debe invocar el cliente?",
+    "opciones": [
+      "remove",
+      "destroy",
+      "drop",
+      "delete"
+    ],
+    "correcta": 3
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "En la vista HTML de `index.php`, al imprimir los datos obtenidos desde la API en la tabla, se utiliza protección:\n\n<td><?= ____($pelicula['titulo'] ?? '') ?></td>\n\n¿Qué función de PHP utiliza el profesor en la vista para proteger la aplicación web escapando caracteres especiales y evitando posibles ataques XSS?",
+    "opciones": [
+      "strip_tags",
+      "htmlspecialchars",
+      "urlencode",
+      "htmlentities"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Al recibir una respuesta exitosa, se analiza su contenido JSON en `PROF_PeticionesAPI.php`:\n\n$listaDePeliculas = json_decode($operacion->getBody()->getContents(), ____);\n\n¿Qué valor booleano se pasa como segundo parámetro a la función `json_decode` para convertir el documento JSON en un array asociativo de PHP en lugar de generar un objeto de clase `stdClass`?",
+    "opciones": [
+      "false",
+      "true",
+      "1",
+      "0"
+    ],
+    "correcta": 1
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Revisando el mapeo de carga automática de clases (Autoloading) en el archivo `composer.json` del cliente:\n\n\"autoload\": {\n    \"psr-4\": {\n        \"DWES06_PROF\\\\\": \"____/\"\n    }\n}\n\n¿A qué carpeta o directorio del proyecto se asocia el espacio de nombres principal para que Composer encuentre las clases PHP automáticamente?",
+    "opciones": [
+      "app",
+      "vendor",
+      "src",
+      "public"
+    ],
+    "correcta": 2
+  },
+  {
+    "tema": "cliente tema6",
+    "pregunta": "Cuando el servidor responde con un código de estado 200 tras crear una película, recibimos el ID insertado en JSON: `{\"resultado\": 5}`. Observa el cliente:\n\nif ($operacion->getStatusCode() == 200) {\n    $datos = json_decode($operacion->getBody()->getContents(), true);\n    return ____($datos['resultado']);\n}\n\n¿Qué función de PHP se utiliza explícitamente en el `return` para forzar que el dato extraído del array sea tratado estrictamente como un número entero?",
+    "opciones": [
+      "parse_int",
+      "intval",
+      "(integer)",
+      "is_int"
+    ],
+    "correcta": 1
+  }
 
 
 

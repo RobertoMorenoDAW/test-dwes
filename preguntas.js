@@ -15767,6 +15767,446 @@ const BBDD_PREGUNTAS = [
             "A generar una etiqueta de texto HTML invisible en la vista final de la aplicación."
         ],
         "correcta": 1
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Dado el siguiente fragmento de código:\n\n$u1 = new User;\n$u1->name = 'RMM1';\n$u1->email = 'RMM1@email.RMM';\n$u1->password = Hash::make('RMM1');\n\n¿Qué función cumple exactamente el método `make` de la fachada `Hash` en esta asignación?",
+        "opciones": [
+            "Genera un token CSRF de seguridad para el usuario.",
+            "Valida que la contraseña cumpla con los requisitos mínimos de seguridad.",
+            "Encripta la cadena de texto 'RMM1' antes de guardarla como contraseña en la base de datos.",
+            "Comprueba si la contraseña ingresada coincide con la de la base de datos."
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Observa la estructura de este bloque de código:\n\nif (User::where('email', 'RMM1@email.RMM')->count() == 0) {\n    $u1 = new User;\n    $u1->name = 'RMM1';\n    $u1->email = 'RMM1@email.RMM';\n    // ...\n    $u1->save();\n}\n\n¿Con qué propósito principal se utiliza la condición `User::where(...)->count() == 0` antes de instanciar al usuario?",
+        "opciones": [
+            "Para contar y mostrar en pantalla el número total de usuarios registrados.",
+            "Para comprobar que el usuario NO existe previamente en la base de datos y evitar así crear registros duplicados al ejecutar el seeder múltiples veces.",
+            "Para eliminar al usuario de la base de datos si su contador de visitas es igual a cero.",
+            "Para actualizar los datos del usuario si su correo ya existe."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "En el siguiente fragmento de código de inicialización de un usuario:\n\n$u1 = new User;\n$u1->name = 'RMM1';\n$u1->email = 'RMM1@email.RMM';\n$u1->password = Hash::make('RMM1');\n$u1->email_verified_at = now();\n$u1->save();\n\n¿Qué valor se asigna al campo `email_verified_at` mediante la función helper `now()` de Laravel?",
+        "opciones": [
+            "La fecha y hora actual del sistema en el momento en que se ejecuta el seeder.",
+            "Un valor nulo (null) hasta que el usuario verifique su correo manualmente.",
+            "El texto literal 'now()'.",
+            "La fecha de caducidad de la cuenta de usuario."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "En la clase del seeder, para insertar los géneros iterando un array, encontramos un código al que le falta una instrucción esencial:\n\nforeach ($generos as $nombre => $descripcion) {\n    if (GeneroRMM::where('nombre', $nombre)->count() == 0) {\n        $g = new GeneroRMM;\n        $g->nombre = $nombre;\n        $g->descripcion = $descripcion;\n        $g->____();\n    }\n}\n\n¿Qué método de Eloquent falta en el hueco indicado para que el objeto recién creado se inserte definitivamente como un registro en la base de datos?",
+        "opciones": [
+            "insert",
+            "push",
+            "update",
+            "save"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Analiza este código y su comentario explicativo:\n\n// Primero, necesitamos obtener los objetos de los géneros que acabamos de crear\n// para poder asignarles su ID a las películas.\n$genAnimacion = GeneroRMM::where('nombre', 'animación')->____();\n\n¿Qué método de Eloquent falta en el hueco para ejecutar la consulta y recuperar la primera instancia del modelo que coincida con ese nombre?",
+        "opciones": [
+            "all",
+            "first",
+            "get",
+            "find"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Tras recuperar el género como se indica en el código anterior, se procede a crear la película asignándole la clave foránea:\n\n$p1 = new PeliculaRMM;\n$p1->titulo = 'Toy Story';\n$p1->argumento = 'Un grupo de juguetes cobra vida a espaldas de su dueño.';\n$p1->genero = $genAnimacion->____;\n$p1->save();\n\nPara que la relación en la base de datos sea correcta, ¿qué propiedad del objeto `$genAnimacion` debe colocarse en el hueco?",
+        "opciones": [
+            "nombre",
+            "key",
+            "id",
+            "value"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Dado el bloque de inicialización del archivo:\n\nnamespace Database\\Seeders;\nuse Illuminate\\Database\\Seeder;\nuse App\\Models\\User;\n\nclass RMMSeeder extends ____\n{\n    public function run(): void\n    {\n        // ...\n    }\n}\n\n¿De qué clase de Laravel debe heredar obligatoriamente para ser reconocido y ejecutado como un sembrador de datos?",
+        "opciones": [
+            "Model",
+            "Migration",
+            "Controller",
+            "Seeder"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "En el siguiente fragmento del seeder, se inicializa el modelo de la película para guardarlo:\n\n$p4 = ____ PeliculaRMM;\n$p4->titulo = 'Matrix';\n$p4->direccion = 'Lana Wachowski y Lilly Wachowski';\n$p4->duracion = 136;\n\n¿Qué palabra reservada de PHP falta en el hueco para instanciar (crear un nuevo objeto) de la clase del modelo Eloquent?",
+        "opciones": [
+            "create",
+            "make",
+            "insert",
+            "new"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Dado el siguiente fragmento que contiene el método principal de la clase:\n\nclass RMMSeeder extends Seeder\n{\n    public function ____(): void\n    {\n        // INSERTAR USUARIOS\n        // INSERTAR GÉNEROS\n        // INSERTAR PELÍCULAS\n    }\n}\n\n¿Cómo se debe llamar el método en un Seeder donde se aloja todo el código que va a poblar la base de datos cuando ejecutemos el comando Artisan correspondiente?",
+        "opciones": [
+            "up",
+            "run",
+            "execute",
+            "seed"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "seeders tema 5",
+        "pregunta": "Dado el siguiente código:\n\nuse App\\Models\\User;\nuse App\\Models\\GeneroRMM;\nuse App\\Models\\PeliculaRMM;\n\n¿Cuál es la finalidad de incluir estas líneas con la palabra reservada `use` al principio del archivo del Seeder?",
+        "opciones": [
+            "Crear automáticamente las tablas de usuarios, géneros y películas en la base de datos.",
+            "Importar los modelos de Eloquent para poder interactuar con las tablas de la base de datos como si fuesen objetos de PHP a lo largo del código.",
+            "Validar que los datos de prueba cumplen con las reglas definidas en esos archivos.",
+            "Generar variables globales accesibles desde cualquier vista del proyecto."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Dado el siguiente fragmento del código de un modelo:\n\nnamespace App\\Models;\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\nuse Illuminate\\Database\\Eloquent\\Relations\\HasMany;\n\nclass GeneroRMM extends ____\n{\n    use HasFactory;\n    // ...\n}\n\n¿Qué clase de Eloquent falta en el hueco para que 'GeneroRMM' sea reconocido y funcione correctamente como un modelo en Laravel?",
+        "opciones": [
+            "Migration",
+            "Controller",
+            "Model",
+            "Seeder"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "En el siguiente fragmento del modelo:\n\nclass GeneroRMM extends Model\n{\n    use HasFactory;\n    protected $table = 'generos';\n    protected $fillable = ['nombre', 'descripcion'];\n    // ...\n}\n\n¿Cuál es la finalidad exacta de la línea `protected $table = 'generos';`?",
+        "opciones": [
+            "Ocultar la tabla 'generos' para que no pueda ser borrada por las migraciones.",
+            "Indicar a Eloquent el nombre exacto de la tabla de la base de datos asociada a este modelo, sobreescribiendo la convención por defecto.",
+            "Crear automáticamente la tabla 'generos' en la base de datos si esta no existe.",
+            "Establecer que la tabla 'generos' solo puede almacenar campos de texto."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Observa el siguiente código perteneciente a un modelo:\n\nclass CriticaRMM extends Model\n{\n    use HasFactory;\n    protected $table = 'criticas';\n    protected $____ = ['valoracion', 'comentario', 'pelicula', 'usuario'];\n    // ...\n}\n\n¿Qué palabra reservada completa el código para definir el array que permite la asignación masiva de esos campos (mass assignment)?",
+        "opciones": [
+            "hidden",
+            "fillable",
+            "guarded",
+            "columns"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Dado el siguiente código que define una relación en el modelo:\n\nclass GeneroRMM extends Model\n{\n    // ...\n    public function peliculas(): ____\n    {\n        return $this->hasMany(PeliculaRMM::class, 'genero');\n    }\n}\n\n¿Qué tipo de retorno debe indicarse en el hueco de la declaración del método para indicar que un género puede tener asociadas varias películas (relación 1:N)?",
+        "opciones": [
+            "BelongsTo",
+            "HasOne",
+            "BelongsToMany",
+            "HasMany"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Dado el código de la relación inversa definido en un modelo:\n\nclass PeliculaRMM extends Model\n{\n    // ...\n    public function generoAsociado(): BelongsTo\n    {\n        return $this->____(GeneroRMM::class, 'genero');\n    }\n}\n\n¿Qué método de Eloquent se ejecuta en el hueco para indicar que la instancia de PeliculaRMM \"pertenece a\" un único GeneroRMM?",
+        "opciones": [
+            "hasOne",
+            "belongsTo",
+            "hasMany",
+            "belongsToMany"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "En este fragmento de código, se establece un segundo parámetro en el método de la relación:\n\nclass CriticaRMM extends Model\n{\n    // ...\n    public function peliculaAsociada(): BelongsTo\n    {\n        return $this->belongsTo(PeliculaRMM::class, 'pelicula');\n    }\n}\n\n¿Qué representa el string `'pelicula'` pasado como segundo argumento en `$this->belongsTo(...)`?",
+        "opciones": [
+            "El nombre de la tabla relacionada.",
+            "El nombre de la clave foránea en la tabla 'criticas' que vincula con el modelo de películas.",
+            "Un alias genérico para referirse a la relación en las vistas Blade.",
+            "El nombre del método de la clase padre."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "En el siguiente fragmento del modelo se importa una clase al inicio del archivo:\n\nnamespace App\\Models;\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\nuse Illuminate\\Database\\Eloquent\\Relations\\HasMany;\n// ...\nclass PeliculaRMM extends Model\n{\n    public function criticas(): HasMany\n    {\n        return $this->hasMany(CriticaRMM::class, 'pelicula');\n    }\n}\n\nSi en lugar de devolver 'HasMany' quisiéramos devolver 'BelongsTo' para otra relación, ¿qué línea de código nos faltaría añadir en las importaciones (cláusulas 'use')?",
+        "opciones": [
+            "use Illuminate\\Database\\Eloquent\\Relations\\BelongsTo;",
+            "use App\\Models\\Relations\\BelongsTo;",
+            "use Illuminate\\Database\\Eloquent\\BelongsTo;",
+            "use Illuminate\\Support\\Facades\\BelongsTo;"
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Analizando el interior de la clase de un modelo:\n\nclass PeliculaRMM extends Model\n{\n    use ____;\n    protected $table = 'peliculas';\n    protected $fillable = ['titulo', 'direccion', 'duracion', 'argumento', 'anio', 'genero'];\n    // ...\n}\n\n¿Qué rasgo o *trait* de Laravel se utiliza frecuentemente en este hueco para habilitar la generación de datos de prueba estructurados (por ejemplo, al ejecutar factorías o seeders)?",
+        "opciones": [
+            "Authenticatable",
+            "HasSeeders",
+            "HasFactory",
+            "Notifiable"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Dado el siguiente código del modelo y teniendo en cuenta su funcionalidad de seguridad:\n\nclass PeliculaRMM extends Model\n{\n    use HasFactory;\n    protected $table = 'peliculas';\n    protected $fillable = ['titulo', 'direccion', 'duracion', 'argumento', 'anio', 'genero'];\n    // ...\n}\n\nSi en un controlador intentásemos guardar automáticamente datos enviados desde un formulario haciendo `PeliculaRMM::create($request->all());` y el usuario inyectase maliciosamente un campo extra llamado `'presupuesto'`, ¿qué ocurriría?",
+        "opciones": [
+            "Laravel guardaría el campo 'presupuesto' creando una nueva columna en la tabla automáticamente.",
+            "El modelo descartaría (o ignoraría de forma segura) el campo 'presupuesto', ya que este no se encuentra definido en el array `$fillable` de asignación masiva.",
+            "Se vaciaría la base de datos por razones de seguridad.",
+            "Laravel encriptaría el valor antes de guardarlo en la tabla."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "models tema5",
+        "pregunta": "Observa las dos relaciones definidas en este código:\n\nclass CriticaRMM extends Model\n{\n    // ...\n    public function peliculaAsociada(): BelongsTo\n    {\n        return $this->belongsTo(PeliculaRMM::class, 'pelicula');\n    }\n\n    public function usuarioAsociado(): BelongsTo\n    {\n        return $this->belongsTo(User::class, 'usuario');\n    }\n}\n\nBasándote en este código, ¿qué afirmación sobre el modelo de datos es completamente cierta?",
+        "opciones": [
+            "Una crítica pertenece tanto a un único usuario como a una única película (relaciones N:1).",
+            "Una película tiene muchas críticas, pero solo de un único usuario.",
+            "Un usuario pertenece a muchas críticas, pero a una sola película.",
+            "Existe una relación de varios a varios (N:M) que requiere una tabla intermedia llamada 'criticas_usuarios'."
+        ],
+        "correcta": 0
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el siguiente fragmento de código de un controlador:\n\n$credentials = $request->validate([\n    'email' => 'required|email',\n    'password' => 'required',\n]);\n\n¿Qué ocurre automáticamente si la petición HTTP enviada por el formulario no cumple con estas reglas (por ejemplo, si el email está vacío)?",
+        "opciones": [
+            "Se produce un error fatal en el servidor (Error 500).",
+            "Laravel redirige automáticamente al usuario de vuelta a la página del formulario, llevando consigo los mensajes de error.",
+            "El controlador guarda los datos en blanco en la base de datos y continúa.",
+            "Se genera un archivo de registro (log) y el usuario avanza a la siguiente página sin advertencias."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En este fragmento de código de login:\n\nif (Auth::____($credentials)) {\n    $request->session()->regenerate();\n    return redirect()->intended(route('zonaprivada'));\n}\n\n¿Qué método de la fachada Auth falta en el hueco para buscar al usuario por email y comprobar de forma segura si la contraseña introducida coincide con la de la base de datos?",
+        "opciones": [
+            "login",
+            "check",
+            "attempt",
+            "verify"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el siguiente código que se ejecuta cuando el login es correcto:\n\nif (Auth::attempt($credentials)) {\n    $request->session()->____();\n    return redirect()->intended(route('zonaprivada'));\n}\n\n¿Qué método se utiliza en el hueco para renovar el identificador de la sesión y proteger la aplicación contra ataques de fijación de sesión?",
+        "opciones": [
+            "restart",
+            "start",
+            "regenerate",
+            "renew"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En el siguiente fragmento de código de autenticación:\n\nreturn back()->withErrors([\n    'email' => 'El email o la contraseña no son válidos.',\n])->____('email');\n\n¿Qué método falta en el hueco para devolver a la vista el email que el usuario había escrito previamente, evitando así que tenga que teclearlo de nuevo?",
+        "opciones": [
+            "keepInput",
+            "onlyInput",
+            "withInput",
+            "saveInput"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el código de cierre de sesión:\n\npublic function logoutRMM(Request $request) {\n    Auth::logout();\n    $request->session()->invalidate();\n    $request->session()->____();\n    return redirect(route('zonapublica'));\n}\n\n¿Qué método se utiliza en el hueco para generar un nuevo token de seguridad y proteger contra vulnerabilidades CSRF tras cerrar la sesión?",
+        "opciones": [
+            "newToken",
+            "resetToken",
+            "regenerateCsrf",
+            "regenerateToken"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Observa el siguiente código de un controlador:\n\n$pelicula = PeliculaRMM::find($pelicula_id);\n//...\nreturn view('formnuevacriticaRMM', [\n    'pelicula' => $pelicula\n]);\n\n¿Para qué sirve exactamente el array asociativo pasado como segundo parámetro a la función `view()`?",
+        "opciones": [
+            "Para indicar el nombre alternativo de la vista si la primera falla.",
+            "Para pasar el objeto '$pelicula' desde el controlador a la vista Blade, permitiendo que esta pueda acceder a sus datos.",
+            "Para validar que el id de la película sea correcto antes de renderizar el HTML.",
+            "Para indicar qué usuario está intentando acceder a la vista."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En este fragmento de código para insertar datos:\n\n$critica = new CriticaRMM();\n$critica->valoracion = $request->input('valoracion');\n$critica->comentario = $request->input('comentario');\n$critica->pelicula = $pelicula->id;\n$critica->usuario = Auth::id();\n$critica->____();\n\n¿Qué método debe ir en el hueco para guardar definitivamente este nuevo registro en la base de datos utilizando Eloquent?",
+        "opciones": [
+            "push",
+            "save",
+            "insert",
+            "store"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado este código de seguridad previo a un borrado:\n\nif ($critica->usuario !== Auth::____()) {\n    return view('errores', ['mensaje' => \"Error de seguridad\"]);\n}\n\n¿Qué método de la fachada Auth se usa en el hueco para obtener el identificador numérico (ID) del usuario que tiene la sesión iniciada en ese momento?",
+        "opciones": [
+            "user",
+            "get",
+            "key",
+            "id"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En el siguiente código de borrado definitivo:\n\nif (!$request->____('confirmacion')) {\n    return view('errores', ['mensaje' => \"Debes marcar la casilla...\"]);\n}\n$critica->delete();\n\nSabiendo que 'confirmacion' es un checkbox del formulario HTML, ¿qué método de Request verifica si este campo ha sido marcado y enviado en la petición?",
+        "opciones": [
+            "contains",
+            "exists",
+            "has",
+            "checked"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el siguiente bloque de código en una plantilla base Blade:\n\n<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <title>@____('titulo', 'Videoclub DWES')</title>\n</head>\n<body>\n    @____('contenido')\n</body>\n</html>\n\n¿Qué directiva de Blade se debe escribir en ambos huecos para definir zonas genéricas donde las vistas que hereden inyectarán su código específico?",
+        "opciones": [
+            "show",
+            "yield",
+            "section",
+            "include"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En este código de una plantilla Blade:\n\n<div class=\"barra-info-usuario\">\n    @____\n        Hola, <span>{{ Auth::user()->name }}</span>\n    @else\n        <span>Hola, invitado</span>\n    @endauth\n</div>\n\n¿Qué directiva de control falta para comprobar de manera directa si el usuario actual ha iniciado sesión?",
+        "opciones": [
+            "if(login)",
+            "user",
+            "check",
+            "auth"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado este inicio de un archivo Blade secundario:\n\n@____('layouts.publico')\n@section('titulo', 'Valorar película')\n@section('contenido')\n\n¿Qué directiva falta en la primera línea para indicar que esta vista debe heredar toda la estructura HTML definida en el archivo maestro 'layouts.publico'?",
+        "opciones": [
+            "include",
+            "layout",
+            "extends",
+            "inherits"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Observa el siguiente código de un formulario en Blade:\n\n<form action=\"{{ route('crearnuevacriticaRMM', $pelicula->id) }}\" method=\"POST\">\n    @____\n    <input type=\"hidden\" name=\"pelicula_id\" value=\"{{ $pelicula->id }}\">\n\n¿Qué directiva es obligatorio incluir en el hueco para que Laravel genere un token de seguridad y permita procesar la petición POST contra ataques?",
+        "opciones": [
+            "token",
+            "csrf",
+            "secure",
+            "auth"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En el siguiente fragmento de Blade:\n\n@if ($errors->____())\n    <div class=\"contenedor-errores\">\n        <ul>\n            @foreach ($errors->all() as $error)\n                <li>{{ $error }}</li>\n            @endforeach\n        </ul>\n    </div>\n@endif\n\n¿Qué método se usa en el hueco sobre la variable predefinida de errores para comprobar si existe al menos un error tras una validación fallida?",
+        "opciones": [
+            "fails",
+            "exist",
+            "has",
+            "any"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el siguiente fragmento de un campo de texto en un formulario Blade:\n\n<textarea name=\"comentario\">{{ ____('comentario') }}</textarea>\n\n¿Qué función de ayuda (helper) se utiliza en el hueco para mantener el texto que el usuario había escrito si la validación del controlador falla y se recarga la página?",
+        "opciones": [
+            "previous",
+            "back",
+            "old",
+            "keep"
+        ],
+        "correcta": 2
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En el siguiente código que genera una tabla de películas en Blade:\n\n<tbody>\n    @foreach ($peliculasRMM ____ $pelicula)\n        <tr>\n            <td>{{ $pelicula->titulo }}</td>\n        </tr>\n    @endforeach\n</tbody>\n\n¿Qué palabra reservada de PHP falta en el hueco para iterar la colección correctamente?",
+        "opciones": [
+            "in",
+            "->",
+            "to",
+            "as"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Observa cómo se imprime un dato en esta vista Blade:\n\n<td>{{ $pelicula->generoAsociado->nombre }}</td>\n\nAsumiendo que 'generoAsociado' es un método de relación en el modelo PeliculaRMM. ¿Qué está ocurriendo exactamente en esta línea gracias a Eloquent?",
+        "opciones": [
+            "Se imprime directamente la clave foránea numérica almacenada en la tabla películas.",
+            "Laravel accede mágicamente a la relación, obtiene el objeto del modelo 'Genero' vinculado y accede a la propiedad 'nombre' de ese objeto para imprimirla.",
+            "Se está llamando a una función JavaScript almacenada en la variable $pelicula.",
+            "Se está concatenando la palabra 'generoAsociado' con 'nombre'."
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el siguiente fragmento de código de la vista de errores:\n\n<h1>{{ $titulo ____ 'Upps! Acción no permitida.' }}</h1>\n\n¿Qué operador nativo de PHP (Null Coalescing) debe ir en el hueco para imprimir el texto de la derecha únicamente si la variable `$titulo` no existe o es nula?",
+        "opciones": [
+            "or",
+            "||",
+            "?:",
+            "??"
+        ],
+        "correcta": 3
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "En este archivo de rutas teórico de Laravel:\n\nRoute::get('/vuelos', function () {\n    // Solo los usuarios autenticados pueden acceder\n})->____('auth');\n\n¿Qué método falta para aplicar un filtro de protección a la ruta interceptando la petición antes de que se procese?",
+        "opciones": [
+            "protect",
+            "middleware",
+            "filter",
+            "guard"
+        ],
+        "correcta": 1
+    },
+    {
+        "tema": "resto tema5",
+        "pregunta": "Dado el siguiente código de definición de rutas en web.php:\n\nRoute::get('/inicio', [PostController::class, 'main'])->____('principal');\n\n¿Qué método se utiliza en el hueco para asignarle un alias a la ruta y poder referenciarla dinámicamente desde los enlaces de las vistas usando `route()`?",
+        "opciones": [
+            "alias",
+            "id",
+            "name",
+            "link"
+        ],
+        "correcta": 2
     }
 
 

@@ -11487,7 +11487,7 @@ const BBDD_PREGUNTAS = [
       "Todos los archivos del proyecto deben estar obligatoriamente en una única carpeta raíz plana llamada vendor.",
       "Las clases deben almacenarse de forma cifrada dentro de una base de datos SQLite interna."
     ],
-    "correcta": 2
+    "correcta": 1
   },
   {
     "tema": "preguntas tema 4 segunda parte",
